@@ -64,6 +64,185 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Algorithm/SkillTree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/01/Algorithm/SkillTree/" class="article-date">
+  <time datetime="2020-09-01T12:30:17.480Z" itemprop="datePublished">2020-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algoritm"><a href="#Algoritm" class="headerlink" title="Algoritm"></a>Algoritm</h1><h2 id="programmers-skillTree-Num49993"><a href="#programmers-skillTree-Num49993" class="headerlink" title="programmers skillTree(Num49993)"></a>programmers skillTree(Num49993)</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><p>선행 스킬이란 어떤 스킬을 배우기 전에 먼저 배워야 하는 스킬을 뜻합니다.<br>예를 들어 선행 스킬 순서가 스파크 → 라이트닝 볼트 → 썬더일때, 썬더를 배우려면 먼저 라이트닝 볼트를 배워야 하고,<br>라이트닝 볼트를 배우려면 먼저 스파크를 배워야 합니다.<br>위 순서에 없는 다른 스킬(힐링 등)은 순서에 상관없이 배울 수 있습니다.<br>따라서 스파크 → 힐링 → 라이트닝 볼트 → 썬더와 같은 스킬트리는 가능하지만,<br>썬더 → 스파크나 라이트닝 볼트 → 스파크 → 힐링 → 썬더와 같은 스킬트리는 불가능합니다.<br>선행 스킬 순서 skill과 유저들이 만든 스킬트리1를 담은 배열 skill_trees가 매개변수로 주어질 때,<br>가능한 스킬트리 개수를 return 하는 solution 함수를 작성해주세요.</p>
+<h3 id="제한-조건"><a href="#제한-조건" class="headerlink" title="제한 조건"></a>제한 조건</h3><ul>
+<li>스킬은 알파벳 대문자로 표기하며, 모든 문자열은 알파벳 대문자로만 이루어져 있습니다.</li>
+<li>스킬 순서와 스킬트리는 문자열로 표기합니다.<ul>
+<li>예를 들어, C → B → D 라면 CBD로 표기합니다</li>
+</ul>
+</li>
+<li>선행 스킬 순서 skill의 길이는 1 이상 26 이하이며, 스킬은 중복해 주어지지 않습니다.</li>
+<li>skill_trees는 길이 1 이상 20 이하인 배열입니다.</li>
+<li>skill_trees의 원소는 스킬을 나타내는 문자열입니다.</li>
+<li>skill_trees의 원소는 길이가 2 이상 26 이하인 문자열이며, 스킬이 중복해 주어지지 않습니다.</li>
+</ul>
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>skill</th>
+<th>skill_trees</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“CBD”</td>
+<td>[“BACDE”, “CBADF”, “AECB”, “BDA”]</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<h3 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h3><ul>
+<li>BACDE: B 스킬을 배우기 전에 C 스킬을 먼저 배워야 합니다. 불가능한 스킬트립니다.</li>
+<li>CBADF: 가능한 스킬트리입니다.</li>
+<li>AECB: 가능한 스킬트리입니다.</li>
+<li>BDA: B 스킬을 배우기 전에 C 스킬을 먼저 배워야 합니다. 불가능한 스킬트리입니다.</li>
+<li>스킬 트리: 유저가 스킬을 배울 순서 ↩</li>
+</ul>
+<h3 id="풀이"><a href="#풀이" class="headerlink" title="풀이"></a>풀이</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.Programmers;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SkilTree</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(String skill, String[] skill_trees) &#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(skill.equals(skill.toLowerCase()))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>((skill.length()&lt;<span class="number">1</span> || skill.length()&gt;=<span class="number">27</span>) &amp;&amp; (skill_trees.length &lt;<span class="number">1</span> &amp;&amp; skill_trees.length &gt;=<span class="number">21</span>))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;skill_trees.length; i++)&#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;skill_trees[i].length()<span class="number">-1</span>; j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(skill_trees[i].charAt(j) == skill.charAt(<span class="number">0</span>))&#123;</span><br><span class="line">                            <span class="keyword">if</span>(skill_trees[i].charAt(j+<span class="number">1</span>) == skill.charAt(<span class="number">1</span>))&#123;</span><br><span class="line">                                answer++;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        SkilTree skilTree = <span class="keyword">new</span> SkilTree();</span><br><span class="line">        String skill = <span class="string">&quot;cbd&quot;</span>;</span><br><span class="line">        String[] skill_trees = <span class="keyword">new</span> String[]&#123;<span class="string">&quot;BACDE&quot;</span>, <span class="string">&quot;CBADF&quot;</span>, <span class="string">&quot;AECB&quot;</span>, <span class="string">&quot;BDA&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(skilTree.solution(skill,skill_trees));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/01/Algorithm/SkillTree/" data-id="ckejxtl4y000i2su2fygsfi29" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TIL-20200901" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/01/TIL-20200901/" class="article-date">
+  <time datetime="2020-09-01T12:28:05.691Z" itemprop="datePublished">2020-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/01/TIL-20200901/">Study20200831</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="내부-클래스-Inner-Classes"><a href="#내부-클래스-Inner-Classes" class="headerlink" title="내부 클래스(Inner Classes)"></a>내부 클래스(Inner Classes)</h1><h2 id="내부-클래스란"><a href="#내부-클래스란" class="headerlink" title="내부 클래스란"></a>내부 클래스란</h2><p>연관 있는 것을 그룹 지어 사용할 때 내부클래스,외부클래스가 주로 사용이됨.</p>
+<ul>
+<li><p>클래스 내부에 선언하는 클래스로 중첩 클래스라고도 부름</p>
+</li>
+<li><p><code>HAS-A</code>관계에 있는 클래스가 해당 클래스에서만 사용될 경우 주로 사용.</p>
+</li>
+<li><p>내부 클래스에서 주로 사용하는 것은 익명 내부 클래스인데,<br>익명 내부 클래스를 사용하는 것이 람다식이여서 결국 람다식을 사용하기 위한 것</p>
+</li>
+<li><p>클래스 안에 클래스 안에 인스턴스변수와 클래스변수가 있을 수 있고,<br>중첩되면서 굉장히 복잡해질 것같다.</p>
+</li>
+</ul>
+<h2 id="내부-클래스의-종류"><a href="#내부-클래스의-종류" class="headerlink" title="내부 클래스의 종류"></a>내부 클래스의 종류</h2><ul>
+<li><p>클래스 영역에 선언</p>
+<ul>
+<li>인스턴스 내부 클래스 : 외부 클래스의 멤버 변수처럼 사용 가능.</li>
+<li>클래스 내부 클래스 : static이 붙은 정적인 내부 클래스</li>
+</ul>
+</li>
+<li><p>로컬 영역에 선언</p>
+<ul>
+<li>로컬 내부 클래스 : 선언된 영역의 Scope 내에서 사용 가능</li>
+<li>익명 내부 클래스 : 객체를 일회성으로 생성하기 위한 이름이 없는 클래스<ul>
+<li>new —-() : —– 여기에 클래스이름을 사용했어야 했는데<br>클래스를 한 번만 사용할거면 이름이 없어도 된다<br>일회성으로 생성을 한다면 익명으로 만드는 것이 가능하다.<br>이것들은 암기하는 영역이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="다양한-내부-클래스"><a href="#다양한-내부-클래스" class="headerlink" title="다양한 내부 클래스"></a>다양한 내부 클래스</h2><h3 id="인스턴스-내부-클래스-Instance-Inner-Class"><a href="#인스턴스-내부-클래스-Instance-Inner-Class" class="headerlink" title="인스턴스 내부 클래스 (Instance Inner Class)"></a>인스턴스 내부 클래스 (Instance Inner Class)</h3><ul>
+<li>클래스 영역에 <code>static</code> 키워드 없이 선언되면 인스턴스 내부 클래스이다.</li>
+<li>static 클래스가 아닌 일반적인 클래스처럼 동작 한다.</li>
+<li>외부 클래스의 private을 포함한 모든 멤버에 접근 가능</li>
+<li>외부 클래스 객체를 통해서만 생성 가능</li>
+<li>static 멤버 변수는 사용할 수 없으나, <code>static final</code> 은 사용 가능<ul>
+<li>static 멤버 변수가 사용이 될려면 클래스가 먼저 있고 그 안에 static 멤버 변수가 존재하게 되는데,<br>문제는 인스턴스 내부 클래스는 인스턴스가 만들어져야 외부 클래스의 인스턴스가 만들어져야<br>그 안에 내부 클래스가 생기는 것이기 때문에 static 멤버 변수가 있을 수 없다.</li>
+<li><code>static final</code>은 사용 가능 - 변하지 않는 상수이기 때문에 (상수 취급이 되기 때문에) 사용이 가능하다 이해는 할 수 있지만 따로 암기</li>
+</ul>
+</li>
+<li>외부 클래스의 객체를 만들고 객체 내에서만 사용이 가능하다 -&gt;이해되면 이해 안되면 암기</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InstanceInner</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> innerMemberVar = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//static int staticMemberVar = 1;</span></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CONSTANT_VAR = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> innerMethod() &#123;</span><br><span class="line">            System.out.println(innerMemberVar);</span><br><span class="line">            System.out.println(outerMemberVar);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> outerMemberVar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> outerMethod() &#123;</span><br><span class="line">      IstanceInner obj = <span class="keyword">new</span> InstanceInner();</span><br><span class="line">      obj.innerMethod();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">      Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">      InstanceInner inner = outer.<span class="keyword">new</span> InstanceInner();</span><br><span class="line">      inner.innerMethod();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>클래스이기때문에 이외에는 클래스처럼 사용이 가능하다. 이너 메소드가 존재할 수 있다.</li>
+<li>outer 클래스의 멤버 변수도 inner 메소드에서 사용이가능 private이여도 접근이 가능하다.</li>
+<li>inner 클래스는 인스턴스에 속해 있기 때문에 속해 있는 인스턴스 변수에 접근이 가능하다.</li>
+<li>inner클래스를 outer 클래스를 통해서만 객체 생성이 가능하다는 것은<ul>
+<li>outerMethod는 static이 붙어있지 않기때문에 인스턴스 멤버 메소드이다. outerMethod 를 콜하기위해서 outer 인스턴스가 있다는 것이므로</li>
+<li>outer 인스턴스에 속하는 메소드이기 때문에 inner 클래스를 바로 사용이 가능하다(생성 가능) 그런 다음 메소드 콜이 가능하다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="outerMethod-와-main-method-비교"><a href="#outerMethod-와-main-method-비교" class="headerlink" title="outerMethod 와 main method 비교"></a>outerMethod 와 main method 비교</h4><ul>
+<li><p>메인메소드는 static인데 static은 static 메소드이자 outer 클래스에 속한 메소드이기 때문에<br>outerMethod는 객체.outerMethod로 선언이 되기 때문에 이미 객체가 있다는 전제하에 outerMethod 바디에 내부클래스를 생성할 수 있음</p>
+</li>
+<li><p>반면 메인메소드는 스태틱이므로 인스턴스가아니라 클래스 변수이기때문에 outer.new InnerClass를 사용해서 생성해야 한다.</p>
+<ul>
+<li>new 이너클래스는 통으로 보면된다  통으로 생성자를 콜하는걸로 보면 된다 outer 안에 통으로 콜한다고 의미를 생각하면 됨. 외우면 직관적이 됨.<h4 id="this-활용"><a href="#this-활용" class="headerlink" title="this 활용"></a>this 활용</h4></li>
+</ul>
+</li>
+<li><p>내부클래스에서 this는 내부클래스 멤버변수를 가르키고,  outer.this.var해야지 외부크래스의 멤버변수를 가르킴</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InstanceInner</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> var = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> innerMethod() &#123;</span><br><span class="line">            System.out.println(var);</span><br><span class="line">            System.out.println(<span class="built_in">this</span>.var);</span><br><span class="line">            System.out.println(Outer.<span class="built_in">this</span>.var);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> var = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">      Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">      InstanceInner inner = outer.<span class="keyword">new</span> InstanceInner();</span><br><span class="line">      inner.innerMethod();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="클래스-내부-클래스-Class-Inner-Class"><a href="#클래스-내부-클래스-Class-Inner-Class" class="headerlink" title="클래스 내부 클래스 (Class Inner Class)"></a>클래스 내부 클래스 (Class Inner Class)</h3><ul>
+<li><p>클래스 영역에 <code>static</code> 키워드와 함께 선언된 내부 클래스</p>
+</li>
+<li><p>외부 클래스 객체가 없어도 생성 가능</p>
+</li>
+<li><p>외부 클래스의 private을 포함한 모든 멤버에 접근 가능</p>
+</li>
+<li><p>static 멤버 변수를 가질 수 있음.</p>
+</li>
+<li><p>인스턴스 내부클래스와 상당히 유사하지만 객체를 있고,없고의 차이<br>스태틱을 사용할 수 있고 없고의 차이.</p>
+</li>
+<li><p>인스턴스에 속한 클래스가 아니기때문에 외부클래스의 특정인스턴스에 속한 애가아니기때문에 외부클래스에 접근하려면<br>내부클래스에서 외브클래스를 생성을해야 접근이 가능하다.</p>
+</li>
+<li><p>외부클래스의 메소드에서 내부 클래스의 객체를 다 만들 수 있음.<br>외부 클래스 내부 클래스는 독립적인 클래스가 맞긴한데 종속 독립의 개념보다 내부클래스는 외부클래스의 사정을 알고있는 클래스이다?<br>클래스내부클래스의 내부클래스에서 외부클래스의 객체를 만들면 외부클래스의 priavte에 접근이 가능하므로 독립된것처럼사용할 수 있지만 독립된건 아니다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassInner</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> innerVar = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> staticInnerVar = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> innerMethod() &#123;</span><br><span class="line">            Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">            System.out.println(outer.outerVar);</span><br><span class="line">            System.out.println(innerVar);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> outerVar = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> outerMethod() &#123;</span><br><span class="line">        ClassInner inner = <span class="keyword">new</span> ClassInner();</span><br><span class="line">        inner.innerMethod();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Static inner = <span class="keyword">new</span> StaticInner();</span><br><span class="line">        inner.innerMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>메인에서 아우터 클래스로 객체를 만들 때 아우터 클래스 객체안에 이너 클래스 객체가 있는것이 아니다. 컴포지션이랑은 전혀 다른 개념이다<br>클래스는 있는데 객체는 없는 것이다.</p>
+</li>
+<li><p>아우터 클래스로 객체를 만들 때 이너 클래스의 메소드를 사용할 수 없음. 아우터클래스에서 스태틱만 접근이가능하다.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/01/TIL-20200901/" data-id="ckejxtl4q000e2su21ely4qkr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-TIL-20200831" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/31/TIL-20200831/" class="article-date">
@@ -116,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/31/TIL-20200831/" data-id="ckeiiceji0009uwu28l0m2gg2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/31/TIL-20200831/" data-id="ckejxtl4h000b2su2d00of2rp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/28/TIL-20200828/" data-id="ckeiicejk000auwu2a2e26xvq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/28/TIL-20200828/" data-id="ckejxtl4d00092su20mhk6dpf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/27/TIL-20200827/" data-id="ckeiicejl000buwu25tei2icl" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/27/TIL-20200827/" data-id="ckejxtl4900072su28nn1dx1j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -410,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/26/TIL-20200826/" data-id="ckeiicejg0007uwu2c1z6fyu0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/26/TIL-20200826/" data-id="ckejxtl4f000a2su22sgf5shm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,7 +759,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200825/" data-id="ckeiicejh0008uwu28xuzcgqq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200825/" data-id="ckejxtl4b00082su2eq5ohtou" class="article-share-link">Share</a>
       
       
     </footer>
@@ -656,7 +835,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200823/" data-id="ckeiiceje0005uwu24f8jheq3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200823/" data-id="ckejxtl4400052su26tona0gv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -774,7 +953,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200820/" data-id="ckeiicejd0004uwu22w239707" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200820/" data-id="ckejxtl4000032su29e20hsd0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -858,231 +1037,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200819/" data-id="ckeiicej80001uwu2hujx8wgw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-TIL-20200817" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/25/TIL-20200817/" class="article-date">
-  <time datetime="2020-08-25T11:04:18.635Z" itemprop="datePublished">2020-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/TIL-20200817/">Study20200817</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="온라인-강의들으며-복습"><a href="#온라인-강의들으며-복습" class="headerlink" title="온라인 강의들으며 복습"></a>온라인 강의들으며 복습</h3><h1 id="상속-Inheritance"><a href="#상속-Inheritance" class="headerlink" title="상속 (Inheritance)"></a>상속 (Inheritance)</h1><ul>
-<li>어떤 클래스의 모든 멤버 변수 및 메소드를 계승하여, 새로운 클래스를 생성하는 것</li>
-<li>부모클래스로부터 상속을 받는 자식클래스는 부모클래스의 메소드나 멤버변수등 부모의 것을 가지고 있고, 추가적으로 자기의 것들도 가질 수 있다. ‘IS-A’관계라고도 한다.</li>
-</ul>
-<h1 id="클래스의-포함-관계"><a href="#클래스의-포함-관계" class="headerlink" title="클래스의 포함 관계"></a>클래스의 포함 관계</h1><p>– 클래스를 조합해서 클래스를 만든다. Class Composition</p>
-<ul>
-<li><p>상속하고 유사하지만, 한 클래스가 다른 클래스의 객체를 포함하는 관계<br>‘HAS-A’ 관계라고 표현된다. </p>
-</li>
-<li><p>상속과 컴포지션의 차이 - 일치하냐, 보유하냐</p>
-</li>
-</ul>
-<h1 id="메소드-재정의-method-overriding"><a href="#메소드-재정의-method-overriding" class="headerlink" title="메소드 재정의 method overriding"></a>메소드 재정의 method overriding</h1><ul>
-<li>override – 덮어씌운다, 해킹해서 뭔가 달라지게 한다. 기존에 있던걸 덮어씌워서 다른걸로 변형시키는 것. 다형성의 근간이 된다.</li>
-<li>상속받는 자식클래스에 메소드를 재정의할 때 @Override를 적어주는 것이 관례이다, (필수x)</li>
-</ul>
-<h1 id="super-키워드"><a href="#super-키워드" class="headerlink" title="super 키워드"></a>super 키워드</h1><ul>
-<li><p>호출할 때 this와 마찬가지로 첫줄에 써야함.</p>
-</li>
-<li><p>this는 자신의 객체를 참조하고, super는 부모 객체를 참조한다.</p>
-</li>
-<li><p>부모의 부모는 참조할 수 없고, 바로 위의 부모만 참조할 수 있음.</p>
-</li>
-<li><p>멤버 변수명이 부모와 겹치면 재정의 하지만, 부모가 사라지는 것은 아니다.</p>
-</li>
-<li><p>부모클래스에 기본 생성자를 사용하는 경우에는 호출 안해줘도 됨. 파라미터 생성자일 때만<br>호출해주면 된다.</p>
-</li>
-<li><p>부모클래스 생성자와 다르게 파라미터 변수명을 해줘야 한다.</p>
-</li>
-<li><p>부모 객체를 먼저 생성한다음, 자식객체가 생성됨.</p>
-</li>
-<li><p>자식클래스 생성자를 만들 때 부모 클래스 생성자도 같이 호출해줘야한다.</p>
-</li>
-<li><p>자식객체를 생성할 때마다 부모 객체를 따로따로 만들어서 가지고 있음.</p>
-</li>
-</ul>
-<h1 id="제어자"><a href="#제어자" class="headerlink" title="제어자"></a>제어자</h1><ul>
-<li>자바 파일명과 같은 public class 클래스명이 꼭 있어야 한다.</li>
-<li>private – 같은 클래스에서만 사용가능, 내부 구현을 위해서만 사용한다.</li>
-<li>default – package라고도 한다 제어자명은 생략한다. 사용범위가 같은 패키지안에서 가능.</li>
-<li>protected – private와 비슷하게 사용이 되나, 상속한 경우 구현 시 접근이 필요할 때 사용.<pre><code>      자식이면 다른 패키지여도 접근할 수가 있다, 하나의 자식외에는 못봄,
-      부모의 부모는 건들 수 없음.</code></pre>
-</li>
-<li>public – 모든 곳에서 사용가능.</li>
-<li>클래스는 public 과 default만 사용 가능하다.</li>
-</ul>
-<h1 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h1><p>– 오버로딩에 의한 다형성, 오버라이딩에 의한 다형성(상속에 의한 다형성과 같다.)</p>
-<ul>
-<li><p>부모 클래스 타입으로 자식 클래스 타입의 객체를 참조하는 특징.</p>
-</li>
-<li><p>자식 클래스의 메소드,변수 사용이 불가능하다.</p>
-</li>
-<li><p>반대로 자식 클래스 타입으로 부모 클래스 타입의 객체를 참조할 경우에는 문법적으로 오류는<br>나지 않지만, 런타임시 에러가 발생한다.</p>
-</li>
-<li><p>멤버 변수의 재정의는 선언된 객체의 타입을 따른다. 문법적으로 본다.</p>
-</li>
-<li><p>메소드 오버라이딩은 메모리상의 객체 타입을 따른다. 실제 객체로 본다.</p>
-</li>
-<li><p>virtual method call이 이루어진다.</p>
-</li>
-</ul>
-<h1 id="공변-반환-타입"><a href="#공변-반환-타입" class="headerlink" title="공변 반환 타입"></a>공변 반환 타입</h1><ul>
-<li>오버라이딩이지만, 리턴 타입이 달라질 수 있다 여기서는 예외적으로 반환값이 달라진다.</li>
-</ul>
-<h1 id="추상클래스"><a href="#추상클래스" class="headerlink" title="추상클래스"></a>추상클래스</h1><ul>
-<li>일부 메소드가 구현되지 않고, 선언만 되어있는 클래스 </li>
-<li>자식 클래스에서 이것을 반드시 구현하게끔 강제하는 것</li>
-<li>생성자를 가질 수 있고, 일반 메소드도 가질 수 있다. </li>
-<li>생성자를 갖지만, 객체 생성이 불가능하다. 그런데 구현된 자식클래스의 객체는 받을 수 있다.</li>
-</ul>
-<h1 id="인터페이스"><a href="#인터페이스" class="headerlink" title="인터페이스"></a>인터페이스</h1><ul>
-<li>클래스가 사용되는 방식/접점만을 선언하는 클래스와 유사한 틀</li>
-<li>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드이다.</li>
-<li>생성자를 가질 수 없고, 객체 생성을 할 수 없음.</li>
-<li>자식 객체는 참조할 수 있으나 메소드와 변수는 사용 X</li>
-<li>인터페이스명으로 클래스 메소드 호출이 가능하나, </li>
-<li>자식클래스명으로 클래스 메소드 호출 불가능.</li>
-<li>class가 아니고 interface 키워드를 사용한다.</li>
-<li>멤버 변수는 항상 public static final 인데, 생략이 가능하다.</li>
-<li>멤버 메소드도 항상 public abstract 이며, 생략이 가능하다.</li>
-<li>클래스는 하나만 상속할 수 있으나, 인터페이스는 다중 상속이 가능하다.</li>
-<li>클래스와 마찬가지로 제어자는 public,default 가능. </li>
-</ul>
-<p>JDK 1.8 버전 이후에 인터페이스 default 메소드를 구현할 수 있음.<br>인터페이스 철학과 맞지 않으나, 모든 자식 메소드에 동일하게 구현되어야 하는 메소드가 생긴 경우에 쉽게 기능을 추가하기 위해 만들어짐.<br>default메소드는 반드시 오버라이딩해야하는 것은 아니다.</p>
-<h1 id="열거형-enumeration"><a href="#열거형-enumeration" class="headerlink" title="열거형 enumeration"></a>열거형 enumeration</h1><p>enum 키워드로 표현, ‘이넘’이라고 부른다.<br>enum은 이미 java.lang.Enum 클래스를 상속하고 있어서 다른 클래스를 상속하지 못함.<br>인터페이스 구현은 가능하다.<br>열거형 타입에는 열거형 상수와 null 값 할당 가능.<br>일종의 클래스 자료형으로 쓸 수 있고, 열거형 상수도 객체로 사용 가능.<br>생성자가 있을 수 있는데 앞에 private만 쓸 수 있고 생략 가능.<br>생성자는 String을 입력 받게 되어있는데, 각각 만들 때 각 객체에 값을 넣어줘야 함.</p>
-<h1 id="제네릭"><a href="#제네릭" class="headerlink" title="제네릭"></a>제네릭</h1><ul>
-<li>클래스를 선언할 때에는 타입이 알려지지 않으며, 타입 파라미터를 사용한다.</li>
-<li>생성자 있고, 객체 참조 가능. 인터페이스, 추상클래스 상속 가능.</li>
-<li>정적 메소드도 사용이 가능하다. 다만, 클래스와 정적메소드의 타입파라미터를 갖게 하면 안된다.</li>
-<li>생성자도 갖을 수 있음.</li>
-<li>타입의 상속시 부모와 자식클래스의 타입을 맞추어 줘야 한다. 타입 파라미터도 모두 채워 주어야 한다. 부모클래스/인터페이스의 동일한 타입 파라미터를 넘겨줄 수 있다.</li>
-<li>static 멤버 변수, static 메소드는 타입파라미터를 사용할 수 없다.(왜냐하면, static은 객체가 생성되기 전에 메모리에 할당되는데 메모리에 할당되려면 타입이 있어야 하고, 타입 파라미터는 객체를 선언할 때 값이 넘어오기 때문에)</li>
-<li>new 키워드를 사용하여 객체를 참조할 수 없다.</li>
-<li>instanceof의 피연산자로 사용할 수 없다.</li>
-</ul>
-<h1 id="동적-바인딩"><a href="#동적-바인딩" class="headerlink" title="동적 바인딩"></a>동적 바인딩</h1><ul>
-<li>메소드가 생길 때 자료형이랑 정의되어 있어서 기계가 동작하게 만들어지게 정상적인데, 자료형이 정해져있지 않아서 들어오는거에 따라 동작이 달라짐.<br>실제로 런타임이 되지 않으면 컴파일 타임이 알 수 없음.( 컴파일 타임에는 동작이 완전히 정의가 되지 않음)</li>
-</ul>
-<h1 id="wrapper-클래스"><a href="#wrapper-클래스" class="headerlink" title="wrapper 클래스"></a>wrapper 클래스</h1><ul>
-<li>기본형 타입을 객체로 쓰기 위해 있는 클래스</li>
-<li>기본형을 객체로 사용할 수 있게 하는 것을 - &gt; Autoboxing</li>
-<li>객체를 기본형으로 바꾸는 것을 -&gt; Unboxing</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200817/" data-id="ckeiicejc0003uwu26e3q4nte" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-TIL-20200824" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/25/TIL-20200824/" class="article-date">
-  <time datetime="2020-08-25T11:01:48.000Z" itemprop="datePublished">2020-08-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/TIL-20200824/">Study20200824</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="온라인-강의들으며-복습"><a href="#온라인-강의들으며-복습" class="headerlink" title="온라인 강의들으며 복습"></a>온라인 강의들으며 복습</h3><h1 id="인터페이스"><a href="#인터페이스" class="headerlink" title="인터페이스"></a>인터페이스</h1><h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
-<li>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</li>
-<li>인터페이스라는 것은 어떤 객체 오브젝트의 명세라고 보면된다<br>인터페이스가 어떤 객체를 제공할것이다 어떤객체다라고 설명하는 설명서와 같다<br>인터페이스는 프로젝트를할때 설계단계에서 많이 사용함.</li>
-</ul>
-<h2 id="인터페이스의-특징"><a href="#인터페이스의-특징" class="headerlink" title="인터페이스의 특징"></a>인터페이스의 특징</h2><ul>
-<li>기존 클래스와의 차이점은 추상메소드로만 이루어져 있다.</li>
-<li>구현코드가 들어가지 않아서 new(인스턴스화)될 수 없다.</li>
-<li>변수를 선언하게되면 변수를 선언한것과 같지만 멤버변수는 인스턴스가생성되고 힙영역에<br>메모리가 잡혀야하는데 인터페이스는 추상메소드로 이루어져있어서 인스턴스화가 될수 없음<br>그래서 인터페이스의 모든 변수는 상수가 된다.</li>
-<li>Java 8이후에 디폴트메소드, 정적메소드, private메소드가 생김<br>인터페이스가 구현을 갖지 못하니깐 인터페이스를 구현하게 되는 클래스들이 중복된 구현을 하게 되는데<br>중복을 막기 위해 생긴 메소드들이다.</li>
-</ul>
-<h2 id="인터페이스의-요소"><a href="#인터페이스의-요소" class="headerlink" title="인터페이스의 요소"></a>인터페이스의 요소</h2><ul>
-<li>상수: 선언된 모든 변수는 상수로 처리됨</li>
-<li>메소드 : 모든 메소드는 추상 메소드</li>
-<li>디폴트 메소드 : 기본 구현을 가지는 메소드 구현하는 클래스에서 재정의 할 수 있음(java 8)</li>
-<li>정적 메소드 : 인스턴스 생성과 상관없이 인터페이스 타입으로 호출하는 메소드(java 8)</li>
-<li>private 메소드 : 인터페이스 내에서 사용하기 위해 구현한 메소드<br>구현하는 클래스에서 재정의 할 수 없음(java9)</li>
-</ul>
-<h2 id="인터페이스-선언과-구현"><a href="#인터페이스-선언과-구현" class="headerlink" title="인터페이스 선언과 구현"></a>인터페이스 선언과 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">인터페이스 선언과 구현</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Calc</span>&#123;</span></span><br><span class="line">  <span class="keyword">double</span> PI = <span class="number">3.14</span>;</span><br><span class="line">  <span class="keyword">int</span> ERROR = <span class="number">-99999999999</span>;  </span><br><span class="line"> <span class="comment">// 인터페이스에서 선언한 변수는 컴파일 과정에서 상수로 변환됨</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> add(<span class="keyword">int</span> num1,<span class="keyword">int</span> num2);</span><br><span class="line">  <span class="keyword">int</span> substract(<span class="keyword">int</span> num1,<span class="keyword">int</span> num2);</span><br><span class="line">  <span class="keyword">int</span> times(<span class="keyword">int</span> num1,<span class="keyword">int</span> num2);</span><br><span class="line">  <span class="keyword">int</span> divide(<span class="keyword">int</span> num1,<span class="keyword">int</span> num2); </span><br><span class="line"><span class="comment">// 인터페이스에서 선언한 메소드는 컴파일 과정에서 추상메소드로 변환됨</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="타입-상속과-형-변환"><a href="#타입-상속과-형-변환" class="headerlink" title="타입 상속과 형 변환"></a>타입 상속과 형 변환</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Calc calc = <span class="keyword">new</span> CompleteCalc();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>인터페이스를 구현한 클래스는 인터페이스 타입으로 변수를 선언하여 인스턴스를 생성할 수 있음<br>인터페이스는 구현 코드가 없기 때문에 타입 상속이라고도 함.</li>
-</ul>
-<h2 id="인터페이스를-활용한-다형성-구현하기"><a href="#인터페이스를-활용한-다형성-구현하기" class="headerlink" title="인터페이스를 활용한 다형성 구현하기"></a>인터페이스를 활용한 다형성 구현하기</h2><ul>
-<li>주로 설계할 때 사용한다. 인터페이스가 정의되어있고 구현한 클래스들이 있을텐데 클래스들을<br>사용할 때 다양한 클래스들을 사용할 수 있는데 다형성과 관련되어있다</li>
-</ul>
-<h2 id="인터페이스의-역할은"><a href="#인터페이스의-역할은" class="headerlink" title="인터페이스의 역할은?"></a>인터페이스의 역할은?</h2><ul>
-<li>인터페이스는 클라이언트 프로그램에 어떤 메소드를 제공하는지 알려주는 명세 또는 약속</li>
-<li>한 객체가 어떤 인터페이스의 타입이라 함은 그 인터페이스의 메소드를 구현했다는 의미</li>
-<li>클라이언트 프로그램은 실제 구현 내용을 몰라도 인터페이스의 정의만 알면 그 객체를<br>사용할 수 있음</li>
-<li>인터페이스를 구현해 놓은 다양한 객체를 사용함 - 다형성<ul>
-<li>JDBC를 구현한 오라클, MSSQL라이브러리 등</li>
-</ul>
-</li>
-</ul>
-<h2 id="인터페이스와-strategy-pattern"><a href="#인터페이스와-strategy-pattern" class="headerlink" title="인터페이스와 strategy pattern"></a>인터페이스와 strategy pattern</h2><ul>
-<li>인터페이스를 활용하면 다양한 정책이나 알고리즘을 프로그램의 큰 수정 없이 적용, 확장할 수 있음</li>
-</ul>
-<h2 id="여러-개의-인터페이스-구현하기"><a href="#여러-개의-인터페이스-구현하기" class="headerlink" title="여러 개의 인터페이스 구현하기"></a>여러 개의 인터페이스 구현하기</h2><ul>
-<li>인터페이스는 구현 코드가 없으므로 하나의 클래스가 여러 인터페이스를 구현 할 수 있음</li>
-<li>디폴트 메소드의 이름이 중복되는 경우에는 재정의함<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">implements</span> <span class="title">Buy</span>,<span class="title">Sell</span>&#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buy() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;customer buy&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> order() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;customer order&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sell() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;customer sell&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sayHello()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="인터페이스-상속"><a href="#인터페이스-상속" class="headerlink" title="인터페이스 상속"></a>인터페이스 상속</h2><ul>
-<li>인터페이스 간에도 상속이 가능함</li>
-<li>구현이 없으므로 extends 뒤에 여러 인터페이스를 상속받을 수 있음</li>
-<li>구현 내용이 없으므로 타입 상속(type inheritance)라고 함</li>
-</ul>
-<h2 id="인터페이스-구현과-클래스-상속-함께-하기"><a href="#인터페이스-구현과-클래스-상속-함께-하기" class="headerlink" title="인터페이스 구현과 클래스 상속 함께 하기"></a>인터페이스 구현과 클래스 상속 함께 하기</h2> <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> enQueue(String title) &#123; <span class="comment">//배열에 요소추가</span></span><br><span class="line">        shelf.add(title);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String deQueue() &#123; <span class="comment">//맨 처음 요소를 배열에서 삭제하고 반환</span></span><br><span class="line">        <span class="keyword">return</span> shelf.remove(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getSize() &#123; <span class="comment">//배열 요소 개수 반환</span></span><br><span class="line">        <span class="keyword">return</span> getCount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200824/" data-id="ckeiicejf0006uwu29vt298sy" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200819/" data-id="ckejxtl3u00012su2avuf9xx1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1115,7 +1070,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -1128,6 +1083,14 @@
       <ul>
         
           <li>
+            <a href="/2020/09/01/Algorithm/SkillTree/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/01/TIL-20200901/">Study20200831</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/31/TIL-20200831/">Study20200831</a>
           </li>
         
@@ -1137,14 +1100,6 @@
         
           <li>
             <a href="/2020/08/27/TIL-20200827/">Study20200827</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/26/TIL-20200826/">Study20200826</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/25/TIL-20200825/">Study20200825</a>
           </li>
         
       </ul>
