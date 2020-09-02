@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>AlgorithmSolution_Tile | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Algorithm###문제 설명  가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다. 이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다. 타일을 채울 때는 다음과 같이 2가지 방법이 있습니다.  타일을 가로로 배치 하는 경우  타일을 세로로 배치 하는 경우  예를들어서 n이 7인 직사각형은">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AlgorithmSolution_Tile">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/02/Algorithm/TileSol/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Algorithm###문제 설명  가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다. 이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다. 타일을 채울 때는 다음과 같이 2가지 방법이 있습니다.  타일을 가로로 배치 하는 경우  타일을 세로로 배치 하는 경우  예를들어서 n이 7인 직사각형은">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-02T12:39:30.283Z">
+<meta property="article:modified_time" content="2020-09-02T12:49:28.774Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Algorithm/TileSol" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/02/Algorithm/TileSol/" class="article-date">
+  <time datetime="2020-09-02T12:39:30.283Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AlgorithmSolution_Tile
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><p>###문제 설명</p>
+<ul>
+<li><p>가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다. 이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다. 타일을 채울 때는 다음과 같이 2가지 방법이 있습니다.</p>
+</li>
+<li><p>타일을 가로로 배치 하는 경우</p>
+</li>
+<li><p>타일을 세로로 배치 하는 경우</p>
+</li>
+<li><p>예를들어서 n이 7인 직사각형은 다음과 같이 채울 수 있습니다.</p>
+</li>
+</ul>
+<ul>
+<li>직사각형의 가로의 길이 n이 매개변수로 주어질 때, 이 직사각형을 채우는 방법의 수를 return 하는 solution 함수를 완성해주세요.</li>
+</ul>
+<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
+<li>가로의 길이 n은 60,000이하의 자연수 입니다.</li>
+<li>경우의 수가 많아 질 수 있으므로, 경우의 수를 1,000,000,007으로 나눈 나머지를 return해주세요.<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>n</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>4</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="프로그래머스-문제-12900번-2-n-타일링-문제풀이"><a href="#프로그래머스-문제-12900번-2-n-타일링-문제풀이" class="headerlink" title="프로그래머스 문제 12900번 2*n 타일링 문제풀이"></a>프로그래머스 문제 12900번 2*n 타일링 문제풀이</h1><ul>
+<li><p>이런 문제가 알고나면 화가나는 문제중 하나이라 한다! </p>
+</li>
+<li><p>다이나믹 프로그래밍 (동적계획법) - 최적화 기법 중 하나 이름은 역사적으로 붙음 (의미자체는 별 의미가 없음)</p>
+</li>
+<li><p>핵심 반복적인 계산이 있으면 반복적인 계산을 하지 않고, 저장하고 저장된걸 참조해서 한다.</p>
+</li>
+<li></li>
+<li><p>n개를 채우는데 있어서 f(n)이라고 표현을 했을 때 점화식을 표현하는게 중요</p>
+</li>
+<li><p>n을 더 쉬운 방법으로 바꿔서 사용하는것 이게 점화식이다.</p>
+</li>
+<li><p>n개를 채우는 방법은 가로 1짜리로 앞에를 채웠을 때 나머지는 n-1이다.</p>
+</li>
+<li><p>가로로 채웠을경우 2짜리로 했을 경우 n-2경우와 같다.</p>
+</li>
+<li><p>f(n) = f(n-1) + f(n-2); 아무리 큰수가 들어와도 작은 수로 표현이 됨</p>
+</li>
+<li><p>초기값 두개만 알고 있으면 됨. n이 1인 경우와 2인 경우를 알고 있으면 3을 알 수 있고 2,3은 4를 알 수 있고 ..</p>
+</li>
+<li><p>f(1) = 1 가지 방법</p>
+</li>
+<li><p>f(2) = 2; 가지 방법</p>
+</li>
+<li><p>f(3) = f(1) + f(2);</p>
+</li>
+<li><p>피보나치수열과 완전히 같음 피보나치는 0,1로시작하지만 이건 1,2로 시작함</p>
+</li>
+<li><p>점화식을 이용했다 배열을 만들어 놓고 이용을 하더라 정도 생각 하면 됨.</p>
+</li>
+<li><p>재귀함수의 장점 구현을 빠르게할 수 있음, 더 짧게 구현이 가능하다.</p>
+</li>
+<li><p>클린코드에 관해서 함수의 단위를 줄여야 하는 부분이 있는데</p>
+</li>
+<li><p>for문을 사용하는게 iterative하게구현하는 것은 코드 함수 자체의</p>
+</li>
+<li><p>복잡도는 증가하는 단점이 있는데 리컬시브는 심플하고 간단하게 되는 장점이 있음</p>
+</li>
+<li><p>스택이 쌓이는 경우가 많지 않은 경우 재귀 함수를 쓰는 일이 많이 있음.</p>
+</li>
+</ul>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tile</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(<span class="keyword">int</span> n)&#123;</span><br><span class="line">        <span class="keyword">int</span> [] integers = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 60000까지 계싼을해야하는데</span></span><br><span class="line">        <span class="comment">//n이 1부터시작하니깐 n+1로 해야 n까지사용할 수 있음</span></span><br><span class="line"></span><br><span class="line">        integers[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        integers[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">3</span>; i&lt;n+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            integers[i] = (integers[i<span class="number">-1</span>]+integers[i<span class="number">-2</span>]) % <span class="number">1000000007</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> integers[n]; <span class="comment">//이렇게만했을때 오버플러우 발생</span></span><br><span class="line">        <span class="comment">//그래서 값을 나눠줘야한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        제한사항에 60000까지인데 재귀함수 형태로 사용하지 못함</span></span><br><span class="line"><span class="comment">//        if(n == 1)&#123;</span></span><br><span class="line"><span class="comment">//            return 1;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        if(n == 2)&#123;</span></span><br><span class="line"><span class="comment">//            return 2;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        return solution(n-1)+solution(n-2);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">new</span> Tile().solution(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/TileSol/" data-id="ckeldp280000m8ou2hlwyh7mn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/02/Algorithm/NSet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AlgorithmSolution_NSet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/02/Algorithm/SquaresSol/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AlgorithmSolution_Squares</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/02/Algorithm/NSet/">AlgorithmSolution_NSet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/02/Algorithm/TileSol/">AlgorithmSolution_Tile</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/02/Algorithm/SquaresSol/">AlgorithmSolution_Squares</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/02/Algorithm/SkillThreeSol/">AlgorithmSolution_SkillThree</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/02/TIL-20200902/">Study20200902</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
