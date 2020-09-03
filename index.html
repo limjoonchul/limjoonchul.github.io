@@ -64,6 +64,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TIL-20200903" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/03/TIL-20200903/" class="article-date">
+  <time datetime="2020-09-03T12:50:38.222Z" itemprop="datePublished">2020-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/TIL-20200903/">Study20200903</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this의-역할"><a href="#this의-역할" class="headerlink" title="this의 역할"></a>this의 역할</h1><ul>
+<li><p>자신의 메모리를 가리킴</p>
+</li>
+<li><p>생성자에서 다른 생성자를 호출 함</p>
+</li>
+<li><p>생성자 오버로딩에서 한 클래스안에 생성자가 여러개 있을 수 있는데</p>
+</li>
+<li><p>한생성자에서 다른 생성자를 호출하는 경우가 종종있다.</p>
+</li>
+<li><p>인스턴스 자신의 주소를 반환할 일이 있으면 this를 반환 하면 된다.</p>
+</li>
+<li><p>day로부터 setYear라는 메소드를 호출하게 되면 setYear는 BirthDay에 대한 메소드이니깐</p>
+</li>
+<li><p>setYear의 세그멘테이션이 stack영역에 만들어지고 만약 setYear 안에서 this를 썼다하면 힙영역의 BirthDay에대한</p>
+</li>
+<li><p>메모리를 가리킴 인스턴스 내부에서 객체내부에서 자기 자신이 생성된 메모리주소를 가리킴</p>
+</li>
+<li><p>인스턴스가 여러개생성됬다하면 각각의 this는 다 다름 코드상에서 this하나만 쓰지만 각각은 다 다름</p>
+</li>
+<li><p>여기서 stack 영역에 this가 들어가게되는데 왜 this가 들어가는지 이해가 안갔는데</p>
+</li>
+<li><p>메인에서 this가 date.setYear() 이런식으로 호출이 되어있다면 this는 date변수 대신이라고 생각해도될까?</p>
+</li>
+<li><p>로컬변수에 this는 참조변수로 생성된다. 그런의미로 이해하면될 것 같다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isVaild = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    public MyDate(int year, int month, int day) &#123;</span></span><br><span class="line"><span class="comment">//        this.year = year;</span></span><br><span class="line"><span class="comment">//        this.month = month;</span></span><br><span class="line"><span class="comment">//        this.day = day;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> setDay(<span class="keyword">int</span> day)&#123;</span><br><span class="line">        <span class="built_in">this</span>.day = day;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay()&#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>(month &lt;<span class="number">1</span> || month &gt; <span class="number">12</span>)&#123;</span><br><span class="line">            isVaild = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.month = month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showDate()&#123;</span><br><span class="line">        <span class="keyword">if</span> (isVaild)&#123;</span><br><span class="line">            System.out.println(<span class="built_in">this</span>.year + <span class="string">&quot;년&quot;</span> + <span class="built_in">this</span>.month + <span class="string">&quot;월&quot;</span> +<span class="built_in">this</span>.day+<span class="string">&quot;일&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;유효하지 않은 범위 입니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate date = <span class="keyword">new</span> MyDate();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        date.setYear(<span class="number">2019</span>);</span><br><span class="line">        date.setMonth(<span class="number">13</span>);</span><br><span class="line">        date.setDay(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        date.showDate();</span><br><span class="line"></span><br><span class="line"><span class="comment">//        MyDate date2 = new MyDate();</span></span><br><span class="line"><span class="comment">//        date2.setYear(2020);</span></span><br><span class="line"><span class="comment">//        date2.setMonth(2);</span></span><br><span class="line"><span class="comment">//        date2.setDay(11);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        date2.showDate();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>생성자는 인스턴스의 값들을 초기화하는 인스턴스 생성을 초기화하는 역할을 한다.</p>
+</li>
+<li><p>this()로 다른 생성자를 호출할 때  호출한 생성자가 무슨일을 할 줄 모르는 상태인데</p>
+</li>
+<li><p>this()호출보다 먼저 값들을 초기화한다고 하면 다른 생성자를 호출할 때 다른 스테이트가 올라가는 것을 허용하지 않는다. 그래서 호출은 가장 첫줄에 써야 함.</p>
+</li>
+</ul>
+<p>##메소드 영역 (Method area)</p>
+<ul>
+<li>프로그램 실행 중 어떤 클래스가 사용되면, JVM은 해당 클래스의 클래스 파일 (.class) 파일을 읽어<br>클래스에 대한 정보를 저장합니다. Class Variable도 함께 저장하는데 그것은 Static Variable과 같습니다. 어디서든 공유해 쓸 수 있는 변수를 의미합니다.</li>
+</ul>
+<h2 id="스택영역"><a href="#스택영역" class="headerlink" title="스택영역"></a>스택영역</h2><ul>
+<li>메서드가 호출되면 스택에 호출된 메서드를 위한 메모리가 할당되고, 이 메모리는 메서드의 연산의<br>중간 결과, 지역 변수, 매개변수 등을 저장하는데 사용한다. 그리고 메소드의 작업을 마치면 메모리 공간을<br>반환 한다.</li>
+</ul>
+<h2 id="힙-영역-heap"><a href="#힙-영역-heap" class="headerlink" title="힙 영역 (heap)"></a>힙 영역 (heap)</h2><ul>
+<li>클래스의 인스턴스와 배열이 저장되는 공간입니다. 프로그램 중 생성된<br>인스턴스는 모두 이곳에 저장됩니다. 인스턴스 변수도 생성됩니다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL-20200903/" data-id="ckemtennk000eo4u28j334l6e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Algorithm/NSet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/02/Algorithm/NSet/" class="article-date">
@@ -105,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/NSet/" data-id="ckeldp27u000j8ou223npaoa3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/NSet/" data-id="ckemtennr000jo4u26oxxh8xa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/TileSol/" data-id="ckeldp280000m8ou2hlwyh7mn" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/TileSol/" data-id="ckemtenns000lo4u25lzad5r7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/SquaresSol/" data-id="ckeldp282000n8ou26lafb8x9" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/SquaresSol/" data-id="ckemtennt000mo4u23cej1r5j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/SkillThreeSol/" data-id="ckeldp27w000k8ou25jjm2l5i" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/SkillThreeSol/" data-id="ckemtennu000no4u2hs3o6q5x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -389,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/TIL-20200902/" data-id="ckeldp27m000e8ou29eq918rb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/TIL-20200902/" data-id="ckemtennj000co4u2c438fxw4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -458,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/01/Algorithm/SkillTree/" data-id="ckeldp27z000l8ou2ashx6n5c" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/01/Algorithm/SkillTree/" data-id="ckemtennv000oo4u21kxx7ugi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -578,7 +657,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/01/TIL-20200901/" data-id="ckeldp27g000b8ou23kie7bjo" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/01/TIL-20200901/" data-id="ckemtennj000do4u2hely8emy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -640,7 +719,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/31/TIL-20200831/" data-id="ckeldp27i000c8ou2f6p10c6d" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/31/TIL-20200831/" data-id="ckemtenng000ao4u2dom75xe0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -687,49 +766,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/28/TIL-20200828/" data-id="ckeldp27c00098ou297872tez" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-TIL-20200827" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/27/TIL-20200827/" class="article-date">
-  <time datetime="2020-08-27T12:31:23.598Z" itemprop="datePublished">2020-08-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/27/TIL-20200827/">Study20200827</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="오늘의-한-일"><a href="#오늘의-한-일" class="headerlink" title="오늘의 한 일"></a>오늘의 한 일</h1><ul>
-<li>HomeworkDay7 Rect 구현하는 것을 이어서 해 봤는데, rot90() 메소드 90도 회전시키는 부분에 대해서 이해가 가지 않았는데 영원이형이 설명을<br>해줘서 이해하게 됬다 원래 나는 원점(0,0) 일때  (0.5,0.7)의 좌표처럼 원점을 (0.4,0.2)의 좌표로<br>옮겨서 원점으로 둔다음에 0.5,0.7 좌표를 (0.9,0.9) 좌표를 둔다음에 (0.4,0.2)를 중심으로 옮기는 것처럼<br>복잡하게 생각을 했었는데, 그것이 아니라 원점(0,0)을 leftbottom 좌표로 두고 사각형을 그려서<br>그걸 90도 회전시키는 것처럼 (0.4,0.2)를 원점으로 두고 leftbottom 좌표로 둬서 사각형을 그려<br>90도를 회전시키는 것이 였다. 이 원리를 이해해도 코드 자체를 직접 구현이 가능 할지는 모르겠다<br>직접 구현이 가능할지 모르겠다는게 이해를 못한 것 일수도 있는데, 좀 더 고민을 해보고 이해를 해야 할<br>것 같다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> rot90(Vector2D pivot) &#123;</span><br><span class="line"></span><br><span class="line">        Vector2D [] oldPoints = getAllPoints();</span><br><span class="line">        Vector2D [] newPoints = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oldPoints.length; i++) &#123;</span><br><span class="line">            newPoints[i] = <span class="keyword">new</span> Vector2D(</span><br><span class="line">                    -(oldPoints[i].y - pivot.y) + pivot.x, <span class="comment">// pivot.y는 0,0기준으로 사각형을 만들기 위해서 -를 해주고  뒤에 pivot.x를 더해준다.</span></span><br><span class="line">                    (oldPoints[i].x - pivot.x) + pivot.y  <span class="comment">// A(a,b) -&gt; A&#x27;(-b,a)</span></span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">float</span> min_x = newPoints[<span class="number">0</span>].x;</span><br><span class="line">        <span class="keyword">float</span> min_y = newPoints[<span class="number">0</span>].y;</span><br><span class="line">        <span class="keyword">float</span> max_x = newPoints[<span class="number">0</span>].x;</span><br><span class="line">        <span class="keyword">float</span> max_y = newPoints[<span class="number">0</span>].y;</span><br><span class="line">        <span class="keyword">for</span> (Vector2D <span class="attr">vector2D:</span> newPoints) &#123;</span><br><span class="line">            min_x = Math.min(vector2D.x, min_x);</span><br><span class="line">            min_y = Math.min(vector2D.y, min_y);</span><br><span class="line">            max_x = Math.max(vector2D.x, max_x);</span><br><span class="line">            max_y = Math.max(vector2D.y, max_y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        pos = <span class="keyword">new</span> Vector2D(min_x, min_y);</span><br><span class="line">        w = max_x - min_x;</span><br><span class="line">        h = max_y - min_y;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line"><span class="comment">//        result[0] = new Vector2D ((float)((pos.x - pivot.x)*Math.cos(90))+(float)((pos.y-pivot.y)*-Math.sin(90)),(float)((pos.x - pivot.x)*Math.sin(90))+(float)((pos.y-pivot.y)*Math.cos(90)));</span></span><br><span class="line"><span class="comment">//        result[1] = new Vector2D((float)((pos.x+w - pivot.x)*Math.cos(90))+(float)((pos.y-pivot.y)* -Math.sin(90)),(float)((pos.x+w - pivot.x)*Math.sin(90))+(float)((pos.y-pivot.y)* -Math.cos(90)));</span></span><br><span class="line"><span class="comment">//        result[2] = new Vector2D((float)((pos.x - pivot.x)*Math.cos(90))+(float)((pos.y+h - pivot.y)*-Math.sin(90)),(float)((pos.x - pivot.x)*Math.sin(90))+(float)((pos.y+h - pivot.y)*-Math.cos(90)));</span></span><br><span class="line"><span class="comment">//        result[3] = new Vector2D((float)((pos.x+w- pivot.x)*Math.cos(90))+(float)((pos.y+h -pivot.y)* -Math.sin(90)),(float)((pos.x+w- pivot.x)*Math.sin(90))+(float)((pos.y+h -pivot.y)* -Math.cos(90)));</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;LeftBottom - x : &quot;+result[0].x+&quot; y : &quot;+result[0].y);</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;RightBottom - x : &quot;+result[1].x + &quot; y : &quot;+result[1].y);</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;LeftTop - x : &quot;+result[2].x + &quot; y : &quot;+result[2].y);</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;RightTop - x : &quot;+ result[3].x+ &quot; y : &quot;+result[3].y);</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>PreCourse 연산자 섹션의 강의 3개를 보고 정리를 했다.</li>
-<li>PreCourse를 들으면서 기존수업과 비슷한 섹션에 대해서 github에 내용들을 묶고, 추가했다.</li>
-<li>HomeworkDay 9 List를 구현하는데… 강사님이 하셨던 방법대로 해볼려고하는데 정확한 구현원리를 이해하고<br>하는게 아니라 강사님이 했던 방식을 조금 외워서 그걸 그대로 치는 듯이 했다 결국 에러가 생겼는데 해결하지 못함<br>내일 다시 집중해서 이어서 풀어봐야겠다.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/27/TIL-20200827/" data-id="ckeldp27e000a8ou26qdvgx2m" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/28/TIL-20200828/" data-id="ckemtenng0009o4u26hgg3hod" class="article-share-link">Share</a>
       
       
     </footer>
@@ -775,6 +812,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/03/TIL-20200903/">Study20200903</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/02/Algorithm/NSet/">AlgorithmSolution_NSet</a>
           </li>
         
@@ -788,10 +829,6 @@
         
           <li>
             <a href="/2020/09/02/Algorithm/SkillThreeSol/">AlgorithmSolution_SkillThree</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/02/TIL-20200902/">Study20200902</a>
           </li>
         
       </ul>
