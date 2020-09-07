@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://limjoonchul.github.io/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Git-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/08/Git-summary/" class="article-date">
+  <time datetime="2020-08-08T09:59:40.000Z" itemprop="datePublished">2020-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/08/Git-summary/">Git-summary</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="git이란"><a href="#git이란" class="headerlink" title="git이란"></a>git이란</h2><ul>
+<li><p>버전 관리 시스템을 말하며 빠른 속도와 단순한 구조를 갖고 있다<br>분산형 저장소를 지원하고, 비선형적 개발이 가능하다.</p>
+<h2 id="git-시작전-작업"><a href="#git-시작전-작업" class="headerlink" title="git 시작전 작업"></a>git 시작전 작업</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br></pre></td></tr></table></figure>
+<p>config 작업 후, <code>$ git config --list</code> 명령으로 오류를 확인.</p>
+</li>
+<li><p>git의 프로세스의 전체적인 구조.</p>
+</li>
+</ul>
+<p><img src="image/gitProcess.png" alt="git-process"></p>
+<h1 id="git-시작하기-방법-2가지"><a href="#git-시작하기-방법-2가지" class="headerlink" title="git 시작하기(방법 2가지)"></a>git 시작하기(방법 2가지)</h1><h2 id="1-git-init"><a href="#1-git-init" class="headerlink" title="1. git init"></a>1. git init</h2><p>내 컴퓨터의 작업공간에서 github으로 소스코드를 내보내는 방법.</p>
+<ol>
+<li><p>프로젝트 폴더 만들기.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir first-git-repo</span><br><span class="line">$ cd first-git-repo</span><br></pre></td></tr></table></figure></li>
+<li><p>폴더를 만둔 후, <code>git init</code> 명령으로 local repository 시작.</p>
+</li>
+<li><p>github에 새로운 remote repository를 생성하고, 주소를 복사하여 local repository에 등록한다.</p>
+<ul>
+<li>프로젝트 폴더명과 생성한 repository 명을 갖게 한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;당신의유저네임&#x2F;first-git-repo.git</span><br><span class="line">$ git remote add origin 복사한주소</span><br><span class="line">$ git remote -v 로 확인.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>새 파일을 만들고 작업을 수행한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch README.md</span><br><span class="line">$ vi README.md</span><br></pre></td></tr></table></figure></li>
+<li><p>작업 수행 후,  $ git status 으로 git 상태 확인</p>
+</li>
+<li><p>workspace(작업 공간)에 추가된 새로운 파일을 index로 staging 한다.</p>
+<ul>
+<li>$ git add README.md</li>
+</ul>
+</li>
+<li><p>추가된 파일에 대한 설명을 commit</p>
+<ul>
+<li>$ git commit(제목을 누구나 알 수 있게 작성해야 한다.)</li>
+</ul>
+</li>
+<li><p>commit 후 remote repository로 push</p>
+<ul>
+<li>첫 commit이라면 git push -u origin master</li>
+<li>이후는, git push origin master<h2 id="2-git-clone"><a href="#2-git-clone" class="headerlink" title="2. git clone"></a>2. git clone</h2>git에서 remote repository를 먼저 생성한 뒤, 작업공간으로 끌어와 작업을 수행.</li>
+</ul>
+<ol>
+<li>github에서 remote repository를 생성하되, LICENSE, README.md, .gitignore 등의 파일과 함께 생성,<br>해당 repository의 주소를 복사한다.</li>
+<li>Teminal에서 <code>$ git clone 복사한remoteRepo주소</code>를 입력하여 작업공간에 local repository를 생성</li>
+</ol>
+<p>이하 과정은 init과 동일하다.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/08/Git-summary/" data-id="ckesis47c0000u8u25f72dsxo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
+  <time datetime="2020-08-07T07:20:11.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/My-new-hexo-post/">My new hexo post</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Let me introduce myself!!</p>
+<ul>
+<li>Name: joon</li>
+<li>Hobby: Collect Keyboards</li>
+<li>Favorite soccer team<ul>
+<li>Asnal</li>
+<li>MU</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckesis4820001u8u2enmvdb1y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/hello-world/" class="article-date">
+  <time datetime="2020-08-07T07:11:12.186Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckesis49h000iu8u26izd08no" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/07/Java/Java-ReferenceDataType/">Java_ReferenceDataType</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/Java/Java-Constructor/">Java_Constructor</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/Java/PreCourseEx/CodingEx1/">PreCourseExample-codingEx1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/Java/Java-MemoryStructure/">Java_MemoryStructure</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/07/Java/Java-MethodAndFuntion/">Java_MethodAndFuntion</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
