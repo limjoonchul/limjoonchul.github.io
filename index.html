@@ -86,14 +86,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="참조-자료형-ReferenceDataType"><a href="#참조-자료형-ReferenceDataType" class="headerlink" title="참조 자료형(ReferenceDataType)"></a>참조 자료형(ReferenceDataType)</h1><h2 id="변수의-자료형"><a href="#변수의-자료형" class="headerlink" title="변수의 자료형"></a>변수의 자료형</h2><p><img src="../image/%EC%B0%B8%EC%A1%B0%20%EC%9E%90%EB%A3%8C%ED%98%95.png" alt="변수의자료형"></p>
+        <h1 id="참조-자료형-ReferenceDataType"><a href="#참조-자료형-ReferenceDataType" class="headerlink" title="참조 자료형(ReferenceDataType)"></a>참조 자료형(ReferenceDataType)</h1><h2 id="변수의-자료형"><a href="#변수의-자료형" class="headerlink" title="변수의 자료형"></a>변수의 자료형</h2><p><img src="../../image/%EC%B0%B8%EC%A1%B0%20%EC%9E%90%EB%A3%8C%ED%98%95.png" alt="변수의자료형"></p>
 <ul>
 <li>기본 자료형은 사용하는 메모리가 정해져 있지만, 참조 자료형은 클래스에 따라 다르다.</li>
 </ul>
 <h2 id="참조-자료형-직접-만들어-사용하기"><a href="#참조-자료형-직접-만들어-사용하기" class="headerlink" title="참조 자료형 직접 만들어 사용하기"></a>참조 자료형 직접 만들어 사용하기</h2><ul>
 <li>학생 클래스에 있는 과목 이름, 과목 성적 속성을 학생클래스와 과목 클래스로 분리하고,<br>과목 참조 자료형 멤버 변수를 학생에 정의하여 사용한다.</li>
 </ul>
-<p><img src="../image/%EC%B0%B8%EC%A1%B0%EC%9E%90%EB%A3%8C%ED%98%952.png" alt="참조자료형"></p>
+<p><img src="../../image/%EC%B0%B8%EC%A1%B0%EC%9E%90%EB%A3%8C%ED%98%952.png" alt="참조자료형"></p>
 <ul>
 <li>예제<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Subject 클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> stuID;</span><br><span class="line">    String stuName;</span><br><span class="line">    Subject korSub;</span><br><span class="line">    Subject matSub;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(<span class="keyword">int</span> stuID,String stuName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.stuID = stuID;</span><br><span class="line">        <span class="built_in">this</span>.stuName = stuName;</span><br><span class="line"></span><br><span class="line">        korSub = <span class="keyword">new</span> Subject();</span><br><span class="line">        matSub = <span class="keyword">new</span> Subject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setKoreaSubject(String subName, <span class="keyword">int</span> subScore) &#123;</span><br><span class="line">        korSub.subName = subName;</span><br><span class="line">        korSub.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMathSubject(String subName, <span class="keyword">int</span> subScore) &#123;</span><br><span class="line">        matSub.subName = subName;</span><br><span class="line">        matSub.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> getKoreaSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        korSub.setSubject(subName,subScore);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> getMathSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        matSub.setSubject(subName,subScore);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showStudentScore() &#123;</span><br><span class="line">        <span class="keyword">int</span> total = korSub.subScore + matSub.subScore;</span><br><span class="line">        System.out.println(stuName+<span class="string">&quot;학생의 총점은 &quot;</span>+total+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Subject 클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> &#123;</span></span><br><span class="line">    String subName;</span><br><span class="line">    <span class="keyword">int</span> subScore;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        <span class="built_in">this</span>.subName = subName;</span><br><span class="line">        <span class="built_in">this</span>.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student studentLee = <span class="keyword">new</span> Student(<span class="number">123</span>,<span class="string">&quot;lee&quot;</span>);</span><br><span class="line">        Student studentKim = <span class="keyword">new</span> Student(<span class="number">456</span>,<span class="string">&quot;kim&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        studentLee.setKoreaSubject(&quot;국어&quot;,100);</span></span><br><span class="line"><span class="comment">//        studentLee.setMathSubject(&quot;수학&quot;,95);</span></span><br><span class="line"><span class="comment">//        studentKim.setKoreaSubject(&quot;국어&quot;,99);</span></span><br><span class="line"><span class="comment">//        studentKim.setMathSubject(&quot;수학&quot;,80);</span></span><br><span class="line"></span><br><span class="line">        studentLee.getKoreaSubject(<span class="string">&quot;국어&quot;</span>,<span class="number">95</span>);</span><br><span class="line">        studentLee.getMathSubject(<span class="string">&quot;수학&quot;</span>,<span class="number">100</span>);</span><br><span class="line">        studentKim.getKoreaSubject(<span class="string">&quot;국어&quot;</span>,<span class="number">99</span>);</span><br><span class="line">        studentKim.getMathSubject(<span class="string">&quot;수학&quot;</span>,<span class="number">80</span>);</span><br><span class="line">        </span><br><span class="line">        studentLee.showStudentScore();</span><br><span class="line">        studentKim.showStudentScore();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-ReferenceDataType/" data-id="ckesis4ae000tu8u2c7vk6zjg" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-ReferenceDataType/" data-id="ckesizlql000vqcu2d4rn9red" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-Constructor/" data-id="ckesis4a4000pu8u28s1fcx1t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-Constructor/" data-id="ckesizlqg000qqcu2auzbbzrb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/CodingEx1/" data-id="ckesis4aq000wu8u21shbchq1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/CodingEx1/" data-id="ckesizlqo000wqcu222qy1fmv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +269,7 @@
 <li>힙 메모리에 멤버 변수의 크기에 따라 메모리가 생성</li>
 <li>클래스를 기반으로 new 키워드를 이용하여 여러 개의 인스턴스를 생성</li>
 </ul>
-<p><img src="../image/MemoryStructure1.png" alt="meoryStructure"></p>
+<p><img src="../../image/MemoryStructure1.png" alt="meoryStructure"></p>
 <ul>
 <li>참조변수와 참조 값<ul>
 <li><code>ch05.classPart.Student@1ddc4ec2</code>의 주소값은 실제 물리적인 주소값은 아니고<br>가상 jvm이 준 해시코드 값이다. student가 가리키는 메모리의 위치가 32비트를 나타내는 메모리를 가리킨다<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student student  = <span class="keyword">new</span> Student();</span><br><span class="line">System.out.println(student);</span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="../image/%EC%9A%A9%EC%96%B4%EC%A0%95%EB%A6%AC.png" alt="용어정리"></p>
+<p><img src="../../image/%EC%9A%A9%EC%96%B4%EC%A0%95%EB%A6%AC.png" alt="용어정리"></p>
 <ul>
 <li>문자열(String) - 한번 만든 문자열은 변하지 않는다. (Immutable) 그래서 새로운 문자열을 만들어서 값을 넣어 주는 것과 같다.</li>
 <li>클래스는 문자열과 달리 mutable 변할 수 있다.</li>
@@ -339,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MemoryStructure/" data-id="ckesis4ab000su8u2bjlq67x9" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MemoryStructure/" data-id="ckesizlqi000sqcu277zd8d78" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,11 +376,11 @@
 <li>함수는 호출하여 사용하고 기능이 수행된 후 값을 반환 할 수 있다.</li>
 <li>함수로 구현된 기능은 여러 곳에서 호출되어 사용될 수 있다.</li>
 </ul>
-<p><img src="../image/funtion.png" alt="함수"></p>
+<p><img src="../../image/funtion.png" alt="함수"></p>
 <ul>
 <li>함수의 입출력 반환</li>
 </ul>
-<p><img src="../image/funtion_i.o.png" alt="함수의 입출력"></p>
+<p><img src="../../image/funtion_i.o.png" alt="함수의 입출력"></p>
 <ul>
 <li><p>함수는 이름, 매개변수, 반환 값, 함수 몸체(body)로 정의된다.</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> add(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)&#123;</span><br><span class="line">      <span class="keyword">int</span> result;</span><br><span class="line">      result = num1 + num2;</span><br><span class="line">      <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -388,7 +388,7 @@
 <ul>
 <li>스택 - 함수가 호출될 때 사용하는 메모리<br>함수가 호출 된 후 수행이 끝나면 자동으로 반환되는 메모리. 메인만 남게된다.</li>
 </ul>
-<p><img src="../image/stackmemory1.png" alt="스택메모리구조"><br><img src="../image/stackmemory2.png" alt="스택메모리구조"></p>
+<p><img src="../../image/stackmemory1.png" alt="스택메모리구조"><br><img src="../../image/stackmemory2.png" alt="스택메모리구조"></p>
 </li>
 </ul>
 <h2 id="메소드-Method"><a href="#메소드-Method" class="headerlink" title="메소드(Method)"></a>메소드(Method)</h2><ul>
@@ -459,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MethodAndFuntion/" data-id="ckesis4ai000uu8u241p12r9w" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MethodAndFuntion/" data-id="ckesizlqj000tqcu2hu2u70kj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -733,7 +733,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-ClassAndObject/" data-id="ckesis49v000ou8u2h0tvc260" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-ClassAndObject/" data-id="ckesizlqf000pqcu25teee6k2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -766,7 +766,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="객체지향-프로그래밍-Object-Oriented-Programming-OOP"><a href="#객체지향-프로그래밍-Object-Oriented-Programming-OOP" class="headerlink" title="객체지향 프로그래밍(Object Oriented Programming, OOP)"></a>객체지향 프로그래밍(Object Oriented Programming, OOP)</h1><h2 id="객체지향-프로그래밍이란"><a href="#객체지향-프로그래밍이란" class="headerlink" title="객체지향 프로그래밍이란?"></a>객체지향 프로그래밍이란?</h2><p>컴퓨터 프로그래밍 패러다임 중 하나로, 프로그램을 명령어의 목록으로 보는 시각에서 벗어나, 독립된 단위인 객체의 모임으로 파악하는 것이다.<br>각각의 객체는 메세지를 주고받고, 데이터를 처리한다.<br>프로그래밍에서 필요한 데이터를 추상화시켜 상태와 행위를 가진 객체를 만들고,<br>그 객체들 간의 유기적인 상호작용을 통해 로직을 구성하는 프로그래밍 방법(객체간의 협력을 구현)</p>
-<p><img src="../image/%EA%B0%9D%EC%B2%B4%EA%B7%B8%EB%A6%BC.png" alt="객체간의 협력"></p>
+<p><img src="../../image/%EA%B0%9D%EC%B2%B4%EA%B7%B8%EB%A6%BC.png" alt="객체간의 협력"></p>
 <h3 id="객체지향-프로그래밍의-장점"><a href="#객체지향-프로그래밍의-장점" class="headerlink" title="객체지향 프로그래밍의 장점"></a>객체지향 프로그래밍의 장점</h3><ul>
 <li>코드의 재사용성이 용이하다.</li>
 <li>유지보수가 쉽다.</li>
@@ -837,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-OOP/" data-id="ckesis4ao000vu8u22adceuyj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-OOP/" data-id="ckesizlqj000uqcu2etqebsxi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -889,7 +889,7 @@
 <li>Java EE(Enterprise Edition) - 기업용 개발 환경을 위한 Java 플랫폼(기업용 배포 판으로, 다중 사용자 또는 대규모 기업 응용프로그램 개발을 위한 플랫폼이다)</li>
 <li>Java ME(Micro Edition) - 임베디드 환경을 위한 Java 플랫폼(모바일용 배포판으로, 휴대 전화나 PDA, 셋톱박스 같이 제한된 리소스를 갖는 하드웨어에서 응용프로그램 개발을 위한 플랫폼이다.)</li>
 </ul>
-<h2 id="JDK-Structure"><a href="#JDK-Structure" class="headerlink" title="JDK_Structure"></a>JDK_Structure</h2><p><img src="../image/JDK.png" alt="JDK"></p>
+<h2 id="JDK-Structure"><a href="#JDK-Structure" class="headerlink" title="JDK_Structure"></a>JDK_Structure</h2><p><img src="../../image/JDK.png" alt="JDK"></p>
 <h3 id="JDK-자바-개발환경-도구"><a href="#JDK-자바-개발환경-도구" class="headerlink" title="JDK(자바 개발환경 도구)"></a>JDK(자바 개발환경 도구)</h3><ul>
 <li>Java Development Kit의 약자로 썬 마이크로시스템즈에서 개발한 Java 환경에서 돌아가는 프로그램을 개발하는데 필요한 툴들을 모아놓은 소프트웨어 패키지를 말한다.(자바 컴파일러와 JRE, 클래스 라이브러리, 자바 응용프로그램 샘플 소스 등이 포함되어 있다.)</li>
 <li>Oracle JDK: Oracle에서 제공하는 유료 Java 개발 플랫폼. Oracle에서 지적 재산권을 보유한 일부 플러그인이 추가로 제공되며,<br>Oracle로부터 사후 지원을 받을 수 있다. 비상업적인 용도의 사용은 무료로 가능하나, 상업적 용도로 전환하거나 라이센스가 만료되면<br>더 이상 Oracle JDK로 개발한 프로그램을 사용해서는 안된다.</li>
@@ -908,7 +908,7 @@
 <h3 id="JVM-자바-가상-머신"><a href="#JVM-자바-가상-머신" class="headerlink" title="JVM(자바 가상 머신)"></a>JVM(자바 가상 머신)</h3><ul>
 <li>Java와 운영체제 사이에서 중개자 역할을 수행하여 Java가 운영체제에 구해받지 않고 재사용을 가능하게 해준다.<br>(그래서 운영체제에 독립적이라고 할 수 있다.) 메모리 관리, Garbage Collection을 수행한다.</li>
 </ul>
-<h3 id="자바프로그램-실행과정"><a href="#자바프로그램-실행과정" class="headerlink" title="자바프로그램 실행과정"></a>자바프로그램 실행과정</h3><p><img src="../image/%EC%9E%90%EB%B0%94%EC%8B%A4%ED%96%89%EA%B3%BC%EC%A0%952.png" alt="자바프로그램 실행과정"><br>(이미지 출처 : <a target="_blank" rel="noopener" href="https://hoonmaro.tistory.com/19">https://hoonmaro.tistory.com/19</a>)</p>
+<h3 id="자바프로그램-실행과정"><a href="#자바프로그램-실행과정" class="headerlink" title="자바프로그램 실행과정"></a>자바프로그램 실행과정</h3><p><img src="../../image/%EC%9E%90%EB%B0%94%EC%8B%A4%ED%96%89%EA%B3%BC%EC%A0%952.png" alt="자바프로그램 실행과정"><br>(이미지 출처 : <a target="_blank" rel="noopener" href="https://hoonmaro.tistory.com/19">https://hoonmaro.tistory.com/19</a>)</p>
 <ol>
 <li>프로그램이 실행되면 JVM은 운영체제로부터 이 프로그램이 필요로 하는 메모리를 할당 받는다.<br>JVM은 이 메모리를 용도에 따라 여러 영역으로 나누어 관리한다.</li>
 <li>자바 컴파일러가 자바 소스코드를 읽어들여 자바 바이트코드로 변환시킨다.</li>
@@ -921,7 +921,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-JavaProgramming/" data-id="ckesis4a6000qu8u23j1ndvlt" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-JavaProgramming/" data-id="ckesizlqh000rqcu2ed4rf5jj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1000,7 +1000,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL-20200903/" data-id="ckesis49k000ju8u27rl0cbmf" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL-20200903/" data-id="ckesizlq8000jqcu20li6c1rf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1051,7 +1051,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/NSet/" data-id="ckesis49q000mu8u2872g1cbq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/NSet/" data-id="ckesizlqa000lqcu23nzyc5hy" class="article-share-link">Share</a>
       
       
     </footer>
