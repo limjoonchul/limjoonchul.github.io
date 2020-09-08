@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://limjoonchul.github.io/2020/09/07/image/stackmemory1.png">
 <meta property="og:image" content="https://limjoonchul.github.io/2020/09/07/image/stackmemory2.png">
 <meta property="article:published_time" content="2020-09-07T02:42:14.036Z">
-<meta property="article:modified_time" content="2020-09-07T12:52:27.312Z">
+<meta property="article:modified_time" content="2020-09-08T08:18:34.158Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/07/image/funtion.png">
@@ -125,23 +125,28 @@
 <li>코드의 중복을 방지, 유지보수성을 향상, 코드의 가독성을 개선하는 역할을 한다.</li>
 </ul>
 <h3 id="메소드의-구현"><a href="#메소드의-구현" class="headerlink" title="메소드의 구현"></a>메소드의 구현</h3><ul>
-<li>메소드는 함수의 형태로 구성된다.<ul>
+<li><p>메소드는 함수의 형태로 구성된다.</p>
+<ul>
 <li>파라미터(Parameters,입력)</li>
 <li>실행문(Executional Statements)</li>
 <li>리턴 값(Return Value, 출력)</li>
 </ul>
 </li>
-<li>함수의 작성<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 리턴자료형 메소드명(입력자료형<span class="number">1</span>, 입력변수<span class="number">1</span>, 입력자료형<span class="number">2</span>, 입력변수<span class="number">2.</span>..)&#123; </span><br><span class="line">                                  <span class="comment">//입력변수의 개수는 상관이 없다.</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> 리턴값; </span><br><span class="line">  <span class="comment">// 리턴자료형과 리턴값의 자료형이 같아야 하고, void의 경우 return 문을 사용하지 않아도 된다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>함수의 작성</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 리턴자료형 메소드명(입력자료형<span class="number">1</span>, 입력변수<span class="number">1</span>, 입력자료형<span class="number">2</span>, 입력변수<span class="number">2.</span>..)&#123; </span><br><span class="line">                                  <span class="comment">//입력변수의 개수는 상관이 없다.</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> 리턴값; </span><br><span class="line">  <span class="comment">// 리턴자료형과 리턴값의 자료형이 같아야 하고, void의 경우 return 문을 사용하지 않아도 된다.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> add(<span class="keyword">int</span> x, <span class="keyword">int</span> y)<span class="comment">// 여기까지는 선언 // 입력 파라미터.</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span>  x + y; <span class="comment">// 반환값 (Return value)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//구현</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>클래스 메소드<ul>
+<li>static 메소드<ul>
 <li>static 키워드를 이용하여 선언된 메소드</li>
 <li>인스턴스가 아닌 클래스에 속하는 메소드</li>
 <li>대표적으로 main 메소드가 클래스 메소드이다.</li>
+<li>static 변수를 위한 기능을 제공하는 static 메소드(클래스 메소드, 정적 메소드)</li>
+<li>static 메소드에서는 인스턴스 변수를 사용할 수 없음</li>
+<li>클래스 이름으로 참조하여 사용하는 메소드이다.(ex- Student.getSerialNum();) </li>
 </ul>
 </li>
 </ul>
@@ -181,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MethodAndFuntion/" data-id="ckesizlqj000tqcu2hu2u70kj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/Java-MethodAndFuntion/" data-id="cketxqnes000paou25v6q8hri" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,23 +244,23 @@
       <ul>
         
           <li>
-            <a href="/2020/09/07/Java/Java-ReferenceDataType/">Java_ReferenceDataType</a>
+            <a href="/2020/09/08/Java/Java-CollectionFramework/">Java_Collections Framework</a>
           </li>
         
           <li>
-            <a href="/2020/09/07/Java/Java-Constructor/">Java_Constructor</a>
+            <a href="/2020/09/08/Java/Java-Variable/">Java_Variable</a>
           </li>
         
           <li>
-            <a href="/2020/09/07/Java/PreCourseEx/CodingEx1/">PreCourseExample-codingEx1</a>
+            <a href="/2020/09/08/Java/PreCourseEx/CodingEx2/">PreCourseExample-codingEx2</a>
           </li>
         
           <li>
-            <a href="/2020/09/07/Java/Java-MemoryStructure/">Java_MemoryStructure</a>
+            <a href="/2020/09/08/Java/Java-Cooperation/">Java_Cooperation</a>
           </li>
         
           <li>
-            <a href="/2020/09/07/Java/Java-MethodAndFuntion/">Java_MethodAndFuntion</a>
+            <a href="/2020/09/08/Java/Java-This/">Java_This</a>
           </li>
         
       </ul>
