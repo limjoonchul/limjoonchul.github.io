@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PreCourse-ch06_codingEx1 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="문제ArrayList를 활용한 문제 어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.123Lee 학생이 읽은">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PreCourse-ch06_codingEx1">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="문제ArrayList를 활용한 문제 어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.123Lee 학생이 읽은">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-10T01:51:46.559Z">
+<meta property="article:modified_time" content="2020-09-10T01:59:52.378Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/PreCourseEx/ArrayEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/PreCourseEx/ArrayEx1/" class="article-date">
+  <time datetime="2020-09-10T01:51:46.559Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PreCourse-ch06_codingEx1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="ArrayList를-활용한-문제"><a href="#ArrayList를-활용한-문제" class="headerlink" title="ArrayList를 활용한 문제"></a>ArrayList를 활용한 문제</h2><ul>
+<li>어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.<br>Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.<br>다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Lee 학생이 읽은 책은 : 태백산맥1 태백산맥 2 입니다.</span><br><span class="line">Kim 학생이 읽은 책은 : 토지1 토지2 토지3 입니다.</span><br><span class="line">Cho 학생이 읽은 책은 : 해리포터1 해리포터2 해리포터3 해리포터4 해리포터5 해리포터 6 입니다.</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>Student 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> String studentName;</span><br><span class="line">    ArrayList&lt;Book&gt; list;</span><br><span class="line">    <span class="keyword">public</span> Student(String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line"></span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;Book&gt;();</span><br><span class="line">        <span class="comment">//학생이 생성될 때 학생이 읽은 책의 리스트도 같이 생성해주기 위해서 이때 생성함.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> addBook(String bookName,String author)&#123;</span><br><span class="line">        Book book = <span class="keyword">new</span> Book(bookName,author);</span><br><span class="line">        list.add(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBookInfo()&#123;</span><br><span class="line">        System.out.print(studentName+<span class="string">&quot;학생이 읽은 책은 :&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">            System.out.print(<span class="string">&quot; &quot;</span>+list.get(i).getBookName());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Book 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> String bookName;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String bookName,String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.bookName = bookName;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getBookName() &#123;</span><br><span class="line">        <span class="keyword">return</span> bookName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setBookName(String bookName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.bookName = bookName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getAuthor() &#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setAuthor(String author) &#123;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student studentLee = <span class="keyword">new</span> Student(<span class="string">&quot;Lee&quot;</span>);</span><br><span class="line">        studentLee.addBook(<span class="string">&quot;태백산맥1&quot;</span>,<span class="string">&quot;조정래&quot;</span>);</span><br><span class="line">        studentLee.addBook(<span class="string">&quot;태백산맥2&quot;</span>,<span class="string">&quot;조정래&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Student studentKim = <span class="keyword">new</span> Student(<span class="string">&quot;kim&quot;</span>);</span><br><span class="line">        studentKim.addBook(<span class="string">&quot;토지1&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line">        studentKim.addBook(<span class="string">&quot;토지2&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line">        studentKim.addBook(<span class="string">&quot;토지3&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line"></span><br><span class="line">        Student studentCho = <span class="keyword">new</span> Student(<span class="string">&quot;cho&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터1&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터2&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터3&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);studentCho.addBook(<span class="string">&quot;해리포터1&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터4&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터5&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line">        studentCho.addBook(<span class="string">&quot;해리포터6&quot;</span>,<span class="string">&quot;조지앤롤링&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        studentLee.showBookInfo();</span><br><span class="line">        studentKim.showBookInfo();</span><br><span class="line">        studentCho.showBookInfo();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckewtk2m70013jcu2fqm41hnf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java_Inheritance
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/10/Java/JavaAdvanced/Java-Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_Array</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-ch07_codingEx2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-ch07_codingEx1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

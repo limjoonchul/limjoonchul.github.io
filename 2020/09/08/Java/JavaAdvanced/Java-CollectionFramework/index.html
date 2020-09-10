@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_Collections Framework | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구로를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.  자료구조를 담당하는 API라고할 수 있음  인터페이스가 상속이되서 클래스에">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_Collections Framework">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구로를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.  자료구조를 담당하는 API라고할 수 있음  인터페이스가 상속이되서 클래스에">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-08T10:27:34.729Z">
+<meta property="article:modified_time" content="2020-09-08T10:48:09.125Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/Java-CollectionFramework" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" class="article-date">
+  <time datetime="2020-09-08T10:27:34.729Z" itemprop="datePublished">2020-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_Collections Framework
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="자바-컬렉션-프레임워크-Java-Collections-Framework"><a href="#자바-컬렉션-프레임워크-Java-Collections-Framework" class="headerlink" title="자바 컬렉션 프레임워크(Java Collections Framework)"></a>자바 컬렉션 프레임워크(Java Collections Framework)</h1><h2 id="컬렉션-프레임워크란"><a href="#컬렉션-프레임워크란" class="headerlink" title="컬렉션 프레임워크란"></a>컬렉션 프레임워크란</h2><ul>
+<li><p>java.utils에 속한 일련의 클래스로, 자료구로를 담당</p>
+</li>
+<li><p>잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.</p>
+</li>
+<li><p>제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</p>
+</li>
+<li><p>자료구조를 담당하는 API라고할 수 있음</p>
+</li>
+<li><p>인터페이스가 상속이되서 클래스에서 구현이된다. 비슷한 구조가 자료구조쪽에도 있는데 추상자료형이라는게 있다 영어로는 abstract data type</p>
+</li>
+<li><p>이걸 실제로 구현을 하면 자료구조(DS, data structure)라고 부른다.</p>
+</li>
+<li><p>추상자로형은 어떤 자료구조 같은 특정 자료형이 어떤 기능들을 가지고 잇는지 어떤 메소드들을 가지고 있는지 메소도들의 행동이 어떤지 정의하는 것이다.</p>
+</li>
+<li><p>이 것들을 실제로 코드 같은 것으로 구현을 해서 특정한 요소들까지 구현을 하게 되면 자료 구조이다.</p>
+</li>
+</ul>
+<h2 id="JCF-인터페이스"><a href="#JCF-인터페이스" class="headerlink" title="JCF 인터페이스"></a>JCF 인터페이스</h2><ul>
+<li><p>List 인터페이스</p>
+<ul>
+<li><p>Collection 인터페이스를 상속</p>
+</li>
+<li><p>순서가 있는 데이터의 집합으로, 데이터의 중복을 허용</p>
+</li>
+<li><p>순서가 있기때문에 순서로 데이터가 정의되어서 동일한 데어티가 여러 개 있더라도<br>  순서가 다르면 다른 데이터로 인식 데이터 그래서 데이터 중복을 허용한다.</p>
+</li>
+<li><p>list는 ADT에 해당하고, Collection 인터페이스를 기본으로하고 있다.</p>
+</li>
+<li><p>구현체: ArrayList, LinkedList(Vector,Stack 잘 사용x, 1.5버전 이전에 사용)</p>
+</li>
+<li><p>Stack 대신에 ArrayList를 많이 씀<br>Vector는 제네릭이 아니고 오브젝트를 받게 되어있다. ArrayList와 동기화 부분만 다르다.<br>구현 자체는 둘다 Array로 되어있다. 제네릭이 없기 때문에 오브젝트로 되어 있다.<br>내부 구현은 완전히 같은지는 모른다. 비슷한 구조이긴 하다</p>
+</li>
+</ul>
+</li>
+<li><p>Set 인터페이스</p>
+<ul>
+<li>Collection 인터페이스를 상속</li>
+<li>순서가 없는 데이터의 집합으로,말그대로 집합이다. 데이터의 중복을 허용하지 않는다.</li>
+<li>순서가 없기 때문에 데이터 중복 x 데이터가 있는 상태에서 동일한 값이 들어오면<br>오류가 나는게 아니고 무시를 한다. 중복되는 개체를 없애고 유니크한 개체만 남긴다. </li>
+<li>Collection 인터페이스를 기본으로하고 있다.</li>
+<li>구현체: HashSet, TreeSet</li>
+<li>구현체는 hashset 일반적인집합 treeset은 이진트리를 기반으로 하는 재밌는 특성을가진 자료구조</li>
+</ul>
+</li>
+<li><p>List 인터페이스와 Set 인터페이스는 제네릭 클래스로되어있다. </p>
+</li>
+<li><p>자료들을 효율적으로 다루기 위한 것이다.이 하나하나가 정수일것이냐 아니면 클래스의 인스턴스인 객체일 것이냐</p>
+</li>
+<li><p>이런 것 들을 제네릭으로 되어있으면 우리가 선택을 할 수 있다. 정수면 Integer을 사용할 수 있는 등 선택을 할 수 있다.</p>
+</li>
+<li><p>Map 인터페이스 </p>
+<ul>
+<li>Key-Value 쌍으로 이루어진 데이터의 집합</li>
+<li>Map은 ADT Map이라는 이름으로 인터페이스를 갖고 있는 것, Hash는 DS이다.</li>
+<li>Key 쿼리를 할 수있는(검색) 대상이 된다.<br>데이터를 저장할 때 키 Value 쌍으로 저장하는데 Key를 검색해서 Value 쌍을 찾아 낼 수 있다.</li>
+<li>구현체 : HashMap, TreeMap, HashTable, Properties</li>
+</ul>
+</li>
+</ul>
+<h3 id="Collection-인터페이스"><a href="#Collection-인터페이스" class="headerlink" title="Collection 인터페이스"></a>Collection 인터페이스</h3><ul>
+<li>Collection 인터페이스의 주요 메소드</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean add(E e)</td>
+<td>요소 e를 컬렉션에 추가한다.</td>
+</tr>
+<tr>
+<td>boolean addAll(Collection &lt; ? extends E &gt; c)</td>
+<td>다른 컬렉션 c의 모든 요소를 컬렉션에 추가한다.</td>
+</tr>
+<tr>
+<td>void clear()</td>
+<td>컬렉션의 모든 요소를 제거한다.</td>
+</tr>
+<tr>
+<td>boolean contains(Object o)</td>
+<td>컬렉션에 요소 o가 존재하는지 확인한다.</td>
+</tr>
+<tr>
+<td>boolean containsAll(Collection&lt;?&gt; c)</td>
+<td>컬렉션 c의 모든 요소가 컬렉션에 포함되는지 확인한다.</td>
+</tr>
+<tr>
+<td>boolean equals(Object o)</td>
+<td>컬렉션 o와 같은 내용을 포함하는지 비교한다.</td>
+</tr>
+<tr>
+<td>boolean isEmpty()</td>
+<td>컬렉션이 비어있는지 확인한다.</td>
+</tr>
+<tr>
+<td>Iterator<E> iterator()</td>
+<td>컬렉션의 Iterator를 반환한다.</td>
+</tr>
+<tr>
+<td>boolean remove(Object o)</td>
+<td>컬렉션에서 요소 o를 제거한다.</td>
+</tr>
+<tr>
+<td>boolean removeAll(Collection&lt;?&gt; c)</td>
+<td>컬렉션 c에 속한 모든 요소를 컬렉션에서 제거한다.</td>
+</tr>
+<tr>
+<td>boolean retainAll(Collection&lt;?&gt; c)</td>
+<td>컬렉션 c에 포함된 객체만 남기고 나머지 요소를 제거한다.</td>
+</tr>
+<tr>
+<td>int size()</td>
+<td>컬렉션에 속한 요소의 개수를 반환한다.</td>
+</tr>
+<tr>
+<td>T[] toArray(T[] a)</td>
+<td>컬렉션의 요소들을 T[] 배열로 반환한다.</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>remove 요소를 제거하는거 요소는 element이다.<br>여러개데이터를 묶은게 컬렉션인데 이 하나하나가 엘레멘트, 요소이다.</p>
+</li>
+<li><p>iterator - 컬렉션에 데이터가있을 때 순회하기 위한 인터페에스</p>
+</li>
+<li><p>Iterator</p>
+<ul>
+<li><p><code>iterator()</code> 로 반환되는 객체로, Collection에 저장된 요소에 접근하기 위해 사용</p>
+</li>
+<li><p>컬렉션 자료들을 묵어놨을 때 자료하나하나에 접근하고싶을 때 iterator</p>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean hasNext()</td>
+<td>다음 요소가 있는지 확인</td>
+</tr>
+<tr>
+<td>E next()</td>
+<td>다음 요소가 있을 경우 반환</td>
+</tr>
+<tr>
+<td>void remove()</td>
+<td>현재 위치의 요소를 삭제</td>
+</tr>
+</tbody></table>
+<ul>
+<li>hasnext로 다음요소가있는지 확인하고 next로 다음요소를 반환한다.<br>컬렉션에 있는 자료를 쭉 순회하는 방법</li>
+</ul>
+</li>
+<li><p>Iterator의 활용</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; iter = collection.iterator();</span><br><span class="line"><span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">    String string = iter.next();</span><br><span class="line">    System.out.println(string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String <span class="attr">string:</span> collection) &#123;</span><br><span class="line">    System.out.println(string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>foreach 문에서 바로 출력이 가능 하게 할 수 있다.<br>while문에서 값을 변수에 넣었다가 출력하는 부분을 줄일 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Collection 인터페이스에 add()메서드와 List 인터페이스 add()메이서드는 출력값하고<br>입력파라미터가 다른데 오버라딩한 경우이다.</p>
+</li>
+</ul>
+<h3 id="List-인터페이스"><a href="#List-인터페이스" class="headerlink" title="List 인터페이스"></a>List 인터페이스</h3><ul>
+<li>순서가 있는 데이터의 집합을 다루는 인터페이스</li>
+<li>List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용</li>
+<li>Collection 인터페이스를 상속받았으며, 추가 메소드가 구현되어 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void add(int index, E element)</td>
+<td>index 위치에 요소 element를 삽입한다.</td>
+</tr>
+<tr>
+<td>boolean addAll(int index, Collection&lt;? extends E&gt; c)</td>
+<td>index위치부터 컬렉션 c의 모든 요소를 추가 한다.</td>
+</tr>
+<tr>
+<td>E get(int index)</td>
+<td>index 위치에 저장된 요소를 반환한다.</td>
+</tr>
+<tr>
+<td>int indexOf(Object o)</td>
+<td>객체 o가 저장된 첫번째 인덱스를 반환한다. 없을 경우 -1을 반환한다.</td>
+</tr>
+<tr>
+<td>int lastIndexOf(Object o)</td>
+<td>객체 o가 저장된 마지막 인덱스를 반환한다. 없을 경우 -1을 반환한다.</td>
+</tr>
+<tr>
+<td>ListIterator<E> listIterator()</td>
+<td>ListIterator 객체를 반환한다.</td>
+</tr>
+<tr>
+<td>E remove(int index)</td>
+<td>index에 위치한 객체를 제거하고 반환한다.</td>
+</tr>
+<tr>
+<td>E set(int index, E element)</td>
+<td>index에 위치한 요소를 element로 대체한다.</td>
+</tr>
+<tr>
+<td>List<E> subList(int fromIndex, int toIndex)</td>
+<td>fromIndex에 위치한 요소부터 toIndex의 직전에 위치한 요소까지 포함한 List를 반환한다.</td>
+</tr>
+</tbody></table>
+<ul>
+<li>add()<ul>
+<li>2번에 새로운값이 들어가면 2번부터 뒤에 값들이 한칸씩 뒤로 밀린다.<br>e라는 요소를 찾기위해서 동일한 요소로 찾는다는 것은 있을 수 없다.<br>컬렉션에는 일반적으로 특정 요소를 리턴받는게 없다.<br>리스트에는 인덱스를 이용해 요소를 구분할 수 있기 때문에 특정 요소를 반환 받을 수 있다.<br>그래서 순서가있는이 매우 유용하다.(장점이자 단점)</li>
+</ul>
+</li>
+<li>remove 꺼내서 쓴다라는 의미로 받아 들일 수 있다.</li>
+<li>add와 달리 set은 특정 인덱스의 값만 대체한다. 한자리만 데이터를 대체한다.<br>sublist는 fromindex부터 toindex까지라할 때 toindex직전까지만 포함한다.<br>toindex는 포함 x</li>
+</ul>
+<ul>
+<li>오버헤드 어떤동작을 하기위해서 들어가는 우리가 하고자하는 동작이 있을 때<br>부수적으로 발생하는 추가적인 계산 추가적인 메모리 사용한다던지 이것들을 오버헤드라고 말한다.</li>
+</ul>
+<ul>
+<li><p>List 인터페이스의 구현체</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list = <span class="keyword">new</span> LinkedList&lt;&gt;(); <span class="comment">// 동일 인터페이스로 다른 구현체를 사용 가능</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>ArrayList&lt;E&gt;</code></p>
+<ul>
+<li>제네릭 클래스로 구현된 자료구조</li>
+<li>배열을 기반으로 구현된 클래스로, 가장 자주 활용되며 활요도가 높다.</li>
+<li>ArrayList의 생성자는 세 종류가 주어진다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ArrayList()</span><br><span class="line"><span class="keyword">public</span> Arraylist(<span class="keyword">int</span> initialCapacity)</span><br><span class="line"><span class="keyword">public</span> ArrayList(Collection&lt;? extends E&gt;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Arraylist () 생성자는 내부적으로 grow()라는 메소드가 내재되어있다.<br>배열의 크기를 입력을 받으면 배열을키우기 위해 오버헤드가 발생하는데<br>이정도의 크기를 미리 정해줌 initalcopacity를 입력 받는 것이다</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LinkedList<E></p>
+<ul>
+<li><p>제네릭 클래스로 구현된 자료구조</p>
+</li>
+<li><p>연결리스트를 기반으로 구현된 클래스로, 배열의 단점을 극복하기 위한 구현체</p>
+</li>
+<li><p>ArrayList vs. LinkedList</p>
+<table>
+<thead>
+<tr>
+<th>구현체</th>
+<th>순차 추가/수정/삭제</th>
+<th>비순차 추가/수정/삭제</th>
+<th>조회</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayList</td>
+<td>빠름</td>
+<td>느림</td>
+<td>빠름</td>
+</tr>
+<tr>
+<td>LinkedList</td>
+<td>느림</td>
+<td>빠름</td>
+<td>느림</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>ArrayList, LinkedList</p>
+<ul>
+<li>Object를 요소로 가지는 List 구현체 (Java5 이전)</li>
+<li>링크드 리스트의 조회는 인덱스들을 타고 타고 들어가야 해서 느리다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>List의 정렬</p>
+<ul>
+<li>Collections 클래스의 sort() 메소드 사용<ul>
+<li>public static &lt;T extends Comparable&lt;? super T&gt; void sort(List<T> list)<ul>
+<li>객체에 선언된 public int compareTo(T t) 메소드로 비교하여 정렬</li>
+</ul>
+</li>
+<li>public static <T> void sort(List<T> list, Comparator&lt;? super T&gt; c)<ul>
+<li>Comparator 객체 c에 정의된 public int compare(T o1, T o2) 메소드로 비교하여 정렬</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ListIterator</p>
+<ul>
+<li>listIterator()로 반환되는 객체로, 양방향 사용이 가능</li>
+<li>listiterator는 listiterator()로 반환하는 객체, 양방향 사용이 가능하다.<br>순서가 있어서 previous도 가능함  앞으로도가고 뒤로도 가는게 가능함</li>
+<li>Iterator를 상속받은 클래스</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean hasPrevious()</td>
+<td>이전 요소가 있는지 확인</td>
+</tr>
+<tr>
+<td>E previous()</td>
+<td>이전 요소가 있을 경우 반환</td>
+</tr>
+</tbody></table>
+<ul>
+<li>linkedlist 앞뒤의 주소를 가리킬수있다.<br>노드 형태로 되어 있다. 그래프에서 사용하는 용어로 데이터 하나하나가 떨어져 있다.<br>떨어져 있는 것의 previous와 next가 있어서 이전순서와 뒤순서를 참조하게 된다.<br>이런 것들(previous와 next)이 오버헤드가 된다.<br>배열의 단점(중간에있는 데이터를 추가제거 할 때 밀거나 당겨야 하는 것)을 보완하기 위해서 나타남</li>
+</ul>
+</li>
+</ul>
+<h3 id="Set-인터페이스"><a href="#Set-인터페이스" class="headerlink" title="Set 인터페이스"></a>Set 인터페이스</h3><ul>
+<li><p>순서가 없는 데이터의 집합을 다루는 인터페이스</p>
+</li>
+<li><p>중복되는 데이터를 효율적으로 제거하는 데에 쓸 수 있음</p>
+</li>
+<li><p>Collection 인터페이스를 상속받아 메소드를 구현하고 있음</p>
+</li>
+<li><p>Set의 구현체</p>
+<ul>
+<li>HashSet<E><ul>
+<li>Set의 대표적인 구현체로, 기본적인 기능이 구현되어 있다.</li>
+<li>많이 사용이 됨 객체의 해쉬값을 이용해서 객체들을 구분하는 자료구조<br>해쉬값만으로 구분하는게아니라 이용해서 빠르게 동작을 한다.</li>
+</ul>
+</li>
+<li>TreeSet<E><ul>
+<li>NavigableSet<E> 인터페이스를 구현하며, 이진 탐색 트리 자료구조이다.</li>
+<li>객체를 삽입하는 동시에 정렬되는 특성상 비교가 가능해야 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TreeSet() <span class="comment">// Comparable 구현체의 경우</span></span><br><span class="line"><span class="keyword">public</span> TreeSet(Comparator&lt;? super E&gt; comparator) <span class="comment">// 별도로 비교 객체 삽입</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>TreeSet의 메소드</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public E first()</td>
+<td>정렬된 첫 요소를 반환</td>
+</tr>
+<tr>
+<td>public E last()</td>
+<td>정렬된 마지막 요소를 반환</td>
+</tr>
+<tr>
+<td>public E lower(E e)</td>
+<td>e 객체의 바로 이전 객체를 반환</td>
+</tr>
+<tr>
+<td>public E higher(E e)</td>
+<td>e 객체의 바로 다음 객체를 반환</td>
+</tr>
+<tr>
+<td>public E floor(E e)</td>
+<td>e 또는 e 보다 이전 객체를 반환</td>
+</tr>
+<tr>
+<td>public E ceiling(E e)</td>
+<td>e 또는 e 보다 이후 객체를 반환</td>
+</tr>
+<tr>
+<td>public E pollFirst()</td>
+<td>정렬된 첫 요소를 제거하고 반환</td>
+</tr>
+<tr>
+<td>public E pollLast()</td>
+<td>정렬된 마지막 요소를 제거하고 반환</td>
+</tr>
+<tr>
+<td>public NavigableSet<E> descendingSet()</td>
+<td>내림차순으로 정렬하는 객체를 반환</td>
+</tr>
+<tr>
+<td>public NavigableSet<E> headSet(E toElement, boolean inclusive)</td>
+<td>toElement 이전 요소로 구성된 객체 반환</td>
+</tr>
+<tr>
+<td>public NavigableSet<E> tailSet(E fromElement, boolean inclusive)</td>
+<td>fromElement 이후 요소로 구성된 객체 반환</td>
+</tr>
+<tr>
+<td>public NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)</td>
+<td>fromElement 이후, toElement 이전 요소로 구성된 객체 반환</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckewtk2lt000tjcu264rwf0bk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/09/Java/PreCourseEx/ClassEx3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PreCourse-ch05_codingEx3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/08/Java/JavaAdvanced/Java-Variable/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_Variable</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-ch07_codingEx2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-ch07_codingEx1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

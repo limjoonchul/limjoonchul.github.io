@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>AlgorithmSolution_SkillThree | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="프로그래머스 문제 49993번 스킬트리 문제풀이 제한 조건에 대해서 잘 읽어보고 파악하는게 중요하다.  우선 skill에 해당하는 스킬만 확인하고 다른 알파벳을 무시한다.  for문을 돌면서 skill_tress의 String들의 각 char들 중 skill의 char와 일치하는 인덱스를 찾아서 해당 인덱스의 값을 index 변수에 넣어준다.아니면 -1을">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AlgorithmSolution_SkillThree">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-SkillThree/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="프로그래머스 문제 49993번 스킬트리 문제풀이 제한 조건에 대해서 잘 읽어보고 파악하는게 중요하다.  우선 skill에 해당하는 스킬만 확인하고 다른 알파벳을 무시한다.  for문을 돌면서 skill_tress의 String들의 각 char들 중 skill의 char와 일치하는 인덱스를 찾아서 해당 인덱스의 값을 index 변수에 넣어준다.아니면 -1을">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-02T12:37:48.126Z">
+<meta property="article:modified_time" content="2020-09-02T12:42:26.785Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Algorithm/Solution-SkillThree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/02/Algorithm/Solution-SkillThree/" class="article-date">
+  <time datetime="2020-09-02T12:37:48.126Z" itemprop="datePublished">2020-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AlgorithmSolution_SkillThree
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="프로그래머스-문제-49993번-스킬트리-문제풀이"><a href="#프로그래머스-문제-49993번-스킬트리-문제풀이" class="headerlink" title="프로그래머스 문제 49993번 스킬트리 문제풀이"></a>프로그래머스 문제 49993번 스킬트리 문제풀이</h1><ul>
+<li><p>제한 조건에 대해서 잘 읽어보고 파악하는게 중요하다.</p>
+</li>
+<li><p>우선 skill에 해당하는 스킬만 확인하고 다른 알파벳을 무시한다.</p>
+</li>
+<li><p>for문을 돌면서 skill_tress의 String들의 각 char들 중 skill의 char와 일치하는 인덱스를 찾아서 해당 인덱스의 값을 index 변수에 넣어준다.<br>아니면 -1을 반환</p>
+</li>
+<li><p>해당인덱스가 값이 있으면 index에 값이 들어갈 테니 list.add해서 값을 list에 넣어준다.</p>
+</li>
+<li></li>
+<li><p>skill_trees에 속하는게 없을 수도 있다. 그래서 list.size() &gt; 0 를 체크해줘서 에러를 방지하고,<br>스킬 찍은 것 중에 가장 첫번째가 C여야 한다 그래서 list에 값이 들어 간 것에서 list.get(0) != 0 을 체크하므로써<br>list의 0번째 인덱스의 값이 “CBD” 중에서 C의 인덱스가 0이니깐  0이 아니라면<br>즉, C가 아니라면 <code>continue</code>를 써서 다시 위로 보낸다.</p>
+</li>
+<li><p>그 다음 위의 조건(C부터 시작한다는 조건)을 만족한 후 스킬 순서가 C-&gt;B-&gt;D여야 하는데<br>C-&gt;D-&gt;B일 수도 있으니깐 그 순서를 확인해서 CBD순서가 아니라면 그 스트링값이 우리가 찾던 값과 다르니<br>처음 반복문으로 돌아가서 그 다음 스트링을 확인하는 과정을 진행한다.</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SkilTree</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(String skill, String[] skill_trees) &#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//제한 조건이 중요하다 잘 읽어봐야한다. 이러한 제한사항이 있기 때문에 사용할 수 있는</span></span><br><span class="line">        <span class="comment">//알고리즘들이 갈린다. 조건에 나오는 숫자들이 굉장히 중요하다.</span></span><br><span class="line">        <span class="comment">//이후에 나오는 다른 조건들은 제한조건이 빡센것들이 많다 숫자들을 중요하게 봐야한다.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//다른 알파벳은 무시하고 skill에 해당하는 스킬만 확인</span></span><br><span class="line">        <span class="symbol">loop:</span></span><br><span class="line">        <span class="keyword">for</span>(String <span class="attr">tree :</span> skill_trees)&#123;</span><br><span class="line">            List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">//List는 인터페이스여서 직접만들지 못하고 arraylist로 만듬</span></span><br><span class="line">            <span class="comment">//list의 구현체이기때문에</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> <span class="attr">s:</span> tree.toCharArray())&#123;</span><br><span class="line">                <span class="keyword">int</span> index = skill.indexOf(s); <span class="comment">//찾아서있으면 해당인덱스 없으면 -1</span></span><br><span class="line">                <span class="keyword">if</span>(index &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">                    list.add(index);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(list.size() &gt; <span class="number">0</span> &amp;&amp; list.get(<span class="number">0</span>) !=<span class="number">0</span>)&#123; <span class="comment">//</span></span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">//틀리면 카운트하지 않고 넘어감</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt; list.size(); i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list.get(i<span class="number">-1</span>) + <span class="number">1</span> != list.get(i))&#123;</span><br><span class="line">                    <span class="keyword">continue</span> loop;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            answer++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        SkilTree skilTree = <span class="keyword">new</span> SkilTree();</span><br><span class="line">        String skill = <span class="string">&quot;cbd&quot;</span>;</span><br><span class="line">        String[] skill_trees = <span class="keyword">new</span> String[]&#123;<span class="string">&quot;BACDE&quot;</span>, <span class="string">&quot;CBADF&quot;</span>, <span class="string">&quot;AECB&quot;</span>, <span class="string">&quot;BDA&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(skilTree.solution(skill,skill_trees));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-SkillThree/" data-id="ckewtk2ln000pjcu25n8y1hzz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/02/Algorithm/Solution-Squares/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AlgorithmSolution_Squares
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/02/TIL-20200902/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Study20200902</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-ch07_codingEx2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-ch07_codingEx1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

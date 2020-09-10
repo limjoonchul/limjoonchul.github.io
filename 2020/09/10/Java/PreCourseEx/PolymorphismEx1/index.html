@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PreCourse-ch07_codingEx2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="문제배열을 활용하여 상속과 다형성 구현하기 고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.  Customer 클래스를 만든다.  Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.  제품 구매시 10% 할인  보넛 포인트 5% 적립  담당 상담원 배정     Customer 클래스의 상속을 받는 GoldCustome">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PreCourse-ch07_codingEx2">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="문제배열을 활용하여 상속과 다형성 구현하기 고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.  Customer 클래스를 만든다.  Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.  제품 구매시 10% 할인  보넛 포인트 5% 적립  담당 상담원 배정     Customer 클래스의 상속을 받는 GoldCustome">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/10/image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/10/image/VIPCustomer.jpg">
+<meta property="article:published_time" content="2020-09-10T07:37:38.955Z">
+<meta property="article:modified_time" content="2020-09-10T07:47:42.484Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/10/image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/PreCourseEx/PolymorphismEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" class="article-date">
+  <time datetime="2020-09-10T07:37:38.955Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PreCourse-ch07_codingEx2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="배열을-활용하여-상속과-다형성-구현하기"><a href="#배열을-활용하여-상속과-다형성-구현하기" class="headerlink" title="배열을 활용하여 상속과 다형성 구현하기"></a>배열을 활용하여 상속과 다형성 구현하기</h2><ul>
+<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
+</li>
+<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
+</li>
+<li><p>Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
+<ul>
+<li><p>제품 구매시 10% 할인</p>
+</li>
+<li><p>보넛 포인트 5% 적립</p>
+</li>
+<li><p>담당 상담원 배정</p>
+<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
+</li>
+</ul>
+</li>
+<li><p>Customer 클래스의 상속을 받는 GoldCustomer클래스를 만든다.</p>
+</li>
+<li><p>VIP고객과 일반고객의 중간 등급의 고객</p>
+<ul>
+<li><p>제품을 구매시 10%할인을 해주는 것은 같다.</p>
+</li>
+<li><p>보너스 포인트는 2% 적립해준다.</p>
+</li>
+<li><p>담당 상담원은 없다.</p>
+</li>
+<li><p>Customer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> bonusPoint;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">double</span> bonusRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade=<span class="string">&quot;SILVER&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>VIPCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> agentID;</span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName,<span class="keyword">int</span> agentID) &#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID, customerName);</span><br><span class="line">        <span class="built_in">this</span>.agentID = agentID;</span><br><span class="line">        customerGrade =<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio=<span class="number">0.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String showInfo() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.showInfo()+<span class="string">&quot;담당 상담사ID는 &quot;</span>+agentID+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GoldCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoldCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GoldCustomer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade = <span class="string">&quot;GOLD&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.02</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Customer&gt; customersList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Customer kim = <span class="keyword">new</span> Customer(<span class="number">1001</span>,<span class="string">&quot;김씨&quot;</span>);</span><br><span class="line">        Customer na = <span class="keyword">new</span> Customer(<span class="number">1002</span>,<span class="string">&quot;나씨&quot;</span>);</span><br><span class="line">        Customer park = <span class="keyword">new</span> GoldCustomer(<span class="number">1003</span>,<span class="string">&quot;박씨&quot;</span>);</span><br><span class="line">        Customer jeong = <span class="keyword">new</span> GoldCustomer(<span class="number">1004</span>,<span class="string">&quot;정씨&quot;</span>);</span><br><span class="line">        Customer lim = <span class="keyword">new</span> VIPCustomer(<span class="number">1008</span>,<span class="string">&quot;임씨&quot;</span>,<span class="number">12345</span>);</span><br><span class="line"></span><br><span class="line">        customersList.add(kim);</span><br><span class="line">        customersList.add(na);</span><br><span class="line">        customersList.add(park);</span><br><span class="line">        customersList.add(jeong);</span><br><span class="line">        customersList.add(lim);</span><br><span class="line">        <span class="keyword">int</span> price=<span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">int</span> pay=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;customersList.size(); i++)&#123;</span><br><span class="line">            System.out.println(customersList.get(i).showInfo());</span><br><span class="line">            pay = customersList.get(i).calcPrice(price);</span><br><span class="line">            System.out.println(<span class="string">&quot;지불한 금액은 &quot;</span>+pay+<span class="string">&quot;이고, 적립된 포인트는 &quot;</span>+customersList.get(i).bonusPoint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckewtk2mi0019jcu2hrjs7y4d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/10/Algorithm/Solution-Disguise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AlgorithmSolution_Disguise
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_Polymorphism</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-ch07_codingEx2</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-ch07_codingEx1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
