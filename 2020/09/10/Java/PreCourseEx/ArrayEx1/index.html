@@ -5,17 +5,17 @@
   
 
   
-  <title>PreCourse-ch06_codingEx1 | Hexo</title>
+  <title>PreCourse-ArrayEx | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="문제ArrayList를 활용한 문제 어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.123Lee 학생이 읽은">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PreCourse-ch06_codingEx1">
+<meta property="og:title" content="PreCourse-ArrayEx">
 <meta property="og:url" content="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="문제ArrayList를 활용한 문제 어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.123Lee 학생이 읽은">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-10T01:51:46.559Z">
-<meta property="article:modified_time" content="2020-09-10T01:59:52.378Z">
+<meta property="article:modified_time" content="2020-09-11T04:41:08.479Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PreCourse-ch06_codingEx1
+      PreCourse-ArrayEx
     </h1>
   
 
@@ -91,12 +91,12 @@
         <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="ArrayList를-활용한-문제"><a href="#ArrayList를-활용한-문제" class="headerlink" title="ArrayList를 활용한 문제"></a>ArrayList를 활용한 문제</h2><ul>
 <li>어느 학교에 학생이 3명 있습니다. 각 학생마다 읽은 책을 기록하고 있습니다.<br>Student클래스를 만들고 각 학생마다 읽은 책을 Student 클래스 내에 ArrayList를 생성하여 관리하도록 합니다.<br>다음과 타이 출력 되도록 Student,Book,StudentTest클래스를 만들어 실행하세요.<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Lee 학생이 읽은 책은 : 태백산맥1 태백산맥 2 입니다.</span><br><span class="line">Kim 학생이 읽은 책은 : 토지1 토지2 토지3 입니다.</span><br><span class="line">Cho 학생이 읽은 책은 : 해리포터1 해리포터2 해리포터3 해리포터4 해리포터5 해리포터 6 입니다.</span><br></pre></td></tr></table></figure>
 
-
 </li>
 </ul>
-<ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
 <li><p>Student 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> String studentName;</span><br><span class="line">    ArrayList&lt;Book&gt; list;</span><br><span class="line">    <span class="keyword">public</span> Student(String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line"></span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;Book&gt;();</span><br><span class="line">        <span class="comment">//학생이 생성될 때 학생이 읽은 책의 리스트도 같이 생성해주기 위해서 이때 생성함.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> addBook(String bookName,String author)&#123;</span><br><span class="line">        Book book = <span class="keyword">new</span> Book(bookName,author);</span><br><span class="line">        list.add(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBookInfo()&#123;</span><br><span class="line">        System.out.print(studentName+<span class="string">&quot;학생이 읽은 책은 :&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">            System.out.print(<span class="string">&quot; &quot;</span>+list.get(i).getBookName());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> String studentName;</span><br><span class="line">    ArrayList&lt;Book&gt; list;</span><br><span class="line">    <span class="keyword">public</span> Student(String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line"></span><br><span class="line">        list = <span class="keyword">new</span> ArrayList&lt;Book&gt;();</span><br><span class="line">        <span class="comment">//학생이 생성될 때 학생이 읽은 책의 리스트도 같이 생성해주기 위해서 이때 생성함.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> addBook(String bookName,String author)&#123;</span><br><span class="line">        Book book = <span class="keyword">new</span> Book(bookName,author);</span><br><span class="line">        list.add(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBookInfo()&#123;</span><br><span class="line">        System.out.print(studentName+<span class="string">&quot;학생이 읽은 책은 :&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;list.size(); i++)&#123;</span><br><span class="line">            System.out.print(<span class="string">&quot; &quot;</span>+list.get(i).getBookName());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>Book 클래스</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> String bookName;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String bookName,String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.bookName = bookName;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getBookName() &#123;</span><br><span class="line">        <span class="keyword">return</span> bookName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setBookName(String bookName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.bookName = bookName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getAuthor() &#123;</span><br><span class="line">        <span class="keyword">return</span> author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setAuthor(String author) &#123;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -108,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckewtk2m70013jcu2fqm41hnf" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckey22wdx00188su2dsefe29j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,23 +166,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/">PreCourse-Abstract_TemplateEx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/">PreCourse-Abstract_TemplateEx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/">Java_AbstractClass</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
           </li>
         
           <li>
             <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-ch07_codingEx2</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-ch07_codingEx1</a>
           </li>
         
       </ul>

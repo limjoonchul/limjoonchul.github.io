@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>PreCourse-Abstract_TemplateEx | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="문제템플릿메소들 활용 player가 있고 이 player가 게임을 합니다. 게임에서 player가 가지는 레벨에 따라run(),jump(),turn() 세 가지 기능을 할 수 있습니다.각 레벨에 따라 기능가능 여부가 다음과 같습니다.  초급자 레벨: 천천히 달립니다(run() 가능)  중급자 레벨: 빠르게 달리고, 점프할 수 있습니다.  고급자 레벨: 엄청">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PreCourse-Abstract_TemplateEx">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="문제템플릿메소들 활용 player가 있고 이 player가 게임을 합니다. 게임에서 player가 가지는 레벨에 따라run(),jump(),turn() 세 가지 기능을 할 수 있습니다.각 레벨에 따라 기능가능 여부가 다음과 같습니다.  초급자 레벨: 천천히 달립니다(run() 가능)  중급자 레벨: 빠르게 달리고, 점프할 수 있습니다.  고급자 레벨: 엄청">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/11/image/%ED%85%9C%ED%94%8C%EB%A6%BF.jpg">
+<meta property="article:published_time" content="2020-09-11T02:22:54.150Z">
+<meta property="article:modified_time" content="2020-09-11T04:54:24.656Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/11/image/%ED%85%9C%ED%94%8C%EB%A6%BF.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/PreCourseEx/AbstractClass_TemplateEx2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" class="article-date">
+  <time datetime="2020-09-11T02:22:54.150Z" itemprop="datePublished">2020-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PreCourse-Abstract_TemplateEx
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="템플릿메소들-활용"><a href="#템플릿메소들-활용" class="headerlink" title="템플릿메소들 활용"></a>템플릿메소들 활용</h2><ul>
+<li><p>player가 있고 이 player가 게임을 합니다. 게임에서 player가 가지는 레벨에 따라<br>run(),jump(),turn() 세 가지 기능을 할 수 있습니다.<br>각 레벨에 따라 기능가능 여부가 다음과 같습니다.</p>
+</li>
+<li><p>초급자 레벨: 천천히 달립니다(run() 가능)</p>
+</li>
+<li><p>중급자 레벨: 빠르게 달리고, 점프할 수 있습니다.</p>
+</li>
+<li><p>고급자 레벨: 엄청 빠라ㅡ게 달리고, 점프할 수 있고 한 바퀴 돌 수 있습니다.</p>
+</li>
+<li><p>플에이어는 go() 명령어를 받으면 이 세가지 기능을 수행합니다.<br>이중 할 수 없는 것은 할 수 없다고 출력합니다.</p>
+</li>
+</ul>
+<p><img src="../../../image/%ED%85%9C%ED%94%8C%EB%A6%BF.jpg" alt="템플릿"></p>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li><p>Player 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> PlayerLevel level;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Player()&#123;</span><br><span class="line">        level = <span class="keyword">new</span> BeginnerLevel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> PlayerLevel getLevel() &#123;</span><br><span class="line">        <span class="keyword">return</span> level;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> upgradeLevel(PlayerLevel playerLevel)&#123;</span><br><span class="line">        level = playerLevel;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> play(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        getLevel().go(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PlayerLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> run();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> jump();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> turn();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> showLevelMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> go(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        showLevelMessage();</span><br><span class="line">        run();</span><br><span class="line">        <span class="keyword">while</span> (num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            jump();</span><br><span class="line">            num--;</span><br><span class="line">        &#125;</span><br><span class="line">        turn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BeginnerLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeginnerLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;천천히 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점프 할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********초급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AdvancedLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점푸 할 수 있습니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn 할 줄 모릅니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********중급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SuperLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;엄청 빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;아주 높이 jump 합니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;한 바퀴 돕니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********고급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainBoardPlay</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Player player = <span class="keyword">new</span> Player();</span><br><span class="line">        player.play(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel alevel = <span class="keyword">new</span> AdvancedLevel();</span><br><span class="line">        player.upgradeLevel(alevel);</span><br><span class="line">        player.play(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel slevel = <span class="keyword">new</span> SuperLevel();</span><br><span class="line">        player.upgradeLevel(slevel);</span><br><span class="line">        player.play(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckey22wdu00178su2dd09ape2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PreCourse-Abstract_TemplateEx
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_AbstractClass</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/">PreCourse-Abstract_TemplateEx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/">PreCourse-Abstract_TemplateEx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/">Java_AbstractClass</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
