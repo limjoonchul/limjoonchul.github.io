@@ -64,6 +64,159 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TIL-20200810" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/15/TIL-20200810/" class="article-date">
+  <time datetime="2020-08-15T08:43:40.918Z" itemprop="datePublished">2020-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/TIL-20200810/">Study20200810</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성(Polymorphism)"></a>다형성(Polymorphism)</h1><h2 id="다형성의-다양한-특징"><a href="#다형성의-다양한-특징" class="headerlink" title="다형성의 다양한 특징"></a>다형성의 다양한 특징</h2><ul>
+<li><p>오버라이딩에 의한 다형성</p>
+</li>
+<li><p>오버라이딩에 의햔 다형성(상속에 의한 다형성)</p>
+</li>
+<li><p>부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line"></span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>부모 클래스로 자식 클래스를 참조한 경우, 자식 클래스의 메소드는 사용할 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line"></span><br><span class="line">        foo.methodA(); <span class="comment">// works</span></span><br><span class="line">        <span class="comment">// foo.methodB(); // error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>자식클래스로 부모 클래스를 참조하려 하면 java.lan.ClassCastException 오류 발생</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        Bar bar;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bar = (Bar)foo; // error</span></span><br><span class="line">        <span class="keyword">if</span> (foo <span class="keyword">instanceof</span> Bar) &#123; <span class="comment">// returns false</span></span><br><span class="line">            bar = (Bar)foo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>멤버 변수의 재정의는 선언된 객체의 타입을 따른다. (문법적으로 본다) 클래수 변수도 마찬가지 변수는 별도의 메모리에 저장됨.</p>
+</li>
+<li><p>메소드 오버라이딩은 메모리상의 객체 타입을 따른다. (실제 객체로 본다)</p>
+</li>
+<li><p>(가상 메소드 호출, virtual method call)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;super class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>); <span class="comment">//(가상 메소드 호출, virtual method call) 실제로 콜이 이루어지지 않지만 만들어줌 실제로 호출되지않ㅇ므</span></span><br><span class="line">        <span class="comment">// 없으면 안됨 문법을 맞춰주기 위한 것 뿐 구현된 것 자체는 중요하지 않음..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;sub class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;sub&quot;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;sub method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line"></span><br><span class="line">        System.out.println(bar.x); <span class="comment">//sub</span></span><br><span class="line">        bar.methodA(); <span class="comment">//sub</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.x); <span class="comment">//super</span></span><br><span class="line">        foo.methodA(); <span class="comment">//sub Virtual method call</span></span><br><span class="line"></span><br><span class="line">        System.out.println(Foo.y);</span><br><span class="line">        System.out.println(Bar.y);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(foo.y); //super</span></span><br><span class="line">        <span class="comment">//System.out.println(bar.y); //sub</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>공변 변환 타입(Covariant return type)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">//오버라이딩이지만, 리턴 타입이 달라질 수 있다. 여기서는 예외적으로 반환값이 달라진다. 공변 반환 타입</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">//return (Foo)this; 이거와 같다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="추상-클래스-Abstract-Class"><a href="#추상-클래스-Abstract-Class" class="headerlink" title="추상 클래스(Abstract Class)"></a>추상 클래스(Abstract Class)</h1><h2 id="추상-클래스란"><a href="#추상-클래스란" class="headerlink" title="추상 클래스란"></a>추상 클래스란</h2><ul>
+<li>일부 메소드가 구현되지 않고, 선언만 되어있는 클래스<ul>
+<li>자식 클래스에서 이것을 반드시 구현하게끔 강제하는 것</li>
+<li>필요한 모든 클래스가 구현될 수 있도록 하여 안정성을 높이는 효과를 가져옴.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">                                       <span class="comment">//세미콜론을 잊지 말아야 합니다. 시험*</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>; <span class="comment">// 선언만 하고 구현하지 않음. Virtual method call이여서 부모메소드는 비어있음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;implemented abstractMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// AbstractFoo afoo = new AbstractFoo() //추상 클래스는 객체 생성이 불가합니다. 구현이안되있으니 인스턴스화가 안된다.</span></span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        foo.abstractMethod();</span><br><span class="line"></span><br><span class="line">        AbstractFoo afoo = (AbstractFoo)foo;</span><br><span class="line">        afoo.abstractMethod(); <span class="comment">// virtual method call</span></span><br><span class="line">        <span class="comment">//추상클래스는 객체 생성은 불가하지만, 구현된 자식클래스의 객체는 받을 수 있다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200810/" data-id="ckezbct9800055su2asl89uyk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git-summary" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/08/Git-summary/" class="article-date">
+  <time datetime="2020-08-08T09:59:40.000Z" itemprop="datePublished">2020-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/08/Git-summary/">Git-summary</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="git이란"><a href="#git이란" class="headerlink" title="git이란"></a>git이란</h2><ul>
+<li><p>버전 관리 시스템을 말하며 빠른 속도와 단순한 구조를 갖고 있다<br>분산형 저장소를 지원하고, 비선형적 개발이 가능하다.</p>
+<h2 id="git-시작전-작업"><a href="#git-시작전-작업" class="headerlink" title="git 시작전 작업"></a>git 시작전 작업</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br></pre></td></tr></table></figure>
+<p>config 작업 후, <code>$ git config --list</code> 명령으로 오류를 확인.</p>
+</li>
+<li><p>git의 프로세스의 전체적인 구조.</p>
+</li>
+</ul>
+<p><img src="../image/gitProcess.png" alt="git-process"></p>
+<h1 id="git-시작하기-방법-2가지"><a href="#git-시작하기-방법-2가지" class="headerlink" title="git 시작하기(방법 2가지)"></a>git 시작하기(방법 2가지)</h1><h2 id="1-git-init"><a href="#1-git-init" class="headerlink" title="1. git init"></a>1. git init</h2><p>내 컴퓨터의 작업공간에서 github으로 소스코드를 내보내는 방법.</p>
+<ol>
+<li><p>프로젝트 폴더 만들기.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir first-git-repo</span><br><span class="line">$ cd first-git-repo</span><br></pre></td></tr></table></figure></li>
+<li><p>폴더를 만둔 후, <code>git init</code> 명령으로 local repository 시작.</p>
+</li>
+<li><p>github에 새로운 remote repository를 생성하고, 주소를 복사하여 local repository에 등록한다.</p>
+<ul>
+<li>프로젝트 폴더명과 생성한 repository 명을 갖게 한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;당신의유저네임&#x2F;first-git-repo.git</span><br><span class="line">$ git remote add origin 복사한주소</span><br><span class="line">$ git remote -v 로 확인.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>새 파일을 만들고 작업을 수행한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch README.md</span><br><span class="line">$ vi README.md</span><br></pre></td></tr></table></figure></li>
+<li><p>작업 수행 후,  $ git status 으로 git 상태 확인</p>
+</li>
+<li><p>workspace(작업 공간)에 추가된 새로운 파일을 index로 staging 한다.</p>
+<ul>
+<li>$ git add README.md</li>
+</ul>
+</li>
+<li><p>추가된 파일에 대한 설명을 commit</p>
+<ul>
+<li>$ git commit(제목을 누구나 알 수 있게 작성해야 한다.)</li>
+</ul>
+</li>
+<li><p>commit 후 remote repository로 push</p>
+<ul>
+<li>첫 commit이라면 git push -u origin master</li>
+<li>이후는, git push origin master<h2 id="2-git-clone"><a href="#2-git-clone" class="headerlink" title="2. git clone"></a>2. git clone</h2>git에서 remote repository를 먼저 생성한 뒤, 작업공간으로 끌어와 작업을 수행.</li>
+</ul>
+<ol>
+<li>github에서 remote repository를 생성하되, LICENSE, README.md, .gitignore 등의 파일과 함께 생성,<br>해당 repository의 주소를 복사한다.</li>
+<li>Teminal에서 <code>$ git clone 복사한remoteRepo주소</code>를 입력하여 작업공간에 local repository를 생성</li>
+</ol>
+<p>이하 과정은 init과 동일하다.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/08/Git-summary/" data-id="ckezbct8z00015su264n44lbt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
@@ -100,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckey2725m0001d0u24ik6efcc" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckezbct9400035su224whb2d2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckey27269000hd0u2b0bb4k2x" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckezbcta2000j5su26bv33gxd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,6 +348,14 @@
       <ul>
         
           <li>
+            <a href="/2020/09/12/Java/PreCourseEx/InterfaceEx1/">PreCourse-InterfaceEx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/12/Java/JavaAdvanced/Java-Interface/">Java_Interface</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/">PreCourse-Abstract_TemplateEx</a>
           </li>
         
@@ -204,14 +365,6 @@
         
           <li>
             <a href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/">Java_AbstractClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/10/Algorithm/Solution-BestAlbum/">AlgorithmSolution_BestAlbum</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
           </li>
         
       </ul>
