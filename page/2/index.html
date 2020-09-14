@@ -64,6 +64,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/PreCourseEx/InterfaceEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/12/Java/PreCourseEx/InterfaceEx1/" class="article-date">
+  <time datetime="2020-09-12T05:47:27.527Z" itemprop="datePublished">2020-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/12/Java/PreCourseEx/InterfaceEx1/">PreCourse-InterfaceEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="인터페이스-구현"><a href="#인터페이스-구현" class="headerlink" title="인터페이스 구현"></a>인터페이스 구현</h2><ul>
+<li>다음과 같이 여러 인터페이스가 입력에 따라 실행될 수 있도록 구현해보세요.</li>
+</ul>
+<p><img src="../../../image/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%98%88%EC%A0%9C.jpg" alt="인터페이스예제"></p>
+<ul>
+<li><p>Sort 인터페이스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sort</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> ascending(<span class="keyword">int</span> []arr);</span><br><span class="line">    <span class="keyword">void</span> descending(<span class="keyword">int</span> []arr);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> description()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;숫자를 정렬하는 알고리즘 입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>QuickSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;QuickSort ascending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;QuickSort descending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;Quicksort 입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HeapSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort ascending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort descending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort입니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BubbleSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort ascending.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort descending.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;정렬방식을 선택하세요&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;B : BubbleSort &quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;H : HeapSort&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Q : QuickSort&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ch = System.<span class="keyword">in</span>.read();</span><br><span class="line">        Sort sort = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(ch == <span class="string">&#x27;B&#x27;</span> || ch == <span class="string">&#x27;b&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> BubbleSort();</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;H&#x27;</span> || ch == <span class="string">&#x27;h&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> HeapSort();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;Q&#x27;</span> || ch == <span class="string">&#x27;q&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> QuickSort();</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;지원하지 않는 기능입니다.&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sort.ascending(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        sort.descending(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        sort.description();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckf2j9nl20011c0u2fnoo787t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Interface" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/12/Java/JavaAdvanced/Java-Interface/" class="article-date">
@@ -199,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckf2iw5870013yku24gi1d146" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckf2j9nld001gc0u2ejvbhq97" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckf2iw58s001iyku2d2jvbkn4" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckf2j9nku000sc0u25b1ddy2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckf2iw58p001gyku2a9lj19dc" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckf2j9nkv000uc0u29edcasqn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckf2iw57v000uyku2gs648ohs" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckf2j9nl70017c0u2d9sd40lp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -522,7 +578,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckf2iw57f000myku2dvfp5glh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckf2j9nkk000jc0u29d9iepcq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,7 +691,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckf2iw57c000kyku2a51u6c2e" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckf2j9nkm000lc0u2h27x2smj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -714,7 +770,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckf2iw58z001nyku2f52z0t3t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckf2j9nl30012c0u28lfbh0z0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -781,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckf2iw58c0017yku2akffb5h2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckf2j9nlh001mc0u2dyf9aflx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -849,146 +905,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckf2iw592001pyku29o0e26up" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Inheritance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" class="article-date">
-  <time datetime="2020-09-10T02:01:37.799Z" itemprop="datePublished">2020-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/">Java_Inheritance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="상속-Inheritence"><a href="#상속-Inheritence" class="headerlink" title="상속(Inheritence)"></a>상속(Inheritence)</h1><ul>
-<li>상속과 다형성을 이해를 잘하면 유지보수하기 쉽고 확장성있는 시스템을 설계할 수 있다.<br>객체지향의 큰 특징 중 하나이다.</li>
-</ul>
-<h2 id="상속이란"><a href="#상속이란" class="headerlink" title="상속이란"></a>상속이란</h2><ul>
-<li>어떤 클래스의 모든 멤버 변수 및 메소드를 계승하여, 새로운 클래스를 생성하는 것</li>
-<li>부모 클래스로부터 상속을 받은 자식 클래스는 부모의 것을 다 가지고 자기의 것을 추가로 더 가지고 만들어진다.</li>
-<li>상속 관계를 흔히 ‘IS-A’관계라고 한다.</li>
-</ul>
-<p><img src="../../../image/%EC%83%81%EC%86%8D.jpg" alt="상속"></p>
-<ul>
-<li>상속대상은 조상클래스, 부모클래스, 상위클래스, 슈퍼클래스 라고 한다.</li>
-<li>상속결과는 자손클래스, 자식클래스, 하위클래스, 서브클래스 라고 한다.</li>
-</ul>
-<h3 id="상속을-사용하는-경우"><a href="#상속을-사용하는-경우" class="headerlink" title="상속을 사용하는 경우"></a>상속을 사용하는 경우</h3><ul>
-<li><p>상속은 좀 더 일반적인 클래스가 있고 이것보다 좀 더 기능이 구체적인 클래스를 설계 한다.<br>유사한 클래스를 만드는데 기존의 클래스를 가져다가 좀 더 확장된 클래스를 만들 때 상속을 사용 한다.</p>
-<p><img src="../../../image/%EC%83%81%EC%86%8D3.jpg" alt="상속2"></p>
-</li>
-</ul>
-<h3 id="상속에서-접근-제한"><a href="#상속에서-접근-제한" class="headerlink" title="상속에서 접근 제한"></a>상속에서 접근 제한</h3><p><img src="../../../image/%EC%A0%91%EA%B7%BC%EC%A0%9C%ED%95%9C%EC%9E%90.jpg" alt="접근제한자"></p>
-<ul>
-<li>protected 예약어<ul>
-<li>클래스에서 멤버변수나 메소드를 private 예약어로 지정해 놨을 때 외부 클래스에서 접근을 하지 못한다.<br>그래서 상속 관계에서도 접근을 못하게 되는데 protected 예약어를 사용하면 상위클래스에 protected로 선언된 변수나 메소드를<br>다른 외부 클래스에서는 사용할 수 없게 하고 하위클래스에서 사용이 가능하다. </li>
-</ul>
-</li>
-</ul>
-<h3 id="상속에서-클래스-생성-과정과-형번환"><a href="#상속에서-클래스-생성-과정과-형번환" class="headerlink" title="상속에서 클래스 생성 과정과 형번환"></a>상속에서 클래스 생성 과정과 형번환</h3><ul>
-<li><p>Customer 상위클래스, VIPCustomer 하위클래스  </p>
-<p><img src="../../../image/%EC%83%81%EC%86%8D%EB%A9%94%EB%AA%A8%EB%A6%AC.jpg" alt="상속메모리"></p>
-</li>
-<li><p>하위클래스가 생성되는 과정</p>
-<ul>
-<li>하위 클래스가 생성 될 때 상위 클래스가 먼저 생성 된다.</li>
-<li>상위 클래스의 생성자가 호출되고 하위 클래스의 생성자가 호출 된다.</li>
-<li>하위 클래스의 생성자에서는 무조건 상위 클래스의 생성자가 먼저 호출되어야 한다.</li>
-<li>하위 클래스에서 상위 클래스의 생성자를 호출하는 코드가 없는 경우<br>컴파일러는 상위 클래스 기본 생성자를 호출하기 위한 super()를 추가한다.</li>
-<li>super()로 호출되는 생성자는 상위 클래스의 기본 생성자이다.</li>
-<li>만약 상위 클래스의 기본 생성자가 없는 경우(매개변수가 있는 생성자만 존재하는 경우)<br> 하위 클래스는 명시적으로 상위 클래스의 생성자를 호출해야 한다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="상위-클래스의-묵시적-형-변환-업-캐스팅"><a href="#상위-클래스의-묵시적-형-변환-업-캐스팅" class="headerlink" title="상위 클래스의 묵시적 형 변환(업 캐스팅)"></a>상위 클래스의 묵시적 형 변환(업 캐스팅)</h3><ul>
-<li>상위 클래스 형으로 변수를 선언하고 하위 클래스 인스턴스를 생성 할 수 있다.<br>하위 클래스는 상위 클래스의 타입을 내포하고 있으므로 상위 클래스로 묵시적 형 변환이 가능하다.<br>상속 관계에서 모든 하위 클래스는 상위 클래스로 묵시적 형 변환이 된다.<br>그 반대는 성립하지 않는다.</li>
-</ul>
-<p><img src="../../../image/%EC%83%81%EC%86%8D%ED%98%95%EB%B3%80%ED%99%98.jpg" alt="형변환"></p>
-<ul>
-<li>VIPCustomer() 생성자의 호출로 인스턴스는 모두 생성 되었지만,<br>타입이 Customer이므로 접근 할 수 있는 변수나 메소드는 Customer의 변수와 메소드이다.</li>
-</ul>
-<h3 id="하위-클래스로-명시적-형-변환-다운-캐스팅"><a href="#하위-클래스로-명시적-형-변환-다운-캐스팅" class="headerlink" title="하위 클래스로 명시적 형 변환(다운 캐스팅)"></a>하위 클래스로 명시적 형 변환(다운 캐스팅)</h3><ul>
-<li>묵시적으로 상위 클래스로 형 변환된 인스턴스가 원래 자료형(하위 클래스)으로 반환되어야 할 때<br>다운 캐스팅이라고 한다.</li>
-<li>하위 클래스로의 형 변환은 명시적으로 되어야 한다.</li>
-<li>Customer vc = new VIPCustomer() // 묵시적</li>
-<li>VIPCustomer vCustomer = (VIPCustomer)vc; //명시적</li>
-</ul>
-<h2 id="클래스의-관계"><a href="#클래스의-관계" class="headerlink" title="클래스의 관계"></a>클래스의 관계</h2><h3 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h3><ul>
-<li>부모 클래스<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;일하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;잠자기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>자식 클래스<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// person을 상속하는 자식 클래스 extends 키워드를 이용하여 상속</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String mainLang;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span>  <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;돈 받은 만큼 코딩하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String major;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;밤새 코딩하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="클래스의-포함"><a href="#클래스의-포함" class="headerlink" title="클래스의 포함"></a>클래스의 포함</h2></li>
-<li>관계 클래스를 조합해서 클래스를 만든다.</li>
-<li>상속하고 유사하지만, 한 클래스가 다른 클래스의 객체를 포함하는 관계</li>
-<li>내부에 포함하고 ‘HAS-A’ 관계로 표현된다.</li>
-<li>특별히 자바에선 ‘HAS-A’ 관계가 포함된 경우는 많이 없다.</li>
-<li>클래스 컴포지션 (Composition)이라 부른다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 메인머신 &#x27;HAS-A&#x27; String 이미 스트링을 컴포지션하고 있었다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainMachine</span></span>&#123;</span><br><span class="line">    String model;</span><br><span class="line">    <span class="keyword">boolean</span> isBroken = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainMachine</span><span class="params">(String model)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.model = model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// developer &#x27;HAS-A; MainMachine 개발자클래스가 메인머신의 객체 하나를 보유한다.</span></span><br><span class="line"><span class="comment">// 보유하고 있어서 메인머신의 속성을 건드릴 수 있다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span>&#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    MainMachine mainMachine;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Developer(String name,MainMachine machine)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>. mainMachine = machine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> writeCode()&#123;</span><br><span class="line">        <span class="keyword">if</span>(mainMachine.isBroken) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;코딩할 수 없습니다.&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(mainMachine.model+ <span class="string">&quot;으로 코딩하기&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(Math.random() &gt; <span class="number">0.9</span>)&#123;</span><br><span class="line">            breakMachine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> breakMachine()&#123;</span><br><span class="line">        mainMachine.isBroken = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainMachine mac = <span class="keyword">new</span> MainMachine(<span class="string">&quot;MacBook Pro&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Developer dev = <span class="keyword">new</span> Developer(<span class="string">&quot;나개발&quot;</span>,mac); <span class="comment">// 메인머신을</span></span><br><span class="line"><span class="comment">//  dev.mainMachine.model 가능</span></span><br><span class="line"><span class="comment">//  dev.model 불가능.</span></span><br><span class="line"><span class="comment">//  일치하냐 보유하냐의 차이 (상속과 컴포지션의 차이)      </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">       dev.writeCode();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="메소드-재정의"><a href="#메소드-재정의" class="headerlink" title="메소드 재정의"></a>메소드 재정의</h2><h3 id="메소드-재정의-Method-Overriding-란"><a href="#메소드-재정의-Method-Overriding-란" class="headerlink" title="메소드 재정의(Method Overriding)란?"></a>메소드 재정의(Method Overriding)란?</h3><ul>
-<li>Override -&gt; 덮어씌운다, 해킹해서 뭔가 달라지게 한다.</li>
-<li>기존의 있던걸 덮어씌워서 다른걸로 변형시키는 것</li>
-<li>다형성 (polymorphism)의 근간이 됩니다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;아무 코드나 일단 적어 보았다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// 이렇게 적어주는 것이 관례 필수는 아님(문법 오류는 아님)   @ - 에노테이션</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;능숙하게 코드를 작성해 보았다.&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;답은 틀렸다.&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;하지만 무언가 또 배웠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// 다양하게 오버라이드 될 수 있음.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;코드 작성이 하기 싫어서 하지 않았다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="@ 애노테이션(Annotation)"></a>@ 애노테이션(Annotation)</h3></li>
-<li>재정의된 메소드라는 의미로 선언부가 기존의 메소드와 다른 경우 에러가 발생한다.(같게 해줘야 함)</li>
-<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다<ul>
-<li>(컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.)</li>
-</ul>
-</li>
-<li>주로 사용되는 자바에서 제공되는 애노테이션</li>
-</ul>
-<p><img src="../../../image/%EC%95%A0%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.jpg" alt="애노테이션"></p>
-<h3 id="형변환과-오버라이딩-메소드-호출"><a href="#형변환과-오버라이딩-메소드-호출" class="headerlink" title="형변환과 오버라이딩 메소드 호출"></a>형변환과 오버라이딩 메소드 호출</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Customer vc = <span class="keyword">new</span> VIPCustomer();</span><br><span class="line">vc.calcPrice(<span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 <code>calcPrice()</code> 메소드는 어느 메소드에서 호출 될까?<br>자바에서 항상 인스턴스의 메소드가 호출이 된다. (메모리의 자료형을 따라서 메소드가 호출이된다.)<br>그 이유는 <code>Virtual method Call</code>이 이루어지기 때문이다.</p>
-<h4 id="가상-메소드-Virtual-method"><a href="#가상-메소드-Virtual-method" class="headerlink" title="가상 메소드(Virtual method)"></a>가상 메소드(Virtual method)</h4><ul>
-<li>메소드의 이름과 메소드 주소를 가진 메소드 테이블에서 호출될 메소드의 주소를 참조한다.</li>
-</ul>
-<p><img src="../../../image/%EA%B0%80%EC%83%81%EB%A9%94%EC%86%8C%EB%93%9C.jpg" alt="가상메소드"></p>
-<ul>
-<li>재정의된 메소드 호출 과정</li>
-</ul>
-<p><img src="../../../image/%EC%9E%AC%EC%A0%95%EC%9D%98%EB%90%9C%EB%A9%94%EC%86%8C%EB%93%9C%ED%98%B8%EC%B6%9C.jpg" alt="재정의된메소드호출"></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Customer customerLee = <span class="keyword">new</span> Customer(<span class="number">10010</span>,<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> priceLee = customerLee.calcPrice(<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">int</span> priceKim = customerKim.calcPrice(<span class="number">10000</span>);</span><br><span class="line">System.out.println(customerLee.showCustomerInfo() +<span class="string">&quot;지불금액은 &quot;</span>+priceLee);</span><br><span class="line"><span class="comment">//이순신님의 등급은 Silver이며, 적립된 보너스 포인트는 1100점 입니다. 지불금액은 10000</span></span><br><span class="line"></span><br><span class="line">System.out.println(customerKim.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+priceKim);</span><br><span class="line"><span class="comment">//김유신님의 등급은 VIP이며, 적립된 보너스 포인트는 10500점 입니다. 지불금액은 9000</span></span><br><span class="line"></span><br><span class="line">Customer customerNo = <span class="keyword">new</span> VIPCustomer(<span class="number">10030</span>,<span class="string">&quot;나몰라&quot;</span>);</span><br><span class="line">customerNo.bonusPoint=<span class="number">10000</span>;</span><br><span class="line">System.out.println(customerNo.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+customerNo.calcPrice(<span class="number">10000</span>));</span><br><span class="line"><span class="comment">// 나몰라님의 등급은 VIP이며, 적립된 보너스 포인트는 10000점 입니다. 지불금액은 9000</span></span><br><span class="line"><span class="comment">// 지불금액이 예상하기로 10000이 나와야하지만 결과는 9000이나옴 이유는 vipcustomer의 calcPrice()메소드가 호출되었기 때문에 이것을 가상메소드호출이라 한다.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="super-키워드"><a href="#super-키워드" class="headerlink" title="super 키워드"></a>super 키워드</h3><ul>
-<li>this 가 자신의 객체를 참조하듯, super 는 부모 객체를 참조한다.</li>
-<li>다만 super.super 라는 식으로 부모의 부모는 참조할 수 없다. 바로 윗 부모만 가능하다.</li>
-<li>자식 객체를 생성을 하면, 부모 객체를 먼저 생성하고, 그 다음에 자식 객체를 생성하게 된다.</li>
-<li>자식 객체를 생성할 때마다 부모 객체를 따로따로 만들어서 가지고 있다.</li>
-<li>호출할 때 this와 마찬가지로 첫줄에 써야한다.</li>
-<li>멤버 변수명이 부모와 겹치면 재정의 하지만, 부모가 사라지는 것은 아니다.</li>
-<li>부모클래스에 기본 생성자를 사용하는 경우에는 호출 안해줘도 된다. 파라미터 생성자일 때만<br>호출해주면 된다.</li>
-<li>부모클래스 생성자와 다르게 파라미터 변수명을 해줘야 한다.</li>
-<li>자식클래스 생성자를 만들 때 부모 클래스 생성자도 같이 호출해줘야한다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    String x = <span class="string">&quot;Foo&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Foo</span><span class="params">(String x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    String x = <span class="string">&quot;Bar&quot;</span>; <span class="comment">//멤버 변수명이 부모와 겹치면 재정의 하지만 부모가 사라지는 것은 아님.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//부모클래스에 기본 생성자를 사용하는 경우에는 호출 안해주어도 된다.</span></span><br><span class="line">    <span class="comment">//부모클래스에 파라미터 생성자가 있으면 호출해 줘야 한다. super 사용.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Bar</span><span class="params">(String x, String x1)</span> </span>&#123; <span class="comment">//부모클래스 생성자와 다르게 파라미터 변수명을 다르게 해줘야 한다. x,x1</span></span><br><span class="line">        <span class="keyword">super</span>(x); <span class="comment">//this와 마찬가지로 첫줄에 써야한다. 부모클래스 생성자 호출.</span></span><br><span class="line">        <span class="comment">//부모 객체를 먼저 생성하고, 그 다음에 자식 객체를 생성.</span></span><br><span class="line">        <span class="keyword">this</span>.x = x1; <span class="comment">//자식클래스 생성자를 만들때 부모클래스 생성자도 같이 호출해줘야한다.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//로컬변수명과 멤버변수명은 같을 수 있다.</span></span><br><span class="line"><span class="comment">//        String x = &quot;method&quot;; 로컬변수가 없어지면 멤버변수를 참조, 멤버변수도 없어지면 super클래스의 변수사용.</span></span><br><span class="line">        System.out.println(x);<span class="comment">//로컬변수 -&gt; 멤버변수 -&gt; 부모의 멤버변수 순으로 접근</span></span><br><span class="line">        System.out.println(<span class="keyword">this</span>.x); <span class="comment">// 자기 자신의 객체에 접근가능 멤버변수 - &gt; 부모의 멤버변수</span></span><br><span class="line">        System.out.println(<span class="keyword">super</span>.x); <span class="comment">//부모 객체에 접근 가능    부모의 멤버변수</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckf2iw5860012yku29j21dtw3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckf2j9nl10010c0u2arhyasfm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1034,6 +951,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/14/Algorithm/Solution-LongNode/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/">Java_ClassClass</a>
           </li>
         
@@ -1047,10 +968,6 @@
         
           <li>
             <a href="/2020/09/13/Algorithm/Solution-MaxNumber/">AlgorithmSolution_MaxNumber</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/JavaAdvanced/Java-ClassClass/">Java_ClassClass</a>
           </li>
         
       </ul>
