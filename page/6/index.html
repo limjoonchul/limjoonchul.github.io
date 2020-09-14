@@ -64,6 +64,369 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TIL-20200825" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/TIL-20200825/" class="article-date">
+  <time datetime="2020-08-25T11:12:43.521Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/TIL-20200825/">Study20200825</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ObjectClass"><a href="#ObjectClass" class="headerlink" title="ObjectClass"></a>ObjectClass</h1><h2 id="ObjectClass란"><a href="#ObjectClass란" class="headerlink" title="ObjectClass란"></a>ObjectClass란</h2><ul>
+<li>모든 클래스의 최상위 클래스</li>
+<li>java.lang.Object 클래스</li>
+<li>모든 클래스는 Object 클래스에서 상속 받음</li>
+<li>모든 클래스는 Object 클래스의 메소드를 사용할 수 있음</li>
+<li>모든 클래스는 Object 클래스의 일부 메소드를 재정의하여 사용할 수 있음<ul>
+<li>final로 재정의된 메소드들은 하위클래스에서 재정의 할 수 없기 때문에 일부 메소드만 재정의할 수 있다 라고 하는 것</li>
+</ul>
+</li>
+</ul>
+<h2 id="ObjectClass의-메소드"><a href="#ObjectClass의-메소드" class="headerlink" title="ObjectClass의 메소드"></a>ObjectClass의 메소드</h2><h3 id="toString-메소드"><a href="#toString-메소드" class="headerlink" title="toString() 메소드"></a>toString() 메소드</h3><ul>
+<li>toString()메소드의 원형</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getClass().getName() + <span class="string">&#x27;@&#x27;</span> + Integer.toHexString(hashCode())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>객체의 정보를 String으로 바꾸어 사용할 때 유용함</li>
+<li>자바 클래스중에는 이미 정의된 클래스가 많음</li>
+<li>예 : String, Integer, Calender 등</li>
+<li>많은 클래스에서 재정의하여 사용<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// extends Object 된 것과 같다 컴파일할 때 자동으로 생성이됨</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span>&#123;</span></span><br><span class="line">    String title;</span><br><span class="line">    String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String title, String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.title = title;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> author+<span class="string">&quot;,&quot;</span>+title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Book book =  <span class="keyword">new</span> Book(<span class="string">&quot;토지&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line">        System.out.println(book.toString());</span><br><span class="line">        <span class="comment">// 메모리주소가 출력됨.</span></span><br><span class="line"></span><br><span class="line">        String str = <span class="keyword">new</span> String(<span class="string">&quot;토지&quot;</span>);</span><br><span class="line">        System.out.println(str);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="equals-메소드"><a href="#equals-메소드" class="headerlink" title="equals() 메소드"></a>equals() 메소드</h3><ul>
+<li>두 객체의 동일함을 논리적으로 재정의 할 수 있음</li>
+<li>물리적 동일함 : 같은 주소를 가지는 객체</li>
+<li>논리적 동일함 : 같은 학번의 학생, 같은 주문 번호의 주문</li>
+<li>물리적으로 다른 메모리에 위치한 객체라도 논리적으로 동일함을 구현하기 위해 사용하는 메소드</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> studentNum;</span><br><span class="line">    String studentName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(<span class="keyword">int</span> studentNum, String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line">        <span class="built_in">this</span>.studentNum = studentNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Student)&#123;</span><br><span class="line">            Student std = (Student)obj;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.studentNum == std.studentNum)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student lee = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line">        Student lee2 =lee;</span><br><span class="line">        Student won = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(lee == lee2); <span class="comment">//true</span></span><br><span class="line">        System.out.println(lee == won);<span class="comment">//false</span></span><br><span class="line">        System.out.println(lee.equals(won)); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">        System.out.println(lee.hashCode());</span><br><span class="line">        System.out.println(won.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="hashCode-메소드"><a href="#hashCode-메소드" class="headerlink" title="hashCode() 메소드"></a>hashCode() 메소드</h3><ul>
+<li><p>자바에서 JVM이 있는데 인스턴스가 생성이 됬을 때 메모리 주소를 준다.<br>그 주소값을 <code>hashCode</code>라고 한다.</p>
+</li>
+<li><p>hashCode() 메소드의 반환값: 인스턴스가 저장된 가상머신의 주소를 10진수로 반환</p>
+</li>
+<li><p>두 개의 서로 다른 메모리에 위치한 인스턴스가 동일하다는 것은?</p>
+<ul>
+<li>논리적으로 동일 : equals() 의 반환값이 true</li>
+<li>동일한 hashCode 값을 가짐 : hashCode()의 반환 값이 동일 </li>
+</ul>
+</li>
+<li><p>실제 메모리 값이 아닌 hashCode값이 동일해야 객체들이 동일하다고 말할 수 있다.</p>
+</li>
+<li><p>실제 메모리값은 그대로 있다. 단지 overriding만 하는 것이다.</p>
+</li>
+<li><p>일반적으로 equals를 오버라이딩하면 hasCode도 오버라이딩 한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>;</span><br><span class="line">Integer i2 = <span class="number">100</span>;</span><br><span class="line">System.out.println(i1.equals(i2));</span><br><span class="line">System.out.println(i1.hashCode());</span><br><span class="line">System.out.println(i2.hashCode());</span><br><span class="line"></span><br><span class="line">System.out.println(System.identityHashCode(i1));</span><br><span class="line">System.out.println(System.identityHashCode(i2)); <span class="comment">//진짜 메모리주소 확인하는 메소드</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="clone-메소드"><a href="#clone-메소드" class="headerlink" title="clone() 메소드"></a>clone() 메소드</h3><ul>
+<li>객체의 복사본을 만듦</li>
+<li>기본 틀(prototype)으로 부터 같은 속성 값을 가진 객체의 복사본을 생성할 수 있음</li>
+<li>객체지향 프로그래밍의 정보은닉에 위배되는 가능성이 있으므로 복제할 객체는 cloneable 인터페이스를<br>명시해야 함.</li>
+<li>같은 객체를 동일하게 인스턴스 값을 동일하게 해서 만드는 것</li>
+</ul>
+<h4 id="주의"><a href="#주의" class="headerlink" title="주의"></a>주의</h4><p>생성자와는 다름 생성자는 기본 초기화를하면서 만드는데 이건 인스턴스의 상태를 그대로 복제하는 것<br>private필드까지 다 복제해올 수 있어서 정보은닉에 위배될 수 있어서 객체복제를 할 때<br>cloneable인터페이스가 명시되어 있어야 한다.</p>
+<ul>
+<li>clone() 메소드를 사용할 때 object 형으로 반환되므로 다운캐스팅을 해줘야한다</li>
+<li>구현 클래스에 Cloneable인터페이스를 implements해야 한다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>&#123;</span></span><br><span class="line">    String title;</span><br><span class="line">    String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String title, String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.title = title;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> author+<span class="string">&quot;,&quot;</span>+title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Object clone() <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        Book book =  <span class="keyword">new</span> Book(<span class="string">&quot;토지&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Book book2 =(Book)book.clone();</span><br><span class="line">        <span class="comment">//book.clone()이렇게 했을 때 object 자료형으로 반환이되서</span></span><br><span class="line">        <span class="comment">//명시적으로 다운캐스팅을 해줘야하고 예외처리를 해줘야 한다.</span></span><br><span class="line"></span><br><span class="line">        System.out.println(book2);</span><br><span class="line">        <span class="comment">//그냥하면 예외가 발생함</span></span><br><span class="line">        <span class="comment">// 이유 위에 cloneable 인터페이스를 implements 하지 않아서</span></span><br><span class="line">        <span class="comment">// 이런 인터페이스를 마크인터페이스라고 한다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="finalize-메소드"><a href="#finalize-메소드" class="headerlink" title="finalize() 메소드"></a>finalize() 메소드</h3><ul>
+<li>직접 불러서 사용하는 메소드는 아니다.</li>
+<li>이메소드는 이 객체가 heap메모리에서 해체될 때</li>
+<li>gc에서 호출되는 메소드 이게 정의가 되어있으면 gc가 이 메소드 부분을 수행한다.</li>
+<li>주로 리소스해제, 안닫혔을 소켓을 닫는다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> finalize() <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">      <span class="built_in">super</span>.finalize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Class-클래스"><a href="#Class-클래스" class="headerlink" title="Class 클래스"></a>Class 클래스</h1><ul>
+<li>자바의 모든 클래스와 인터페이스는 컴파일 후 class파일로 생성됨</li>
+<li>class 파일에는 객체의 정보(멤버 변수, 메소드, 생성자 등) 가 포함되어 있음</li>
+<li>Class 클래스는 컴파일된 class파일에서 객체의 정보를 가져올 수 있음</li>
+<li>동적로딩할 때 주로 사용하고 Class클래스를 이용해서 코딩할 일이 많지는 않다.</li>
+<li>이미 내 로컬PC에는 내가 사용하고자하는 라이브러리들이 있고 라이브러리들이 자료형을 다<br>알고 있는 상태이기 때문에</li>
+</ul>
+<h2 id="Class-클래스-가져오기"><a href="#Class-클래스-가져오기" class="headerlink" title="Class 클래스 가져오기"></a>Class 클래스 가져오기</h2><ol>
+<li>String s = new String();<br>Class c = s.getClass(); //object의 메소드 Class 클래스를 가져옴</li>
+<li>Class c = String.Class; //  컴파일된 상태로 있는 경우 </li>
+<li>Class c = Class.forName(“java.lang.String”); //동적로딩<ul>
+<li>대부분 컴파일 할 때 시스템에서 어떤 애들을 가져다 쓸것인지 컴파일타임에 거의다 바인딩이된다(정적로딩)<br>스태틱으로 다 바인딩이 된다 그런데 클래스.forName은 런타임때 바인딩이 됨(동적로딩)<br>클래스.forName(“이름”) 이름에 해당하는 클래스가 로컬에 있으면 불러다가 사용할 수 있다.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">자바에서 jdbc를 사용할 때 관련 db라이브러리(orcale, mysql, mssql) 같은 것들이 있는데</span><br><span class="line">그런 라이브러리들을 모두 스태틱하게 링크해서 컴파일 할 수 없음 </span><br><span class="line">너무 많은 라이브러리들을 링크해서 사용해야 하는건데 그럴 필요없이 라이브러리들을 install 한 </span><br><span class="line">상태에서 필요할 때 부를수 있게 끔 oracle과 연결이될거다 orcacle 이름이 들어가면 된다.</span><br></pre></td></tr></table></figure>
+<ul>
+<li>장점 : 런타임 때 그때그때상황에맞게 라이브러리를 매칭시킬 수 있다는 것</li>
+<li>단점 : 오타가나면 로딩되다가 클래스를 찾을 수없은 예외가 나타나서 런타임때 오류가날수 있다.</li>
+</ul>
+<h2 id="reflection-프로그래밍"><a href="#reflection-프로그래밍" class="headerlink" title="reflection 프로그래밍"></a>reflection 프로그래밍</h2><ul>
+<li>Class 클래스로부터 객체의 정보를 가져와 프로그래밍 하는 방식</li>
+<li>로컬에 객체가 없고 자료형을 알 수 없는 경우 유용한 프로그래밍</li>
+<li>java.lang.reflect 패키지에 있는 클래스 활용</li>
+</ul>
+<h2 id="newInstance-메소드"><a href="#newInstance-메소드" class="headerlink" title="newInstance()메소드"></a>newInstance()메소드</h2><ul>
+<li>Class 클래스 메소드</li>
+<li>new 키워들 ㄹ사용하지 않고 인스턴스를 생성</li>
+</ul>
+<h2 id="forName-메소드와-동적로딩"><a href="#forName-메소드와-동적로딩" class="headerlink" title="forName() 메소드와 동적로딩"></a>forName() 메소드와 동적로딩</h2><ul>
+<li>Class 클래스 static 메소드</li>
+<li>동적로딩이란? <ul>
+<li>컴파일 시에 데이터 타입이 모두 binding 되어 자료형이 로딩되는 것(static loding)이 아니라 실행 중에 데이터 타입을 알고 binding 되는 방식</li>
+</ul>
+</li>
+<li>실행 시에 로딩되므로 경우에 따라 다른 클래스가 사용될 수 있어 유용하다.</li>
+<li>컴파일 타임에 체크할 수 없으므로 해당 문자열에 대한 클래스가 없는 경우 예외(ClassNotFoundException)이 발생 할 수 있다.</li>
+</ul>
+<h2 id="주의사항"><a href="#주의사항" class="headerlink" title="주의사항"></a>주의사항</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Class 클래스에서 class.forName을 주의 깊게 봐야 한다.</span><br><span class="line"></span><br><span class="line">다른 언어들도 동적로딩하는 방법이 있다.</span><br><span class="line"></span><br><span class="line">스태틱으로 컴파일타임에 다 어떤걸쓰는지 바인딩되는 그런 방법도 있고,</span><br><span class="line">런타임 때 내가 쓸걸 로딩해서 쓰는 방법도 있고 언어들마다 제공되고 있다.</span><br><span class="line"></span><br><span class="line">자바에서 동적바인딩은 class.forName으로 제공되고있다.</span><br></pre></td></tr></table></figure>
+
+<h1 id="오늘의-배운점"><a href="#오늘의-배운점" class="headerlink" title="오늘의 배운점"></a>오늘의 배운점</h1><ul>
+<li>this.studentNum == std.stduentNum 과 main method의 System.out.println(lee == won) 의 조건문이 같은 값들을 비교하는 걸로 착각함</li>
+<li><code>this.studentNum == std.stduentNum</code> : 이건 객체의 변수가 같은걸 비교하는 것이다</li>
+<li><code>lee == won</code> : 이건 객체 자체를 비교하는 것</li>
+<li>객체의 변수를 비교하는 것과 객체 자체를 비교하는 것인데 그걸 생각하지 않고 혼자서 왜 같은걸 비교하고 있지라고 생각하고 있었다…</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> studentNum;</span><br><span class="line">    String studentName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(<span class="keyword">int</span> studentNum, String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line">        <span class="built_in">this</span>.studentNum = studentNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Student)&#123;</span><br><span class="line">            Student std = (Student)obj;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.studentNum == std.studentNum)&#123;</span><br><span class="line">   </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Student lee = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line">        Student lee2 =lee;</span><br><span class="line">        Student won = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(lee == lee2); <span class="comment">//true</span></span><br><span class="line">        System.out.println(lee == won);<span class="comment">//false</span></span><br><span class="line">        System.out.println(lee.equals(won)); <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>String은 예상한대로 결과 값이 나오는데 객체를 가지고 하는 비교는 예상과 달랐다. 모르는 부분을 배운 것 같다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">System.out.println(str1 == str2); <span class="comment">//메모리 주소가 같은가 를 확인 false</span></span><br><span class="line">System.out.println(str1.equals(str2));<span class="comment">//두개의 문자열이 같은가를 확인 true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>여기서 newInstance()는 반환하면 object 타입이다 그래서 다운캐스팅을 해줘야 한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class c1 = Class.forName(<span class="string">&quot;ClassEx.Person&quot;</span>);</span><br><span class="line">        Person person1 = (Person) c1.newInstance();</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>로컬에서 person이라는 타입을 쓸 수 없는 경우 이렇게 사용</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Object[] initargs = &#123;<span class="string">&quot;김유신&quot;</span>&#125;;</span><br><span class="line">Person personLee = (Person) cons.newInstance(initargs);</span><br><span class="line">System.out.println(personLee);</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String str = <span class="keyword">new</span> String(<span class="string">&quot;토지&quot;</span>);</span><br><span class="line">System.out.println(str);</span><br><span class="line"><span class="comment">//String 안에 이미 toString()메소드가 정의되어 있어서</span></span><br><span class="line"><span class="comment">// String클래스 안에 있는 Chararcter의 배열을 출력하도록 되어 있다.</span></span><br><span class="line"></span><br><span class="line">Book book2 =(Book)book.clone();</span><br><span class="line"><span class="comment">//book.clone()이렇게 했을 때 object 자료형으로 반환이되서</span></span><br><span class="line"><span class="comment">//명시적으로 다운캐스팅을 해줘야하고 예외처리를 해줘야 한다.</span></span><br><span class="line"></span><br><span class="line">System.out.println(book2);</span><br><span class="line"><span class="comment">//그냥하면 예외가 발생함</span></span><br><span class="line"><span class="comment">// 이유 위에 cloneable 인터페이스를 implements 하지 않아서</span></span><br><span class="line"><span class="comment">// 이런 인터페이스를 마크인터페이스라고 한다.</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200825/" data-id="ckf2iw56v000byku21cab2wks" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TIL-20200823" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/TIL-20200823/" class="article-date">
+  <time datetime="2020-08-25T11:10:27.984Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/TIL-20200823/">Study20200823</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="온라인-강의들으며-복습"><a href="#온라인-강의들으며-복습" class="headerlink" title="온라인 강의들으며 복습"></a>온라인 강의들으며 복습</h3><h1 id="추상-클래스"><a href="#추상-클래스" class="headerlink" title="추상 클래스"></a>추상 클래스</h1><ul>
+<li>추상메소드를 포함한 클래스<ul>
+<li>추상 메소드 - 구현 코드가 없이 선언부만 있는 메소드</li>
+</ul>
+</li>
+</ul>
+<h2 id="추상클래스-특징"><a href="#추상클래스-특징" class="headerlink" title="추상클래스 특징"></a>추상클래스 특징</h2><ul>
+<li>abstract 예약어 사용</li>
+<li>추상클래스는 new(인스턴스화) 할 수 없다.</li>
+<li>추상클래스는 단독으로 사용되는 것이아니라 상위클래스로서 사용된다</li>
+<li>공통적으로 사용할 수 있는 메소드들은 사용할 수 있다.</li>
+<li>구현해야하는 메소드들은 사위클래스에서 선언을 해놓고,<br>구현의 책임을 하위클래스에 위임한다.</li>
+<li>하나의 추상메소드라도 포함을 하면 추상클래스가 되야 한다.</li>
+<li>추상메소드가없어도 abstract 키워드를 사용하면 추상클래스가 된다</li>
+</ul>
+<h2 id="추상클래스-구현"><a href="#추상클래스-구현" class="headerlink" title="추상클래스 구현"></a>추상클래스 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Computer</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> display();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> typing(); <span class="comment">//하위클래스에서 구현됨.</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> turnOn()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;전원을 켭니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> turnOff()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;전원을 끕니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>추상클래스의 일반메소드들은 하위클래스들이 공통으로 사용하는 메소드들이고<br>추상메소드들은 하위클래스에서 구현해서 사용해야하는 메소드들이다.<br>하나라도 하위클래스에서 추상메소드가 구현이 안되어있다면 error가 난다.</p>
+<h2 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h2><ul>
+<li>추상클래스는 주로 상속의 상위클래스로 사용된다</li>
+<li>추상메소드 - 하위클래스가 구현해야 하는 메소드</li>
+<li>구현된 메소드- 하위클래스가 공통으로 사용하는 기능의 메소드, 하위클래스에 따라 재정의할 수 있음.</li>
+</ul>
+<h1 id="템플릿-메소드"><a href="#템플릿-메소드" class="headerlink" title="템플릿 메소드"></a>템플릿 메소드</h1><ul>
+<li>템플릿 - 틀이나 견본을 의미한다</li>
+<li>템플릿메소드 - 추상메소드나 구현된 메소드를 활용하여 전체의 흐름(시나리오)를 정의해 놓은 메소드<br>final로 선언하여 재정의 할 수 없게 한다.</li>
+</ul>
+<h2 id="템플릿-메소드-패턴"><a href="#템플릿-메소드-패턴" class="headerlink" title="템플릿 메소드 패턴"></a>템플릿 메소드 패턴</h2><ul>
+<li>디자인 패턴의 일종으로 프레임워크에서 많이 사용되는 설계패턴이다</li>
+<li>추상클래스로 선언된 상위클래스에서 추상메소드를 이용하여 전체 구현의 흐름을 정의하고<br>구체적인 각 메소드 구현은 하위클래스에 위임함 </li>
+<li>하위클래스가 다른 구현을 했 다고 해서 템플릿 메소드에 정의된 시나리오대로 수행됨.</li>
+</ul>
+<h2 id="final-예약어"><a href="#final-예약어" class="headerlink" title="final 예약어"></a>final 예약어</h2><ul>
+<li>fianl 변수는 값이 변경될 수 없는 상수이다.</li>
+<li>public static final double PI = 3.14;</li>
+<li>오직 한번만 값을 할당 할 수 있음</li>
+<li>final 메소드는 하위 클래스에서 재정의(overriding) 할 수 없음.</li>
+<li>final 클래스는 더 이상 상속되지 않음</li>
+<li>상속이 됬을 때 문제가 될 수도 있고 고유한 기능이 있는 경우 상속 할 일이 없다면 <code>final</code>을 붙이면 된다<h3 id="public-static-final-상수-값-정의해-사용하기"><a href="#public-static-final-상수-값-정의해-사용하기" class="headerlink" title="public static final 상수 값 정의해 사용하기"></a>public static final 상수 값 정의해 사용하기</h3></li>
+<li>프로젝트 구현 시 여러 파일에서 공유해야 하는 상수 값은 하나의 파일에 선언해 사용하면 편리</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200823/" data-id="ckf2iw56o0008yku2035b8tra" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TIL-20200820" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/TIL-20200820/" class="article-date">
+  <time datetime="2020-08-25T11:06:45.580Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/TIL-20200820/">Study20200820</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="온라인-강의들으며-복습"><a href="#온라인-강의들으며-복습" class="headerlink" title="온라인 강의들으며 복습"></a>온라인 강의들으며 복습</h3><h1 id="메모리-할당-시점"><a href="#메모리-할당-시점" class="headerlink" title="메모리 할당 시점"></a>메모리 할당 시점</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">변수가 메모리에 생성될 때는 초기화가 이루어지는 시점인데, 초기화가 되는 시점은</span><br><span class="line">클래스나 메소드에서 초기화 값을 준다고 해도 메모리에 생성이 되는게 아니다.</span><br><span class="line">변수를 선언하는 것은 메모리를 자료형의 크기만큼 쓰겠다라고 하는 것이다(메모리에 공간 확보)</span><br><span class="line">변수 초기화는 메모리에 실제 값을 할당 하는 것이다.</span><br><span class="line">메인 메소드안에 있는 변수들은 실행될 때 메모리에 생성됨.</span><br><span class="line">정적 변수 - 클래스가 생성이 될 때 메모리에 할당이 된다.</span><br></pre></td></tr></table></figure>
+
+<h1 id="상속과-다형성"><a href="#상속과-다형성" class="headerlink" title="상속과 다형성"></a>상속과 다형성</h1><ul>
+<li>상속과 다형성에 대해 이해를 잘하게 되면 유지보수하기 쉽고 확장성 있는 시스템을 설계할 수 있다.</li>
+<li>객체지향프로그래밍의 큰 특징 중 하나이다.</li>
+<li>상속, 추상클래스, 인터페이스까지 쭉 이어지는 내용이므로 확실히 이해하는게 중요!!</li>
+</ul>
+<h2 id="상속이란"><a href="#상속이란" class="headerlink" title="상속이란"></a>상속이란</h2><ul>
+<li>새로운 클래스를 정의할 때 이미 구현된 클래스를 상속(Inheritance) 받아서<br>속성이나 기능이 확장된 클래스를 구현함.</li>
+<li>코드의 재사용이 되긴 하지만 코드의 재사용 방법이라고 이해하면 안된다 조금 다름.</li>
+<li>상속은 일반적인 클래스가 있고 이것보다 좀 더 기능이 구체적인 클래스를 설계한다.<br>유사한 클래스를 만드는데 기존의 클래스를 가져다가 좀 더 확장된 클래스를 만들 때 사용.</li>
+<li>extends 키워드를 사용하고 extends 키워드 뒤에는 단 하나의 class만 사용 가능,<br>다중 상속이 불가능 하다.</li>
+</ul>
+<h3 id="상속에서-클래스의-제어자"><a href="#상속에서-클래스의-제어자" class="headerlink" title="상속에서 클래스의 제어자"></a>상속에서 클래스의 제어자</h3><ul>
+<li>private를 사용하면 상속받은 관계에서도 사용할 수가 없다. 그래서 상속하기 위해 protected 제어자를 사용함.<br>(다른 외부 클래스에서 사용할 수 없지만 자식클래스는 사용이 가능하기 때문에)</li>
+</ul>
+<h3 id="상속-클래스의-이름"><a href="#상속-클래스의-이름" class="headerlink" title="상속 클래스의 이름"></a>상속 클래스의 이름</h3><ul>
+<li>상속하는 클래스를 상위클래스, 부모클래스, 슈퍼클래스라고 한다.</li>
+<li>상속받는 클래스를 하위클래스, 자식클래스, 서브클래스 등의 다양한 이름으로 불린다.</li>
+</ul>
+<h3 id="상속에서의-메모리-상태"><a href="#상속에서의-메모리-상태" class="headerlink" title="상속에서의 메모리 상태"></a>상속에서의 메모리 상태</h3><ul>
+<li>상위 클래스의 인스턴스가 메모리에 먼저 생성이 되고, 하위클래스의 인스턴스가 생성된다</li>
+</ul>
+<h3 id="상속에서-클래스-생성-과정과-형-변환"><a href="#상속에서-클래스-생성-과정과-형-변환" class="headerlink" title="상속에서 클래스 생성 과정과 형 변환"></a>상속에서 클래스 생성 과정과 형 변환</h3><ul>
+<li>하위 클래스가 생성되는 과정<ul>
+<li>하위클래스가 생성될 때 상위 클래스가 먼저 생성된다</li>
+<li>상위클래스의 생성자가 호출되고 하위 클래스의 생성자가 호출 된다</li>
+<li>하위클래스의 생성자에서는 무조건 상위 클래스의 생성자가 호출 되어야 한다</li>
+<li>하위클래스에서 상위클래스의 생성자를 호출하는 코드가 없는 경우, 컴파이럴에서 자동으로 super()를 추가함.<ul>
+<li>(super() 상위클래스를 호출 할때 사용하는 키워드)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>만약 상위 클래스의 기본생성자가 없는 경우 (파라미터 생성자만 존재하는 경우)<br>클래스는 명시적으로 상위클래스의 생성자를 호출해줘야만 한다.</li>
+</ul>
+<h3 id="상위클래스로의-묵시적-형변환-업-캐스팅"><a href="#상위클래스로의-묵시적-형변환-업-캐스팅" class="headerlink" title="상위클래스로의 묵시적 형변환(업 캐스팅)"></a>상위클래스로의 묵시적 형변환(업 캐스팅)</h3><ul>
+<li>상위 클래스 형으로 변수를 선언하고 하위 클래스 인스턴스를 생성 할 수 있다.</li>
+<li>하위클래스는 상위클래스의 타입을 내포하고 있으므로 상위 클래스로 묵시적 형변환이 가능하다</li>
+<li>상속관계에서 모든 하위클래스는 상위클래스로 묵시적 형 변환이 된다, 그 반대는 성립하지 않는다.</li>
+</ul>
+<h2 id="메소드-오버라이딩"><a href="#메소드-오버라이딩" class="headerlink" title="메소드 오버라이딩"></a>메소드 오버라이딩</h2><h3 id="오버라이딩이란"><a href="#오버라이딩이란" class="headerlink" title="오버라이딩이란"></a>오버라이딩이란</h3><ul>
+<li>상위 클래스에서 정의된 메소드의 구현 내용이 하위 클래스에서 구현할 내용과 맞지 않은 경우<br>하위클래스에서 동일한 이름의 메소드를 재정의할 수 있다.</li>
+<li>이미 구현된 코드를 다른 코드로 재구현한다, 덮어씌운다는 의미이다.</li>
+</ul>
+<h3 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="@ 애노테이션(Annotation)"></a>@ 애노테이션(Annotation)</h3><ul>
+<li>재정의된 메소드라는 의미로 선언부가 기존의 메소드와 다른 경우 에러가 발생한다.(같게 해줘야 함)</li>
+<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다<ul>
+<li>(컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.)</li>
+</ul>
+</li>
+<li>주로 사용되는 자바에서 제공되는 애노테이션</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>애노테이션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Override</td>
+<td>재정의된 메소드라는 정보 제공</td>
+</tr>
+<tr>
+<td>@FuctionalInterface</td>
+<td>함수형 인터페이스라는 정보 제공</td>
+</tr>
+<tr>
+<td>@Deprecated</td>
+<td>이후 버전에서 사용되지 않을 수 있는 변수, 메서드에 사용됨</td>
+</tr>
+<tr>
+<td>@SupperessWarnings</td>
+<td>특정 경고가 나타나지 않도록 함 ex) @SupperessWarnings(“deprecations”)는 @Depreacted가 나타나지 않도록 함.</td>
+</tr>
+</tbody></table>
+<h3 id="형-변환과-오버라이딩-메소드-호출"><a href="#형-변환과-오버라이딩-메소드-호출" class="headerlink" title="형 변환과 오버라이딩 메소드 호출"></a>형 변환과 오버라이딩 메소드 호출</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Customer vc = <span class="keyword">new</span> VIPCustomer();</span><br><span class="line">vc.calcPrice(<span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
+<p>위 코드에서 <code>calcPrice()</code> 메소드는 어느 메소드에서 호출 될까?<br>자바에서 항상 인스턴스의 메소드가 호출이 된다.<br>그 이유는 <code>Virtual method Call</code>이 이루어지기 때문이다.</p>
+<h4 id="Virtual-method-Call이란"><a href="#Virtual-method-Call이란" class="headerlink" title="Virtual method Call이란"></a>Virtual method Call이란</h4><p> 메소드의 이름과 메소드 주소를 가진 가상 메소드 테이블에서 호출될 메소드의 주소를 참조한다.<br> 멤버함수는 생성된 객체의 메모리를 참조하기 때문에 가상메소드가 되서 VIPCostomer의 calcPrice를 참조하게 된다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Customer customerLee = <span class="keyword">new</span> Customer(<span class="number">10010</span>,<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> priceLee = customerLee.calcPrice(<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">int</span> priceKim = customerKim.calcPrice(<span class="number">10000</span>);</span><br><span class="line">System.out.println(customerLee.showCustomerInfo() +<span class="string">&quot;지불금액은 &quot;</span>+priceLee);</span><br><span class="line"><span class="comment">//이순신님의 등급은 Silver이며, 적립된 보너스 포인트는 1100점 입니다.지불금액은 10000</span></span><br><span class="line"></span><br><span class="line">System.out.println(customerKim.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+priceKim);</span><br><span class="line"><span class="comment">//김유신님의 등급은 VIP이며, 적립된 보너스 포인트는 10500점 입니다.지불금액은 9000</span></span><br><span class="line"></span><br><span class="line">Customer customerNo = <span class="keyword">new</span> VIPCustomer(<span class="number">10030</span>,<span class="string">&quot;나몰라&quot;</span>);</span><br><span class="line">customerNo.bonusPoint=<span class="number">10000</span>;</span><br><span class="line">System.out.println(customerNo.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+customerNo.calcPrice(<span class="number">10000</span>));</span><br><span class="line"><span class="comment">//나몰라님의 등급은 VIP이며, 적립된 보너스 포인트는 10000점 입니다.지불금액은 9000</span></span><br><span class="line"><span class="comment">// 지불금액이 예상하기로 10000이 나와야하지만 결과는 9000이나옴 이유는 vipcustomer의 calcPrice()메소드가 호출되었기 때문에 이것을 가상메소드호출이라 한다.</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200820/" data-id="ckf2iw56q0009yku2hck7cbqw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-TIL-20200819" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/25/TIL-20200819/" class="article-date">
@@ -138,7 +501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200819/" data-id="ckf0wpjr9000790u23ef33ohh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200819/" data-id="ckf2iw56m0007yku2d86vgewx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +639,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200817/" data-id="ckf0wpjr8000690u23qfufmm0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200817/" data-id="ckf2iw56j0005yku28hs8btq8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +725,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200824/" data-id="ckf0wpjre000c90u2c0t4gumw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/25/TIL-20200824/" data-id="ckf2iw56s000ayku24wgob7s3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -565,7 +928,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200814/" data-id="ckf0wpjr7000590u24nw54goo" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200814/" data-id="ckf2iw56k0006yku2958u6dpj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -756,7 +1119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200813/" data-id="ckf0wpjr5000390u21cgccm95" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200813/" data-id="ckf2iw56f0003yku22aueg2jp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -884,7 +1247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200811/" data-id="ckf0wpjr6000490u2bbldb4e7" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200811/" data-id="ckf2iw56d0002yku2bh09ekhu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -955,184 +1318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200810/" data-id="ckf0wpjr3000190u2251r1ybx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Git-summary" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/08/Git-summary/" class="article-date">
-  <time datetime="2020-08-08T09:59:40.000Z" itemprop="datePublished">2020-08-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/08/Git-summary/">Git-summary</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="git이란"><a href="#git이란" class="headerlink" title="git이란"></a>git이란</h2><ul>
-<li><p>버전 관리 시스템을 말하며 빠른 속도와 단순한 구조를 갖고 있다<br>분산형 저장소를 지원하고, 비선형적 개발이 가능하다.</p>
-<h2 id="git-시작전-작업"><a href="#git-시작전-작업" class="headerlink" title="git 시작전 작업"></a>git 시작전 작업</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;당신의유저네임&quot;</span><br><span class="line">$ git config --global user.email &quot;당신의메일주소&quot;</span><br><span class="line">$ git config --global core.editor &quot;vim&quot;</span><br></pre></td></tr></table></figure>
-<p>config 작업 후, <code>$ git config --list</code> 명령으로 오류를 확인.</p>
-</li>
-<li><p>git의 프로세스의 전체적인 구조.</p>
-</li>
-</ul>
-<p><img src="../image/gitProcess.png" alt="git-process"></p>
-<h1 id="git-시작하기-방법-2가지"><a href="#git-시작하기-방법-2가지" class="headerlink" title="git 시작하기(방법 2가지)"></a>git 시작하기(방법 2가지)</h1><h2 id="1-git-init"><a href="#1-git-init" class="headerlink" title="1. git init"></a>1. git init</h2><p>내 컴퓨터의 작업공간에서 github으로 소스코드를 내보내는 방법.</p>
-<ol>
-<li><p>프로젝트 폴더 만들기.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir first-git-repo</span><br><span class="line">$ cd first-git-repo</span><br></pre></td></tr></table></figure></li>
-<li><p>폴더를 만둔 후, <code>git init</code> 명령으로 local repository 시작.</p>
-</li>
-<li><p>github에 새로운 remote repository를 생성하고, 주소를 복사하여 local repository에 등록한다.</p>
-<ul>
-<li>프로젝트 폴더명과 생성한 repository 명을 갖게 한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;github.com&#x2F;당신의유저네임&#x2F;first-git-repo.git</span><br><span class="line">$ git remote add origin 복사한주소</span><br><span class="line">$ git remote -v 로 확인.</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>새 파일을 만들고 작업을 수행한다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ touch README.md</span><br><span class="line">$ vi README.md</span><br></pre></td></tr></table></figure></li>
-<li><p>작업 수행 후,  $ git status 으로 git 상태 확인</p>
-</li>
-<li><p>workspace(작업 공간)에 추가된 새로운 파일을 index로 staging 한다.</p>
-<ul>
-<li>$ git add README.md</li>
-</ul>
-</li>
-<li><p>추가된 파일에 대한 설명을 commit</p>
-<ul>
-<li>$ git commit(제목을 누구나 알 수 있게 작성해야 한다.)</li>
-</ul>
-</li>
-<li><p>commit 후 remote repository로 push</p>
-<ul>
-<li>첫 commit이라면 git push -u origin master</li>
-<li>이후는, git push origin master<h2 id="2-git-clone"><a href="#2-git-clone" class="headerlink" title="2. git clone"></a>2. git clone</h2>git에서 remote repository를 먼저 생성한 뒤, 작업공간으로 끌어와 작업을 수행.</li>
-</ul>
-<ol>
-<li>github에서 remote repository를 생성하되, LICENSE, README.md, .gitignore 등의 파일과 함께 생성,<br>해당 repository의 주소를 복사한다.</li>
-<li>Teminal에서 <code>$ git clone 복사한remoteRepo주소</code>를 입력하여 작업공간에 local repository를 생성</li>
-</ol>
-<p>이하 과정은 init과 동일하다.</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/08/Git-summary/" data-id="ckf0wpjqw000090u288cb9k6k" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-My-new-hexo-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/My-new-hexo-post/" class="article-date">
-  <time datetime="2020-08-07T07:20:11.000Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/My-new-hexo-post/">My new hexo post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Let me introduce myself!!</p>
-<ul>
-<li>Name: joon</li>
-<li>Hobby: Collect Keyboards</li>
-<li>Favorite soccer team<ul>
-<li>Asnal</li>
-<li>MU</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckf0wpjr4000290u26w254uni" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/07/hello-world/" class="article-date">
-  <time datetime="2020-08-07T07:11:12.186Z" itemprop="datePublished">2020-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckf0wpjrk000j90u278y2613p" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200810/" data-id="ckf2iw56h0004yku2fdga9a1d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1146,7 +1332,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1178,23 +1364,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/">Java_ClassClass</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-Generic/">Java_Generic</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-Enumeration/">Java_Enumeration</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/13/Algorithm/Solution-MaxNumber/">AlgorithmSolution_MaxNumber</a>
           </li>
         
           <li>
             <a href="/2020/09/13/Java/JavaAdvanced/Java-ClassClass/">Java_ClassClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/JavaBasic/Java-String/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/">Java_WrapperClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/">PreCourse-ObjectClassEx</a>
           </li>
         
       </ul>

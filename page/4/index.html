@@ -64,6 +64,184 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaAdvanced/Java-ReferenceDataType" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" class="article-date">
+  <time datetime="2020-09-07T05:17:25.593Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/">Java_ReferenceDataType</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="참조-자료형-ReferenceDataType"><a href="#참조-자료형-ReferenceDataType" class="headerlink" title="참조 자료형(ReferenceDataType)"></a>참조 자료형(ReferenceDataType)</h1><h2 id="변수의-자료형"><a href="#변수의-자료형" class="headerlink" title="변수의 자료형"></a>변수의 자료형</h2><p><img src="../../../image/%EC%B0%B8%EC%A1%B0%20%EC%9E%90%EB%A3%8C%ED%98%95.png" alt="변수의자료형"></p>
+<ul>
+<li>기본 자료형은 사용하는 메모리가 정해져 있지만, 참조 자료형은 클래스에 따라 다르다.</li>
+</ul>
+<h2 id="참조-자료형-직접-만들어-사용하기"><a href="#참조-자료형-직접-만들어-사용하기" class="headerlink" title="참조 자료형 직접 만들어 사용하기"></a>참조 자료형 직접 만들어 사용하기</h2><ul>
+<li>학생 클래스에 있는 과목 이름, 과목 성적 속성을 학생클래스와 과목 클래스로 분리하고,<br>과목 참조 자료형 멤버 변수를 학생에 정의하여 사용한다.</li>
+</ul>
+<p><img src="../../../image/%EC%B0%B8%EC%A1%B0%EC%9E%90%EB%A3%8C%ED%98%952.png" alt="참조자료형"></p>
+<ul>
+<li>예제<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Subject 클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> stuID;</span><br><span class="line">    String stuName;</span><br><span class="line">    Subject korSub;</span><br><span class="line">    Subject matSub;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(<span class="keyword">int</span> stuID,String stuName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.stuID = stuID;</span><br><span class="line">        <span class="built_in">this</span>.stuName = stuName;</span><br><span class="line"></span><br><span class="line">        korSub = <span class="keyword">new</span> Subject();</span><br><span class="line">        matSub = <span class="keyword">new</span> Subject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setKoreaSubject(String subName, <span class="keyword">int</span> subScore) &#123;</span><br><span class="line">        korSub.subName = subName;</span><br><span class="line">        korSub.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMathSubject(String subName, <span class="keyword">int</span> subScore) &#123;</span><br><span class="line">        matSub.subName = subName;</span><br><span class="line">        matSub.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> getKoreaSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        korSub.setSubject(subName,subScore);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> getMathSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        matSub.setSubject(subName,subScore);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showStudentScore() &#123;</span><br><span class="line">        <span class="keyword">int</span> total = korSub.subScore + matSub.subScore;</span><br><span class="line">        System.out.println(stuName+<span class="string">&quot;학생의 총점은 &quot;</span>+total+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Subject 클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subject</span> &#123;</span></span><br><span class="line">    String subName;</span><br><span class="line">    <span class="keyword">int</span> subScore;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setSubject(String subName,<span class="keyword">int</span> subScore)&#123;</span><br><span class="line">        <span class="built_in">this</span>.subName = subName;</span><br><span class="line">        <span class="built_in">this</span>.subScore = subScore;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test클래스</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student studentLee = <span class="keyword">new</span> Student(<span class="number">123</span>,<span class="string">&quot;lee&quot;</span>);</span><br><span class="line">        Student studentKim = <span class="keyword">new</span> Student(<span class="number">456</span>,<span class="string">&quot;kim&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        studentLee.setKoreaSubject(&quot;국어&quot;,100);</span></span><br><span class="line"><span class="comment">//        studentLee.setMathSubject(&quot;수학&quot;,95);</span></span><br><span class="line"><span class="comment">//        studentKim.setKoreaSubject(&quot;국어&quot;,99);</span></span><br><span class="line"><span class="comment">//        studentKim.setMathSubject(&quot;수학&quot;,80);</span></span><br><span class="line"></span><br><span class="line">        studentLee.getKoreaSubject(<span class="string">&quot;국어&quot;</span>,<span class="number">95</span>);</span><br><span class="line">        studentLee.getMathSubject(<span class="string">&quot;수학&quot;</span>,<span class="number">100</span>);</span><br><span class="line">        studentKim.getKoreaSubject(<span class="string">&quot;국어&quot;</span>,<span class="number">99</span>);</span><br><span class="line">        studentKim.getMathSubject(<span class="string">&quot;수학&quot;</span>,<span class="number">80</span>);</span><br><span class="line">        </span><br><span class="line">        studentLee.showStudentScore();</span><br><span class="line">        studentKim.showStudentScore();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckf2iw58h001byku270zo4iv0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-Constructor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/07/Java/JavaAdvanced/Java-Constructor/" class="article-date">
+  <time datetime="2020-09-07T04:58:06.859Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/Java/JavaAdvanced/Java-Constructor/">Java_Constructor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="생성자-Constructor"><a href="#생성자-Constructor" class="headerlink" title="생성자(Constructor)"></a>생성자(Constructor)</h1><h2 id="생성자-Constructor-란"><a href="#생성자-Constructor-란" class="headerlink" title="생성자(Constructor)란?"></a>생성자(Constructor)란?</h2><ul>
+<li>객체를 생성할 때 new 키워드와 함께 호출하는 메소드이다.(객체 생성 외에는 호출할 수 없음)</li>
+<li>생성자는 클래스 이름과 동일해야 한다.</li>
+<li>함수는 함수의 기능이 필요할 때 호출해서 사용하지만, 생성자는 객체를 생성할 때만 호출 가능</li>
+<li>인스턴스를 초기화 하는 코드가 구현 됨. 주로 멤버 변수 초기화</li>
+<li>상속되지 않고, 반환 값이 없다.</li>
+<li>접근제어자를 <code>privte</code>을 썼을 때, 외부에서 호출이 불가능한 생성자가 된다.</li>
+</ul>
+<h3 id="기본-생성자-Default-Constructor"><a href="#기본-생성자-Default-Constructor" class="headerlink" title="기본 생성자 (Default Constructor)"></a>기본 생성자 (Default Constructor)</h3><ul>
+<li><p>하나의 클래스에는 반드시 하나 이상의 생성자가 존재해야 한다.</p>
+</li>
+<li><p>프로그래머가 구현 하지 않아도 자동으로 생성되는 생성자.</p>
+<ul>
+<li>다른 생성자가 있는 경우 기본생성자가 생성이 되지 않는다.</li>
+</ul>
+</li>
+<li><p>아무런 동작도 하지 않고, 객체만을 생성</p>
+</li>
+<li><p>매개 변수가 없고, 구현부가 없는 것</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> Ex)</span><br><span class="line"> <span class="keyword">public</span> Constructor()&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="기본-생성자-컴파일에서-과정"><a href="#기본-생성자-컴파일에서-과정" class="headerlink" title="기본 생성자 컴파일에서 과정"></a>기본 생성자 컴파일에서 과정</h4><ul>
+<li>자바 컴파일러가 코드가 컴파일하기전에 프리컴파일이라는 단계가 있는데 우리가 쓴 코드가 바로 기계어로 번역이되는게 아니라<br>코드들이 과감이 되서 필요한 부분이 추가 되고 없는 부분이 변형이 이루어지고 이런식으로 코드가 바뀌는데 생성자가 없을 때,<br>프리컴파일 과정에서 디폴트 생성자가 추가된다. 생성자가 하나도 없을 때 추가 되는 것</li>
+</ul>
+<h3 id="파라미터-생성자-Parameter-Constructors"><a href="#파라미터-생성자-Parameter-Constructors" class="headerlink" title="파라미터 생성자 (Parameter Constructors)"></a>파라미터 생성자 (Parameter Constructors)</h3><ul>
+<li>입력 파라미터를 받는 생성자</li>
+<li>여러 개의 파라미터 생성자를 오버로딩할 수 있음</li>
+<li>보통 멤버 변수를 초기화하는 동작 수행</li>
+<li>private 변수도 생성자를 이용하여 초기화 할 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ex)</span><br><span class="line"><span class="keyword">public</span> Constructor(String name, age)&#123;</span><br><span class="line">     ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="생성자-오버로딩"><a href="#생성자-오버로딩" class="headerlink" title="생성자 오버로딩"></a>생성자 오버로딩</h3><ul>
+<li>생성자를 두 개 이상 구현하는 경우</li>
+<li>사용하는 코드에서 여러 생성자 중 선택하여 사용할 수 있음</li>
+<li>private 변수도 생성자를 이용하여 초기화를 할 수 있음<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Ex)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constructor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line">    String z;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Constructor</span><span class="params">()</span></span>&#123; <span class="comment">// 기본 생성자, 구현하지 않아도 알아서 생긴다.</span></span><br><span class="line">        <span class="keyword">this</span>(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//x = 1;</span></span><br><span class="line">        <span class="comment">//y = 2;</span></span><br><span class="line">         <span class="comment">//z = &quot;초기화&quot;;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private Constructor()&#123;&#125; //외부에서 사용할 수 없음 호출이 불가능한 생성자.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 파라미터 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Constructor</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, String c)</span></span>&#123; <span class="comment">//오버로딩</span></span><br><span class="line">        x = a;    </span><br><span class="line">        y = b;</span><br><span class="line">        z = c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConstructorTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Constructor c = <span class="keyword">new</span> Constructor(); <span class="comment">// 기본 생성자 호출</span></span><br><span class="line">        System.out.println(c.x + <span class="string">&quot;,&quot;</span> + c.y + <span class="string">&quot;,&quot;</span>+ c.z);</span><br><span class="line">        <span class="comment">// z의 경우, string은 클래스이기 때문에 null로 초기화가 된다.</span></span><br><span class="line">        <span class="comment">// null -&gt; 아무것도 참조하고 있지 않다.</span></span><br><span class="line"></span><br><span class="line">        Constructor c1 = <span class="keyword">new</span> Constructor(<span class="number">10</span>,<span class="number">20</span>,<span class="string">&quot;파라미터생성자&quot;</span>);</span><br><span class="line">        System.out.println(c1.x+ <span class="string">&quot;,&quot;</span> + c1.y + <span class="string">&quot;,&quot;</span>+ c1.z);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckf2iw5840011yku211nh7ecs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/PreCourseEx/ClassEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/07/Java/PreCourseEx/ClassEx1/" class="article-date">
+  <time datetime="2020-09-07T04:42:34.111Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/Java/PreCourseEx/ClassEx1/">PreCourse-ClassEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="간단한-예제-문제들이다"><a href="#간단한-예제-문제들이다" class="headerlink" title="간단한 예제 문제들이다."></a>간단한 예제 문제들이다.</h3><h1 id="문제1"><a href="#문제1" class="headerlink" title="문제1"></a>문제1</h1><h2 id="다음-객체에-대한-설명에-맞는-클래스를-만들고-값을-출력해보세요"><a href="#다음-객체에-대한-설명에-맞는-클래스를-만들고-값을-출력해보세요" class="headerlink" title="다음 객체에 대한 설명에 맞는 클래스를 만들고 값을 출력해보세요."></a>다음 객체에 대한 설명에 맞는 클래스를 만들고 값을 출력해보세요.</h2><ul>
+<li>나이가 40살, 이름이 James라는 남자가 있습니다. 이 남자는 결혼을 했고, 자식이 셋 있습니다.</li>
+<li>출력 결과</li>
+<li>나이 : 40</li>
+<li>이름 : James</li>
+<li>결혼 여부 : true</li>
+<li>자녀 수 : 3</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">boolean</span> isMarried;</span><br><span class="line">    <span class="keyword">int</span> childNum;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> People(<span class="keyword">int</span> age, String name, <span class="keyword">boolean</span> isMarried, <span class="keyword">int</span> childNum)&#123;</span><br><span class="line">        <span class="built_in">this</span>.age =age;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.isMarried = isMarried;</span><br><span class="line">        <span class="built_in">this</span>.childNum = childNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;나이 : &quot;</span>+age);</span><br><span class="line">        System.out.println(<span class="string">&quot;이름 : &quot;</span>+name);</span><br><span class="line">        System.out.println(<span class="string">&quot;결혼여부 : &quot;</span>+isMarried);</span><br><span class="line">        System.out.println(<span class="string">&quot;자녀 수 : &quot;</span>+childNum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PeopleTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        People people = <span class="keyword">new</span> People(<span class="number">40</span>,<span class="string">&quot;James&quot;</span>,<span class="literal">true</span>,<span class="number">3</span>);</span><br><span class="line">        people.showInfo();</span><br><span class="line"></span><br><span class="line">        People people1 = <span class="keyword">new</span> People();</span><br><span class="line">        people1.age = <span class="number">30</span>;</span><br><span class="line">        people1.name = <span class="string">&quot;Amila&quot;</span>;</span><br><span class="line">        people1.isMarried = <span class="literal">false</span>;</span><br><span class="line">        people1.childNum = <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;============&quot;</span>);</span><br><span class="line">        people1.showInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h1><h2 id="주문-내용을-구현할-수-있는-클래스를-만들고-인스턴스로-생성한-후-아래와-같은-형식으로-출력해-보세요"><a href="#주문-내용을-구현할-수-있는-클래스를-만들고-인스턴스로-생성한-후-아래와-같은-형식으로-출력해-보세요" class="headerlink" title="주문 내용을 구현할 수 있는 클래스를 만들고 인스턴스로 생성한 후 아래와 같은 형식으로 출력해 보세요."></a>주문 내용을 구현할 수 있는 클래스를 만들고 인스턴스로 생성한 후 아래와 같은 형식으로 출력해 보세요.</h2><ul>
+<li>쇼핑몰에 주문이 들어왔습니다. 주문 내용은 다음과 같습니다.</li>
+<li>주문번호 : 201907210001</li>
+<li>주문자 아이디 : abc123</li>
+<li>주문 날짜 : 2019년 7월 21일</li>
+<li>주문자 이름 : 홍길순</li>
+<li>주문 상품 번호 : PD0345-12</li>
+<li>배송 주소 : 서울시 영등포구 여의도동 20번지</li>
+</ul>
+<h2 id="문제-구현-1"><a href="#문제-구현-1" class="headerlink" title="문제 구현"></a>문제 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Order</span> &#123;</span></span><br><span class="line">    <span class="keyword">long</span> orderNum;</span><br><span class="line">    String orderID;</span><br><span class="line">    String orderDate;</span><br><span class="line">    String orderName;</span><br><span class="line">    String orderProdNum;</span><br><span class="line">    String address;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;주문 번호 :&quot;</span>+orderNum);</span><br><span class="line">        System.out.println(<span class="string">&quot;주문자 아이디 :&quot;</span>+orderID);</span><br><span class="line">        System.out.println(<span class="string">&quot;주문 날짜 : &quot;</span>+orderDate);</span><br><span class="line">        System.out.println(<span class="string">&quot;주문자 이름 : &quot;</span>+orderName);</span><br><span class="line">        System.out.println(<span class="string">&quot;주문 상품 번호 : &quot;</span>+orderProdNum);</span><br><span class="line">        System.out.println(<span class="string">&quot;배송 주소 : &quot;</span>+address);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Order order = <span class="keyword">new</span> Order();</span><br><span class="line">        order.orderNum = <span class="number">201907210001</span>L;</span><br><span class="line">        order.orderID = <span class="string">&quot;abc123&quot;</span>;</span><br><span class="line">        order.orderDate = <span class="string">&quot;2019년 7월 21일&quot;</span>;</span><br><span class="line">        order.orderName = <span class="string">&quot;홍길순&quot;</span>;</span><br><span class="line">        order.orderProdNum = <span class="string">&quot;PD0345-12&quot;</span>;</span><br><span class="line">        order.address = <span class="string">&quot;서울시 영등포구 여의도동 20번지&quot;</span>;</span><br><span class="line"></span><br><span class="line">        order.showInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckf2iw58y001myku2d5qgb4e0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-MemoryStructure" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" class="article-date">
@@ -161,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckf0wpjs1001190u22hmb2xd2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckf2iw58a0015yku2encohlws" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckf0wpjs1001290u249jcgwpb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckf2iw5880014yku2fzk026oq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -436,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckf0wpjrv000v90u20yaodkv4" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckf2iw57z000xyku2dcyp8wp7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +718,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-OOP/" data-id="ckf0wpjs6001990u24xin6iex" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-OOP/" data-id="ckf2iw58m001dyku2dpkdfq9k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -624,7 +802,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaBasic/Java-JavaProgramming/" data-id="ckf0wpjs7001b90u27yzo2zlh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaBasic/Java-JavaProgramming/" data-id="ckf2iw58o001fyku2adz34wgx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -703,7 +881,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL-20200903/" data-id="ckf0wpjrk000i90u2hcns0ww9" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL-20200903/" data-id="ckf2iw578000hyku28xf591w4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -754,237 +932,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-NSet/" data-id="ckf0wpjrq000o90u20ytgdsa0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/Solution-Tile" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/02/Algorithm/Solution-Tile/" class="article-date">
-  <time datetime="2020-09-02T12:39:30.283Z" itemprop="datePublished">2020-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/02/Algorithm/Solution-Tile/">AlgorithmSolution_Tile</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><p>###문제 설명</p>
-<ul>
-<li><p>가로 길이가 2이고 세로의 길이가 1인 직사각형모양의 타일이 있습니다. 이 직사각형 타일을 이용하여 세로의 길이가 2이고 가로의 길이가 n인 바닥을 가득 채우려고 합니다. 타일을 채울 때는 다음과 같이 2가지 방법이 있습니다.</p>
-</li>
-<li><p>타일을 가로로 배치 하는 경우</p>
-</li>
-<li><p>타일을 세로로 배치 하는 경우</p>
-</li>
-<li><p>예를들어서 n이 7인 직사각형은 다음과 같이 채울 수 있습니다.</p>
-</li>
-</ul>
-<ul>
-<li>직사각형의 가로의 길이 n이 매개변수로 주어질 때, 이 직사각형을 채우는 방법의 수를 return 하는 solution 함수를 완성해주세요.</li>
-</ul>
-<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
-<li>가로의 길이 n은 60,000이하의 자연수 입니다.</li>
-<li>경우의 수가 많아 질 수 있으므로, 경우의 수를 1,000,000,007으로 나눈 나머지를 return해주세요.<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
-<thead>
-<tr>
-<th>n</th>
-<th>result</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>4</td>
-<td>5</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h1 id="프로그래머스-문제-12900번-2-n-타일링-문제풀이"><a href="#프로그래머스-문제-12900번-2-n-타일링-문제풀이" class="headerlink" title="프로그래머스 문제 12900번 2*n 타일링 문제풀이"></a>프로그래머스 문제 12900번 2*n 타일링 문제풀이</h1><ul>
-<li><p>이런 문제가 알고나면 화가나는 문제중 하나이라 한다! </p>
-</li>
-<li><p>다이나믹 프로그래밍 (동적계획법) - 최적화 기법 중 하나 이름은 역사적으로 붙음 (의미자체는 별 의미가 없음)</p>
-</li>
-<li><p>핵심 반복적인 계산이 있으면 반복적인 계산을 하지 않고, 저장하고 저장된걸 참조해서 한다.</p>
-</li>
-<li></li>
-<li><p>n개를 채우는데 있어서 f(n)이라고 표현을 했을 때 점화식을 표현하는게 중요</p>
-</li>
-<li><p>n을 더 쉬운 방법으로 바꿔서 사용하는것 이게 점화식이다.</p>
-</li>
-<li><p>n개를 채우는 방법은 가로 1짜리로 앞에를 채웠을 때 나머지는 n-1이다.</p>
-</li>
-<li><p>가로로 채웠을경우 2짜리로 했을 경우 n-2경우와 같다.</p>
-</li>
-<li><p>f(n) = f(n-1) + f(n-2); 아무리 큰수가 들어와도 작은 수로 표현이 됨</p>
-</li>
-<li><p>초기값 두개만 알고 있으면 됨. n이 1인 경우와 2인 경우를 알고 있으면 3을 알 수 있고 2,3은 4를 알 수 있고 ..</p>
-</li>
-<li><p>f(1) = 1 가지 방법</p>
-</li>
-<li><p>f(2) = 2; 가지 방법</p>
-</li>
-<li><p>f(3) = f(1) + f(2);</p>
-</li>
-<li><p>피보나치수열과 완전히 같음 피보나치는 0,1로시작하지만 이건 1,2로 시작함</p>
-</li>
-<li><p>점화식을 이용했다 배열을 만들어 놓고 이용을 하더라 정도 생각 하면 됨.</p>
-</li>
-<li><p>재귀함수의 장점 구현을 빠르게할 수 있음, 더 짧게 구현이 가능하다.</p>
-</li>
-<li><p>클린코드에 관해서 함수의 단위를 줄여야 하는 부분이 있는데</p>
-</li>
-<li><p>for문을 사용하는게 iterative하게구현하는 것은 코드 함수 자체의</p>
-</li>
-<li><p>복잡도는 증가하는 단점이 있는데 리컬시브는 심플하고 간단하게 되는 장점이 있음</p>
-</li>
-<li><p>스택이 쌓이는 경우가 많지 않은 경우 재귀 함수를 쓰는 일이 많이 있음.</p>
-</li>
-</ul>
- <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tile</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(<span class="keyword">int</span> n)&#123;</span><br><span class="line">        <span class="keyword">int</span> [] integers = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 60000까지 계싼을해야하는데</span></span><br><span class="line">        <span class="comment">//n이 1부터시작하니깐 n+1로 해야 n까지사용할 수 있음</span></span><br><span class="line"></span><br><span class="line">        integers[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        integers[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">3</span>; i&lt;n+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            integers[i] = (integers[i<span class="number">-1</span>]+integers[i<span class="number">-2</span>]) % <span class="number">1000000007</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> integers[n]; <span class="comment">//이렇게만했을때 오버플러우 발생</span></span><br><span class="line">        <span class="comment">//그래서 값을 나눠줘야한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        제한사항에 60000까지인데 재귀함수 형태로 사용하지 못함</span></span><br><span class="line"><span class="comment">//        if(n == 1)&#123;</span></span><br><span class="line"><span class="comment">//            return 1;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        if(n == 2)&#123;</span></span><br><span class="line"><span class="comment">//            return 2;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        return solution(n-1)+solution(n-2);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">new</span> Tile().solution(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-Tile/" data-id="ckf0wpjrs000r90u27uen2khp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/Solution-Squares" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/02/Algorithm/Solution-Squares/" class="article-date">
-  <time datetime="2020-09-02T12:38:29.486Z" itemprop="datePublished">2020-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/02/Algorithm/Solution-Squares/">AlgorithmSolution_Squares</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li>가로 길이가 Wcm, 세로 길이가 Hcm인 직사각형 종이가 있습니다. 종이에는 가로, 세로 방향과 평행하게 격자 형태로 선이 그어져 있으며, 모든 격자칸은 1cm x 1cm 크기입니다. 이 종이를 격자 선을 따라 1cm × 1cm의 정사각형으로 잘라 사용할 예정이었는데, 누군가가 이 종이를 대각선 꼭지점 2개를 잇는 방향으로 잘라 놓았습니다. 그러므로 현재 직사각형 종이는 크기가 같은 직각삼각형 2개로 나누어진 상태입니다. 새로운 종이를 구할 수 없는 상태이기 때문에, 이 종이에서 원래 종이의 가로, 세로 방향과 평행하게 1cm × 1cm로 잘라 사용할 수 있는 만큼만 사용하기로 하였습니다.<br>가로의 길이 W와 세로의 길이 H가 주어질 때, 사용할 수 있는 정사각형의 개수를 구하는 solution 함수를 완성해 주세요.</li>
-</ul>
-<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
-<li>W, H : 1억 이하의 자연수<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>W</th>
-<th>H</th>
-<th>result</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>8</td>
-<td>12</td>
-<td>80</td>
-</tr>
-</tbody></table>
-<h3 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h3><ul>
-<li>입출력 예 #1</li>
-<li>가로가 8, 세로가 12인 직사각형을 대각선 방향으로 자르면 총 16개 정사각형을 사용할 수 없게 됩니다. 원래 직사각형에서는 96개의 정사각형을 만들 수 있었으므로, 96 - 16 = 80 을 반환합니다.</li>
-</ul>
-<h1 id="프로그래머스-문제-62048번-멀쩡한-사각형-문제풀이"><a href="#프로그래머스-문제-62048번-멀쩡한-사각형-문제풀이" class="headerlink" title="프로그래머스 문제 62048번 멀쩡한 사각형 문제풀이"></a>프로그래머스 문제 62048번 멀쩡한 사각형 문제풀이</h1><ul>
-<li>유클리드 호제법을 이용한 GCD(최대 공약수)를 이용하여 푸는 문제이다</li>
-<li>w*h의 최대공약수를 구해서 해결한다.</li>
-<li>변을 가를 때마다 하나씩 더 찢는다</li>
-<li>아래나 오른쪽으로 이동하게되어있는데 예외는 꼭지점에서 만나는 부분 이때는 대각선으로 이동하게된다.<br>그래서 w+h - gcd(h,w) ex)3+2 - 1</li>
-<li>최대공약수에 해당되는 부분마다 하나씩 덜 찢는다라고 생각하면 된다.</li>
-<li>한가지 주의사항 w나 h는 1억까지 올라갈 수 있는데 두수를 곱하면 엄청난 숫자가 나는데,<br>미리 long으로 바꿔놓고 연산하지 않으면 문제가 발생함 (안전하게 long으로 바꿔놓고해라) </li>
-<li>gcd를 구할 때 x가 y보다 더 커야 제대로 동작을 하게 된다</li>
-<li>근데 내부적으로 스왑이 일어남</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Squares</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> gcd(<span class="keyword">int</span> x, <span class="keyword">int</span> y)&#123;</span><br><span class="line">        <span class="keyword">if</span>(y==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> x;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> gcd(y,x%y);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">long</span> solution(<span class="keyword">int</span> w, <span class="keyword">int</span> h) &#123;</span><br><span class="line">        <span class="keyword">long</span> answer = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        answer = (<span class="keyword">long</span>)w * (<span class="keyword">long</span>)h - ((<span class="keyword">long</span>)w + (<span class="keyword">long</span>)h - gcd(w,h));</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Squares num62048 = <span class="keyword">new</span> Squares();</span><br><span class="line">        System.out.println(num62048.solution(<span class="number">8</span>,<span class="number">12</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-Squares/" data-id="ckf0wpjrr000p90u27f7mb0s9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/Solution-SkillThree" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/02/Algorithm/Solution-SkillThree/" class="article-date">
-  <time datetime="2020-09-02T12:37:48.126Z" itemprop="datePublished">2020-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/02/Algorithm/Solution-SkillThree/">AlgorithmSolution_SkillThree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="프로그래머스-문제-49993번-스킬트리-문제풀이"><a href="#프로그래머스-문제-49993번-스킬트리-문제풀이" class="headerlink" title="프로그래머스 문제 49993번 스킬트리 문제풀이"></a>프로그래머스 문제 49993번 스킬트리 문제풀이</h1><ul>
-<li><p>제한 조건에 대해서 잘 읽어보고 파악하는게 중요하다.</p>
-</li>
-<li><p>우선 skill에 해당하는 스킬만 확인하고 다른 알파벳을 무시한다.</p>
-</li>
-<li><p>for문을 돌면서 skill_tress의 String들의 각 char들 중 skill의 char와 일치하는 인덱스를 찾아서 해당 인덱스의 값을 index 변수에 넣어준다.<br>아니면 -1을 반환</p>
-</li>
-<li><p>해당인덱스가 값이 있으면 index에 값이 들어갈 테니 list.add해서 값을 list에 넣어준다.</p>
-</li>
-<li></li>
-<li><p>skill_trees에 속하는게 없을 수도 있다. 그래서 list.size() &gt; 0 를 체크해줘서 에러를 방지하고,<br>스킬 찍은 것 중에 가장 첫번째가 C여야 한다 그래서 list에 값이 들어 간 것에서 list.get(0) != 0 을 체크하므로써<br>list의 0번째 인덱스의 값이 “CBD” 중에서 C의 인덱스가 0이니깐  0이 아니라면<br>즉, C가 아니라면 <code>continue</code>를 써서 다시 위로 보낸다.</p>
-</li>
-<li><p>그 다음 위의 조건(C부터 시작한다는 조건)을 만족한 후 스킬 순서가 C-&gt;B-&gt;D여야 하는데<br>C-&gt;D-&gt;B일 수도 있으니깐 그 순서를 확인해서 CBD순서가 아니라면 그 스트링값이 우리가 찾던 값과 다르니<br>처음 반복문으로 돌아가서 그 다음 스트링을 확인하는 과정을 진행한다.</p>
-</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SkilTree</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(String skill, String[] skill_trees) &#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//제한 조건이 중요하다 잘 읽어봐야한다. 이러한 제한사항이 있기 때문에 사용할 수 있는</span></span><br><span class="line">        <span class="comment">//알고리즘들이 갈린다. 조건에 나오는 숫자들이 굉장히 중요하다.</span></span><br><span class="line">        <span class="comment">//이후에 나오는 다른 조건들은 제한조건이 빡센것들이 많다 숫자들을 중요하게 봐야한다.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//다른 알파벳은 무시하고 skill에 해당하는 스킬만 확인</span></span><br><span class="line">        <span class="symbol">loop:</span></span><br><span class="line">        <span class="keyword">for</span>(String <span class="attr">tree :</span> skill_trees)&#123;</span><br><span class="line">            List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">//List는 인터페이스여서 직접만들지 못하고 arraylist로 만듬</span></span><br><span class="line">            <span class="comment">//list의 구현체이기때문에</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> <span class="attr">s:</span> tree.toCharArray())&#123;</span><br><span class="line">                <span class="keyword">int</span> index = skill.indexOf(s); <span class="comment">//찾아서있으면 해당인덱스 없으면 -1</span></span><br><span class="line">                <span class="keyword">if</span>(index &gt;=<span class="number">0</span>)&#123;</span><br><span class="line">                    list.add(index);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(list.size() &gt; <span class="number">0</span> &amp;&amp; list.get(<span class="number">0</span>) !=<span class="number">0</span>)&#123; <span class="comment">//</span></span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">//틀리면 카운트하지 않고 넘어감</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt; list.size(); i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list.get(i<span class="number">-1</span>) + <span class="number">1</span> != list.get(i))&#123;</span><br><span class="line">                    <span class="keyword">continue</span> loop;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            answer++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        SkilTree skilTree = <span class="keyword">new</span> SkilTree();</span><br><span class="line">        String skill = <span class="string">&quot;cbd&quot;</span>;</span><br><span class="line">        String[] skill_trees = <span class="keyword">new</span> String[]&#123;<span class="string">&quot;BACDE&quot;</span>, <span class="string">&quot;CBADF&quot;</span>, <span class="string">&quot;AECB&quot;</span>, <span class="string">&quot;BDA&quot;</span>&#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(skilTree.solution(skill,skill_trees));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-SkillThree/" data-id="ckf0wpjrs000q90u26ricg5n8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-NSet/" data-id="ckf2iw57r000ryku2eijv0atj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -998,7 +946,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1030,23 +978,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/">Java_ClassClass</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-Generic/">Java_Generic</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/14/Java/JavaAdvanced/Java-Enumeration/">Java_Enumeration</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/13/Algorithm/Solution-MaxNumber/">AlgorithmSolution_MaxNumber</a>
           </li>
         
           <li>
             <a href="/2020/09/13/Java/JavaAdvanced/Java-ClassClass/">Java_ClassClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/JavaBasic/Java-String/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/">Java_WrapperClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/">PreCourse-ObjectClassEx</a>
           </li>
         
       </ul>
