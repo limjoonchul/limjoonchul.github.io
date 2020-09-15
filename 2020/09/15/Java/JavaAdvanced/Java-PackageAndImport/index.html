@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_PackageAndImport | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="패키지와 임포트패키지(package) Java에서 소스 코드를 관리하는 방식 물리적으로 디렉토리로 구분된 파일을 .으로 계층적으로 구분 패키지 이름을 짓는 규칙: package 소속.프로젝트.용도   ex) package com.google.dev.utils ex) package com.fastcampus.catcare.service 임포트(imports)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_PackageAndImport">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="패키지와 임포트패키지(package) Java에서 소스 코드를 관리하는 방식 물리적으로 디렉토리로 구분된 파일을 .으로 계층적으로 구분 패키지 이름을 짓는 규칙: package 소속.프로젝트.용도   ex) package com.google.dev.utils ex) package com.fastcampus.catcare.service 임포트(imports)">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-15T10:36:07.767Z">
+<meta property="article:modified_time" content="2020-09-15T10:49:11.230Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/Java-PackageAndImport" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" class="article-date">
+  <time datetime="2020-09-15T10:36:07.767Z" itemprop="datePublished">2020-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_PackageAndImport
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="패키지와-임포트"><a href="#패키지와-임포트" class="headerlink" title="패키지와 임포트"></a>패키지와 임포트</h1><h2 id="패키지-package"><a href="#패키지-package" class="headerlink" title="패키지(package)"></a>패키지(package)</h2><ul>
+<li>Java에서 소스 코드를 관리하는 방식</li>
+<li>물리적으로 디렉토리로 구분된 파일을 .으로 계층적으로 구분</li>
+<li>패키지 이름을 짓는 규칙: package 소속.프로젝트.용도 </li>
+</ul>
+<p>ex) package com.google.dev.utils ex) package com.fastcampus.catcare.service</p>
+<h2 id="임포트-imports"><a href="#임포트-imports" class="headerlink" title="임포트(imports)"></a>임포트(imports)</h2><ul>
+<li>다른 패키지에 선언된 클래스를 사용하기 위한 키워드</li>
+<li>자동으로 임포트되는 경우<ol>
+<li>java. lang. * : import를 하지 않아도 자동으로 되어있다.(Ex-String)</li>
+<li>auto import </li>
+</ol>
+</li>
+<li>패키지에 속한 모든 클래스를 import (하위 패키지는 포함하지 않음)</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.example.project.utils.*;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>패키지에 속한 특정 클래스를 import(권장 방법)</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fastcampus.dogcare.service.WebAPI;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>클래스의 이름이 겹치는 경우, 패키지명을 포함하여 사용(권장 방법)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> List();</span><br><span class="line">        java.awt.List list2 = <span class="keyword">new</span> java.awt.List();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>static 멤버는 static import하여 클래스를 생략하고 사용 가능(권장 x)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.random;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.out;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticImport</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        out.println(random());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" data-id="ckf3y86x0001940u24etn49fl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaBasic_ConditionalStatements
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/14/Algorithm/Solution-LongNode/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AlgorithmSolution_Disguise</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/">JavaBasic_ConditionalStatements</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/">Java_PackageAndImport</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/14/Algorithm/Solution-LongNode/">AlgorithmSolution_Disguise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -64,6 +64,333 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Algorithm/Solution-Disguise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Algorithm/Solution-Disguise/" class="article-date">
+  <time datetime="2020-09-10T12:47:52.092Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/10/Algorithm/Solution-Disguise/">AlgorithmSolution_Disguise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm-위장-Num42578"><a href="#Algorithm-위장-Num42578" class="headerlink" title="Algorithm - 위장(Num42578)"></a>Algorithm - 위장(Num42578)</h1><h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
+<li><p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.</p>
+</li>
+<li><p>예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>이름</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>얼굴</td>
+<td>동그란 안경, 검정 선글라스</td>
+</tr>
+<tr>
+<td>상의</td>
+<td>파란색 티셔츠</td>
+</tr>
+<tr>
+<td>하의</td>
+<td>청바지</td>
+</tr>
+<tr>
+<td>겉옷</td>
+<td>긴 코트</td>
+</tr>
+</tbody></table>
+<ul>
+<li>스파이가 가진 의상들이 담긴 2차원 배열 clothes가 주어질 때 서로 다른 옷의 조합의 수를 return 하도록 solution 함수를 작성해주세요.</li>
+</ul>
+<h3 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h3><ul>
+<li>clothes의 각 행은 [의상의 이름, 의상의 종류]로 이루어져 있습니다.</li>
+<li>스파이가 가진 의상의 수는 1개 이상 30개 이하입니다.</li>
+<li>같은 이름을 가진 의상은 존재하지 않습니다.</li>
+<li>clothes의 모든 원소는 문자열로 이루어져 있습니다.</li>
+<li>모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 ‘_’ 로만 이루어져 있습니다.</li>
+<li>스파이는 하루에 최소 한 개의 의상은 입습니다.</li>
+</ul>
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>clothes</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[[yellow_hat, headgear], [blue_sunglasses, eyewear], [green_turban, headgear]]</td>
+<td>5</td>
+</tr>
+<tr>
+<td>[[crow_mask, face], [blue_sunglasses, face], [smoky_makeup, face]]</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h3 id="문제-해설"><a href="#문제-해설" class="headerlink" title="문제 해설"></a>문제 해설</h3><ul>
+<li>위장 Num42578</li>
+<li>하루한개의 의상을입는건 중요한 단서이다.</li>
+<li>조합으로 계산? 조합은 (파이)  C 7C4</li>
+<li>조합을 다 계산하고 아무것도 착용하지 않은 걸 빼준다 3 * 2 * 2 * 2 -1</li>
+<li>의상의 종류이니깐(만 확인하면됨) String (headegear)가 나올때마다 integer로 값 증가시킨다.</li>
+<li>각 의상의 종류에서 입지 않은 경우의 수가 있을 수 있으니 값을 먼저증가시켜서 map에 넣고</li>
+<li>각 의상의 종류에서 입지 않은 경우의 수끼리 만났을때 완전히 옷을 입지 않은 경우가 되는데,</li>
+<li>제한사항에서 스파이는 하루 최소 한개의 의상은 입어야 한다고 나와있기 때문에 총 구한 수에서 이 한경우를 빼줌(-1)</li>
+<li></li>
+<li>의상의 이름을 기준으로 하는게 아니라 의상의 종류를 기준으로 경우의 수를 구해야 하는 문제이다.</li>
+<li>의상의 종류중에는 하나밖에 착용을 하지 못하기 때문에 예를 들어 모자 종류 중에 하나, 야구모자만 착용할 수 있고,</li>
+<li>야구모자와 상의 중에 파란색 티셔츠 등 과 같이 하나의 조합씩 계산을 해야 한다.</li>
+<li>학생 때 배웠던 조합을 사용하면 된다. (7C4)</li>
+<li>그런데 여기서 중요한 점은 의상은 종류에 상관없이 최소 한 개의 의상만 입으면 된다고 제한사항에 나와있다.</li>
+<li>그러니 종류가 모자, 상의, 하의, 신발 이 있을 때 모자만 착용할 수있고 상의 하의 신발은 착용하지 않을 수 있는 것이다.</li>
+<li>그래서 계산을 할 때 각 의상종류의 경우의 수에 +1을 해줘서 계산을 하면 되는데,</li>
+<li>이렇게 할때 마지막에는 모든 의상의 종류가 다 착용하지 않는 경우의 수가 전체에서 한 번 나오기 때문에 이건 전체에 -1을 해주면 된다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Disguise</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(String[][] clothes) &#123;</span><br><span class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> Hashtable&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (String [] <span class="attr">cloth :</span> clothes)&#123; <span class="comment">//clothes 배열의 크기만큼 반복하면서 각 요소씩 뽑는다.</span></span><br><span class="line">            String key = cloth[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">// 의상의 종류를 key값으로 해주기 위해서  cloth[1]을 해준다.</span></span><br><span class="line">            <span class="comment">//&#123;&quot;yellow_hat&quot;,&quot;headgear&quot;&#125;일때 인덱스가 yellow_hat은 0, headegear는 1이니깐~</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> value = map.getOrDefault(key,<span class="number">1</span>);</span><br><span class="line">            <span class="comment">// map에 해당 key가 저장이 되어 있는지 확인해서 없으면 defaultValue의 값을 대입한다.</span></span><br><span class="line">            <span class="comment">// defaultValue를 1로해준이유는 뽑혀서 값을 대입할 때 사용되는 것과 같으니 1로 시작한다.</span></span><br><span class="line">            <span class="comment">// 값이 있으면 그 key값의 value값을 대입한다.</span></span><br><span class="line"></span><br><span class="line">            map.put(key,++value);</span><br><span class="line">            <span class="comment">// 각 옷의 종류 중에서 안입는 경우의 수도 있기 때문에 먼저 증감 연산을 해서 값을 넣는다.</span></span><br><span class="line">            <span class="comment">// 옷을 안입는 경우의수를 기본 1로 설정해줘서 값이 나왔을 때 거기다 증감연산을 먼저해서 값을 넣는다.</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">value:</span> map.values())&#123; <span class="comment">//map에 저장된 value값들을 반복하면서 하나씩 뽑늗다.</span></span><br><span class="line">            <span class="comment">// values()메소드는 처음 사용하는 것인데, map value값들이 저장되어있다고 생각하면 될 것같다.</span></span><br><span class="line">            <span class="comment">//value()는 컬렉션을 반환하는데 향상된 포문을 이용하면 iterator을 이용해서 포문을 돌아준다.</span></span><br><span class="line">            <span class="comment">// Map이여서 순서는 없지만 하나씩 접근을 해서 반환을 해준다.</span></span><br><span class="line">            answer *= value; <span class="comment">// 뽑은 값을 answer에 더한다.</span></span><br><span class="line">        &#125;</span><br><span class="line">        answer--;<span class="comment">//위에서 말한 모든 종류의 옷을 안입는 경우의 수가 1번 생기니 전체에서 -1을 빼준다.</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="comment">// ctrl + 방향키 단어끝으로 이동</span></span><br><span class="line">        Disguise disguise = <span class="keyword">new</span> Disguise();</span><br><span class="line">        String [][] p1 = <span class="keyword">new</span> String[][]</span><br><span class="line">                &#123;&#123;<span class="string">&quot;yellow_hat&quot;</span>,<span class="string">&quot;headgear&quot;</span>&#125;,</span><br><span class="line">                 &#123;<span class="string">&quot;blue_sunglasses&quot;</span>,<span class="string">&quot;eyewear&quot;</span>&#125;,</span><br><span class="line">                 &#123;<span class="string">&quot;green_turban&quot;</span>,<span class="string">&quot;headgear&quot;</span>&#125;&#125;;</span><br><span class="line">        String [][] p2 = <span class="keyword">new</span> String[][]</span><br><span class="line">                &#123;&#123;<span class="string">&quot;crow_mask&quot;</span>,<span class="string">&quot;face&quot;</span>&#125;,</span><br><span class="line">                 &#123;<span class="string">&quot;blue_sunglasses&quot;</span>,<span class="string">&quot;face&quot;</span>&#125;,</span><br><span class="line">                 &#123;<span class="string">&quot;smoky_makeup&quot;</span>,<span class="string">&quot;face&quot;</span>&#125;&#125;;</span><br><span class="line">        System.out.println(disguise.solution(p1));</span><br><span class="line">        System.out.println(disguise.solution(p2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckf3y86wf000m40u216r6fqtr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/PreCourseEx/PolymorphismEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" class="article-date">
+  <time datetime="2020-09-10T07:37:38.955Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-PolyhorphismEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="배열을-활용하여-상속과-다형성-구현하기"><a href="#배열을-활용하여-상속과-다형성-구현하기" class="headerlink" title="배열을 활용하여 상속과 다형성 구현하기"></a>배열을 활용하여 상속과 다형성 구현하기</h2><ul>
+<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
+</li>
+<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
+</li>
+<li><p>Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
+<ul>
+<li><p>제품 구매시 10% 할인</p>
+</li>
+<li><p>보넛 포인트 5% 적립</p>
+</li>
+<li><p>담당 상담원 배정</p>
+<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
+</li>
+</ul>
+</li>
+<li><p>Customer 클래스의 상속을 받는 GoldCustomer클래스를 만든다.</p>
+</li>
+<li><p>VIP고객과 일반고객의 중간 등급의 고객</p>
+<ul>
+<li>제품을 구매시 10%할인을 해주는 것은 같다.</li>
+<li>보너스 포인트는 2% 적립해준다.</li>
+<li>담당 상담원은 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li>Customer 클래스<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> bonusPoint;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">double</span> bonusRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade=<span class="string">&quot;SILVER&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li><p>VIPCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> agentID;</span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName,<span class="keyword">int</span> agentID) &#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID, customerName);</span><br><span class="line">        <span class="built_in">this</span>.agentID = agentID;</span><br><span class="line">        customerGrade =<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio=<span class="number">0.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String showInfo() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.showInfo()+<span class="string">&quot;담당 상담사ID는 &quot;</span>+agentID+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GoldCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoldCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GoldCustomer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade = <span class="string">&quot;GOLD&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.02</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Customer&gt; customersList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Customer kim = <span class="keyword">new</span> Customer(<span class="number">1001</span>,<span class="string">&quot;김씨&quot;</span>);</span><br><span class="line">        Customer na = <span class="keyword">new</span> Customer(<span class="number">1002</span>,<span class="string">&quot;나씨&quot;</span>);</span><br><span class="line">        Customer park = <span class="keyword">new</span> GoldCustomer(<span class="number">1003</span>,<span class="string">&quot;박씨&quot;</span>);</span><br><span class="line">        Customer jeong = <span class="keyword">new</span> GoldCustomer(<span class="number">1004</span>,<span class="string">&quot;정씨&quot;</span>);</span><br><span class="line">        Customer lim = <span class="keyword">new</span> VIPCustomer(<span class="number">1008</span>,<span class="string">&quot;임씨&quot;</span>,<span class="number">12345</span>);</span><br><span class="line"></span><br><span class="line">        customersList.add(kim);</span><br><span class="line">        customersList.add(na);</span><br><span class="line">        customersList.add(park);</span><br><span class="line">        customersList.add(jeong);</span><br><span class="line">        customersList.add(lim);</span><br><span class="line">        <span class="keyword">int</span> price=<span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">int</span> pay=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;customersList.size(); i++)&#123;</span><br><span class="line">            System.out.println(customersList.get(i).showInfo());</span><br><span class="line">            pay = customersList.get(i).calcPrice(price);</span><br><span class="line">            System.out.println(<span class="string">&quot;지불한 금액은 &quot;</span>+pay+<span class="string">&quot;이고, 적립된 포인트는 &quot;</span>+customersList.get(i).bonusPoint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckf3y86xg001v40u2e1ci8fcf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" class="article-date">
+  <time datetime="2020-09-10T03:24:12.897Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성(Polymorphism)"></a>다형성(Polymorphism)</h1><h2 id="다형성이란"><a href="#다형성이란" class="headerlink" title="다형성이란?"></a>다형성이란?</h2><ul>
+<li>하나의 객체가 여러가지 타입을 가질 수 있는 것을 말한다.</li>
+<li>자바에서는 이러한 다형성을 부모 클래스 타입의 참조 변수로 자식 클래스 타입의 인스턴스를<br>참조할 수 있도록 하여 구현하고 있다.</li>
+<li>다형성은 상속, 추상화와 더불어 객체지향 프로그래밍을 구성하는 중요한 특징 중 하나이다.</li>
+<li>객체지향 프로그래밍의 유연성, 재활용성, 유지보수성에 기본이 되는 특징이다.<h3 id="다형성의-장점"><a href="#다형성의-장점" class="headerlink" title="다형성의 장점"></a>다형성의 장점</h3></li>
+<li>다양한 여러 클래스를 하나의 자료형(상위 클래스)으로 선언하거나 형변환 하여<br>각 클래스가 동일한 메소드를 오버라이딩 한 경우, 하나의 코드가 다양한 구현을 실행 할 수 있다.</li>
+<li>유사한 클래스가 추가되는 경우 유지보수에 용이하고, 각 자료형 마다 다른 메소드를 호출하지 않으므로 코드에서 많은 if문이 사라진다.</li>
+</ul>
+<h2 id="다형성의-다양한-특징"><a href="#다형성의-다양한-특징" class="headerlink" title="다형성의 다양한 특징"></a>다형성의 다양한 특징</h2><ul>
+<li><p>오버로딩에 의한 다형성, 오버라이딩에 의한 다형성(상속에 의한 다형성과 같다.)</p>
+</li>
+<li><p>부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징</p>
+</li>
+<li><p>부모 클래스로 자식 클래스를 참조한 경우, 자식 클래스의 메소드는 사용할 수 없다.</p>
+</li>
+<li><p>반대로 자식 클래스 타입으로 부모 클래스 타입의 객체를 참조할 경우에는 문법적으로 오류는<br>나지 않지만, 런타임시 에러가 발생한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar(); <span class="comment">//new가 있어야 새로운 객체를 만듬 자식 객체를 생성한 것이다.</span></span><br><span class="line">        Foo foo = (Foo)bar; <span class="comment">// 부모 클래스 타입으로 자식 객체를 받음.</span></span><br><span class="line">        <span class="comment">// 여전히 힙영역에는 자식객체가 있는 것이다.</span></span><br><span class="line"></span><br><span class="line">        foo.methodA(); <span class="comment">// Foo객체로받아서 문법적으로 a만 사용 가능, b는 불가능</span></span><br><span class="line">        <span class="comment">//foo.methodB();//이 경우 자식 클래스 메소드는 사용이 불가능 문법적으로 불가능함. 문법적으로 제한을 한 것이다.</span></span><br><span class="line"></span><br><span class="line">        Foo foo1 = <span class="keyword">new</span> Foo();</span><br><span class="line">        <span class="comment">//Bar bar1 = (Bar)foo1; // 자식 클래스 타입으로 부모 객체를 받음 이거 자체가 오류(문법 오류는 아님)</span></span><br><span class="line">        <span class="comment">// 문법 오류는 아니지만, 런타임 오류가 발생</span></span><br><span class="line">        <span class="comment">// 자식클래스 자료형으로 객체를 보려 하지만, 부모 객체 부분만 있기 때문에</span></span><br><span class="line">        <span class="comment">// 런타임에서 오류가 발생시킴.</span></span><br><span class="line">        <span class="comment">//bar1.methodA(); //문법오류x 성립하지 않음</span></span><br><span class="line">       <span class="comment">// bar1.methodB(); //문법오류x 성립하지 않음</span></span><br><span class="line"></span><br><span class="line">        Bar bar1 = (Bar)foo; <span class="comment">//원래자식객체를 자식객체로 캐스팅함 자식클래스 타입으로 자식 객체를 받음</span></span><br><span class="line">        <span class="comment">// 힙 영역에는 계속 자식 객체가 있었던 것. 부모객체 자료형으로 있는것을 자료객체로 캐스팅할 때</span></span><br><span class="line">        <span class="comment">// foo변수에 자식객체가 담겨져있는지 부모객체가 담겨져있는지 문법적으로 알수없음</span></span><br><span class="line">        bar1.methodA();</span><br><span class="line">        bar1.methodB();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>자식클래스로 부모 클래스를 참조하려 하면 java.lan.ClassCastException 오류 발생</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        Bar bar;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bar = (Bar)foo; // error</span></span><br><span class="line">        <span class="keyword">if</span> (foo <span class="keyword">instanceof</span> Bar) &#123; <span class="comment">// returns false</span></span><br><span class="line">            bar = (Bar)foo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="형변환과-오버라이딩-메소드-호출"><a href="#형변환과-오버라이딩-메소드-호출" class="headerlink" title="형변환과 오버라이딩 메소드 호출"></a>형변환과 오버라이딩 메소드 호출</h3></li>
+<li><p>멤버 변수의 재정의는<code> 선언된 객체의 타입</code>을 따른다. (문법적으로 본다) 클래수 변수도 마찬가지 변수는 별도의 메모리에 저장됨.</p>
+</li>
+<li><p>메소드 오버라이딩은 <code>메모리상의 객체 타입</code>을 따른다. (실제 객체로 본다)</p>
+</li>
+<li><p>(가상 메소드 호출, Virtual Method Call)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;super class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>); <span class="comment">//(가상 메소드 호출, virtual method call) 실제로 콜이 이루어지지 않지만 만들어줌 실제로 호출되지않ㅇ므</span></span><br><span class="line">        <span class="comment">// 없으면 안됨 문법을 맞춰주기 위한 것 뿐 구현된 것 자체는 중요하지 않음..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;sub class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;sub&quot;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;sub method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar; <span class="comment">// new Bar();</span></span><br><span class="line"></span><br><span class="line">        System.out.println(bar.x); <span class="comment">//sub</span></span><br><span class="line">        bar.methodA(); <span class="comment">//sub</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.x); <span class="comment">//super</span></span><br><span class="line">        foo.methodA(); <span class="comment">//sub virtural method call</span></span><br><span class="line"></span><br><span class="line">        System.out.println(Foo.y);</span><br><span class="line">        System.out.println(Bar.y);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        System.out.println(foo.y); //super</span></span><br><span class="line"><span class="comment">//        System.out.println(bar.y); //sub</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>공변 변환 타입(Covariant return type)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">//오버라이딩이지만, 리턴 타입이 달라질 수 있다. 여기서는 예외적으로 반환값이 달라진다. 공변 반환 타입</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        <span class="comment">//return (Foo)this; 이거와 같다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckf3y86x2001d40u2c9ti77vg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/PreCourseEx/InheritancdeEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" class="article-date">
+  <time datetime="2020-09-10T02:28:27.868Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-InheritanceEx1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="상속을-사용한-고객관리-연습문제"><a href="#상속을-사용한-고객관리-연습문제" class="headerlink" title="상속을 사용한 고객관리 연습문제"></a>상속을 사용한 고객관리 연습문제</h2><ul>
+<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
+</li>
+<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
+</li>
+<li><p>자식클래스인 VIPCustomer, GoldCustomer클래스를 만든다.</p>
+</li>
+<li><p>Customer클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
+<ul>
+<li><p>제품 구매시 10% 할인</p>
+</li>
+<li><p>보넛 포인트 5% 적립</p>
+</li>
+<li><p>담당 상담원 배정</p>
+<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li><p>Customer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">int</span> bonusPoint; <span class="comment">// 보너스 포인트</span></span><br><span class="line">    <span class="keyword">double</span> bonusRatio; <span class="comment">//보너스 포인트 적립 비율</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer()&#123; <span class="comment">//생성자를 기본 초기값으로 설정해주듯이 사용하면 될 것 같다.</span></span><br><span class="line">        customerGrade = <span class="string">&quot;Silver&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>; <span class="comment">//1%로 적립</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;customer 생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade = <span class="string">&quot;Silver&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>; <span class="comment">//1%로 적립</span></span><br><span class="line">        System.out.println(<span class="string">&quot;customer 파라미터 생성자 호출&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showCustomerInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며, 적립된 보너스 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;점 입니다.&quot;</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123; <span class="comment">//지불할 가격 반환.</span></span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerGrade() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerGrade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerGrade(String customerGrade) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerGrade = customerGrade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>VIP Customer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> agentID;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer()&#123;</span><br><span class="line"></span><br><span class="line">        customerGrade=<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;vipcustomer 생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade=<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;vipcustomer 파라미터생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span>  <span class="comment">//에노테이션 꼭 써야하는건 아니다. 역할은 컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> price -(<span class="keyword">int</span>)(price * salesRatio); <span class="comment">//salesRatio가 double형이기 때문에 다운 캐스팅을 해줌.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Customer customerLee = <span class="keyword">new</span> Customer();</span><br><span class="line">        customerLee.setCustomerName(<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">        customerLee.setCustomerID(<span class="number">10010</span>);</span><br><span class="line">        customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(customerLee.showCustomerInfo());</span><br><span class="line"></span><br><span class="line">        VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.setCustomerName(<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.setCustomerID(<span class="number">10020</span>);</span><br><span class="line">        customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(customerKim.showCustomerInfo());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Overriding Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverridingTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Customer customerLee = <span class="keyword">new</span> Customer(<span class="number">10010</span>,<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">        customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> priceLee = customerLee.calcPrice(<span class="number">10000</span>);</span><br><span class="line">        <span class="keyword">int</span> priceKim = customerKim.calcPrice(<span class="number">10000</span>);</span><br><span class="line">        System.out.println(customerLee.showCustomerInfo() +<span class="string">&quot;지불금액은 &quot;</span>+priceLee);</span><br><span class="line"></span><br><span class="line">        System.out.println(customerKim.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+priceKim);</span><br><span class="line"></span><br><span class="line">        Customer customerNo = <span class="keyword">new</span> VIPCustomer(<span class="number">10030</span>,<span class="string">&quot;나몰라&quot;</span>);</span><br><span class="line">        customerNo.bonusPoint=<span class="number">10000</span>;</span><br><span class="line">        System.out.println(customerNo.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+customerNo.calcPrice(<span class="number">10000</span>));</span><br><span class="line">        <span class="comment">// 지불금액이 예상하기로 10000이 나와야하지만 결과는 9000이나옴 이유는 vipcustomer의 calcPrice()메소드가 호출되었기 때문에 이것을 가상메소드호출이라 한다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckf3y86xa001o40u25dz2d5c4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Inheritance" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" class="article-date">
@@ -193,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckf2j9nle001hc0u24c6th2at" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckf3y86wt001240u255m4c8uu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckf2j9nkw000vc0u2hlzk7xjw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckf3y86x9001n40u2f42zfc7i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +666,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckf2j9nl50014c0u2eyle6r6b" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckf3y86wm000s40u21btp9cgu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -512,7 +839,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckf2j9nl70016c0u2eg413m3l" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckf3y86x6001k40u23cbdgmk6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -563,7 +890,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckf2j9nkx000xc0u26ndvf1cx" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckf3y86xb001r40u2hvojebf7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1004,361 +1331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckf2j9nla001bc0u22xrv07ss" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Variable" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/08/Java/JavaAdvanced/Java-Variable/" class="article-date">
-  <time datetime="2020-09-08T03:05:57.754Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/Java/JavaAdvanced/Java-Variable/">Java_Variable</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="변수-Variable-필드-속성-멤버-변수"><a href="#변수-Variable-필드-속성-멤버-변수" class="headerlink" title="변수 (Variable,필드, 속성, 멤버 변수)"></a>변수 (Variable,필드, 속성, 멤버 변수)</h1><ul>
-<li>변수의 자료형은 기본 자료형, 참조 자료형으로 나눠진다.<ul>
-<li>변수에 대한 생성은 생성자에서 주로하는데 사용하기 전에만 하면 된다.<br>사용하기 전 상태에서 값을 넣으면 NullPointException이 발생할 수 밖에 없다.<br>메모리가 없는데 값을 넣으면 에러가 날 수 밖에 없다.</li>
-</ul>
-</li>
-</ul>
-<p>선언된 위치에 따라 구분되는 변수는 생성 및 소멸 시기, 저장되는 메모리 공간과 사용 방법까지 서로 다르다.</p>
-<table>
-<thead>
-<tr>
-<th>변수</th>
-<th>생성 시기</th>
-<th>소멸 시기</th>
-<th>저장 메모리</th>
-<th>사용 방법</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>클래스 변수</td>
-<td>클래스가 메모리에 올라갈 때(클래스가 사용이 될 때)</td>
-<td>프로그램이 종료될 때</td>
-<td>메소드 영역</td>
-<td>클래스 이름, 변수 이름</td>
-</tr>
-<tr>
-<td>인스턴스 변수</td>
-<td>인스턴스가 생성될 때</td>
-<td>인스턴스가 소멸할 때</td>
-<td>힙 영역</td>
-<td>인스턴스 이름, 변수 이름</td>
-</tr>
-<tr>
-<td>지역 변수</td>
-<td>블록 내에서 변수의 선언문이 실행될 때</td>
-<td>블록을 벗어날 때</td>
-<td>스택 영역</td>
-<td>변수 이름</td>
-</tr>
-</tbody></table>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Variables</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span> instanceVar; <span class="comment">// 인스턴스 멤버 변수</span></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> classVar; <span class="comment">// 클래스 멤버 변수</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> method(<span class="keyword">int</span> parameterVar)&#123; <span class="comment">//파라미터 변수</span></span><br><span class="line">         <span class="keyword">int</span> localVar = <span class="number">0</span>; <span class="comment">//로컬 변수</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="클래스-멤버-변수-static-variable-class-variable"><a href="#클래스-멤버-변수-static-variable-class-variable" class="headerlink" title="클래스 멤버 변수(static variable, class variable)"></a>클래스 멤버 변수(static variable, class variable)</h2><ul>
-<li>처음 프로그래밍에 로드될 때 클래스 영역에 생긴다, 메모리에 할당된다.</li>
-<li>static을 이용하여 정의하는 변수, 클래스에서 바로 접근이 가능한 변수를 의미한다.</li>
-<li>인스턴스(객체)들이 공통으로 사용하는 변수, 외부에서 접근하지 못하게 접근제어자를 private을 사용하는 것이 좋다.</li>
-<li>초기화를 해주지 않았을 경우, 자동으로 자료형의 기본값으로 초기화가 된다.(static int num; 이라 했을 때 static int num = 0;과 같음)   </li>
-<li>객체명으로도 접근이 가능하지만 권장하지 않는다.</li>
-</ul>
-<p><img src="../../../image/static%20%EB%B3%80%EC%88%98.png" alt="static변수"></p>
-<ul>
-<li><p>모든 인스턴스에 공통적으로 사용되는 클래스 변수가 된다, 클래스가 메모리에 로드될 때 생성된다.</p>
-</li>
-<li><p>처음 프로그램이 로드될 때 데이터 영역(static 영역, 클래스 영역)에 생성이 된다.</p>
-</li>
-<li><p>인스턴스의 생성과 상관 없이 사용할 수 있으므로 클래스 이름으로 참조한다.(ex- 클래스명.static변수명,Student.name = “홍길동”)</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> classVar; </span><br><span class="line">     </span><br><span class="line">System.out.println(<span class="string">&quot;클래스 변수&quot;</span>);</span><br><span class="line">System.out.println(Variable.classVar); <span class="comment">// 0으로 초기화가 된다. </span></span><br></pre></td></tr></table></figure>
-<h2 id="인스턴스-멤버-변수"><a href="#인스턴스-멤버-변수" class="headerlink" title="인스턴스 멤버 변수"></a>인스턴스 멤버 변수</h2><ul>
-<li>객체를 생성해서 사용하는 변수로 클래스명으로 접근이 불가능하다.   </li>
-<li>초기화를 해주지 않았을 경우, 자동으로 자료형의 기본값으로 초기화가 된다.</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> instanceVar; <span class="comment">// 인스턴스 멤버 변수, 필드, 속성</span></span><br><span class="line">System.out.println(<span class="string">&quot;인스턴스 멤버 변수&quot;</span>);</span><br><span class="line">Variable var = <span class="keyword">new</span> Variable();</span><br><span class="line"><span class="comment">// 인스턴스를 만들어야 실체가 있기 때문에</span></span><br><span class="line">System.out.println(var.instanceVar);  </span><br><span class="line"><span class="comment">//0으로 초기화가 됨.외워야됨.</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<ul>
-<li><p>각 자료형의 초기화값</p>
-<table>
-<thead>
-<tr>
-<th>변수의 타입</th>
-<th>초기값</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>char</td>
-<td>‘\u0000’</td>
-</tr>
-<tr>
-<td>byte,short,int</td>
-<td>0</td>
-</tr>
-<tr>
-<td>long</td>
-<td>0L</td>
-</tr>
-<tr>
-<td>float</td>
-<td>0.0f</td>
-</tr>
-<tr>
-<td>double</td>
-<td>0.0</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>false</td>
-</tr>
-<tr>
-<td>배열,인스턴스 등</td>
-<td>null</td>
-</tr>
-</tbody></table>
-<h3 id="클래스-변수와-인스턴스-변수"><a href="#클래스-변수와-인스턴스-변수" class="headerlink" title="클래스 변수와 인스턴스 변수"></a>클래스 변수와 인스턴스 변수</h3></li>
-</ul>
-<p><img src="../../../image/static%EB%B3%80%EC%88%98%EC%99%80%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%B3%80%EC%88%98.png" alt="static변수와인스턴스변수"></p>
-<ul>
-<li>각각의 객체들은 데이터 영역에 위치한 동일한 메모리를 참조한다.</li>
-</ul>
-<h2 id="로컬-변수"><a href="#로컬-변수" class="headerlink" title="로컬 변수"></a>로컬 변수</h2><ul>
-<li>메소드 또는 중괄호 블록 내부에서 생성되는 변수</li>
-<li>스택 영역에 생성되며, 초기화가 자동으로 이루어지지 않는다.</li>
-<li>생명 주기(Life cycle)은 생성된 중괄호 블록이 종료될 때 까지이다.</li>
-</ul>
-<h2 id="파라미터-변수"><a href="#파라미터-변수" class="headerlink" title="파라미터 변수"></a>파라미터 변수</h2><ul>
-<li>메소드에서 값을 호출할 때 넣어 주는 변수. 메소드 내부에서만 사용 가능.</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> method(<span class="keyword">int</span> paramVar)&#123; <span class="comment">//로컬 파라미터 변수</span></span><br><span class="line">System.out.println(paramVar);</span><br><span class="line"><span class="keyword">int</span> localVar; <span class="comment">//로컬 변수</span></span><br><span class="line">System.out.println(localVar); <span class="comment">//error 로컬변수는 초기화가 자동으로 안됨. </span></span><br><span class="line">localVar = <span class="number">10</span>;</span><br><span class="line">System.out.println(localVar); <span class="comment">//이렇게 값을 대입해서 사용해야 한다.</span></span><br><span class="line">&#123;</span><br><span class="line">  localVar = <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> localVar2 = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(localVar); <span class="comment">//블록 내에서 수정한 것도 반영됨.     </span></span><br><span class="line">localVar2 = <span class="number">40</span>; <span class="comment">// 접근 불가. 생명주기가 끝났다. Life-Cycle이 끝났다.</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckf2j9nln001qc0u2bnuo1kkg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/ClassEx2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/08/Java/PreCourseEx/ClassEx2/" class="article-date">
-  <time datetime="2020-09-08T02:37:06.819Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/Java/PreCourseEx/ClassEx2/">PreCourse-HidingEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h1><h2 id="정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기"><a href="#정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기" class="headerlink" title="정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기"></a>정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기</h2><ul>
-<li>다음과 같은 MyDate 클래스가 있습니다.</li>
-<li>day,month, year,isValid 변수는 private으로 선언합니다.</li>
-<li>각 변수의 getter, setter를 public으로 구현합니다.</li>
-<li>MyDate(int day, int month, int year) 생성자를 만듭니다.</li>
-<li>public String isValid() 메소드를 만들어 날짜가 유효한지 확인합니다.</li>
-<li>MyDate Test 클래스에서 생성한 MyDate가 날짜가 유효한지 확인합니다.</li>
-</ul>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isValid = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> MyDate(<span class="keyword">int</span> day, <span class="keyword">int</span> month, <span class="keyword">int</span> year)&#123;</span><br><span class="line">        setYear(year);</span><br><span class="line">        setMonth(month);</span><br><span class="line">        setDay(day);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay() &#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setDay(<span class="keyword">int</span> day) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (month)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">case</span> <span class="number">5</span>: <span class="keyword">case</span> <span class="number">7</span>: <span class="keyword">case</span> <span class="number">8</span>: <span class="keyword">case</span> <span class="number">10</span>: <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt; <span class="number">0</span> || day &gt;<span class="number">31</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">case</span> <span class="number">6</span>: <span class="keyword">case</span> <span class="number">9</span>: <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">30</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> (( ( year % <span class="number">4</span> ==<span class="number">0</span> &amp;&amp;  year % <span class="number">100</span> !=<span class="number">0</span> ) || year % <span class="number">400</span> ==<span class="number">0</span>))&#123;  <span class="comment">//윤년인 경우</span></span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">29</span>) &#123;</span><br><span class="line">                        isValid = <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">28</span>)&#123;</span><br><span class="line">                        isValid= <span class="literal">false</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="symbol">default:</span></span><br><span class="line">                isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>( month &lt;<span class="number">1</span> || month &gt;<span class="number">12</span>)&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.month =month;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="keyword">if</span>(year &gt; Calendar.getInstance().get(Calendar.YEAR))&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String isValid()&#123;</span><br><span class="line">        <span class="keyword">if</span>(isValid) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효한 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효 하지 않은 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate myDate = <span class="keyword">new</span> MyDate(<span class="number">10</span>,<span class="number">7</span>,<span class="number">2019</span>);</span><br><span class="line">        System.out.println( myDate.isValid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h1><h2 id="객체-간-협력-출근길-커피-사기"><a href="#객체-간-협력-출근길-커피-사기" class="headerlink" title="객체 간 협력 - 출근길 커피 사기"></a>객체 간 협력 - 출근길 커피 사기</h2><ul>
-<li>아침 출근길에 김 졸려씨는 4000원을 내고 별다방에서 아메리카노를 사 마셨습니다.</li>
-<li>이 피곤씨는 콩다방에서 4,500원을 내고 라떼를 사 마셨습니다,</li>
-<li>메소드와 클래스를 추가해서 자유롭게 구현을 해보세요.</li>
-</ul>
-<h2 id="문제-구현-1"><a href="#문제-구현-1" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>사람 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> &#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line">    String buyCoffeeName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Man(String name, <span class="keyword">int</span> money)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.money = money;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyStarCoffee(String coffeName,StarCoffee starCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeName;</span><br><span class="line">        starCoffee.sells(Menu.STAR_AMERICANO,<span class="string">&quot;americano&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.STAR_AMERICANO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyBeanCoffee(String coffeeName,BeanCoffee beanCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeeName;</span><br><span class="line">        beanCoffee.sells(Menu.BEAN_LATTE,<span class="string">&quot;latte&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.BEAN_LATTE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;님이 산 컴피는 &quot;</span>+buyCoffeeName+<span class="string">&quot;이고, 잔액은 &quot;</span>+money+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>별다방 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showStarCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;StarCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>콩다방 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBeanCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BeanCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>메뉴 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Menu</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_AMERICANO = <span class="number">4000</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_LATTE = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_AMERICANO = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_LATTE = <span class="number">4700</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoffeeTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Man manLee = <span class="keyword">new</span> Man(<span class="string">&quot;이피곤&quot;</span>,<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        BeanCoffee beanCoffee = <span class="keyword">new</span> BeanCoffee();</span><br><span class="line">        StarCoffee starCoffee = <span class="keyword">new</span> StarCoffee();</span><br><span class="line"></span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;아메리카노&quot;</span>,starCoffee);</span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;latte&quot;</span>,starCoffee);</span><br><span class="line">        manLee.showInfo();</span><br><span class="line"></span><br><span class="line">        beanCoffee.showBeanCoffeeInfo();</span><br><span class="line">        starCoffee.showStarCoffeeInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckf2j9nky000yc0u2aiaj5fmh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Cooperation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" class="article-date">
-  <time datetime="2020-09-08T02:17:12.811Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/Java/JavaAdvanced/Java-Cooperation/">Java_Cooperation</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="개인적으로-객체간의-협력을-이해하는게-객체-지향-프로그래밍의-핵심인-것-같다-이해하는데-많은-시간이-필요할-것-같다"><a href="#개인적으로-객체간의-협력을-이해하는게-객체-지향-프로그래밍의-핵심인-것-같다-이해하는데-많은-시간이-필요할-것-같다" class="headerlink" title="개인적으로 객체간의 협력을 이해하는게 객체 지향 프로그래밍의 핵심인 것 같다. 이해하는데 많은 시간이 필요할 것 같다."></a>개인적으로 객체간의 협력을 이해하는게 객체 지향 프로그래밍의 핵심인 것 같다. 이해하는데 많은 시간이 필요할 것 같다.</h3><h1 id="객체-간-협력"><a href="#객체-간-협력" class="headerlink" title="객체 간 협력"></a>객체 간 협력</h1><ul>
-<li>객체 지향 프로그램은 객체를 정의 하고 객체간의 협력을 구현한 프로그램</li>
-<li>학생이 지하철이나 버스를 타고 학교 가는 과정에서 일어나는 협력</li>
-</ul>
-<img src="../../image/객체간의%20협력.png" width="500" height="200"/>
-
-<ul>
-<li><p>학생 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    String studentName;</span><br><span class="line">    <span class="keyword">int</span> grade;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(String studentName, <span class="keyword">int</span> money)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line">        <span class="built_in">this</span>.money = money;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> takeBus(Bus bus)&#123;</span><br><span class="line">        bus.take(<span class="number">1000</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -=<span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> takeSubway(Subway subway)&#123;</span><br><span class="line">        subway.take(<span class="number">1200</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -=<span class="number">1200</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> takeTaxi(Taxi taxi)&#123;</span><br><span class="line">        taxi.takeTaxi(<span class="number">10000</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -=<span class="number">10000</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(studentName + <span class="string">&quot;님의 남은 돈은 &quot;</span>+money+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>버스 클래스</p>
-</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bus</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> busNumber;</span><br><span class="line">    <span class="keyword">int</span> passsengerCount;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Bus(<span class="keyword">int</span> busNumber)&#123;</span><br><span class="line">        <span class="built_in">this</span>.busNumber = busNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> take(<span class="keyword">int</span> money)&#123; <span class="comment">//승차</span></span><br><span class="line">        <span class="built_in">this</span>.money +=money;</span><br><span class="line">        passsengerCount++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> showBusInfo()&#123;</span><br><span class="line">        System.out.println(busNumber + <span class="string">&quot;번 버스의 승객은 &quot;</span>+passsengerCount+<span class="string">&quot;이고, 수입은&quot;</span>+money+<span class="string">&quot;입니다.&quot;</span> );</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>지하철 클래스</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Subway</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> lineNumber;</span><br><span class="line">    <span class="keyword">int</span> passsengerCount;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Subway(<span class="keyword">int</span> lineNumber)&#123;</span><br><span class="line">        <span class="built_in">this</span>.lineNumber = lineNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> take(<span class="keyword">int</span> money)&#123;</span><br><span class="line">        <span class="built_in">this</span>.money += money;</span><br><span class="line">        passsengerCount++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> showSubwayInfo()&#123;</span><br><span class="line">        System.out.println(lineNumber + <span class="string">&quot;번 지하철의 승객은 &quot;</span>+passsengerCount+<span class="string">&quot;이고, 수입은&quot;</span>+money+<span class="string">&quot;입니다.&quot;</span> );</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Test 클래스</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TakeTransTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">&quot;James&quot;</span>,<span class="number">5000</span>);</span><br><span class="line">        Student student1 = <span class="keyword">new</span> Student(<span class="string">&quot;Tomas&quot;</span>,<span class="number">10000</span>);</span><br><span class="line">        Student student2 = <span class="keyword">new</span> Student(<span class="string">&quot;Eric&quot;</span>,<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        Bus bus100 = <span class="keyword">new</span> Bus(<span class="number">100</span>);</span><br><span class="line">        Subway subwayGreen = <span class="keyword">new</span> Subway(<span class="number">2</span>);</span><br><span class="line">        Subway subwayBlue = <span class="keyword">new</span> Subway(<span class="number">4</span>);</span><br><span class="line">        Taxi taxi3699 = <span class="keyword">new</span> Taxi(<span class="number">3699</span>);</span><br><span class="line"></span><br><span class="line">        student.takeBus(bus100);</span><br><span class="line">        student1.takeSubway(subwayGreen);</span><br><span class="line">        student2.takeTaxi(taxi3699);</span><br><span class="line"></span><br><span class="line">        student.showInfo();</span><br><span class="line">        student1.showInfo();</span><br><span class="line">        student2.showInfo();</span><br><span class="line"></span><br><span class="line">        bus100.showBusInfo();</span><br><span class="line"></span><br><span class="line">        subwayGreen.showSubwayInfo();</span><br><span class="line">        subwayBlue.showSubwayInfo();</span><br><span class="line"></span><br><span class="line">        taxi3699.showTaxiInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckf2j9nlc001ec0u2ag7t2auk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-This" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/08/Java/JavaAdvanced/Java-This/" class="article-date">
-  <time datetime="2020-09-08T01:40:37.450Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/Java/JavaAdvanced/Java-This/">Java_This</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="this-키워드"><a href="#this-키워드" class="headerlink" title="this 키워드"></a>this 키워드</h1><ul>
-<li>객체가 스스로를 가르키는 참조, 자신의 메모리를 가리킨다.</li>
-<li>인스턴스 자신의 주소를 반환한다.</li>
-<li>멤버 변수와 로컬 변수의 이름이 같을 때, 멤버 변수임을 명시</li>
-</ul>
-<h2 id="생성자에서-다른-생성자를-호출하는-예제"><a href="#생성자에서-다른-생성자를-호출하는-예제" class="headerlink" title="생성자에서 다른 생성자를 호출하는 예제"></a>생성자에서 다른 생성자를 호출하는 예제</h2><ul>
-<li><p>생성자를 호출하는 데에도 사용할 수 있다.</p>
-<ul>
-<li>생성자 오버로딩에서 한 클래스 안에 생성자가 여러개 있을 수 있는데<br>한 생성자에서 다른 생성자를 호출하는 경우가 종종있다.</li>
-</ul>
-</li>
-<li><p>this() 호출시에 반드시 생성자의 첫 줄에서만 사용해야 한다.</p>
-<ul>
-<li>생성자는 인스턴스의 값들을 초기화하는 인스턴스 생성을 초기화하는 역할을 한다.</li>
-<li>this()로 다른 생성자를 호출할 때, 호출한 생성자가 무슨일을 할 줄 모르는 상태인데 this() 호출 보다 먼저 값들을 초기화한다고 하면,<br>다른 생성자를 호출할 때 다른 스테이트가 올라가는 것을 허용하지 않는다. 그래서 호출은 가장 첫줄에 써야 한다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Constructor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> y;</span><br><span class="line">    String z;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Constructor</span><span class="params">()</span></span>&#123; <span class="comment">// 기본 생성자, 구현하지 않아도 알아서 생긴다.</span></span><br><span class="line">        <span class="keyword">this</span>(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">//        x = 1;</span></span><br><span class="line"><span class="comment">//        y = 2;</span></span><br><span class="line"><span class="comment">//        z = &quot;자동 초기화 값이 들어간다.&quot;;</span></span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 파라미터 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Constructor</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, String z)</span></span>&#123; <span class="comment">//오버로딩</span></span><br><span class="line">        <span class="keyword">this</span>.x = x; <span class="comment">// this는 멤버 변수를 표기하기 위해 사용될 수 있다.</span></span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">        <span class="keyword">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Constructor</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(a,b,<span class="string">&quot;&quot;</span>); <span class="comment">// 자기 자신을 가르키는 애 위에 함수가 호출됨. this는 무조건 첫줄에만 쓰일 수 있다.(단한번) 규칙입니다.</span></span><br><span class="line"><span class="comment">//        x = a;</span></span><br><span class="line"><span class="comment">//        y = b;</span></span><br><span class="line"><span class="comment">//        z = &quot;&quot;;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="자기-자신의-메모리를-가리키는-this-예제"><a href="#자기-자신의-메모리를-가리키는-this-예제" class="headerlink" title="자기 자신의 메모리를 가리키는 this 예제"></a>자기 자신의 메모리를 가리키는 this 예제</h2><p><img src="../../../image/this.png" alt="this"></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isVaild = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> setDay(<span class="keyword">int</span> day)&#123;</span><br><span class="line">        <span class="built_in">this</span>.day = day;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay()&#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>(month &lt;<span class="number">1</span> || month &gt; <span class="number">12</span>)&#123;</span><br><span class="line">            isVaild = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.month = month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showDate()&#123;</span><br><span class="line">        <span class="keyword">if</span> (isVaild)&#123;</span><br><span class="line">            System.out.println(<span class="built_in">this</span>.year + <span class="string">&quot;년&quot;</span> + <span class="built_in">this</span>.month + <span class="string">&quot;월&quot;</span> +<span class="built_in">this</span>.day+<span class="string">&quot;일&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;유효하지 않은 범위 입니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate date = <span class="keyword">new</span> MyDate();</span><br><span class="line"></span><br><span class="line">        date.setYear(<span class="number">2019</span>);</span><br><span class="line">        date.setMonth(<span class="number">13</span>);</span><br><span class="line">        date.setDay(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        date.showDate();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>인스턴스 자신의 주소를 반환할 일이 있으면 this를 반환 하면 된다.</p>
-</li>
-<li><p>day로부터 setYear라는 메소드를 호출하게 되면 setYear는 BirthDay에 대한 메소드이니깐</p>
-</li>
-<li><p>setYear의 세그멘테이션이 stack영역에 만들어지고 만약 setYear 안에서 this를 썼다하면 힙영역의 BirthDay에 대한  메모리를 가리킨다.<br>인스턴스 내부에서(객체 내부에서) 자기 자신이 생성된 메모리 주소를 가리킨다.<br>인스턴스가 여러 개 생성 됬다 하면 각각의 this는 다 다름 코드상에서 this하나만 쓰지만 각각은 다 다르다</p>
-</li>
-<li><p>여기서 stack 영역에 this가 들어가게 되는데 왜 this가 들어가는지 이해가 안 갔는데</p>
-</li>
-<li><p>메인에서 this가 date.setYear() 이런식으로 호출이 되어있다면 this는 date변수 대신이라고 생각해도 될까?</p>
-</li>
-<li><p>로컬변수에 this는 참조변수로 생성된다. 그런의미로 이해하면 될 것 같다.</p>
-</li>
-</ul>
-<h2 id="자기-자신을-반환하는-this"><a href="#자기-자신을-반환하는-this" class="headerlink" title="자기 자신을 반환하는 this"></a>자기 자신을 반환하는 this</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Person getPerson()&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckf2j9nlk001pc0u2cdsu4hc8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckf3y86wq000y40u2fmnva9bw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1404,23 +1377,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/">JavaBasic_ConditionalStatements</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/">Java_PackageAndImport</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/14/Algorithm/Solution-LongNode/">AlgorithmSolution_Disguise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/">Java_ClassClass</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/14/Java/JavaAdvanced/Java-Generic/">Java_Generic</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/14/Java/JavaAdvanced/Java-Enumeration/">Java_Enumeration</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/13/Algorithm/Solution-MaxNumber/">AlgorithmSolution_MaxNumber</a>
           </li>
         
       </ul>
