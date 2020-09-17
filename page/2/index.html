@@ -64,6 +64,81 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaAdvanced/Java-Enumeration" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/14/Java/JavaAdvanced/Java-Enumeration/" class="article-date">
+  <time datetime="2020-09-14T10:37:37.095Z" itemprop="datePublished">2020-09-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/14/Java/JavaAdvanced/Java-Enumeration/">Java_Enumeration</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="열거형-Enumeration"><a href="#열거형-Enumeration" class="headerlink" title="열거형(Enumeration)"></a>열거형(Enumeration)</h1><h2 id="열거형이란"><a href="#열거형이란" class="headerlink" title="열거형이란"></a>열거형이란</h2><ul>
+<li>enum 키워드로 표현</li>
+<li>‘이넘’ 이라고 부름</li>
+<li>내부적인 구현은 <code>enum</code> -&gt; <code>java.lang.Enum</code> 클래스를 상속 하는 것</li>
+<li>enum은 다른 클래스를 상속하지 못한다. 이미 상속하는 클래스(java.lang.Enum)가 있기 때문에</li>
+</ul>
+<h2 id="열거형의-특징"><a href="#열거형의-특징" class="headerlink" title="열거형의 특징"></a>열거형의 특징</h2><ul>
+<li><p>접근 제한자는 <code>public</code>과 <code>default</code>만 사용 가능하다.</p>
+</li>
+<li><p>열거형은 다른 클래스를 상속하지 못하지만, 인터페이스 구현은 가능하다.</p>
+</li>
+<li><p>클래스 변수와 마찬가지로 바로 사용이 가능하다.</p>
+</li>
+<li><p>열거형 타입에는 열거형 상수와 null 값 할당 가능.</p>
+</li>
+<li><p>일종의 클래스 자료형으로 쓸 수 있고, 열거형 상수도 객체로 사용 가능하다.</p>
+</li>
+<li><p>생성자가 있을 수 있는데 앞에 private만 쓸 수 있고 생략 가능하다.</p>
+</li>
+<li><p>생성자는 String을 입력 받게 되어 있는데, 만들 때 각 객체에 값을 넣어줘야 한다.</p>
+<h2 id="열거형의-구현"><a href="#열거형의-구현" class="headerlink" title="열거형의 구현"></a>열거형의 구현</h2><ul>
+<li>일반적인 구현<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 클래스의 일종 자료형으로 쓰일 수 있음.</span></span><br><span class="line">  <span class="keyword">enum</span> Job&#123;</span><br><span class="line">  <span class="comment">//실제 값은 0인데 자바에서는 숫자 개념으로 사용하지 말라는 것이 권고이다. 각 상수는 0부터 숫자를 가지지만, </span></span><br><span class="line">  <span class="comment">// 심볼로만 사용하고 숫자는 사용하지 않음.</span></span><br><span class="line"></span><br><span class="line">      STUDENT, MARKETING, DEVELOPER, CEO, CHIEF_EXECUTIONAL_OFFICER <span class="comment">//열거형 상수 대문자 단어 구문은 _ 로 표현</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Job job = Job.CHIEF_EXECUTIONAL_OFFICER; <span class="comment">// 클래스 변수와 유사하게 사용</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(job == Job.CHIEF_EXECUTIONAL_OFFICER)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;사장님 안녕하세요?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">        <span class="keyword">switch</span> (c)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (job)&#123; <span class="comment">// switch ~ case 문에는 열거형 자료형을 생략, 열거형 상수만 사용</span></span><br><span class="line">            <span class="keyword">case</span> STUDENT:</span><br><span class="line">                System.out.println(<span class="string">&quot;you will be a great one&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MARKETING:</span><br><span class="line">                System.out.println(<span class="string">&quot;you sells&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> DEVELOPER:</span><br><span class="line">                System.out.println(<span class="string">&quot;you make things&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> CHIEF_EXECUTIONAL_OFFICER:</span><br><span class="line">                System.out.println(<span class="string">&quot;you choose&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                System.out.println(<span class="string">&quot;who are you?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>클래스 내부에서 열거형 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">       <span class="keyword">enum</span> Symbol&#123;</span><br><span class="line">           ONE,TWO,THREE;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">          System.out.println(Foo.Symbol.ONE); <span class="comment">//이넘이 그대로 출력됨 결과값 : ONE; 출력을하면 자동으로 toString()으로 변환되서 스트링으로 출력됨.</span></span><br><span class="line">          <span class="comment">// 숫자로서 사용되는게 굉장히 제한됨. 최대한 막혀 있음</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>열거형에 메소드 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">enum</span> Symbol&#123;</span><br><span class="line">     ONE,TWO,THREE,FOUR;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> Symbol <span class="title">nextSymbol</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="keyword">this</span>.equals(ONE))&#123; <span class="comment">// 클래스 멤버변수와 마찬가지로 바로 사용 가능</span></span><br><span class="line">             <span class="comment">//각자가 객체로 사용됨</span></span><br><span class="line">             <span class="keyword">return</span> TWO;</span><br><span class="line">         &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(TWO))&#123;</span><br><span class="line">             <span class="keyword">return</span> THREE;</span><br><span class="line">         &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(THREE))&#123;</span><br><span class="line">             <span class="keyword">return</span> FOUR;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">return</span> ONE;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         Symbol sym = Symbol.ONE; <span class="comment">//애는 객체</span></span><br><span class="line">         Symbol nextSym = sym.nextSymbol(); <span class="comment">//객체는 메소드를 실행할 수 있어서 사용가능 열거형 상수는 객체이다 .그래서 메소드를 실행할 수 있다.</span></span><br><span class="line">         System.out.println(nextSym); <span class="comment">//TWO</span></span><br><span class="line">         nextSym = nextSym.nextSymbol();</span><br><span class="line">         System.out.println(nextSym); <span class="comment">//THREE</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>열거형에 생성자를 이용한 enum 초기화<ul>
+<li>열거형의 생성자는 항상 <code>private</code>이며 생략 가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">enum</span> Family&#123;</span><br><span class="line">     FATHER(<span class="string">&quot;아버지&quot;</span>), MATHER(<span class="string">&quot;어머니&quot;</span>), SON(<span class="string">&quot;아들&quot;</span>), DAUGHTER(<span class="string">&quot;딸&quot;</span>); <span class="comment">//열거형 상수(객체)</span></span><br><span class="line">     <span class="comment">// 여기서 객체가 생성되는 것임. 처음 한번만 생성되는 거임</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">     <span class="keyword">private</span> String koreanWord; <span class="comment">//멤버변수(객체에 속하는 변수)</span></span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">public</span> String <span class="title">getKoreanWord</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKoreanWord</span><span class="params">(String koreanWord)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//private는 생략 가능 public 안됨 강제 private  / 안에서 생성되기 때문에</span></span><br><span class="line">     <span class="comment">//객체의 생성자는 string을 입력받게 되어있는데 만들때 각 객체에 값을 넣어줘야한다. FATHER(&quot;아버지&quot;)</span></span><br><span class="line">     <span class="comment">// 생성자를 사용해서 (&quot;아버지&quot;)처럼 &quot;&quot;안에 값을 변경할 수 있다.</span></span><br><span class="line">     <span class="function"><span class="keyword">private</span> <span class="title">Family</span><span class="params">(String koreanWord)</span></span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         Family fam = Family.SON;</span><br><span class="line">        System.out.println(fam.getKoreanWord());</span><br><span class="line">        fam.setKoreanWord(<span class="string">&quot;버린 자식&quot;</span>);</span><br><span class="line">        System.out.println(fam.getKoreanWord());</span><br><span class="line">        System.out.println(Family.SON.getKoreanWord()); <span class="comment">//처음한번만 생성되는 거임</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-Enumeration/" data-id="ckf6tdtni0010n8u2cji402x1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Algorithm/Solution-MaxNumber" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/13/Algorithm/Solution-MaxNumber/" class="article-date">
@@ -118,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Algorithm/Solution-MaxNumber/" data-id="ckf5dwub6000o1su22ttzb41t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Algorithm/Solution-MaxNumber/" data-id="ckf6tdtmx000qn8u2hl8x167c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ClassClass/" data-id="ckf5dwubf000y1su2fykw6eix" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ClassClass/" data-id="ckf6tdtne000yn8u26j4ycmbp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckf5dwuc3001l1su2erd7f7rm" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckf6tdtp3001pn8u2ajcmc5jg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" data-id="ckf5dwubv001h1su2cheh19f1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" data-id="ckf6tdtom001in8u24jodfi5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckf5dwucf001w1su2absobcpi" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckf6tdtpt001xn8u254jwdg88" class="article-share-link">Share</a>
       
       
     </footer>
@@ -601,7 +676,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ObjectClass/" data-id="ckf5dwubs001d1su2eakg2vgr" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ObjectClass/" data-id="ckf6tdto8001bn8u25gg4frwj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -657,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckf5dwucc001v1su269rw0xdq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckf6tdtpl001wn8u2cb5t5ibj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,7 +877,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckf5dwubm00161su25quaf4yx" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckf6tdto00017n8u25zwv9kca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -860,76 +935,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckf5dwuc5001n1su208v5a9ez" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/AbstractClass_TemplateEx2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" class="article-date">
-  <time datetime="2020-09-11T02:22:54.150Z" itemprop="datePublished">2020-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/">PreCourse-Abstract_TemplateEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="템플릿메소들-활용"><a href="#템플릿메소들-활용" class="headerlink" title="템플릿메소들 활용"></a>템플릿메소들 활용</h2><ul>
-<li><p>player가 있고 이 player가 게임을 합니다. 게임에서 player가 가지는 레벨에 따라<br>run(),jump(),turn() 세 가지 기능을 할 수 있습니다.<br>각 레벨에 따라 기능가능 여부가 다음과 같습니다.</p>
-</li>
-<li><p>초급자 레벨: 천천히 달립니다(run() 가능)</p>
-</li>
-<li><p>중급자 레벨: 빠르게 달리고, 점프할 수 있습니다.</p>
-</li>
-<li><p>고급자 레벨: 엄청 빠르게 달리고, 점프할 수 있고 한 바퀴 돌 수 있습니다.</p>
-</li>
-<li><p>플에이어는 go() 명령어를 받으면 이 세가지 기능을 수행합니다.<br>이중 할 수 없는 것은 할 수 없다고 출력합니다.</p>
-</li>
-</ul>
-<p><img src="../../../image/%ED%85%9C%ED%94%8C%EB%A6%BF.jpg" alt="템플릿"></p>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>Player 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> PlayerLevel level;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Player()&#123;</span><br><span class="line">        level = <span class="keyword">new</span> BeginnerLevel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> PlayerLevel getLevel() &#123;</span><br><span class="line">        <span class="keyword">return</span> level;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> upgradeLevel(PlayerLevel playerLevel)&#123;</span><br><span class="line">        level = playerLevel;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> play(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        getLevel().go(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>PlayerLevel 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> run();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> jump();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> turn();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> showLevelMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> go(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        showLevelMessage();</span><br><span class="line">        run();</span><br><span class="line">        <span class="keyword">while</span> (num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            jump();</span><br><span class="line">            num--;</span><br><span class="line">        &#125;</span><br><span class="line">        turn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BeginnerLevel 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeginnerLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;천천히 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점프 할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********초급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>AdvancedLevel 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점푸 할 수 있습니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn 할 줄 모릅니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********중급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>SuperLevel 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;엄청 빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;아주 높이 jump 합니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;한 바퀴 돕니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********고급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainBoardPlay</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Player player = <span class="keyword">new</span> Player();</span><br><span class="line">        player.play(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel alevel = <span class="keyword">new</span> AdvancedLevel();</span><br><span class="line">        player.upgradeLevel(alevel);</span><br><span class="line">        player.play(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel slevel = <span class="keyword">new</span> SuperLevel();</span><br><span class="line">        player.upgradeLevel(slevel);</span><br><span class="line">        player.play(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckf5dwuc6001o1su2cejsai1y" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckf6tdtoz001nn8u2g90ycbb8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -943,7 +949,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -975,6 +981,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/17/Algorithm/Solution-CraneDrawDoll/">AlgorithmSolution_CraneDrawDoll</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/">Java_Handling_Exception</a>
           </li>
         
@@ -988,10 +998,6 @@
         
           <li>
             <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/">JavaBasic_ConditionalStatements</a>
           </li>
         
       </ul>
