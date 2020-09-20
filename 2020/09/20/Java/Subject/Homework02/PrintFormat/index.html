@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Subject_Day02_PrintFormat | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="과제 Day2환자 레코드 출력하기 환자 레코드를 열전사 프린터로 보기좋게 프린트하려 한다. 환자의 ID, 환자의 병명, 그리고 비고 사항을 입력받아 포맷에 맞게 출력하는 프로그램을 작성하시오.제한 사항 환자의 ID는 1 이상 999999 이하의 정수로 입력된다고 가정한다. 환자의 병명은 5자 이하의 문자열로 입력되며, 좌측 정렬하여 출력한다. 비고 사항은">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Subject_Day02_PrintFormat">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="과제 Day2환자 레코드 출력하기 환자 레코드를 열전사 프린터로 보기좋게 프린트하려 한다. 환자의 ID, 환자의 병명, 그리고 비고 사항을 입력받아 포맷에 맞게 출력하는 프로그램을 작성하시오.제한 사항 환자의 ID는 1 이상 999999 이하의 정수로 입력된다고 가정한다. 환자의 병명은 5자 이하의 문자열로 입력되며, 좌측 정렬하여 출력한다. 비고 사항은">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-20T03:13:34.359Z">
+<meta property="article:modified_time" content="2020-09-20T04:40:50.454Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/Subject/Homework02/PrintFormat" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework02/PrintFormat/" class="article-date">
+  <time datetime="2020-09-20T03:13:34.359Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Subject_Day02_PrintFormat
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day2"><a href="#과제-Day2" class="headerlink" title="과제 Day2"></a>과제 Day2</h1><h2 id="환자-레코드-출력하기"><a href="#환자-레코드-출력하기" class="headerlink" title="환자 레코드 출력하기"></a>환자 레코드 출력하기</h2><ul>
+<li>환자 레코드를 열전사 프린터로 보기좋게 프린트하려 한다.</li>
+<li>환자의 ID, 환자의 병명, 그리고 비고 사항을 입력받아</li>
+<li>포맷에 맞게 출력하는 프로그램을 작성하시오.<h3 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h3></li>
+<li>환자의 ID는 1 이상 999999 이하의 정수로 입력된다고 가정한다.</li>
+<li>환자의 병명은 5자 이하의 문자열로 입력되며, 좌측 정렬하여 출력한다.</li>
+<li>비고 사항은 10자 이하의 문자열로 입력되며, 좌측 정렬하여 출력한다.<h3 id="출력-포맷"><a href="#출력-포맷" class="headerlink" title="출력 포맷"></a>출력 포맷</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*----------*</span>--------<span class="emphasis">*---------------*</span></span><br><span class="line"> | ID004029 | 코로나19 | 자가 격리 조치 |</span><br><span class="line"><span class="emphasis">*----------*</span>--------<span class="emphasis">*---------------*</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintFormat</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.<span class="keyword">in</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> id = sc.nextInt();</span><br><span class="line">        sc.nextLine();</span><br><span class="line">        String s1 = sc.nextLine();</span><br><span class="line">        String s2 = sc.nextLine();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;출력 포맷&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;*----------*--------*------------*&quot;</span>);</span><br><span class="line">        System.out.printf(<span class="string">&quot;| ID%06d |%-5s | %-10s |\n&quot;</span>,id,s1,s2);</span><br><span class="line">        System.out.println(<span class="string">&quot;*----------*--------*------------*&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfax2x1q001zx4u29r4tgmtk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/20/Java/Subject/Homework02/InputOutput/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Subject_Day02_InputOutput
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/17/Algorithm/Solution-CraneDrawDoll/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AlgorithmSolution_CraneDrawDoll</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework04/MatMul/">Subject_Day04_MatMul</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

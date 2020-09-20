@@ -5,18 +5,18 @@
   
 
   
-  <title>Hexo</title>
+  <title>JavaBasic_Strings | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="문자열(Strings)문자열의 특징 문자열은 내부적으로 ‘클래스’로 구성되어 있다.  내부에는 문자의 배열로 된 데이터가 있다. char []  문자열 편집은 String을 쓰지 않고 Builder나 Buffer 등을 사용한다.  한번 만든 문자열은 변하지 않습니다. (Immutable)   문자열을 연결한다 했을 때, 하나의 문자열에 값을 더하는 것이 아">
+  <meta name="description" content="문자열(Strings)문자열의 특징 문자열은 내부적으로 클래스로 구성되어 있다.  내부에는 문자의 배열로 된 데이터가 있다. char []  문자열 편집은 String을 쓰지 않고 Builder나 Buffer 등을 사용한다.  한번 만든 문자열은 변하지 않습니다. (Immutable)   문자열을 연결한다 했을 때, 하나의 문자열에 값을 더하는 것이 아니라">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="JavaBasic_Strings">
 <meta property="og:url" content="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="문자열(Strings)문자열의 특징 문자열은 내부적으로 ‘클래스’로 구성되어 있다.  내부에는 문자의 배열로 된 데이터가 있다. char []  문자열 편집은 String을 쓰지 않고 Builder나 Buffer 등을 사용한다.  한번 만든 문자열은 변하지 않습니다. (Immutable)   문자열을 연결한다 했을 때, 하나의 문자열에 값을 더하는 것이 아">
+<meta property="og:description" content="문자열(Strings)문자열의 특징 문자열은 내부적으로 클래스로 구성되어 있다.  내부에는 문자의 배열로 된 데이터가 있다. char []  문자열 편집은 String을 쓰지 않고 Builder나 Buffer 등을 사용한다.  한번 만든 문자열은 변하지 않습니다. (Immutable)   문자열을 연결한다 했을 때, 하나의 문자열에 값을 더하는 것이 아니라">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://limjoonchul.github.io/2020/09/13/image/String.jpg">
 <meta property="article:published_time" content="2020-09-13T02:45:08.166Z">
-<meta property="article:modified_time" content="2020-09-13T04:39:41.686Z">
+<meta property="article:modified_time" content="2020-09-20T02:06:39.089Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/13/image/String.jpg">
@@ -78,10 +78,20 @@
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaBasic_Strings
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="문자열-Strings"><a href="#문자열-Strings" class="headerlink" title="문자열(Strings)"></a>문자열(Strings)</h1><h2 id="문자열의-특징"><a href="#문자열의-특징" class="headerlink" title="문자열의 특징"></a>문자열의 특징</h2><ul>
-<li><p>문자열은 내부적으로 ‘클래스’로 구성되어 있다.</p>
+<li><p>문자열은 내부적으로 <code>클래스</code>로 구성되어 있다.</p>
 </li>
 <li><p>내부에는 문자의 배열로 된 데이터가 있다. char []</p>
 </li>
@@ -95,7 +105,7 @@
 </ul>
 <h2 id="문자열의-생성"><a href="#문자열의-생성" class="headerlink" title="문자열의 생성"></a>문자열의 생성</h2><ul>
 <li>String str1 = new String(“abc”) : 인스턴스로 생성되는 방식</li>
-<li>String str2 = “abc” : String상수풀에 있는 문자열을 가리킨다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">&quot;문자열 생성 방법&quot;</span>;</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">&quot;문자열 생성 방법2&quot;</span>); <span class="comment">//클래스 생성자 권장하지 않음.</span></span><br><span class="line"></span><br><span class="line">String s3 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s4 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s5 = <span class="keyword">new</span> String(<span class="string">&quot;abcde&quot;</span>);</span><br><span class="line"></span><br><span class="line">s3 == <span class="attr">s4 :</span> <span class="comment">//true 메모리 참조값에 대한 것,문자열을 곧바로 생성할 경우 상수 풀에서 찾아 사용(상수 풀이라는 공간에 저장되어있음)</span></span><br><span class="line">s3 == <span class="attr">s5 :</span> <span class="comment">//false 문자열을 클래스로 생성할 경우 새로운 값을 생성하므로 false 권장x.</span></span><br><span class="line"></span><br><span class="line">s3.equals(s4) <span class="comment">// true</span></span><br><span class="line">s3.equals(s5) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<li>String str2 = “abc” : String 상수풀에 있는 문자열을 가리킨다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">&quot;문자열 생성 방법&quot;</span>;</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">&quot;문자열 생성 방법2&quot;</span>); <span class="comment">//클래스 생성자 권장하지 않음.</span></span><br><span class="line"></span><br><span class="line">String s3 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s4 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s5 = <span class="keyword">new</span> String(<span class="string">&quot;abcde&quot;</span>);</span><br><span class="line"></span><br><span class="line">s3 == <span class="attr">s4 :</span> <span class="comment">//true 메모리 참조값에 대한 것,문자열을 곧바로 생성할 경우 상수 풀에서 찾아 사용(상수 풀이라는 공간에 저장되어있음)</span></span><br><span class="line">s3 == <span class="attr">s5 :</span> <span class="comment">//false 문자열을 클래스로 생성할 경우 새로운 값을 생성하므로 false.</span></span><br><span class="line"></span><br><span class="line">s3.equals(s4) <span class="comment">// true</span></span><br><span class="line">s3.equals(s5) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h2 id="문자열-안의-메소드"><a href="#문자열-안의-메소드" class="headerlink" title="문자열 안의 메소드"></a>문자열 안의 메소드</h2></li>
 </ul>
 <table>
@@ -185,7 +195,7 @@
 </li>
 <li><p>문자열을 변경하거나 연결하는 경우 사용하면 편리한 클래스</p>
 </li>
-<li><p>StringBuffer는 멀티 쓰레드 프로그래밍에서 동기화(Synchronisation)이 보장된다.<br>단일 쓰레디 프로그래밍에서는 StringBuilder를 사용하는 것이 좋다.</p>
+<li><p>StringBuffer는 멀티 쓰레드 프로그래밍에서 동기화(Synchronisation)이 보장된다.<br>단일 쓰레드 프로그래밍에서는 StringBuilder를 사용하는 것이 좋다.</p>
 </li>
 <li><p>StringBuilder,StringBuffer는 String타입이 아니기 때문에  toString() 메소드를 사용하여 String으로 반환해야한다.</p>
 </li>
@@ -194,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckf9g4yq0001pycu2fta3922i" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckfax2x1n001vx4u2fbdghuhb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -252,23 +262,23 @@
       <ul>
         
           <li>
-            <a href="/2020/09/17/Algorithm/Solution-CraneDrawDoll/">AlgorithmSolution_CraneDrawDoll</a>
+            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/">Java_Handling_Exception</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-InnerClass/">Java_InnerClass</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MatMul/">Subject_Day04_MatMul</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
           </li>
         
       </ul>

@@ -7,17 +7,20 @@
   
   <title>Java_Collections Framework | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구로를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.  자료구조를 담당하는 API라고할 수 있음  인터페이스가 상속이되서 클래스에">
+  <meta name="description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 프로그램 구현에 필요한 자료구조와 알고리즘을 구현해 놓은 라이브러리 개발에 소요되는 시간을 절약하고 최적화된 라이브러리를 사용할 수 있다. java.utils에 속한 일련의 클래스로, 자료구로를 담당 잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다. 제네릭">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java_Collections Framework">
 <meta property="og:url" content="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 java.utils에 속한 일련의 클래스로, 자료구로를 담당  잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.  제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.  자료구조를 담당하는 API라고할 수 있음  인터페이스가 상속이되서 클래스에">
+<meta property="og:description" content="자바 컬렉션 프레임워크(Java Collections Framework)컬렉션 프레임워크란 프로그램 구현에 필요한 자료구조와 알고리즘을 구현해 놓은 라이브러리 개발에 소요되는 시간을 절약하고 최적화된 라이브러리를 사용할 수 있다. java.utils에 속한 일련의 클래스로, 자료구로를 담당 잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다. 제네릭">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/08/image/%EC%BB%AC%EB%A0%89%EC%85%98%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.jpg">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/08/image/map%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.jpg">
 <meta property="article:published_time" content="2020-09-08T10:27:34.729Z">
-<meta property="article:modified_time" content="2020-09-16T11:03:39.947Z">
+<meta property="article:modified_time" content="2020-09-20T08:15:56.292Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/08/image/%EC%BB%AC%EB%A0%89%EC%85%98%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -89,64 +92,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="자바-컬렉션-프레임워크-Java-Collections-Framework"><a href="#자바-컬렉션-프레임워크-Java-Collections-Framework" class="headerlink" title="자바 컬렉션 프레임워크(Java Collections Framework)"></a>자바 컬렉션 프레임워크(Java Collections Framework)</h1><h2 id="컬렉션-프레임워크란"><a href="#컬렉션-프레임워크란" class="headerlink" title="컬렉션 프레임워크란"></a>컬렉션 프레임워크란</h2><ul>
-<li><p>java.utils에 속한 일련의 클래스로, 자료구로를 담당</p>
-</li>
-<li><p>잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.</p>
-</li>
-<li><p>제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</p>
-</li>
-<li><p>자료구조를 담당하는 API라고할 수 있음</p>
-</li>
-<li><p>인터페이스가 상속이되서 클래스에서 구현이된다. 비슷한 구조가 자료구조쪽에도 있는데 추상자료형이라는게 있다 영어로는 abstract data type<br>이걸 실제로 구현을 하면 자료구조(DS, data structure)라고 부른다.</p>
-</li>
-<li><p>추상자로형은 어떤 자료구조 같은 특정 자료형이 어떤 기능들을 가지고 잇는지 어떤 메소드들을 가지고 있는지 메소도들의 행동이 어떤지 정의하는 것이다.</p>
-</li>
-<li><p>이 것들을 실제로 코드 같은 것으로 구현을 해서 특정한 요소들까지 구현을 하게 되면 자료 구조이다.</p>
+<li>프로그램 구현에 필요한 자료구조와 알고리즘을 구현해 놓은 라이브러리</li>
+<li>개발에 소요되는 시간을 절약하고 최적화된 라이브러리를 사용할 수 있다.</li>
+<li>java.utils에 속한 일련의 클래스로, 자료구로를 담당</li>
+<li>잘 짜여진 인터페이스를 기반으로 다양한 자료구조를 구현한다.</li>
+<li>제네릭 클래스로 되어 있어, 다양한 객체를 요소로 담을 수 있다.</li>
+<li>Collection 인터페이스와 Map인터페이스로 구성됨</li>
+<li>자료구조를 담당하는 API라고할 수 있음</li>
+<li>인터페이스가 상속이되서 클래스에서 구현이된다. 비슷한 구조가 자료구조쪽에도 있는데 추상자료형(abstract data type)이라는게 있다.<br>이걸 실제로 코드 같은 것으로 특정한 요소들까지 구현을 하면 자료구조(DS, data structure)라고 부른다.<ul>
+<li>추상 자료형은 어떤 자료구조 같은 특정 자료형이 어떤 기능들을 가지고 잇는지 어떤 메소드들을 가지고 있는지 메소도들의 행동이 어떤지 정의하는 것이다.</li>
+</ul>
 </li>
 </ul>
-<h2 id="JCF-인터페이스"><a href="#JCF-인터페이스" class="headerlink" title="JCF 인터페이스"></a>JCF 인터페이스</h2><ul>
-<li><p>List 인터페이스</p>
+<h3 id="자료-구조와-알고리즘"><a href="#자료-구조와-알고리즘" class="headerlink" title="자료 구조와 알고리즘"></a>자료 구조와 알고리즘</h3><ul>
+<li>메모리 위에 데이터들이 있는데 데이터들을 어떤구조로 관리를 할 것이냐<br>어떤 구조로 데이터를 관리했을 때 가장 효율적인 알고리즘을 적용해서 수행능력이 잘 나고 효율적으로 시스템이 돌아갈 수 있게 하느냐 이다.</li>
+<li>자료구조와 알고리즘은 수행속도나 최적의 솔루션을 찾는 것이 평가기준이 된다.</li>
+</ul>
+<h2 id="JCF-인터페이스"><a href="#JCF-인터페이스" class="headerlink" title="JCF 인터페이스"></a>JCF 인터페이스</h2><h3 id="Collection-인터페이스"><a href="#Collection-인터페이스" class="headerlink" title="Collection 인터페이스"></a>Collection 인터페이스</h3><ul>
+<li>Collection 인터페이스는 하나의 객체에 대한 자료구조이다. 딱 하나씩을 어떻게 관리할 것이냐 이다.</li>
+<li>하나의 객체의 관리를 위해 선언된 인터페이스로 필요한 기본 메서드가 선언되어 있다.</li>
+<li>Collection 인터페이스 하위에 list인터페이스, set인터페이스가 있는데 여기에 많은 클래스들이 있다.<ul>
+<li>List 인터페이스와 Set 인터페이스는 제네릭 클래스로 되어있다. </li>
+<li>자료들을 효율적으로 다루기 위한 것이다.이 하나 하나가 정수일 것이냐 아니면 클래스의 인스턴스인 객체일 것이냐</li>
+<li>이런 것 들을 제네릭으로 되어있으면 우리가 선택을 할 수 있다. 정수면 Integer을 사용할 수 있는 등 선택을 할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../../image/%EC%BB%AC%EB%A0%89%EC%85%98%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC.jpg" alt="collection"></p>
 <ul>
-<li><p>Collection 인터페이스를 상속</p>
-</li>
-<li><p>순서가 있는 데이터의 집합으로, 데이터의 중복을 허용</p>
-</li>
-<li><p>순서가 있기 때문에 순서로 데이터가 정의 되어서 동일한 데이터가 여러 개 있더라도<br>  순서가 다르면 다른 데이터로 인식 데이터 그래서 데이터 중복을 허용한다.</p>
-</li>
-<li><p>list는 ADT에 해당하고, Collection 인터페이스를 기본으로하고 있다.</p>
-</li>
-<li><p>구현체: ArrayList, LinkedList(Vector,Stack 잘 사용x, 1.5버전 이전에 사용)</p>
-</li>
-<li><p>Stack 대신에 ArrayList를 많이 씀<br>Vector는 제네릭이 아니고 오브젝트를 받게 되어있다. ArrayList와 동기화 부분만 다르다.<br>구현 자체는 둘다 Array로 되어있다. 제네릭이 없기 때문에 오브젝트로 되어 있다.<br>내부 구현은 완전히 같은지는 모른다. 비슷한 구조이긴 하다</p>
-</li>
-</ul>
-</li>
-<li><p>Set 인터페이스</p>
-<ul>
-<li>Collection 인터페이스를 상속</li>
-<li>순서가 없는 데이터의 집합으로,말그대로 집합이다. 데이터의 중복을 허용하지 않는다.</li>
-<li>순서가 없기 때문에 데이터 중복 x 데이터가 있는 상태에서 동일한 값이 들어오면<br>오류가 나는게 아니고 무시를 한다. 중복되는 개체를 없애고 유니크한 개체만 남긴다. </li>
-<li>Collection 인터페이스를 기본으로하고 있다.</li>
-<li>구현체: HashSet, TreeSet</li>
-<li>구현체는 hashset 일반적인집합 treeset은 이진트리를 기반으로 하는 재밌는 특성을가진 자료구조</li>
-</ul>
-</li>
-<li><p>List 인터페이스와 Set 인터페이스는 제네릭 클래스로되어있다. </p>
-</li>
-<li><p>자료들을 효율적으로 다루기 위한 것이다.이 하나하나가 정수일것이냐 아니면 클래스의 인스턴스인 객체일 것이냐</p>
-</li>
-<li><p>이런 것 들을 제네릭으로 되어있으면 우리가 선택을 할 수 있다. 정수면 Integer을 사용할 수 있는 등 선택을 할 수 있다.</p>
-</li>
-<li><p>Map 인터페이스 </p>
-<ul>
-<li>Key-Value 쌍으로 이루어진 데이터의 집합</li>
-<li>Map은 ADT Map이라는 이름으로 인터페이스를 갖고 있는 것, Hash는 DS이다.</li>
-<li>Key 쿼리를 할 수있는(검색) 대상이 된다.<br>데이터를 저장할 때 키 Value 쌍으로 저장하는데 Key를 검색해서 Value 쌍을 찾아 낼 수 있다.</li>
-<li>구현체 : HashMap, TreeMap, HashTable, Properties</li>
-</ul>
-</li>
-</ul>
-<h3 id="Collection-인터페이스"><a href="#Collection-인터페이스" class="headerlink" title="Collection 인터페이스"></a>Collection 인터페이스</h3><ul>
 <li>Collection 인터페이스의 주요 메소드</li>
 </ul>
 <table>
@@ -212,7 +185,7 @@
 <ul>
 <li><p>remove 요소를 제거하는거 요소는 element이다.<br>여러개데이터를 묶은게 컬렉션인데 이 하나하나가 엘레멘트, 요소이다.</p>
 </li>
-<li><p>iterator - 컬렉션에 데이터가있을 때 순회하기 위한 인터페이스</p>
+<li><p>iterator - 컬렉션에 데이터가 있을 때 순회하기 위한 인터페이스</p>
 </li>
 <li><p>Iterator</p>
 <ul>
@@ -232,7 +205,7 @@
 </tr>
 <tr>
 <td>E next()</td>
-<td>다음 요소가 있을 경우 반환</td>
+<td>다음 요소가 있을 경우, 요소 값 반환</td>
 </tr>
 <tr>
 <td>void remove()</td>
@@ -256,9 +229,20 @@
 </li>
 </ul>
 <h3 id="List-인터페이스"><a href="#List-인터페이스" class="headerlink" title="List 인터페이스"></a>List 인터페이스</h3><ul>
-<li>순서가 있는 데이터의 집합을 다루는 인터페이스</li>
-<li>List는 인덱스를 이용해 요소를 구분할 수 있어, 데이터의 중복을 허용</li>
-<li>Collection 인터페이스를 상속 받았으며, 추가 메소드가 구현되어 있다.</li>
+<li><p>Collection 인터페이스를 상속 받았으며, 추가 메소드가 구현되어 있다.</p>
+</li>
+<li><p>순서가 있는 데이터의 집합으로, 인덱스를 이용해 요소를 구분할 수 있어 데이터의 중복을 허용</p>
+</li>
+<li><p>순서가 있기 때문에 순서로 데이터가 정의 되어서 동일한 데이터가 여러 개 있더라도<br>순서가 다르면 다른 데이터로 인식 데이터 그래서 데이터 중복을 허용한다.</p>
+</li>
+<li><p>list는 ADT에 해당하고, Collection 인터페이스를 기본으로하고 있다.</p>
+</li>
+<li><p>구현체: ArrayList, LinkedList(Vector,Stack 잘 사용x, 1.5버전 이전에 사용)</p>
+</li>
+<li><p>Stack 대신에 ArrayList를 많이 씀</p>
+</li>
+<li><p>Vector는 제네릭이 아니고 오브젝트를 받게 되어있다. ArrayList와 동기화 부분만 다르다.<br>구현 자체는 둘다 Array로 되어있다. 제네릭이 없기 때문에 오브젝트로 되어 있다.<br>내부 구현은 완전히 같은지는 모른다. 비슷한 구조이긴 하다</p>
+</li>
 </ul>
 <table>
 <thead>
@@ -306,7 +290,7 @@
 </tbody></table>
 <ul>
 <li>add()<ul>
-<li>2번에 새로운값이 들어가면 2번부터 뒤에 값들이 한칸씩 뒤로 밀린다.<br>e라는 요소를 찾기위해서 동일한 요소로 찾는다는 것은 있을 수 없다.<br>컬렉션에는 일반적으로 특정 요소를 리턴받는게 없다.<br>리스트에는 인덱스를 이용해 요소를 구분할 수 있기 때문에 특정 요소를 반환 받을 수 있다.<br>그래서 순서가있는이 매우 유용하다.(장점이자 단점)</li>
+<li>2번에 새로운 값이 들어가면 2번부터 뒤에 값들이 한칸씩 뒤로 밀린다.<br>e라는 요소를 찾기위해서 동일한 요소로 찾는다는 것은 있을 수 없다.<br>컬렉션에는 일반적으로 특정 요소를 리턴받는게 없다.<br>리스트에는 인덱스를 이용해 요소를 구분할 수 있기 때문에 특정 요소를 반환 받을 수 있다.<br>그래서 순서가있는이 매우 유용하다.(장점이자 단점)</li>
 </ul>
 </li>
 <li>remove 꺼내서 쓴다라는 의미로 받아 들일 수 있다.</li>
@@ -416,12 +400,12 @@
 </li>
 </ul>
 <h3 id="Set-인터페이스"><a href="#Set-인터페이스" class="headerlink" title="Set 인터페이스"></a>Set 인터페이스</h3><ul>
-<li><p>순서가 없는 데이터의 집합을 다루는 인터페이스</p>
-</li>
-<li><p>중복되는 데이터를 효율적으로 제거하는 데에 쓸 수 있음</p>
-</li>
-<li><p>Collection 인터페이스를 상속 받아 메소드를 구현하고 있음</p>
-</li>
+<li>Collection 인터페이스를 상속 받아 메소드를 구현하고 있다.</li>
+<li>순서가 없는 데이터의 집합으로,말그대로 집합이다. 데이터의 중복을 허용하지 않는다.</li>
+<li>순서가 없기 때문에 데이터 중복 x 데이터가 있는 상태에서 동일한 값이 들어오면<br> 오류가 나는게 아니고 무시를 한다. 중복되는 개체를 없애고 유니크한 개체만 남긴다. </li>
+<li>구현체는 hashset 일반적인 집합, treeset은 이진트리를 기반으로 하는 재밌는 특성을 가진 자료구조</li>
+</ul>
+<ul>
 <li><p>Set의 구현체</p>
 <ul>
 <li>HashSet<E><ul>
@@ -431,7 +415,17 @@
 </li>
 <li>TreeSet<E><ul>
 <li>NavigableSet<E> 인터페이스를 구현하며, 이진 탐색 트리 자료 구조이다.</li>
-<li>객체를 삽입하는 동시에 정렬되는 특성상 비교가 가능해야 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TreeSet() <span class="comment">// Comparable 구현체의 경우</span></span><br><span class="line"><span class="keyword">public</span> TreeSet(Comparator&lt;? super E&gt; comparator) <span class="comment">// 별도로 비교 객체 삽입</span></span><br></pre></td></tr></table></figure></li>
+<li>객체를 삽입하는 동시에 정렬되는 특성상 비교가 가능해야 한다.</li>
+<li>객체의 정렬에 사용되는 클래스</li>
+<li>중복을 허용하지 않으면서 오름차순이나 내림차순으로 객체를 정렬함</li>
+<li>내부적으로 이진 탐색 트리로 구현되어 있다. 이진 탐색 트리에 자료가 저장될 때 비교하여 저장될 위치를 정한다.</li>
+<li>객체를 비교하기 위해 Comparable이나 Comparator 인터페이스를 구현 해야 한다.</li>
+</ul>
+</li>
+<li>이진 탐색 트리<ul>
+<li>부모 하위에 자식이 두개거나 작은 값들이다. BST는 바이너리트리의 약자 데이터가 중복해서 들어갈 수 없다. </li>
+<li>항상 데이터를 넣을 때 비교해서 비교조건에 의해서 작은건 왼쪽 큰건 오른쪽사이드에 들어감</li>
+<li>10이 중심일 때  작은 4,5,8은 다 왼쪽사이드에 큰 11,13,15는 오른쪽 사이드에 들어간다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> TreeSet() <span class="comment">// Comparable 구현체의 경우</span></span><br><span class="line"><span class="keyword">public</span> TreeSet(Comparator&lt;? super E&gt; comparator) <span class="comment">// 별도로 비교 객체 삽입</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li>TreeSet의 메소드</li>
@@ -494,11 +488,71 @@
 </tbody></table>
 </li>
 </ul>
+<h4 id="Comparable-인터페이스와-Comparator-인터페이스"><a href="#Comparable-인터페이스와-Comparator-인터페이스" class="headerlink" title="Comparable 인터페이스와 Comparator 인터페이스"></a>Comparable 인터페이스와 Comparator 인터페이스</h4><ul>
+<li>정렬 대상이 되는 클래스가 구현해야하는 인터페이스 </li>
+<li>Comparable 은 compareTo() 메소들 구현해야하고 객체 자신(this)와 매개변수를 비교해야 한다.</li>
+<li>Comparator는 compare() 메소드를 구현<ul>
+<li>TreeSet 생성자에 Comparator 가 구현된 객체를 매개변수로 전달</li>
+<li>TreeSet<Member> treeSet = new TreeSet<Member>(new Member());</li>
+</ul>
+</li>
+<li>이미 Comparable 이 구현된 경우 Comparator을 이용하여 다른 정렬 방식을 정의할 수 있다.<ul>
+<li>new Member() 이걸 넣어줘서 이 클래스의 compare()메소드로 구현을 하겠다라고<br>선언을 해준다. <h3 id="Map-인터페이스"><a href="#Map-인터페이스" class="headerlink" title="Map 인터페이스"></a>Map 인터페이스</h3></li>
+</ul>
+</li>
+</ul>
+<p><img src="../../../image/map%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4.jpg" alt="Map"></p>
+<ul>
+<li>Map은 ADT Map이라는 이름으로 인터페이스를 갖고 있는 것, Hash는 DS이다.</li>
+<li>Key-Value 쌍으로 이루어진 데이터의 집합<ul>
+<li>key는 유일 해야 한다. 중복될 수 없다. 검색을 위한 자료구조이다.</li>
+<li>key를 이용하여 값을 저장하거나 검색, 삭제할 때 사용하면 편리하다.</li>
+<li>데이터를 저장할 때 키 Value 쌍으로 저장하는데, Key를 검색해서 Value 쌍을 찾아 낼 수 있다.</li>
+</ul>
+</li>
+<li>구현체 : HashMap, TreeMap, HashTable, Properties</li>
+<li>내부적으로 hash방식으로 구현 된다.<ul>
+<li>hash은 여러 언어에서 구현된 라이브러리들이 있다. 자료를 쌍으로 관리해야 할 일들이 종종있다.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><ul>
+<li><p>hash는 검색을 위한 자료구조이다. hash(key)처럼 해쉬함수에 key에 해당하는 값을 주면 위치를 반환해준다.</p>
+</li>
+<li><p>해쉬테이블- 키를 주면 메모리가 있으면  몇번째에 집어넣어라하는 인덱스를 알려준다.</p>
+</li>
+<li><p>해쉬 함수가 산술 연산이 되기 때문에 굉장히 빠르다. 산술 연산은 검색에 대한 속도가 굉장히 빨라서 검색에 사용이 된다.</p>
+</li>
+<li><p>예)<br>극장에 좌석이 0<del>99까지 있는데 표를 300장을 팔았다 1</del>300까지 15번이 영화를 보러왔다하면<br>자리가 100개여서 나머지연산을 써서 15%100으로해서 15번째에 앉힌다<br>115은 115%100으로 해서 나머지가 15 여서 같은자리가 앉아있다 이래서<br>콜리전이 발생한다 충돌이 발생한다 라고한다<br>해쉬테이블은 이렇게 사용하는 것이다? 나머지연산으로쓰는것을 해쉬함수라고 한다.–&gt; 먼소리야<br>해쉬테이블은 꽉차게 쓰지 않는다 해쉬셋 해쉬맵이라는 자료구조를 배우는데 다 해쉬구조로되어있음<br>약 75%차면 해쉬테이블을 뻥튀기 시킨다.</p>
+</li>
+</ul>
+<h4 id="HashMap-클래스"><a href="#HashMap-클래스" class="headerlink" title="HashMap 클래스"></a>HashMap 클래스</h4><ul>
+<li><p>Map 인터페이스를 구현한 클래스 중 가장 일반적으로 사용하는 클래스</p>
+</li>
+<li><p>HashTable 클래스는 자바2부터 제공된 클래스로 vector 처럼 동기화를 제공함 pair 자료를<br>쉽고 빠르게 관리할 수 있음</p>
+</li>
+<li><p>해쉬테이블을 많이사용했지만 이제는 해쉬맵클래스를 사용하면 됨 </p>
+</li>
+<li><p>keySet() - 모든 key객체를 반환해준다. 중복이 안되므로 set타입으로 반환</p>
+</li>
+<li><p>key.Set().iterator()는 iterator객체가 key로 순환을 한다.</p>
+</li>
+<li><p>values() - 모든 value를 반환해준다. 중복될수있어서 collection으로 반환</p>
+</li>
+<li><p>values().iterator() -value를 쭉 순환하면서 반환한다.</p>
+</li>
+</ul>
+<h4 id="TreeMap클래스"><a href="#TreeMap클래스" class="headerlink" title="TreeMap클래스"></a>TreeMap클래스</h4><ul>
+<li>key 객체를 정렬하여 key-value를 pair로 관리하는 클래스</li>
+<li>key에 사용되는 클래스에 comparable, comparator 인터페이스를 구현</li>
+<li>java에 많은 클래스들은 이미 comparable이 구현되어 있다,</li>
+<li>구현된 클래스를 key로 사용하는 경우는 구현할 필요 없음(Integer, String)<br>만약에 그렇지 않고 다른 클래스들이 사용한다하며 key에대한  인터페이스 비교하는 방법을 구현을 해야 한다!!</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckf9g4yoy000yycu25jpdem89" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckfax2x220025x4u2h190erke" class="article-share-link">Share</a>
       
       
     </footer>
@@ -556,23 +610,23 @@
       <ul>
         
           <li>
-            <a href="/2020/09/17/Algorithm/Solution-CraneDrawDoll/">AlgorithmSolution_CraneDrawDoll</a>
+            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/">Java_Handling_Exception</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-InnerClass/">Java_InnerClass</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MatMul/">Subject_Day04_MatMul</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
           </li>
         
       </ul>

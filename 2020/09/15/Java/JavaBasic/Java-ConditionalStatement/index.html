@@ -15,7 +15,7 @@
 <meta property="og:description" content="조건문(Conditional Statements)조건문의 구성 조건식 (Conditional Expression), 실행문 (Execution Statement)  다양한 조건문if 계열 조건문 if문 123456if(조건식)  &#x2F;&#x2F; 실행문if(조건식) &amp;#123;  &#x2F;&#x2F; 실행문&amp;#125;  if~else 문 12345if(조건식) &amp;#123;  &#x2F;&#x2F; 조건">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-15T10:45:06.839Z">
-<meta property="article:modified_time" content="2020-09-15T10:53:14.407Z">
+<meta property="article:modified_time" content="2020-09-20T01:49:00.131Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -92,22 +92,22 @@
 <li>조건식 (Conditional Expression), 실행문 (Execution Statement)</li>
 </ul>
 <h2 id="다양한-조건문"><a href="#다양한-조건문" class="headerlink" title="다양한 조건문"></a>다양한 조건문</h2><h3 id="if-계열-조건문"><a href="#if-계열-조건문" class="headerlink" title="if 계열 조건문"></a>if 계열 조건문</h3><ul>
-<li><p>if문</p>
+<li><p><code>if문</code></p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식)</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>if~else 문</p>
+<li><p><code>if~else 문</code></p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 조건식이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 조건식이 false일때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>if ~ else if ~ else 문</p>
+<li><p><code>if ~ else if ~ else 문</code></p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(조건식<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 false이고, 조건식2가 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 모든 조건식이 false일 때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Nested(둥지) if문 = 중첩 if문</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (score &gt;=<span class="number">90</span> )&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">80</span>)&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">70</span>)&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">60</span>)&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;D&quot;</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   System.out.println(<span class="string">&quot;F&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><code>Nested(둥지) if문 = 중첩 if문</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> (score &gt;=<span class="number">90</span> )&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">80</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">70</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">60</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   grade=<span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch ~ case"></a>switch ~ case</h3><ul>
-<li><p>switch ~ case는 좀 다름 조건문은 ‘값’이 들어오게 된다. boolean에 한정되 않습니다.</p>
+<li><p>switch ~ case는 좀 다름 조건문은 ‘값’이 들어오게 된다. boolean에 한정돼있지 않습니다.</p>
 </li>
 <li><p>case 범위가 될 수 없고, case도 값이어야 합니다.</p>
 </li>
@@ -144,7 +144,7 @@ switch (grade)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckf9g4ypt001kycu24c3w9ziz" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckfax2x1l001rx4u2af7b76a6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,23 +202,23 @@ switch (grade)&#123;
       <ul>
         
           <li>
-            <a href="/2020/09/17/Algorithm/Solution-CraneDrawDoll/">AlgorithmSolution_CraneDrawDoll</a>
+            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/">Java_Handling_Exception</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
           </li>
         
           <li>
-            <a href="/2020/09/16/Java/JavaAdvanced/Java-InnerClass/">Java_InnerClass</a>
+            <a href="/2020/09/20/Java/Subject/Homework04/MatMul/">Subject_Day04_MatMul</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
           </li>
         
           <li>
-            <a href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+            <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
           </li>
         
       </ul>
