@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Subject_Day06_SingletonPattern | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="과제 Day6싱글톤 패턴 구하기문제 설명 단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오. 생성자를 외부에서 직접 호출할 수 없다. 정적 메소드인 getInstance() 메소드를 이용해 객체를 받아온다. 받아온 객체는 항상 같은 객체를 참조해야 한다.구현 코드 소프트웨어 디자인 패턴에서 싱글턴 패턴(Singleton">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Subject_Day06_SingletonPattern">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="과제 Day6싱글톤 패턴 구하기문제 설명 단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오. 생성자를 외부에서 직접 호출할 수 없다. 정적 메소드인 getInstance() 메소드를 이용해 객체를 받아온다. 받아온 객체는 항상 같은 객체를 참조해야 한다.구현 코드 소프트웨어 디자인 패턴에서 싱글턴 패턴(Singleton">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-21T12:42:57.306Z">
+<meta property="article:modified_time" content="2020-09-21T12:44:57.833Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/Subject/Homework06/SingletonPattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/" class="article-date">
+  <time datetime="2020-09-21T12:42:57.306Z" itemprop="datePublished">2020-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Subject_Day06_SingletonPattern
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="싱글톤-패턴-구하기"><a href="#싱글톤-패턴-구하기" class="headerlink" title="싱글톤 패턴 구하기"></a>싱글톤 패턴 구하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li>단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오.</li>
+<li>생성자를 외부에서 직접 호출할 수 없다.</li>
+<li>정적 메소드인 getInstance() 메소드를 이용해 객체를 받아온다.</li>
+<li>받아온 객체는 항상 같은 객체를 참조해야 한다.<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3></li>
+<li>소프트웨어 디자인 패턴에서 싱글턴 패턴(Singleton pattern)을 따르는 클래스는,</li>
+<li>생성자가 여러 차례 호출되더라도 실제로 생성되는 객체는 하나이고</li>
+<li>최초 생성 이후에 호출된 생성자는 최초의 생성자가 생성한 객체를 리턴한다.</li>
+<li>이와 같은 디자인 유형을 싱글턴 패턴이라고 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonPattern</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonPattern instance = <span class="keyword">new</span> SingletonPattern();</span><br><span class="line">    <span class="keyword">private</span> SingletonPattern()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingletonPattern getInstance()&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonPatternTest</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        SingletonPattern instanceOne = SingletonPattern.getInstance();</span><br><span class="line">        SingletonPattern instanceTwo = SingletonPattern.getInstance();</span><br><span class="line"></span><br><span class="line">        System.out.println(instanceOne == instanceTwo); <span class="comment">// should be true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfcj228o0025s0u2fh468msw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Subject_Day06_Vector3D
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/21/Java/Subject/Homework06/MyMath/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Subject_Day06_MyMath</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -7,15 +7,15 @@
   
   <title>Java_ClassAndObject | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="클래스(Classes)와 객체(Object)클래스 와 객체 개념클래스 객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것 코드로 구현한 것을 말한다.  문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)  클래스 이름은 PascalCase로 적는다.">
+  <meta name="description" content="클래스(Classes)와 객체(Object)클래스 와 객체 개념클래스 객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것, 코드로 구현한 것을 말한다.  문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)  클래스 이름은 PascalCase로 적는다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java_ClassAndObject">
 <meta property="og:url" content="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="클래스(Classes)와 객체(Object)클래스 와 객체 개념클래스 객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것 코드로 구현한 것을 말한다.  문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)  클래스 이름은 PascalCase로 적는다.">
+<meta property="og:description" content="클래스(Classes)와 객체(Object)클래스 와 객체 개념클래스 객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것, 코드로 구현한 것을 말한다.  문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)  클래스 이름은 PascalCase로 적는다.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-07T01:45:29.337Z">
-<meta property="article:modified_time" content="2020-09-18T10:09:15.860Z">
+<meta property="article:modified_time" content="2020-09-21T10:17:19.913Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -89,7 +89,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="클래스-Classes-와-객체-Object"><a href="#클래스-Classes-와-객체-Object" class="headerlink" title="클래스(Classes)와 객체(Object)"></a>클래스(Classes)와 객체(Object)</h1><h2 id="클래스-와-객체-개념"><a href="#클래스-와-객체-개념" class="headerlink" title="클래스 와 객체 개념"></a>클래스 와 객체 개념</h2><h3 id="클래스"><a href="#클래스" class="headerlink" title="클래스"></a>클래스</h3><ul>
-<li><p>객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것 코드로 구현한 것을 말한다.</p>
+<li><p>객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것, 코드로 구현한 것을 말한다.</p>
 </li>
 <li><p>문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)</p>
 </li>
@@ -99,9 +99,9 @@
 </li>
 <li><p>클래스의 로딩되는 시점 </p>
 <ol>
-<li>객체가 생성이 될 때, 클래스가 먼저 클래스 영역에 생성이 되고 그 정보를 가지고 객체가 생성이 되는 것이다. 초기화 블록을 사용해서 확인해보면 확실히 이해가 간다.</li>
-<li>import 할 때, 클래스가 로딩이 되서 클래스 영역에 생성이 된다.</li>
-<li>정적 변수를 사용할 때  클래스명.정적 변수의 형태로 사용이 가능하기 때문에 클래스의 정보가 먼저 있어야 한다. <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>&#123;</span> </span><br><span class="line">    <span class="keyword">int</span> speed = <span class="number">0</span>; <span class="comment">// 속성, 멤버 변수</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> move()&#123; <span class="comment">//  메소드 (method), 멤버 함수</span></span><br><span class="line">        speed = <span class="number">10</span>; <span class="comment">//행위를 구현, 속성을 변경</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>객체가 생성이 될 때 - 클래스가 먼저 클래스 영역에 생성이 되고 그 정보를 가지고 객체가 생성이 되는 것이다.<br>초기화 블록을 사용해서 확인해보면 확실히 이해가 간다.</li>
+<li>import 할 때 - 클래스가 로딩이 되서 클래스 영역에 생성이 된다.</li>
+<li>정적 변수를 사용할 때 - 클래스명.정적 변수 형태로 사용이 가능하기 때문에 클래스의 정보가 먼저 있어야 한다. <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>&#123;</span> </span><br><span class="line">    <span class="keyword">int</span> speed = <span class="number">0</span>; <span class="comment">// 속성, 멤버 변수</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> move()&#123; <span class="comment">//  메소드 (method), 멤버 함수</span></span><br><span class="line">        speed = <span class="number">10</span>; <span class="comment">//행위를 구현, 속성을 변경</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -109,19 +109,19 @@
 </ul>
 <h3 id="객체"><a href="#객체" class="headerlink" title="객체"></a>객체</h3><ul>
 <li>클래스가 구체화하여 값으로 생성된 것(실체화 된 것) 클래스의 인스턴스라고도 부른다.</li>
-<li>하나의 클래스로 여러개의 객체들을 생성할 수 있다. 같은 타입의 <code>독립적인</code> 객체가 됨</li>
-<li>new로 키워드로 생성된 객체는 힙 영역에 생성이 된다.</li>
+<li>하나의 클래스로 여러 개의 객체들을 생성할 수 있다. 같은 타입의 <code>독립적인</code> 객체가 된다.</li>
+<li>new 키워드로 생성된 객체는 힙 영역에 생성이 된다.</li>
 <li>new 키워드로 생성된 객체는 객체의 주소를 리턴하도록 되어있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Car carOne = <span class="keyword">new</span> Car(); <span class="comment">// new 키워드로 클래스에서 객체 생성</span></span><br><span class="line">System.out.println(carOne.speed); <span class="comment">// 객체명.으로 속성 접근 가능</span></span><br><span class="line">carOne.move(); <span class="comment">// 메소드 호출(method call) 이라고 부름.</span></span><br><span class="line">System.out.println(carOne.speed);</span><br><span class="line"></span><br><span class="line">Car carTwo = <span class="keyword">new</span> Car();</span><br><span class="line">System.out.println(carTwo.speed); <span class="comment">// speed=0 독립적인 객체를 의미.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//STRING은 Immutable이기 때문에 값이 변하지 않지만,</span></span><br><span class="line"><span class="comment">//클래스는 대부분 muttable이기 때문에 객체 참조에 대한 문제가 발생한다. 중요**</span></span><br><span class="line"></span><br><span class="line">Car carThree = carOne; <span class="comment">// 참조형 객체이기 때문에 new일때만 새로운 객체를 생성하고 ,이렇게하면 같은 객체를 가리킨다.</span></span><br><span class="line">System.out.println(carThree.speed);</span><br><span class="line">carThree.speed = <span class="number">5</span>;</span><br><span class="line">System.out.println(carThree.speed);<span class="comment">// 5</span></span><br><span class="line">System.out.println(carOne.speed); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
 <h2 id="클래스의-구성요소"><a href="#클래스의-구성요소" class="headerlink" title="클래스의 구성요소"></a>클래스의 구성요소</h2><h3 id="필드-속성-멤버-변수"><a href="#필드-속성-멤버-변수" class="headerlink" title="필드(속성, 멤버 변수)"></a>필드(속성, 멤버 변수)</h3><ul>
 <li>필드는 객체의 고유 데이터, 부품 객체, 상태 정보를 저장하는 곳이다.</li>
-<li>필드는 생성자오 메소드 전체에서 사용되며 객체가 소멸되지 않는 한 객체와 함께 존재한다.</li>
+<li>필드는 생성자와 메소드 전체에서 사용되며 객체가 소멸되지 않는 한 객체와 함께 존재한다.</li>
 </ul>
 <h3 id="메소드"><a href="#메소드" class="headerlink" title="메소드"></a>메소드</h3><ul>
 <li>메소드는 객체의 동작을 담당한다. 메소드를 호출하면 중괄호 내의 코드들이 일괄적으로 실행된다.</li>
-<li>메소드는 객체 간의 데이터 전달의 수단으로 사용되며, 외부로부터 매개 값을 받을 수도 있고, 실행후<br>어떤 값을 리턴할 수도 있다.</li>
+<li>메소드는 객체 간의 데이터 전달의 수단으로 사용되며, 외부로부터 매개 값을 받을 수도 있고, 실행 후 어떤 값을 리턴할 수도 있다.</li>
 </ul>
 <h3 id="생성자"><a href="#생성자" class="headerlink" title="생성자"></a>생성자</h3><ul>
 <li>객체 생성시에 초기화를 담당하는 역할을 하고, 필드를 초기화하거나 메소드를 호출해서 객체를 사용할 준비를 한다.</li>
@@ -129,8 +129,8 @@
 </ul>
 <h2 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="애노테이션(Annotation)"></a>애노테이션(Annotation)</h2><ul>
 <li>재정의된 메소드라는 의미로 선언부가 기존의 메소드와 다른 경우 에러가 발생한다.(같게 해줘야 함)</li>
-<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다</li>
-<li>(컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.)</li>
+<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다.</li>
+<li>컴파일 오류를 막아 주고, 컴파일러에게 정보를 전달해 준다.</li>
 <li>주로 사용되는 자바에서 제공되는 애노테이션</li>
 </ul>
 <table>
@@ -160,7 +160,7 @@
 <h2 id="Getter와-Setter"><a href="#Getter와-Setter" class="headerlink" title="Getter와 Setter"></a>Getter와 Setter</h2><ul>
 <li>클래스의 멤버 변수를 간접적으로 다룰 수 있게 하는 메소드</li>
 <li>멤버 변수의 캡슐화를 구현하기 위해 사용. -&gt; 정보은닉 / 보호</li>
-<li>멤버 변수의 값을 제한해야 할 때 유용.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//멤버변수를 만들어야 생성가능.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="comment">//경우에 따라 구현되지 않을 수 있다. 출력하지 않으면 사용 안하는 것.</span></span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; <span class="number">0</span> &amp;&amp; x &lt;= <span class="number">1000</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.x = x;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;x should be 1 &lt; x &lt;= 1000!&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;however, you put in x = &quot;</span>+x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Main m = <span class="keyword">new</span> Main();</span><br><span class="line">        m.x=<span class="number">10</span>; <span class="comment">//x에 private를 넣으면 직접 값을 변경할 수 없음.</span></span><br><span class="line">        System.out.println(m.x);</span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">20</span>);</span><br><span class="line">        System.out.println(m.getX()); <span class="comment">//권장된 처리 방식.</span></span><br><span class="line"></span><br><span class="line">        m.x = <span class="number">20</span>; <span class="comment">// 권장하지 않는 멤버 변수 처리 방식</span></span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">11111</span>);</span><br><span class="line">        System.out.println(m.getX());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>멤버 변수의 값을 제한해야 할 때 유용.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//멤버변수를 만들어야 생성가능.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="comment">//경우에 따라 구현되지 않을 수 있다. 출력하지 않으면 사용 안하는 것.</span></span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 들어오는 값에 대해 조건을 걸 수 있다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; <span class="number">0</span> &amp;&amp; x &lt;= <span class="number">1000</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.x = x;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;x should be 1 &lt; x &lt;= 1000!&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;however, you put in x = &quot;</span>+x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Main m = <span class="keyword">new</span> Main();</span><br><span class="line">        m.x=<span class="number">10</span>; <span class="comment">//x에 private를 넣으면 직접 값을 변경할 수 없음.</span></span><br><span class="line">        System.out.println(m.x);</span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">20</span>);</span><br><span class="line">        System.out.println(m.getX()); <span class="comment">//권장된 처리 방식.</span></span><br><span class="line"></span><br><span class="line">        m.x = <span class="number">20</span>; <span class="comment">// 권장하지 않는 멤버 변수 처리 방식</span></span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">11111</span>);</span><br><span class="line">        System.out.println(m.getX());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -200,13 +200,13 @@
         Main m = new Main();
         System.out.println(Main.instanceCount);
 
-   System.out.println(m.instanceVar);
-   System.out.println(Main.classVar);
+        System.out.println(m.instanceVar);
+        System.out.println(Main.classVar);
 
-   Main m2 = new Main();
-   System.out.println(Main.instanceCount);
-   Main m3 = new Main();
-   System.out.println(Main.instanceCount);
+        Main m2 = new Main();
+        System.out.println(Main.instanceCount);
+        Main m3 = new Main();
+        System.out.println(Main.instanceCount);
 
 &#125;
 &#125;  </code></pre>
@@ -216,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckfax2x0y000vx4u2h683fopn" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckfcj227d000ws0u21yrg0ydg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,23 +274,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework04/MatMul/">Subject_Day04_MatMul</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
           </li>
         
       </ul>
