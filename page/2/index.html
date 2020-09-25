@@ -64,6 +64,157 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/Subject/Homework03/Game369" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework03/Game369/" class="article-date">
+  <time datetime="2020-09-20T03:29:04.661Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/Java/Subject/Homework03/Game369/">Subject_Day03_Game369</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day3"><a href="#과제-Day3" class="headerlink" title="과제 Day3"></a>과제 Day3</h1><h2 id="369게임"><a href="#369게임" class="headerlink" title="369게임+"></a>369게임+</h2><ul>
+<li>369게임에 참여했을 때, 내가 외쳐야 하는 숫자나 동작을 순서대로 출력하시오.<h3 id="규칙"><a href="#규칙" class="headerlink" title="규칙"></a>규칙</h3></li>
+</ul>
+<ol>
+<li>3, 6, 9, 5가 포함되지 않은 숫자는 숫자를 외친다. (2!)</li>
+<li>숫자에 포함된 3, 6, 9의 개수 만큼 박수를 친다. (짝!)</li>
+<li>숫자에 포함된 5의 개수 만큼 발을 구른다. (쿵!)</li>
+<li>박수와 발구르기의 순서는 관계 없으나, 반드시 번갈아 수행한다.<h3 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h3></li>
+</ol>
+<ul>
+<li>2   -&gt; 2!</li>
+<li>33  -&gt; 짝!짝!</li>
+<li>553 -&gt; 쿵!짝!쿵! (짝!쿵!쿵!x)</li>
+<li>47  -&gt; 47!<h3 id="인자"><a href="#인자" class="headerlink" title="인자"></a>인자</h3></li>
+<li>gameLength: 게임이 종료되는 데 걸리는 턴 수</li>
+<li>numPeople: 게임에 참여하는 인원 수</li>
+<li>myTurn: 내가 숫자를 외치는 순번</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">_369plus</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> gameLength = <span class="number">1000</span>;</span><br><span class="line">        <span class="keyword">int</span> numPelple = <span class="number">12</span>;</span><br><span class="line">        <span class="keyword">int</span> myTurn = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =myTurn; i&lt;=gameLength; i+=numPelple)&#123;</span><br><span class="line">            <span class="keyword">int</span> clap = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> foot = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> tempVal = i;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (tempVal &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> num = tempVal % <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(num == <span class="number">3</span> || num == <span class="number">6</span> | num == <span class="number">9</span>)&#123;</span><br><span class="line">                    clap++;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(num == <span class="number">5</span>)&#123;</span><br><span class="line">                    foot++;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                tempVal /=<span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(clap + foot == <span class="number">0</span>)&#123;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(clap &gt; foot)&#123;</span><br><span class="line">                    <span class="keyword">while</span>(clap !=<span class="number">0</span> || foot !=<span class="number">0</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(clap !=<span class="number">0</span>)&#123;</span><br><span class="line">                            System.out.print(<span class="string">&quot;짝!&quot;</span>);</span><br><span class="line">                            clap--;</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(foot != <span class="number">0</span>)&#123;</span><br><span class="line">                            System.out.print(<span class="string">&quot;쿵!&quot;</span>);</span><br><span class="line">                            foot--;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">while</span>(clap !=<span class="number">0</span> || foot !=<span class="number">0</span>)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(foot !=<span class="number">0</span>)&#123;</span><br><span class="line">                            System.out.print(<span class="string">&quot;쿵!&quot;</span>);</span><br><span class="line">                            foot--;</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(clap != <span class="number">0</span>)&#123;</span><br><span class="line">                            System.out.print(<span class="string">&quot;짝!&quot;</span>);</span><br><span class="line">                            clap--;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckfi8uj8z0023g4u264o3epfm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/Subject/Homework03/Fibonacci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/" class="article-date">
+  <time datetime="2020-09-20T03:23:20.350Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day3"><a href="#과제-Day3" class="headerlink" title="과제 Day3"></a>과제 Day3</h1><h2 id="피보나치-수열"><a href="#피보나치-수열" class="headerlink" title="피보나치 수열"></a>피보나치 수열</h2><ul>
+<li>피보나치 수열을 출력하는 프로그램을 작성하시오.</li>
+<li>피보나치 수열의 점화식 : <ul>
+<li>f(n) = f(n-1) + f(n-2)</li>
+<li>f(1) = 0, f(2) = 1 </li>
+</ul>
+</li>
+<li>0, 1, 1, 2, 3, 5, 8, …</li>
+<li>seqLength: 출력하고자 하는 피보나치 수열의 길이</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><ul>
+<li>method를 사용한 방법<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> seqLength = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i &lt;= seqLength; i++)&#123;</span><br><span class="line">            BigInteger big = <span class="keyword">new</span> BigInteger(<span class="keyword">new</span> Integer(i).toString());</span><br><span class="line">            System.out.println(fibonacci(big));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> BigInteger fibonacci(BigInteger i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i.compareTo(BigInteger.ONE.add(BigInteger.TWO)) == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(i.subtract(BigInteger.ONE)).add(fibonacci(i.subtract(BigInteger.TWO)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>점화식을 바로 이용한 방법<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> seqLength = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;seqLength; i++)&#123;</span><br><span class="line">            c =a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = c;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckfi8uj8x0021g4u2886uf4pw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/Subject/Homework02/RingCounter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework02/RingCounter/" class="article-date">
+  <time datetime="2020-09-20T03:19:58.286Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/Java/Subject/Homework02/RingCounter/">Subject_Day02_RingCounter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day2"><a href="#과제-Day2" class="headerlink" title="과제 Day2"></a>과제 Day2</h1><h2 id="링카운터-출력하기"><a href="#링카운터-출력하기" class="headerlink" title="링카운터 출력하기"></a>링카운터 출력하기</h2><ul>
+<li>크기가 4인 링카운터는 아래와 같이 동작한다.</li>
+<li>0b0001 -&gt; 0b0010 -&gt; 0b0100 -&gt; 0b1000 -&gt; 0b0001 …</li>
+<li>즉, 링카운터는 하나의 비트만 1의 값을 가지며 1의 위치가 N번마다 반복되는 형태로 동작한다.</li>
+<li>링카운터의 크기 numBits와카운트된 횟수 numCount를 이용하여</li>
+<li>현재 링카운터의 값을 10진수로 출력하는 프로그램을 작성하시오.</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><ul>
+<li>두가지 방법으로 구현<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RingCounter</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> numBits = <span class="number">12</span>;</span><br><span class="line">        <span class="keyword">int</span> numCount = <span class="number">19</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1.</span></span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        String a2=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numCount; i++)&#123;</span><br><span class="line">            j = i;</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= numBits)&#123;</span><br><span class="line">                j = j%numBits;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.printf(<span class="string">&quot;0b%12s\n&quot;</span>, Integer.toBinaryString(<span class="number">1</span> &lt;&lt; j));</span><br><span class="line">            a2 = Integer.toBinaryString(<span class="number">1</span> &lt;&lt; j);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = Integer.parseInt(a2,<span class="number">2</span>);</span><br><span class="line">        System.out.println(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.</span></span><br><span class="line">        <span class="keyword">int</span> r = numCount % numBits;</span><br><span class="line">        <span class="keyword">int</span> shift =  <span class="number">1</span>&lt;&lt; r;</span><br><span class="line">        System.out.println(shift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckfi8uj8w0020g4u22bm59c71" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/Subject/Homework02/InputOutput" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/20/Java/Subject/Homework02/InputOutput/" class="article-date">
@@ -94,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfcj228e001ys0u269pxbc7d" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfi8uj8y0022g4u25cjv8vqs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfcj228f0020s0u21r9k5kgt" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfi8uj8v001zg4u243th8992" class="article-share-link">Share</a>
       
       
     </footer>
@@ -256,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfcj226v000ms0u2bkrq4bsb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfi8uj6v000kg4u27xya7vgn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,7 +448,7 @@
 <li>시스템의 메모리가 부족하거나, 프로그램이 꼬이는 경우, 무한히 메소드 호출이 발생하는 등 프로그램 복구가 불가능한 상황.<ul>
 <li>메모리 부족 현상 - 힙영역 new로 객체를 많이 만들거나, stack을 너무 많이 사용하게 되면 메소드 콜이 너무 많이 누적될 경우<pre><code>      (자기 자신이 무한하게 호출될 수 있어서 ,반복이 많이 발생할 수 있어서 재귀함수를 잘 못 사용하면 메모리 부족이 발생한다.)</code></pre>
 </li>
-<li>스택 영역은 일정 크기만큼 제한이 있고. 힙은 물리적으로 메모리가 크다 그래서 메모리 부족은 스택 영역에서 주로 발생한다.</li>
+<li>스택 영역은 일정 크기만큼 제한이 있고, 힙은 물리적으로 메모리가 크다 그래서 메모리 부족은 스택 영역에서 주로 발생한다.</li>
 <li>프로그램이 꼬이는 경우 - 메모리 호출이 끝나고 앞에 과정을 찾을 수 없을 수 있다.<br>스택이 터질 경우에 스택 메모리가 손상이 되면서 메소드가 끝나면서 어디 메소드로 돌아가야 하는지 찾기 어려울 수 있다.</li>
 </ul>
 </li>
@@ -368,7 +519,7 @@
 </li>
 <li><p>printStackTrace()</p>
 <ul>
-<li>프로그램을 실행 하고 예외가 발생 했을 때 무슨 메소드의 몇 번째 줄에 어떤 예외가 발생 했다 라고<br>메세지가 나오고 어떤 메소드 였다면 메소드 내부의 내용을 넣고 어떤 문제가 있다고<br>메소드 콜 스택을 전부다 보여 준다. 스택을 추척을 하는 형식으로 흔적을 다 보여준다.</li>
+<li>프로그램을 실행 하고 예외가 발생 했을 때 무슨 메소드의 몇 번째 줄에 어떤 예외가 발생 했다 라고<br>메세지가 나오고 어떤 메소드 였다면 메소드 내부의 내용을 넣고 어떤 문제가 있다고<br>메소드 콜 스택을 전부다 보여 준다. 스택을 추적을 하는 형식으로 흔적을 다 보여준다.</li>
 </ul>
 </li>
 </ul>
@@ -401,7 +552,7 @@
 <li>첫째, fileName이라는 파일을 오픈해서 실제로 메모리를 많이 잡아먹을 수 있다.</li>
 <li>둘째, 이 파일의 리소스를 점유해버리는 문제가 생길 수 있다. <ul>
 <li>점유해버린다는 건  프로그램을 계속 실행중인 상태를 말하는 것이다.</li>
-<li>윈도우에서 프로그램을 실행 중일 때 그 파일을 변경하거나 삭제할 수 없는 현상이 발생하는걸 본 적이 있을텐데 여기서 그런 문제가 발생할 수 있다.</li>
+<li>윈도우에서 프로그램을 실행 중일 때 그 파일을 변경하거나 삭제할 수 없는 현상이 발생하는 걸 본 적이 있을 텐데 여기서 그런 문제가 발생할 수 있다.</li>
 </ul>
 </li>
 </ul>
@@ -411,7 +562,7 @@
 <li><p>이러한 문제 때문에 fianlly를 지원한다.</p>
 </li>
 </ul>
-<h3 id="try-catch-resources-구문"><a href="#try-catch-resources-구문" class="headerlink" title="try ~ catch ~ resources 구문"></a>try ~ catch ~ resources 구문</h3><ul>
+<h3 id="try-with-resources-구문"><a href="#try-with-resources-구문" class="headerlink" title="try ~ with ~ resources 구문"></a>try ~ with ~ resources 구문</h3><ul>
 <li><p>위의 stream을 열고 닫고 해야하는데 read할 때도 예외처리를 해줬는데 또 close도 예외처리를 해줘야하는 번거로움이 발생한다.<br>이러한 성가신 코드를 쓰지 않기 위해서 추가된 기능</p>
 </li>
 <li><p>Java 1.7에서 추가된 기능</p>
@@ -437,7 +588,7 @@
 <li><p>new 키워드로 새 Exception 객체를 생성하여 예외 내용을 작성</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> exceptMethod() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">if</span> (Err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Some Error&quot;</span>); <span class="comment">// 예외 발생 및 Message 전달</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>어떤 특정 메소드가 Checked Exception을 발생시킨다면 throws해서 (throws뒤에) Checked Exception을 적어줘야 한다.<br>어떤 상황이 발생했을 때, Exception을 던질 거면  throw를 이용해서 객체를 만들어서 던져줘야한다.<br>Exception은 객체이고 결국 객체를 만들어야한다. new를 이용해서 객체를 만들고 throw 해주면 이 코드가 작성된 메소드에 throw를 했기 때문에<br>메소드를 콜하는 바로 상위 메소드든 그 상위 메소드든 언젠가 메인까지 올라가다보면 Checked Exception이라면<br>try~catch를 만나게 된다. 거기에 catch에 throw해준 예외의 부모 클래스가 있다면 catch를 해서 예외처리를 해줄 것이다.<br>getMessage를 담아서 throw를 해주는 것이다.</p>
+<li><p>어떤 특정 메소드가 Checked Exception을 발생시킨다면 throws해서 (throws뒤에) Checked Exception을 적어줘야 한다.<br>어떤 상황이 발생했을 때, Exception을 던질 거면  throw를 이용해서 객체를 만들어서 던져줘야한다.<br>Exception은 객체이고 결국 객체를 만들어야한다. new를 이용해서 객체를 만들고 throw 해주면 이 코드가 작성된 메소드에 throws를 했기 때문에<br>메소드를 콜하는 바로 상위 메소드든 그 상위 메소드든 언젠가 메인까지 올라가다보면 Checked Exception이라면<br>try~catch를 만나게 된다. 거기에 catch에 throw해준 예외의 부모 클래스가 있다면 catch를 해서 예외처리를 해줄 것이다.<br>getMessage를 담아서 throw를 해주는 것이다.</p>
 <h4 id="throw를-사용하는-상황"><a href="#throw를-사용하는-상황" class="headerlink" title="throw를 사용하는 상황?"></a>throw를 사용하는 상황?</h4></li>
 <li><p>throw 는 내가 하고싶을 때 하면된다. 어떤 에러 사항이 있는데 프로그램이 진행이 되다가 throw를 한다는건,<br>이미 구현된 메소드 내부적으로  (빌트인된 쪽에서, 메소드 안에서) Exception이 발생하지 않았는데<br>내가 Exception을 발생시키고 싶으면 throw를 쓸 수 있는 것이다. 내가 판단했을 때 어떤 일이 생기면 Exception이 발생해야하는 상황이다라고 정해줄 수 있다.<br>이럴 때 사용한다.</p>
 </li>
@@ -454,7 +605,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckfcj227l0014s0u20oogbxdw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckfi8uj7u0014g4u28ezobjwp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -564,13 +715,13 @@
 </ul>
 <h4 id="outerMethod-와-main-method-비교"><a href="#outerMethod-와-main-method-비교" class="headerlink" title="outerMethod 와 main method 비교"></a>outerMethod 와 main method 비교</h4><ul>
 <li>메인메소드는 static인데 static은 static 메소드이자 outer 클래스에 속한 메소드이기 때문에<br>outerMethod는 객체.outerMethod로 선언이 되기 때문에 이미 객체가 있다는 전제하에 outerMethod 바디에 내부클래스를 생성할 수 있음</li>
-<li>반면 메인메소드는 스태틱이므로 인스턴스가 아니라 클래스 메소드이기때문에 outer.new InnerClass를 사용해서 생성해야 한다.<ul>
+<li>반면 메인메소드는 스태틱이므로 인스턴스가 아니라 클래스 메소드이기 때문에 outer.new InnerClass를 사용해서 생성해야 한다.<ul>
 <li>new 이너클래스()는 통으로 생성자를 콜하는걸로 보면 된다. (외우면 직관적이게 된다는데.. 외워서 그렇게 느끼는게 아닐까 외워보면 알겠지?)</li>
 </ul>
 </li>
 </ul>
 <h4 id="this-활용"><a href="#this-활용" class="headerlink" title="this 활용"></a>this 활용</h4><ul>
-<li>내부클래스에서 this는 내부클래스 멤버변수를 가르키고,  outer.this.var해야지 외부크래스의 멤버변수를 가르킴</li>
+<li>내부클래스에서 this는 내부클래스 멤버변수를 가르키고,  outer.this.var해야지 외부클래스의 멤버변수를 가르킴</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Outer</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InstanceInner</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> var = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">void</span> innerMethod() &#123;</span><br><span class="line">            <span class="keyword">int</span> var = <span class="number">0</span>;</span><br><span class="line">            System.out.println(var);<span class="comment">//0 이너메소드의 로컬 변수</span></span><br><span class="line">            System.out.println(<span class="built_in">this</span>.var);<span class="comment">//1 인스턴스 이너 클래스의 멤버 변수</span></span><br><span class="line">            System.out.println(Outer.<span class="built_in">this</span>.var); <span class="comment">//2 아우터클래스의 인스턴스 멤버 변수</span></span><br><span class="line">            System.out.println(Outer.y); <span class="comment">//3</span></span><br><span class="line">            <span class="comment">// 객체가 없으니 Outer.this로 사용해야한다? </span></span><br><span class="line">            <span class="comment">// Outer 클래스의 인스턴스 멤버 변수를 출력 하는 의미</span></span><br><span class="line">            <span class="comment">// this를 객체로 사용된다는 걸로 이해하면 된다.</span></span><br><span class="line">            <span class="comment">// Outer 클래스 이름으로 써야 한다. Outer.this 아우터클래의 객체라는 의미가 된다.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> var = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> y = <span class="number">3</span>; <span class="comment">// Outer.y 일 때 출력됨 클래스명.클래스멤버변수 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">      Outer outer = <span class="keyword">new</span> Outer();</span><br><span class="line">      InstanceInner inner = outer.<span class="keyword">new</span> InstanceInner();</span><br><span class="line">      inner.innerMethod();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -609,12 +760,12 @@
 </li>
 <li><p>메인에서 Outer 클래스로 객체를 만들 때 아우터 클래스 객체 안에 Inner 클래스 객체가 있는 것이 아니다.<br>컴포지션이랑은 전혀 다른 개념이다 클래스는 있는데 객체는 없는 것이다.</p>
 </li>
-<li><p>Outer 클래스로 객체를 만들 때 Inner 클래스의 메소드를 사용할 수 없다. Outer 클래스에서 클래스 형태로 static만 접근이 가능하다.</p>
+<li><p>Outer 클래스로 객체를 만들 때 Inner 클래스의 메소드를 사용할 수 없다. Outer 클래스에서 Outer.ClassInner 형태로 내부클래스의 static만 접근이 가능하다.</p>
 </li>
 </ul>
 <h3 id="로컬-내부-클래스-Local-Inner-Class"><a href="#로컬-내부-클래스-Local-Inner-Class" class="headerlink" title="로컬 내부 클래스(Local Inner Class)"></a>로컬 내부 클래스(Local Inner Class)</h3><ul>
 <li>각각이 서로 다른 블럭에 영향을 주지 않는다.</li>
-<li>바깥쪽에 있는 클래스의 멤버변수, static 변수에 접근할 수 있다.</li>
+<li>바깥 쪽에 있는 클래스의 멤버변수, static 변수에 접근할 수 있다.</li>
 <li>클래스 영역이 아닌 로컬 영역에 선언된 클래스이다.<ul>
 <li>메소드, 생성자, 초기화 블록의 내부<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalInnerClass</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y1 =<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> y2 = <span class="number">2</span>;</span><br><span class="line">       </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">              System.out.println(<span class="string">&quot;메소드 내에 로컬 내부 클래스 선언하기!&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span>&#123; <span class="comment">// static 초기화 블록</span></span><br><span class="line">        <span class="keyword">int</span> y =<span class="number">2</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;static 블럭내에 로컬 내 부클래스 선언하기!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;<span class="comment">//인스턴스 초기화 블록</span></span><br><span class="line">        <span class="keyword">int</span> y =<span class="number">2</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;인스턴스 블럭 내에 로컬 내부 클래스 선언하기!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> y =<span class="number">2</span>;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;메인 메소드 내에 로컬 내부 변수 선언하기!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -631,11 +782,11 @@
 <h4 id="로컬-내부-클래스의-복잡한-신기한-활용-방법"><a href="#로컬-내부-클래스의-복잡한-신기한-활용-방법" class="headerlink" title="로컬 내부 클래스의 복잡한(신기한?) 활용 방법"></a>로컬 내부 클래스의 복잡한(신기한?) 활용 방법</h4></li>
 </ul>
 </li>
-<li>제목을 어떻게 지어야 할지 모르겠는데 로컬 내부 클래스를 사용했을 때 신기한 상황이 전개 될 수 있는데<br>그 예를 보자!</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalInnerClass</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> Object methodA()&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y1 =<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> y2 = <span class="number">2</span>;</span><br><span class="line">       </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                System.out.println(y1);</span><br><span class="line"></span><br><span class="line">                System.out.println(y2);              </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        LocalInner inner = <span class="keyword">new</span> LocalInner(); <span class="comment">// 애는 힙영역</span></span><br><span class="line">        inner.methodA();</span><br><span class="line">   </span><br><span class="line">        <span class="keyword">return</span>  (Object)inner;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`LocalInner`</span>클래스가 외부에 있는 클래스를 상속하고있고, methodA를 오버라이드 하고 있다면,</span><br><span class="line">외부에서 그로컬이너클래스의 부모 클래스를 받고 그 클래스의 메소드가 호출이 된다면 가상 메소드콜이 되면서 <span class="code">`LocalInner`</span>클래스의 meothodA가 호출이 된다.</span><br><span class="line"></span><br><span class="line">외부에서 알고 있는 클래스로 나가면 meothodA가 정의가 안되어 있기 때문에 호출이 불가능한데 가상메소드콜로 이 메소드가 호출이 될 수 있다?</span><br><span class="line">이런 허점을 이용해서 메소드 호출을 해낸다.</span><br><span class="line">그럼 어떤 문제가 생기냐? 이미 사용이 끝나고 스택에서 제거된 y1,y2에 접근하는 상황이 발생한다.</span><br><span class="line">y1,y2의 라이프 사이클이 이미 여기 안에서 끝났는데 LocalInner클래스의 객체는 힙영역에 남아서 y1,y2를 기억하고 있다. </span><br><span class="line">관뚜껑을 열고서 나온 상황이다 굉장히 재밌는 상황 실제로 이런 식으로 구현을 하지는 않음</span><br><span class="line">gc로 처리가 어려움 근데 문법적으로 실제로 일어날 수 있는 상황이다.</span><br><span class="line">실제로 일어났을 때 생길 수 잇는 문제를 막기 위해서 final인 경우에만 허용을 하게 되었다.</span><br><span class="line"></span><br><span class="line">그래서 1.7까지 final 만 허용해 왔는데, 1.8에서 이런 상황을 막기위해서 다 final로 해야하는게 이상하다</span><br><span class="line">되게 불편해지니깐 말도안되는 상황 하나를 막기위해서 final을 사용하니깐 그래서 final없이 쓸 수있게 해놨는데</span><br><span class="line">혹시 이런 상황이 발생할 수 있으니깐 읽기만 가능하고 수정은 못하게 제한을 해놨다.</span><br><span class="line">내부적으로는 final 변수를 하나 만들어서 복사해두는 형식으로 구현이 된다.</span><br><span class="line"></span><br><span class="line">이렇게 할 경우에 이상하게 힙영역에 있는 애가 스택영역에 있는 애를 참조할 수 있게 되버려서 </span><br><span class="line">원래는 힙영역에서 스택영역을 참조 할 수 없는데 로컬이너클래스가 이걸 가능하게 해서</span><br><span class="line">로컬변수들을 비정상적으로 메소드가 끝난 이후에도 접근이 가능하게 되었다.</span><br><span class="line">로컬 변수를 로컬변수 답게 사용하기 위해 final이 붙은 변수에만 접근가능하게 했던 것이고,</span><br><span class="line">그렇게 하기에는 너무 불편하니 final없이 쓸 수 있게 하자,</span><br><span class="line">대신 내부적으로 구현자체는 final 변수를 하나 새로 만들어서 그쪽으로 복사해서 사용을 한다. </span><br><span class="line">그렇기 때문에 코드상으로 final처럼 코드를 수정하지 않고 쓰고 있어야만 쓸 수 있게 하자라는 식으로 전개가 되었다.</span><br><span class="line">굉장하죠잉~? 굉장히 복잡하다 뭐 결국은 jdk1.8에서는 외부변수에 접근할 수있다 다만 수정할 수 없다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<li>제목을 어떻게 지어야 할지 모르겠는데 로컬 내부 클래스를 사용했을 때 신기한 상황이 전개 될 수 있는데 그 예를 보자!<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LocalInnerClass</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> Object methodA()&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y1 =<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> y2 = <span class="number">2</span>;</span><br><span class="line">       </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">LocalInner</span>&#123;</span></span><br><span class="line">            <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">                System.out.println(x);</span><br><span class="line">                System.out.println(y1);</span><br><span class="line"></span><br><span class="line">                System.out.println(y2);              </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        LocalInner inner = <span class="keyword">new</span> LocalInner(); <span class="comment">// 애는 힙영역</span></span><br><span class="line">        inner.methodA();</span><br><span class="line">   </span><br><span class="line">        <span class="keyword">return</span>  (Object)inner;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`LocalInner`</span>클래스가 외부에 있는 클래스를 상속하고있고, methodA를 오버라이드 하고 있다면,</span><br><span class="line">외부에서 그 로컬 이너 클래스의 부모 클래스를 받고 그 클래스의 메소드가 호출이 된다면 가상 메소드콜이 되면서 <span class="code">`LocalInner`</span>클래스의 meothodA가 호출이 된다.</span><br><span class="line"></span><br><span class="line">외부에서 알고 있는 클래스로 나가면 meothodA가 정의가 안되어 있기 때문에 호출이 불가능한데 가상메소드콜로 이 메소드가 호출이 될 수 있다?</span><br><span class="line">이런 허점을 이용해서 메소드 호출을 해낸다.</span><br><span class="line">그럼 어떤 문제가 생기냐? 이미 사용이 끝나고 스택에서 제거된 y1,y2에 접근하는 상황이 발생한다.</span><br><span class="line">y1,y2의 라이프 사이클이 이미 여기 안에서 끝났는데 LocalInner클래스의 객체는 힙영역에 남아서 y1,y2를 기억하고 있다. </span><br><span class="line">관뚜껑을 열고서 나온 상황이다 굉장히 재밌는 상황 실제로 이런 식으로 구현을 하지는 않음</span><br><span class="line">gc로 처리가 어려움 근데 문법적으로 실제로 일어날 수 있는 상황이다.</span><br><span class="line">실제로 일어났을 때 생길 수 잇는 문제를 막기 위해서 final인 경우에만 허용을 하게 되었다.</span><br><span class="line"></span><br><span class="line">그래서 1.7까지 final 만 허용해 왔는데, 1.8에서 이런 상황을 막기위해서 다 final로 해야하는게 이상하다</span><br><span class="line">되게 불편해지니깐 말도안되는 상황 하나를 막기위해서 final을 사용하니깐 그래서 final없이 쓸 수있게 해놨는데</span><br><span class="line">혹시 이런 상황이 발생할 수 있으니깐 읽기만 가능하고 수정은 못하게 제한을 해놨다.</span><br><span class="line">내부적으로는 final 변수를 하나 만들어서 복사해두는 형식으로 구현이 된다.</span><br><span class="line"></span><br><span class="line">이렇게 할 경우에 이상하게 힙영역에 있는 애가 스택영역에 있는 애를 참조할 수 있게 되버려서 </span><br><span class="line">원래는 힙영역에서 스택영역을 참조 할 수 없는데 로컬이너클래스가 이걸 가능하게 해서</span><br><span class="line">로컬변수들을 비정상적으로 메소드가 끝난 이후에도 접근이 가능하게 되었다.</span><br><span class="line">로컬 변수를 로컬변수 답게 사용하기 위해 final이 붙은 변수에만 접근가능하게 했던 것이고,</span><br><span class="line">그렇게 하기에는 너무 불편하니 final없이 쓸 수 있게 하자,</span><br><span class="line">대신 내부적으로 구현자체는 final 변수를 하나 새로 만들어서 그쪽으로 복사해서 사용을 한다. </span><br><span class="line">그렇기 때문에 코드상으로 final처럼 코드를 수정하지 않고 쓰고 있어야만 쓸 수 있게 하자라는 식으로 전개가 되었다.</span><br><span class="line">굉장하죠잉~? 굉장히 복잡하다 뭐 결국은 jdk1.8에서는 외부변수에 접근할 수있다 다만 수정할 수 없다.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <h3 id="익명의-내부-클래스-Anonymous-Inner-Class"><a href="#익명의-내부-클래스-Anonymous-Inner-Class" class="headerlink" title="익명의 내부 클래스 (Anonymous Inner Class)"></a>익명의 내부 클래스 (Anonymous Inner Class)</h3><ul>
 <li>로컬 내부클래스와 똑같다 똑같은데 이름이 없는 것이다.</li>
 <li>딱 한번만 쓸 수있다.</li>
@@ -644,18 +795,18 @@
 <li>단 하나의 추상클래스나 인터페이스는 클래스 이름 없이 바로 new 키워드로 생성 가능.</li>
 </ul>
 </li>
-<li>안드로이드 프로그래밍에서 많이 사용된다.(말 들으니깐 모르고썼던 부분들이 기억이 난다.)<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> run();</span><br><span class="line">    <span class="keyword">void</span> walk();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">implements</span> <span class="title">IFoo</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Normally Run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Normally Walk&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnonymousInnerClass</span>&#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> useIFoo(IFoo foo)&#123; </span><br><span class="line">   <span class="comment">// 왜 static을 해준거지?  </span></span><br><span class="line">   <span class="comment">// 이유는 메인 메소드에서 useIFoo 메소들 호출해서 사용을 할려 할 때</span></span><br><span class="line">   <span class="comment">// 하나의 클래스 안에서의 스태틱 변수는 바로 메소드명으로 호출이 가능하니깐 static으로 선언해준것이당</span></span><br><span class="line">        foo.run();</span><br><span class="line">        foo.walk();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        useIFoo(foo); <span class="comment">// 다형성을 이용해서 들어갈 수 있다.</span></span><br><span class="line"></span><br><span class="line">              <span class="comment">// 로컬내부클래스에서 외부클래스를 상속해서 많이 사용한다.</span></span><br><span class="line">        <span class="comment">//2.  // 여기서 이렇게 로컬내부클래스가 외부클래스를 상속하는 경우가 생긴다 여기서는 인터페이스이지만</span></span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> <span class="keyword">implements</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Run, Foo Run!!&quot;</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Walk, Foo Walk...&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="comment">// 이걸 원래 밖에 있었는데 안에 적어줬다.라고 생각하면 된다~</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// IFoo인터페이스를 구현하고 있는 객체만 메소드의 파라미터로 들어올 수 있다.</span></span><br><span class="line">        <span class="comment">// 그래서 내부에서만 사용할거니깐 클래스를 만들어ㅓ서 IFoo를 implements해서 </span></span><br><span class="line">        <span class="comment">// 객체를 만들어서 useIFoo에 넣어줄 수 있다.</span></span><br><span class="line">        InnerClass ic = <span class="keyword">new</span> InnerClass();</span><br><span class="line">        useIFoo(ic); <span class="comment">// 다형성 + local inner Class</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 익명 내부클래스 IFoo는 인터페이스여서 new가 올수 없는데</span></span><br><span class="line">        <span class="comment">// 익명의 내부 클래스를 만들 때는 이런 문법을 사용한다 </span></span><br><span class="line">        <span class="comment">// IFoo를 상속하는 클래스를 구현할 때 생성하는 것이 이런 문법이다 외우면되겠죠~?</span></span><br><span class="line">        <span class="comment">// 구현이되자마자 객체가 하나되서 실행이 되고 끝남 굉장히 새로운 문법이죠</span></span><br><span class="line">        <span class="comment">// 즉시 한번만 사용이 가능하다.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 위에서 말한 이런문법이 아래코드에 해당한다</span></span><br><span class="line">        <span class="comment">//3.</span></span><br><span class="line">        useIFoo(<span class="keyword">new</span> IFoo() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Run!!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;walk...&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;); <span class="comment">// 다형성 + 익명내부클래스</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>안드로이드 프로그래밍에서 많이 사용된다.(말 들으니깐 모르고썼던 부분들이 기억이 난다.)<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> run();</span><br><span class="line">    <span class="keyword">void</span> walk();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">implements</span> <span class="title">IFoo</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Normally Run&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Normally Walk&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnonymousInnerClass</span>&#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> useIFoo(IFoo foo)&#123; </span><br><span class="line">   <span class="comment">// 왜 static을 해준거지?  </span></span><br><span class="line">   <span class="comment">// 이유는 메인 메소드에서 useIFoo 메소들 호출해서 사용을 할려 할 때</span></span><br><span class="line">   <span class="comment">// 하나의 클래스 안에서의 스태틱 변수는 바로 메소드명으로 호출이 가능하니깐 static으로 선언해준것이당</span></span><br><span class="line">        foo.run();</span><br><span class="line">        foo.walk();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        useIFoo(foo); <span class="comment">// 다형성을 이용해서 들어갈 수 있다.</span></span><br><span class="line"></span><br><span class="line">              <span class="comment">// 로컬내부클래스에서 외부클래스를 상속해서 많이 사용한다.</span></span><br><span class="line">        <span class="comment">//2.  // 여기서 이렇게 로컬내부클래스가 외부클래스를 상속하는 경우가 생긴다 여기서는 인터페이스이지만</span></span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> <span class="keyword">implements</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Run, Foo Run!!&quot;</span>);</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Walk, Foo Walk...&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="comment">// 이걸 원래 밖에 있었는데 안에 적어줬다.라고 생각하면 된다~</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// IFoo인터페이스를 구현하고 있는 객체만 메소드의 파라미터로 들어올 수 있다.</span></span><br><span class="line">        <span class="comment">// 그래서 내부에서만 사용할거니깐 클래스를 만들어서 IFoo를 implements해서 </span></span><br><span class="line">        <span class="comment">// 객체를 만들어서 useIFoo에 넣어줄 수 있다.</span></span><br><span class="line">        InnerClass ic = <span class="keyword">new</span> InnerClass();</span><br><span class="line">        useIFoo(ic); <span class="comment">// 다형성 + local inner Class</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 익명 내부 클래스 IFoo는 인터페이스여서 new가 올수 없는데</span></span><br><span class="line">        <span class="comment">// 익명의 내부 클래스를 만들 때는 이런 문법을 사용한다 </span></span><br><span class="line">        <span class="comment">// IFoo를 상속하는 클래스를 구현할 때 생성하는 것이 이런 문법이다 외우면 되겠죠~?</span></span><br><span class="line">        <span class="comment">// 구현이 되자 마자 객체가 하나되서 실행이 되고 끝남 굉장히 새로운 문법이죠</span></span><br><span class="line">        <span class="comment">// 즉시 한번만 사용이 가능하다.</span></span><br><span class="line">        <span class="comment">// 위에서 말한 이런문법이 아래코드에 해당한다</span></span><br><span class="line">        <span class="comment">//3.</span></span><br><span class="line">        useIFoo(<span class="keyword">new</span> IFoo() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Run!!&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> walk() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;walk...&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;); <span class="comment">// 다형성 + 익명내부클래스</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<h3 id="람다식-맛-보기"><a href="#람다식-맛-보기" class="headerlink" title="람다식 맛 보기"></a>람다식 맛 보기</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">implements</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bar&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> runIBar(IBar bar)&#123;</span><br><span class="line">        bar.run(<span class="number">10</span>,<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        runIBar(<span class="keyword">new</span> Bar());</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">InnerBar</span> <span class="keyword">implements</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;InnerBar&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        runIBar(<span class="keyword">new</span> InnerBar());</span><br><span class="line">        <span class="comment">//InnerBar의 객체를 만들어줘서 파라미터로 넣어주면 다형성에 의해서 runIBar 메소드의 파라미터의 객체가 바뀌게 되고,</span></span><br><span class="line">        <span class="comment">// 그 안에 파라미터 객체의 메소드를 호출한다. 다른 것들도 마찬가지로 이런 형태.</span></span><br><span class="line"></span><br><span class="line">        runIBar(<span class="keyword">new</span> IBar() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Anonymous&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// this is lambda expression!!!!</span></span><br><span class="line">        <span class="comment">// 익명클래스를 한번 더 줄여쓴게 람다</span></span><br><span class="line">        <span class="comment">// 람다를 쓰기 위한 조건은 구현하고자하는</span></span><br><span class="line">        <span class="comment">// 인터페이스가 추상메소드가 단 하나만 존재 해야 한다!</span></span><br><span class="line">        <span class="comment">// 여기서는 run()만 존재한다.</span></span><br><span class="line">        <span class="comment">// 위에서는 추상메소드를 두개를 줬다 람다 익스프레션을 쓸 때 run과 walk어느걸</span></span><br><span class="line">        <span class="comment">// 사용해야하는지 구별할 수 없다. 그래서 익명이너클래스로 구현을 해야만 구현이 가능하다.</span></span><br><span class="line">        <span class="comment">// 람다식으로 대체불가하다 하나여야 가능하다.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 람다는 함수형 프로그래밍에서 사용하는 문법이여서</span></span><br><span class="line">        <span class="comment">// 기존 자바 객체지향프로그래밍과 패러다임이 달라서</span></span><br><span class="line">        <span class="comment">// 새롭게 보일 수 있다.</span></span><br><span class="line">        runIBar((x,y)-&gt;&#123;</span><br><span class="line">            System.out.println(x);</span><br><span class="line">            System.out.println(y);</span><br><span class="line">            System.out.println(<span class="string">&quot;LAMBDA!!&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="람다식-맛-보기"><a href="#람다식-맛-보기" class="headerlink" title="람다식 맛 보기"></a>람다식 맛 보기</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">implements</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Bar&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> runIBar(IBar bar)&#123;</span><br><span class="line">        bar.run(<span class="number">10</span>,<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        runIBar(<span class="keyword">new</span> Bar());</span><br><span class="line"></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">InnerBar</span> <span class="keyword">implements</span> <span class="title">IBar</span>&#123;</span></span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;InnerBar&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        runIBar(<span class="keyword">new</span> InnerBar());</span><br><span class="line">        <span class="comment">//InnerBar의 객체를 만들어줘서 파라미터로 넣어주면 다형성에 의해서 runIBar 메소드의 파라미터의 객체가 바뀌게 되고,</span></span><br><span class="line">        <span class="comment">// 그 안에 파라미터 객체의 메소드를 호출한다. 다른 것들도 마찬가지로 이런 형태.</span></span><br><span class="line"></span><br><span class="line">        runIBar(<span class="keyword">new</span> IBar() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> run(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Anonymous&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// this is lambda expression!!!!</span></span><br><span class="line">        <span class="comment">// 익명클래스를 한번 더 줄여쓴게 람다</span></span><br><span class="line">        <span class="comment">// 람다를 쓰기 위한 조건은 구현하고자하는</span></span><br><span class="line">        <span class="comment">// 인터페이스의 추상메소드가 단 하나만 존재 해야 한다!</span></span><br><span class="line">        <span class="comment">// 여기서는 run()만 존재한다.</span></span><br><span class="line">        <span class="comment">// 위에서는 추상메소드를 두개를 줬다 람다 익스프레션을 쓸 때 run과 walk 어느걸 사용해야하는지 구별할 수 없다. </span></span><br><span class="line">        <span class="comment">// 람다식으로 대체불가하다 하나여야 가능하다. 그래서 익명 이너 클래스로 구현을 해야만 구현이 가능하다.</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 람다는 함수형 프로그래밍에서 사용하는 문법이여서</span></span><br><span class="line">        <span class="comment">// 기존 자바 객체지향프로그래밍과 패러다임이 달라서</span></span><br><span class="line">        <span class="comment">// 새롭게 보일 수 있다.</span></span><br><span class="line">        runIBar((x,y)-&gt;&#123;</span><br><span class="line">            System.out.println(x);</span><br><span class="line">            System.out.println(y);</span><br><span class="line">            System.out.println(<span class="string">&quot;LAMBDA!!&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckfcj228s002as0u21vh753l0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckfi8uj9d002dg4u22s8ibozp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -743,7 +894,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-InputOutput/" data-id="ckfcj227z001is0u253a65lnt" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-InputOutput/" data-id="ckfi8uj88001gg4u283qw0b32" class="article-share-link">Share</a>
       
       
     </footer>
@@ -815,221 +966,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-Loops/" data-id="ckfcj2281001ks0u20av8b9oi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaBasic/Java-ConditionalStatement" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" class="article-date">
-  <time datetime="2020-09-15T10:45:06.839Z" itemprop="datePublished">2020-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/">JavaBasic_ConditionalStatements</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="조건문-Conditional-Statements"><a href="#조건문-Conditional-Statements" class="headerlink" title="조건문(Conditional Statements)"></a>조건문(Conditional Statements)</h1><h2 id="조건문의-구성"><a href="#조건문의-구성" class="headerlink" title="조건문의 구성"></a>조건문의 구성</h2><ul>
-<li>조건식 (Conditional Expression), 실행문 (Execution Statement)</li>
-</ul>
-<h2 id="다양한-조건문"><a href="#다양한-조건문" class="headerlink" title="다양한 조건문"></a>다양한 조건문</h2><h3 id="if-계열-조건문"><a href="#if-계열-조건문" class="headerlink" title="if 계열 조건문"></a>if 계열 조건문</h3><ul>
-<li><p><code>if문</code></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식)</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>if~else 문</code></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 조건식이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 조건식이 false일때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>if ~ else if ~ else 문</code></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(조건식<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 false이고, 조건식2가 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 모든 조건식이 false일 때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>Nested(둥지) if문 = 중첩 if문</code></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> (score &gt;=<span class="number">90</span> )&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">80</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">70</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">60</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   grade=<span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch ~ case"></a>switch ~ case</h3><ul>
-<li><p>switch ~ case는 좀 다름 조건문은 ‘값’이 들어오게 된다. boolean에 한정돼있지 않습니다.</p>
-</li>
-<li><p>case 범위가 될 수 없고, case도 값이어야 합니다.</p>
-</li>
-<li><p>break가 없으면 다른 케이스로 계속 넘어간다, fall-through가 발생한다.</p>
-</li>
-<li><p>fall-through를 의도하지 않았다면 주석을 달아줘야한다.</p>
-</li>
-<li><p>실제로 enum이 많이 사용된다. switch에는 열거형 객체가 들어가고 case에는 열거형 상수가 해당한다,</p>
-<pre><code class="groovy">grade = &#39;F&#39;;
-switch (grade)&#123;
-   case &#39;A&#39;:
-       System.out.println(&quot;훌륭&quot;);
-       break;
-
-   case &#39;B&#39;:
-        System.out.println(&quot;멋집니다&quot;);
-        break;
-   case &#39;C&#39;:
-        System.out.println(&quot;노력하세요&quot;);
-        break;
-//  case &#39;C&#39;:
-//  case &#39;D&#39;:
-//       System.out.println(&quot;많이 노력하세요&quot;);
-//       break; //이렇게도 사용가능.
-   case &#39;D&#39;:
-        System.out.println(&quot;많이 노력하세요&quot;);
-        break;
-   default: //***무조건 마지막에 실행된다.***
-        System.out.println(&quot;다음엔 잘하세요&quot;);
-&#125;</code></pre>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckfcj2282001ls0u2ghwcb2r2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-PackageAndImport" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" class="article-date">
-  <time datetime="2020-09-15T10:36:07.767Z" itemprop="datePublished">2020-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/">Java_PackageAndImport</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="패키지와-임포트"><a href="#패키지와-임포트" class="headerlink" title="패키지와 임포트"></a>패키지와 임포트</h1><h2 id="패키지-package"><a href="#패키지-package" class="headerlink" title="패키지(package)"></a>패키지(package)</h2><ul>
-<li>Java에서 소스 코드를 관리하는 방식</li>
-<li>물리적으로 디렉토리로 구분된 파일을 .으로 계층적으로 구분</li>
-<li>패키지 이름을 짓는 규칙: package 소속.프로젝트.용도 </li>
-</ul>
-<p>ex) package com.google.dev.utils ex) package com.fastcampus.catcare.service</p>
-<h2 id="임포트-imports"><a href="#임포트-imports" class="headerlink" title="임포트(imports)"></a>임포트(imports)</h2><ul>
-<li>다른 패키지에 선언된 클래스를 사용하기 위한 키워드</li>
-<li>자동으로 임포트되는 경우<ol>
-<li>java. lang. * : import를 하지 않아도 자동으로 되어있다.(Ex-String)</li>
-<li>auto import </li>
-</ol>
-</li>
-<li>패키지에 속한 모든 클래스를 import (하위 패키지는 포함하지 않음)</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.example.project.utils.*;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>패키지에 속한 특정 클래스를 import(권장 방법)</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fastcampus.dogcare.service.WebAPI;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>클래스의 이름이 겹치는 경우, 패키지명을 포함하여 사용(권장 방법)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> List();</span><br><span class="line">        java.awt.List list2 = <span class="keyword">new</span> java.awt.List();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>static 멤버는 static import하여 클래스를 생략하고 사용 가능(권장 x)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.random;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.out;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticImport</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        out.println(random());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" data-id="ckfcj227v001ds0u2dqx42xl2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/Solution-LongNode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/14/Algorithm/Solution-LongNode/" class="article-date">
-  <time datetime="2020-09-14T12:52:39.323Z" itemprop="datePublished">2020-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/14/Algorithm/Solution-LongNode/">AlgorithmSolution_LongNode</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Algorithm-가장-먼-노드-Num49189"><a href="#Algorithm-가장-먼-노드-Num49189" class="headerlink" title="Algorithm - 가장 먼 노드 (Num49189)"></a>Algorithm - 가장 먼 노드 (Num49189)</h1><h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
-<li>n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다.<br>1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다.<br>가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다.</li>
-<li>노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배열 vertex가 매개변수로 주어질 때,<br>1번 노드로부터 가장 멀리 떨어진 노드가 몇 개인지를 return 하도록 solution 함수를 작성해주세요.</li>
-</ul>
-<h2 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h2><ul>
-<li>노드의 개수 n은 2 이상 20,000 이하입니다.</li>
-<li>간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.</li>
-<li>vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.<h2 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h2><table>
-<thead>
-<tr>
-<th>n</th>
-<th>vertex</th>
-<th>return</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>6</td>
-<td>[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]</td>
-<td>3</td>
-</tr>
-</tbody></table>
-<h2 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h2></li>
-<li>예제의 그래프를 표현하면 아래 그림과 같고, 1번 노드에서 가장 멀리 떨어진 노드는 4,5,6번 노드입니다.</li>
-</ul>
-<p><img src="../../image/%EA%B0%80%EC%9E%A5%EB%A8%BC%EB%85%B8%EB%93%9C.png" alt="가장먼노드"></p>
-<h2 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Node</span>&gt; &#123;</span></span><br><span class="line">    <span class="keyword">int</span> index;</span><br><span class="line">    <span class="keyword">int</span> dist;</span><br><span class="line">    <span class="keyword">public</span> Node(<span class="keyword">int</span> index, <span class="keyword">int</span> dist) &#123;</span><br><span class="line">        <span class="built_in">this</span>.index = index;</span><br><span class="line">        <span class="built_in">this</span>.dist = dist;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> compareTo(Node o) &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(dist, o.dist);</span><br><span class="line">        <span class="comment">// 거리가 가까울 수록 우선순위를 갖게 함. 거리가 짧은게 우선순위를 갖게하기위해서</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LongNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edge) &#123;</span><br><span class="line">        <span class="keyword">int</span> [] dists = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 거리를 구하기 위해서 배열 생성 노드의 수가 1부터 시작하기 때문에 편리하게 쓰기우해 n+1을 해준 것이다. 0은 무시한다.</span></span><br><span class="line">        Arrays.fill(dists, Integer.MAX_VALUE);</span><br><span class="line">        <span class="comment">// 처음에 거리를 Integer의 가장 큰 값으로 초기화를 해준다.</span></span><br><span class="line">        <span class="comment">// 가장 짧은 거리를 찾을 때마다 노드간의 거리를 업데이트 한다.</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; adj_lists = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1,3 이라할 때 1번 노드와 3번 노드가 이어져 있다는 것이니 (1,3),(3,1)을 나눌 필요가 없다.</span></span><br><span class="line">        <span class="comment">// 그래서 e[0] 일 때와 e[1]일 때 둘 다 list에 값을 넣어준다.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            List&lt;Integer&gt; adj_list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] <span class="attr">e:</span> edge) &#123;</span><br><span class="line">                <span class="keyword">if</span> (e[<span class="number">0</span>] == i) &#123;</span><br><span class="line">                    adj_list.add(e[<span class="number">1</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e[<span class="number">1</span>] == i) &#123;</span><br><span class="line">                    adj_list.add(e[<span class="number">0</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            adj_lists.add(adj_list);</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;Node&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        <span class="comment">//거리가 짧은애를 먼저 접근하게 되어 있다.</span></span><br><span class="line">        <span class="comment">// 그래야 가장 빠르게 계산을 할 수 있다.</span></span><br><span class="line">        </span><br><span class="line">        dists[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        heap.add(<span class="keyword">new</span> Node(<span class="number">1</span>, dists[<span class="number">1</span>]));</span><br><span class="line">        <span class="keyword">while</span> (!heap.isEmpty()) &#123; <span class="comment">// 짧은 거리를 다 찾기 위한 반복문</span></span><br><span class="line">            Node node = heap.remove();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">indVisit:</span> adj_lists.get(node.index)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.dist + <span class="number">1</span> &lt; dists[indVisit]) &#123;</span><br><span class="line">                    <span class="comment">// node.dist + 1 은 현재 노드에서 다른 노드와의 연결은 무조건 1이 되니깐</span></span><br><span class="line">                    <span class="comment">// 예 노드1과 노드2사이의 거리는 0에 1 을 더해서 1이 된다.</span></span><br><span class="line">                    <span class="comment">// 각 노드에서 이어져있는 노드들과의 거리를 비교하는데 짧은 거리를 구하는 거니깐</span></span><br><span class="line">                    <span class="comment">// 위에 dists배열을 최대값으로 선언해줘서 그것보다 작은 값들이 대입되게 했다.</span></span><br><span class="line">                    </span><br><span class="line">                    dists[indVisit] = node.dist + <span class="number">1</span>;</span><br><span class="line">                    heap.add(<span class="keyword">new</span> Node(indVisit, dists[indVisit]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 가장 거리가 먼 것들의 개수를 세준다.</span></span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        dists[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">el:</span> dists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (el == max) &#123;</span><br><span class="line">                <span class="comment">// 가장 거리가 먼 것들이 몇개 인지 세기 위해서</span></span><br><span class="line">                <span class="comment">// dists 배열 요소(거리) 가 max와 같을 때 카운트를 증가시키고</span></span><br><span class="line">                answer++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (el &gt; max) &#123;</span><br><span class="line">                <span class="comment">// 거리가 max보다 클 때 그것이 가장 먼 거리이니깐</span></span><br><span class="line">                <span class="comment">// max 값이 거리 값을 넣어준 다음에 다시 카운트를 1로 초기화시킨다.</span></span><br><span class="line">                <span class="comment">// (다시 가장 먼 거리의 값들이 설정이 됬으니 그 개수를 다시 세어줘야하니깐)</span></span><br><span class="line">                </span><br><span class="line">                max = el;</span><br><span class="line">                answer = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">longNodeTest</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> [][]edge =&#123;&#123;<span class="number">3</span>, <span class="number">6</span>&#125;, &#123;<span class="number">4</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">2</span>&#125;, &#123;<span class="number">1</span>, <span class="number">3</span>&#125;,</span><br><span class="line">                &#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">2</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">2</span>&#125;&#125;;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> LongNode().solution(<span class="number">6</span>,edge));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/14/Algorithm/Solution-LongNode/" data-id="ckfcj2272000os0u275lva198" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-Loops/" data-id="ckfi8uj8i001og4u29tew2vai" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1075,23 +1012,23 @@ switch (grade)&#123;
       <ul>
         
           <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
           </li>
         
           <li>
             <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
       </ul>

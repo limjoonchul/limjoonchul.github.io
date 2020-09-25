@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Subject_Day10_GenericRect | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="과제 Day10GenericList구현하기문제 설명 List 제네릭 인터페이스를 구현하여 ArrayList 제네릭을 완성하시오.  List는 순서가 있는 연속된 값으로, List 인터페이스에 선언되어 있는 메소드의 기능은 아래와 같다.  append(): List의 마지막에 value를 삽입한다. prepend(): List의 시작점에 value를 삽입한다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Subject_Day10_GenericRect">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="과제 Day10GenericList구현하기문제 설명 List 제네릭 인터페이스를 구현하여 ArrayList 제네릭을 완성하시오.  List는 순서가 있는 연속된 값으로, List 인터페이스에 선언되어 있는 메소드의 기능은 아래와 같다.  append(): List의 마지막에 value를 삽입한다. prepend(): List의 시작점에 value를 삽입한다">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-25T12:16:07.140Z">
+<meta property="article:modified_time" content="2020-09-25T12:18:27.513Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/Subject/Homework10/GenericList" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/25/Java/Subject/Homework10/GenericList/" class="article-date">
+  <time datetime="2020-09-25T12:16:07.140Z" itemprop="datePublished">2020-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Subject_Day10_GenericRect
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day10"><a href="#과제-Day10" class="headerlink" title="과제 Day10"></a>과제 Day10</h1><h2 id="GenericList구현하기"><a href="#GenericList구현하기" class="headerlink" title="GenericList구현하기"></a>GenericList구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li><p>List<T> 제네릭 인터페이스를 구현하여 ArrayList<T> 제네릭을 완성하시오.</p>
+</li>
+<li><p>List는 순서가 있는 연속된 값으로, List 인터페이스에 선언되어 있는 메소드의 기능은 아래와 같다.</p>
+<ul>
+<li>append(): List의 마지막에 value를 삽입한다.</li>
+<li>prepend(): List의 시작점에 value를 삽입한다. 기존의 데이터를 한 칸씩 뒤로 옮긴다.</li>
+<li>insert(): index에 value를 삽입한다. 기존 데이터를 한 칸씩 뒤로 옮긴다.</li>
+<li>remove(): index의 value를 삭제한다. 기존 데이터를 한 칸씩 앞으로 당긴다.</li>
+<li>get(): index의 value를 반환한다.</li>
+<li>length(): List의 길이를 출력한다.</li>
+</ul>
+</li>
+<li><p>ArrayList<T>는 Object []를 이용하여 List<T>를 구현한다.</p>
+<ul>
+<li>생성자에서는 capacity를 입력받으며, 배열의 크기가 부족할 때마다 2배씩 증가시킨다.</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt; &#123;</span></span><br><span class="line">    <span class="keyword">void</span> append(T value);</span><br><span class="line">    <span class="keyword">void</span> prepend(T value);</span><br><span class="line">    <span class="keyword">void</span> insert(<span class="keyword">int</span> index, T value);</span><br><span class="line">    <span class="keyword">void</span> remove(<span class="keyword">int</span> index);</span><br><span class="line">    T get(<span class="keyword">int</span> index);</span><br><span class="line">    <span class="keyword">int</span> length();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">T</span>&gt;&#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> length;</span><br><span class="line">    <span class="keyword">private</span> Object[] integers;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> ArrayList(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        <span class="built_in">this</span>.capacity = capacity;</span><br><span class="line">        length = <span class="number">0</span>;</span><br><span class="line">        integers = <span class="keyword">new</span> Object[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> expandCapacity(<span class="keyword">int</span> offset) &#123;</span><br><span class="line">        Object [] newIntegers = <span class="keyword">new</span> Object[capacity * <span class="number">2</span>];</span><br><span class="line">        System.arraycopy(integers, <span class="number">0</span>, newIntegers, offset, capacity);</span><br><span class="line">        integers = newIntegers;</span><br><span class="line">        capacity *= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> expandCapacity() &#123;</span><br><span class="line">        expandCapacity(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> append(T value) &#123;</span><br><span class="line">        <span class="keyword">if</span>(length == capacity)&#123;</span><br><span class="line">            expandCapacity();</span><br><span class="line">        &#125;</span><br><span class="line">        integers[length++] = value;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> prepend(T value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (length == capacity) &#123;</span><br><span class="line">            expandCapacity(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (length &gt;= <span class="number">0</span>) System.arraycopy(integers, <span class="number">0</span>, integers, <span class="number">1</span>, length);</span><br><span class="line">        &#125;</span><br><span class="line">        integers[<span class="number">0</span>] =  value;</span><br><span class="line">        length++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> insert(<span class="keyword">int</span> index, T value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (length == capacity) &#123;</span><br><span class="line">            expandCapacity();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (index &lt;= length &amp;&amp; length &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            System.arraycopy(integers, index, integers, index + <span class="number">1</span>, length - index);</span><br><span class="line">        &#125;</span><br><span class="line">        integers[index] =  value;</span><br><span class="line">        length++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> remove(<span class="keyword">int</span> index) &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; length &amp;&amp; length &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            System.arraycopy(integers, index + <span class="number">1</span>, integers, index, length - index - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        length--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> T get(<span class="keyword">int</span> index) &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; length) &#123;</span><br><span class="line">            <span class="keyword">return</span> (T) integers[index];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (T) Integer.valueOf(<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> length() &#123;</span><br><span class="line">        <span class="keyword">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericList</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> printList(ArrayList&lt;Integer&gt; list) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.length(); i++) &#123;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d &quot;</span>, list.get(i));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            list.append(i);</span><br><span class="line">        &#125;</span><br><span class="line">        printList(list);</span><br><span class="line"></span><br><span class="line">        list.remove(<span class="number">5</span>);</span><br><span class="line">        printList(list);</span><br><span class="line"></span><br><span class="line">        list.prepend(<span class="number">1</span>);</span><br><span class="line">        list.prepend(<span class="number">2</span>);</span><br><span class="line">        list.prepend(<span class="number">3</span>);</span><br><span class="line">        printList(list);</span><br><span class="line"></span><br><span class="line">        list.insert(<span class="number">5</span>, <span class="number">100</span>);</span><br><span class="line">        printList(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfi8uj940027g4u2hdpj94ae" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/25/Java/Subject/Homework09/List/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Subject_Day09_Rect</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

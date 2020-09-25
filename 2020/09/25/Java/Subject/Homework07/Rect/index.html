@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Subject_Day07_Rect | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="과제 Day7Rect 구현하기문제 설명 아래 테스트 코드가 정상 동작하도록 클래스들을 완성하시오. getArea(): 사각형의 넓이를 반환한다. getCenterOfMass(): 사각형의 질량중심을 반환한다. GetAllPoints(): 사각형의 네 점을 배열로 반환한다. rot90(): Pivot을 기준으로 사각형을 90도 회전시킨다.  구현 코드1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Subject_Day07_Rect">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="과제 Day7Rect 구현하기문제 설명 아래 테스트 코드가 정상 동작하도록 클래스들을 완성하시오. getArea(): 사각형의 넓이를 반환한다. getCenterOfMass(): 사각형의 질량중심을 반환한다. GetAllPoints(): 사각형의 네 점을 배열로 반환한다. rot90(): Pivot을 기준으로 사각형을 90도 회전시킨다.  구현 코드1234">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-25T12:06:47.869Z">
+<meta property="article:modified_time" content="2020-09-25T12:09:09.097Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/Subject/Homework07/Rect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/25/Java/Subject/Homework07/Rect/" class="article-date">
+  <time datetime="2020-09-25T12:06:47.869Z" itemprop="datePublished">2020-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Subject_Day07_Rect
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day7"><a href="#과제-Day7" class="headerlink" title="과제 Day7"></a>과제 Day7</h1><h2 id="Rect-구현하기"><a href="#Rect-구현하기" class="headerlink" title="Rect 구현하기"></a>Rect 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li>아래 테스트 코드가 정상 동작하도록 클래스들을 완성하시오.</li>
+<li>getArea(): 사각형의 넓이를 반환한다.</li>
+<li>getCenterOfMass(): 사각형의 질량중심을 반환한다.</li>
+<li>GetAllPoints(): 사각형의 네 점을 배열로 반환한다.</li>
+<li>rot90(): Pivot을 기준으로 사각형을 90도 회전시킨다.</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2D</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D(<span class="keyword">float</span> x, <span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f&quot;</span>,x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> Vector2D pos;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">float</span> w, h;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> RectCore(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">this</span>.pos = <span class="keyword">new</span> Vector2D(x, y);</span><br><span class="line">        <span class="built_in">this</span>.w = w;</span><br><span class="line">        <span class="built_in">this</span>.h = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f, %f&quot;</span>,pos.toString(),w,h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rect</span> <span class="keyword">extends</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    Vector2D [] v2 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">    &#123;</span><br><span class="line">        v2[<span class="number">0</span>] = pos;</span><br><span class="line">        v2[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(pos.x,pos.y+h);</span><br><span class="line">        v2[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y+h);</span><br><span class="line">        v2[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rect(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">super</span>(x, y, w, h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getArea() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> area = w * h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D getCenterOfMass() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> a = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.x + (w * <span class="number">0.5</span>));</span><br><span class="line">        <span class="keyword">float</span> b = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.y + (h * <span class="number">0.5</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector2D(a, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D [] getAllPoints() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> v2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> rot90(Vector2D pivot) &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        Vector2D [] v3 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">float</span> x1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x - <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> x2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x + <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> y1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y - <span class="number">0.5</span>*w);</span><br><span class="line">        <span class="keyword">float</span> y2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y + <span class="number">0.5</span>*w);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        v3[<span class="number">0</span>] = <span class="keyword">new</span> Vector2D(x1,y1);</span><br><span class="line">        v3[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(x1,y2);</span><br><span class="line">        v3[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(x2,y2);</span><br><span class="line">        v3[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(x2,y1);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;v2.length; i++)&#123;</span><br><span class="line">            System.out.println(v3[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> v2[<span class="number">0</span>].toString() + <span class="string">&quot; &quot;</span>+ v2[<span class="number">1</span>].toString() + <span class="string">&quot; &quot;</span></span><br><span class="line">                +v2[<span class="number">2</span>].toString() + <span class="string">&quot; &quot;</span> + v2[<span class="number">4</span>].toString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectTest</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Rect rect = <span class="keyword">new</span> Rect(<span class="number">0.5</span>f, <span class="number">0.7</span>f, <span class="number">1.5</span>f, <span class="number">2.3</span>f);</span><br><span class="line">        System.out.println(<span class="string">&quot;Area: &quot;</span> + rect.getArea());</span><br><span class="line">        System.out.println(<span class="string">&quot;CoM: &quot;</span> + rect.getCenterOfMass());</span><br><span class="line">        System.out.println(<span class="string">&quot;All Points: &quot;</span> + Arrays.toString(rect.getAllPoints()));</span><br><span class="line"></span><br><span class="line">        rect.rot90(<span class="keyword">new</span> Vector2D(<span class="number">0.4</span>f, <span class="number">0.2</span>f));</span><br><span class="line">        System.out.println(<span class="string">&quot;Rotated rect: &quot;</span> + rect);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfi8uj920025g4u28boabnee" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/25/Java/Subject/Homework09/List/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Subject_Day09_Rect
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Subject_Day06_Vector3D</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

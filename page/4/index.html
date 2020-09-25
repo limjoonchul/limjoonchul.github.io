@@ -64,6 +64,233 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/PreCourseEx/ObjectClassEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" class="article-date">
+  <time datetime="2020-09-13T02:28:04.600Z" itemprop="datePublished">2020-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/">PreCourse-ObjectClassEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><ul>
+<li>날짜를 구현한 클래스 MyDate가 있습니다.<br>날짜가 같으면 eqauls() 메소드의 결과가 true가 되도록 구현해 보세요.<br>hashCode() 메소드도 구현해 보세요.</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li><p>MyDayte 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mydate</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> year;</span><br><span class="line">    <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">int</span> day;</span><br><span class="line">    String str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> Mydate(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)&#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">        <span class="built_in">this</span>.month = month;</span><br><span class="line">        <span class="built_in">this</span>.day = day;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span>  Mydate)&#123;</span><br><span class="line">            Mydate mydate = (Mydate)obj;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.year == mydate.year &amp; <span class="built_in">this</span>.month == mydate.month &amp; <span class="built_in">this</span>.day == mydate.day)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> hashCode() &#123;</span><br><span class="line"><span class="comment">//        str = Integer.toString(year);</span></span><br><span class="line"><span class="comment">//        str += Integer.toString(month);</span></span><br><span class="line"><span class="comment">//        str+=Integer.toString(day);</span></span><br><span class="line"><span class="comment">//        return Integer.parseInt(str);</span></span><br><span class="line">          <span class="comment">// 내가 구현한 방법</span></span><br><span class="line">        <span class="keyword">return</span> day*<span class="number">11</span> +  month*<span class="number">101</span>+ year * <span class="number">1001</span>;</span><br><span class="line">         <span class="comment">// 강사님 방방법</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MydateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Mydate mydate1 = <span class="keyword">new</span> Mydate(<span class="number">2020</span>,<span class="number">7</span>,<span class="number">20</span>);</span><br><span class="line">        Mydate mydate2 = <span class="keyword">new</span> Mydate(<span class="number">2020</span>,<span class="number">7</span>,<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(mydate1.equals(mydate2));</span><br><span class="line">        System.out.println(mydate1.hashCode());</span><br><span class="line">        System.out.println(mydate2.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckfi8uj8q001vg4u2ciqe5ehl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-ObjectClass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/13/Java/JavaAdvanced/Java-ObjectClass/" class="article-date">
+  <time datetime="2020-09-13T00:56:23.583Z" itemprop="datePublished">2020-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/13/Java/JavaAdvanced/Java-ObjectClass/">Java_ObjectClass</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ObjectClass"><a href="#ObjectClass" class="headerlink" title="ObjectClass"></a>ObjectClass</h1><h2 id="ObjectClass란"><a href="#ObjectClass란" class="headerlink" title="ObjectClass란"></a>ObjectClass란</h2><ul>
+<li>모든 클래스의 최상위 클래스</li>
+<li>java.lang.Object 클래스</li>
+<li>모든 클래스는 Object 클래스에서 상속 받는다.</li>
+<li>모든 클래스는 Object 클래스의 메소드를 사용할 수 있다.</li>
+<li>모든 클래스는 Object 클래스의 일부 메소드를 재정의하여 사용할 수 있다.<ul>
+<li>final로 재정의된 메소드들은 하위클래스에서 재정의 할 수 없기 때문에 일부 메소드만 재정의할 수 있다 라고 하는 것</li>
+</ul>
+</li>
+</ul>
+<h2 id="ObjectClass의-메소드"><a href="#ObjectClass의-메소드" class="headerlink" title="ObjectClass의 메소드"></a>ObjectClass의 메소드</h2><h3 id="toString-메소드"><a href="#toString-메소드" class="headerlink" title="toString() 메소드"></a>toString() 메소드</h3><ul>
+<li><p>toString()메소드의 원형</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getClass().getName() + <span class="string">&#x27;@&#x27;</span> + Integer.toHexString(hashCode())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>객체의 정보를 String으로 바꾸어 사용할 때 유용하다.</p>
+</li>
+<li><p>자바 클래스 중에는 이미 정의된 클래스가 많다.</p>
+<ul>
+<li>예 : String, Integer, Calender 등</li>
+</ul>
+</li>
+<li><p>많은 클래스에서 재정의하여 사용한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// extends Object 된 것과 같다 컴파일 할 때 자동으로 생성이 된다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span>&#123;</span></span><br><span class="line">    String title;</span><br><span class="line">    String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String title, String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.title = title;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> author+<span class="string">&quot;,&quot;</span>+title;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Book book =  <span class="keyword">new</span> Book(<span class="string">&quot;토지&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line">        System.out.println(book.toString());</span><br><span class="line">        <span class="comment">// toString을 재정의하지 않았을 때, 메모리 주소가 출력된다.</span></span><br><span class="line"></span><br><span class="line">        String str = <span class="keyword">new</span> String(<span class="string">&quot;토지&quot;</span>);</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        <span class="comment">// String 안에 이미 toString()메소드가 정의되어 있어서</span></span><br><span class="line">        <span class="comment">// String클래스 안에 있는 Character의 배열을 출력하도록 되어 있다.</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="equals-메소드"><a href="#equals-메소드" class="headerlink" title="equals() 메소드"></a>equals() 메소드</h3></li>
+<li><p>두 객체의 동일함을 논리적으로 재정의 할 수 있다.</p>
+</li>
+<li><p>물리적 동일함 : 객체 같은 메모리 주소를 가지는 있다. </p>
+</li>
+<li><p>논리적 동일함 : 객체가 실제로 같은 값을 가지고 있다.(같은 학번의 학생, 같은 주문 번호의 주문 등)</p>
+</li>
+<li><p>물리적으로 다른 메모리에 위치한 객체라도 논리적으로 동일함을 구현하기 위해 사용하는 메소드</p>
+</li>
+<li><p>원래 ObjectClass의 equals()메소드는 <code>==</code>와 똑같이 메모리 주소를 반환하게 되어있다.<br>그래서 객체를 만들 때 equlas() 메소드를 사용했을 때 메모리 주소가 같은지를 확인하게 되어있어서 값이 같은지를 비교하게 하고 싶을 때는<br>재정의하여 사용하면 된다.</p>
+</li>
+</ul>
+<p><img src="../../../image/equals.jpg" alt="equals"></p>
+<h4 id="equals-메소드-예제"><a href="#equals-메소드-예제" class="headerlink" title="equals() 메소드 예제"></a>equals() 메소드 예제</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> studentNum;</span><br><span class="line">    String studentName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Student(<span class="keyword">int</span> studentNum, String studentName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.studentName = studentName;</span><br><span class="line">        <span class="built_in">this</span>.studentNum = studentNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Student)&#123;</span><br><span class="line">            Student std = (Student)obj;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.studentNum == std.studentNum)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Student lee = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line">        Student lee2 =lee;</span><br><span class="line">        Student won = <span class="keyword">new</span> Student(<span class="number">100</span>,<span class="string">&quot;이상원&quot;</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(lee == lee2); <span class="comment">//true</span></span><br><span class="line">        System.out.println(lee == won);<span class="comment">//false equals()메소드 재정의 전</span></span><br><span class="line">        System.out.println(lee.equals(won)); <span class="comment">//equals()메소드 재정의 전(false), 후(true) </span></span><br><span class="line"></span><br><span class="line">        System.out.println(lee.hashCode());</span><br><span class="line">        System.out.println(won.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="String-비교-예제"><a href="#String-비교-예제" class="headerlink" title="String 비교 예제"></a>String 비교 예제</h4><ul>
+<li>원래 ObjectClass의 equals()메소드는 <code>==</code>와 똑같이 메모리 주소를 반환하게 되어있는데, String클래스에서 재정의했다.<br>그래서 String은 문자열이 같으면 true를 반환하도록 재정의 되어 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">String str2 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">System.out.println(str1 == str2); <span class="comment">//메모리 주소가 같은가 를 확인</span></span><br><span class="line">System.out.println(str1.equals(str2));<span class="comment">//두개의 문자열이 같은가를 확인</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="hashCode-메소드"><a href="#hashCode-메소드" class="headerlink" title="hashCode() 메소드"></a>hashCode() 메소드</h3><ul>
+<li><p>자바에서 JVM이 있는데 인스턴스가 생성이 됬을 때 메모리 주소를 준다. 그 주소 값을 <code>hashCode</code>라고 한다.</p>
+</li>
+<li><p>hashCode() 메소드의 반환값: 인스턴스가 저장된 가상머신의 주소를 10진수로 반환</p>
+</li>
+<li><p>두 개의 서로 다른 메모리에 위치한 인스턴스가 동일하다는 것은?</p>
+<ul>
+<li>논리적으로 동일 : equals()의 반환 값이 true</li>
+<li>동일한 hashCode 값을 가짐 : hashCode()의 반환 값이 동일하다.</li>
+</ul>
+</li>
+<li><p>실제 메모리 값이 아닌 hashCode값이 동일해야 객체들이 동일하다고 말할 수 있다.</p>
+</li>
+<li><p>실제 메모리 값은 그대로 있다. 단지 overriding만 하는 것이다.</p>
+</li>
+<li><p>일반적으로 equals를 오버라이딩하면 hasCode도 오버라이딩 한다.</p>
+<ul>
+<li>equals()의 반환 값이 true 일때, hashcode도 같은 값이 반환될 수 있도록 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>;</span><br><span class="line">Integer i2 = <span class="number">100</span>;</span><br><span class="line">System.out.println(i1.equals(i2));</span><br><span class="line">System.out.println(i1.hashCode());</span><br><span class="line">System.out.println(i2.hashCode());</span><br><span class="line"></span><br><span class="line">System.out.println(System.identityHashCode(i1));</span><br><span class="line">System.out.println(System.identityHashCode(i2)); <span class="comment">//진짜 메모리 값 확인하는 메소드</span></span><br></pre></td></tr></table></figure>
+<h3 id="clone-메소드"><a href="#clone-메소드" class="headerlink" title="clone() 메소드"></a>clone() 메소드</h3></li>
+</ul>
+</li>
+<li><p>객체의 복사본을 만듦</p>
+</li>
+<li><p>기본 틀(prototype)로부터 같은 속성 값을 가진 객체의 복사본을 생성할 수 있음</p>
+</li>
+<li><p>객체지향 프로그래밍의 정보은닉에 위배될 가능성이 있으므로 복제할 객체는 cloneable 인터페이스를 명시해야 한다.</p>
+</li>
+<li><p>같은 객체를 동일하게 인스턴스 값을 동일하게 해서 만드는 것</p>
+<h4 id="주의"><a href="#주의" class="headerlink" title="주의"></a>주의</h4></li>
+<li><p>생성자와는 다르다. 생성자는 기본 초기화를 하면서 만드는데 이건 인스턴스의 상태를 그대로 복제하는 것 </p>
+</li>
+<li><p>private필드까지 다 복제해올 수 있어서 정보은닉에 위배될 수 있어서 객체 복제를 할 때 cloneable 인터페이스가 명시되어 있어야 한다.</p>
+</li>
+<li><p>clone() 메소드를 사용할 때 object 형으로 반환되므로 다운캐스팅을 해줘야한다.</p>
+</li>
+<li><p>구현 클래스에 Cloneable 인터페이스를 implements해야 한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>&#123;</span></span><br><span class="line">    String title;</span><br><span class="line">    String author;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Book(String title, String author)&#123;</span><br><span class="line">        <span class="built_in">this</span>.title = title;</span><br><span class="line">        <span class="built_in">this</span>.author = author;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> author+<span class="string">&quot;,&quot;</span>+title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Object clone() <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.clone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToStringTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> CloneNotSupportedException &#123;</span><br><span class="line">        Book book =  <span class="keyword">new</span> Book(<span class="string">&quot;토지&quot;</span>,<span class="string">&quot;박경리&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Book book2 =(Book)book.clone();</span><br><span class="line">        <span class="comment">//book.clone()이렇게 했을 때 object 자료형으로 반환이되서</span></span><br><span class="line">        <span class="comment">//명시적으로 다운캐스팅을 해줘야하고 예외처리를 해줘야 한다.</span></span><br><span class="line"></span><br><span class="line">        System.out.println(book2);</span><br><span class="line">        <span class="comment">//그냥하면 예외가 발생함</span></span><br><span class="line">        <span class="comment">// 이유 위에 cloneable 인터페이스를 implements 하지 않아서</span></span><br><span class="line">        <span class="comment">// 이런 인터페이스를 마크인터페이스라고 한다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="finalize-메소드"><a href="#finalize-메소드" class="headerlink" title="finalize() 메소드"></a>finalize() 메소드</h3></li>
+<li><p>직접 불러서 사용하는 메소드는 아니다.</p>
+</li>
+<li><p>이 메소드는 객체가 heap 메모리에서 해체될 때, gc에서 호출되는 메소드이다.<br>이게 정의가 되어 있으면 gc가 이 메소드 부분을 수행한다.</p>
+</li>
+<li><p>주로 리소스 해제, 안 닫혔을 소켓을 닫는다.</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> finalize() <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">      <span class="built_in">super</span>.finalize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ObjectClass/" data-id="ckfi8uj83001cg4u2g2stgiax" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/PreCourseEx/InterfaceEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/12/Java/PreCourseEx/InterfaceEx1/" class="article-date">
+  <time datetime="2020-09-12T05:47:27.527Z" itemprop="datePublished">2020-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/12/Java/PreCourseEx/InterfaceEx1/">PreCourse-InterfaceEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="인터페이스-구현"><a href="#인터페이스-구현" class="headerlink" title="인터페이스 구현"></a>인터페이스 구현</h2><ul>
+<li>다음과 같이 여러 인터페이스가 입력에 따라 실행될 수 있도록 구현해보세요.</li>
+</ul>
+<p><img src="../../../image/%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%98%88%EC%A0%9C.jpg" alt="인터페이스예제"></p>
+<ul>
+<li><p>Sort 인터페이스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sort</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> ascending(<span class="keyword">int</span> []arr);</span><br><span class="line">    <span class="keyword">void</span> descending(<span class="keyword">int</span> []arr);</span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> description()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;숫자를 정렬하는 알고리즘 입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>QuickSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuickSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;QuickSort ascending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;QuickSort descending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;Quicksort 입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HeapSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort ascending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort descending&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;HeapSort입니다.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BubbleSort 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BubbleSort</span> <span class="keyword">implements</span> <span class="title">Sort</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> ascending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort ascending.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> descending(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort descending.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> description() &#123;</span><br><span class="line">        Sort.<span class="built_in">super</span>.description();</span><br><span class="line">        System.out.println(<span class="string">&quot;BubbleSort입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SortTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;정렬방식을 선택하세요&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;B : BubbleSort &quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;H : HeapSort&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Q : QuickSort&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ch = System.<span class="keyword">in</span>.read();</span><br><span class="line">        Sort sort = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(ch == <span class="string">&#x27;B&#x27;</span> || ch == <span class="string">&#x27;b&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> BubbleSort();</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;H&#x27;</span> || ch == <span class="string">&#x27;h&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> HeapSort();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;Q&#x27;</span> || ch == <span class="string">&#x27;q&#x27;</span>)&#123;</span><br><span class="line">            sort =<span class="keyword">new</span> QuickSort();</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;지원하지 않는 기능입니다.&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        sort.ascending(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        sort.descending(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;);</span><br><span class="line">        sort.description();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckfi8uj8r001wg4u2gu4whh1e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Interface" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/12/Java/JavaAdvanced/Java-Interface/" class="article-date">
@@ -199,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckfcj227q0017s0u27h7afe5y" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckfi8uj7w0016g4u2des1ellq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckfcj2283001ms0u2acww72fq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckfi8uj8d001lg4u2hbvr3p30" class="article-share-link">Share</a>
       
       
     </footer>
@@ -326,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckfcj2284001ns0u2hhqt8lmj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckfi8uj8g001ng4u25bc01hi0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +680,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckfcj227e000xs0u2bf8j04rg" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckfi8uj7h000vg4u22cfi3h69" class="article-share-link">Share</a>
       
       
     </footer>
@@ -522,7 +749,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckfcj226t000ks0u23vmictv1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckfi8uj6x000lg4u2434o861p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,7 +862,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckfcj226w000ns0u2d41v7gbq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckfi8uj6y000mg4u237v3a4xc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -714,281 +941,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckfcj228d001xs0u24ebe2pts" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" class="article-date">
-  <time datetime="2020-09-10T03:24:12.897Z" itemprop="datePublished">2020-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/">Java_Polymorphism</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성(Polymorphism)"></a>다형성(Polymorphism)</h1><h2 id="다형성이란"><a href="#다형성이란" class="headerlink" title="다형성이란?"></a>다형성이란?</h2><ul>
-<li>하나의 객체가 여러가지 타입을 가질 수 있는 것을 말한다.</li>
-<li>자바에서는 이러한 다형성을 부모 클래스 타입의 참조 변수로 자식 클래스 타입의 인스턴스를<br>참조할 수 있도록 하여 구현하고 있다.</li>
-<li>다형성은 상속, 추상화와 더불어 객체지향 프로그래밍을 구성하는 중요한 특징 중 하나이다.</li>
-<li>객체지향 프로그래밍의 유연성, 재활용성, 유지보수성에 기본이 되는 특징이다.<h3 id="다형성의-장점"><a href="#다형성의-장점" class="headerlink" title="다형성의 장점"></a>다형성의 장점</h3></li>
-<li>다양한 여러 클래스를 하나의 자료형(상위 클래스)으로 선언하거나 형변환 하여<br>각 클래스가 동일한 메소드를 오버라이딩 한 경우, 하나의 코드가 다양한 구현을 실행 할 수 있다.</li>
-<li>유사한 클래스가 추가되는 경우 유지보수에 용이하고, 각 자료형 마다 다른 메소드를 호출하지 않으므로 코드에서 많은 if문이 사라진다.</li>
-</ul>
-<h2 id="다형성의-다양한-특징"><a href="#다형성의-다양한-특징" class="headerlink" title="다형성의 다양한 특징"></a>다형성의 다양한 특징</h2><ul>
-<li><p>오버로딩에 의한 다형성, 오버라이딩에 의한 다형성(상속에 의한 다형성과 같다.)</p>
-</li>
-<li><p>부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징</p>
-</li>
-<li><p>부모 클래스로 자식 클래스를 참조한 경우, 자식 클래스의 메소드는 사용할 수 없다.</p>
-</li>
-<li><p>반대로 자식 클래스 타입으로 부모 클래스 타입의 객체를 참조할 경우에는 문법적으로 오류는<br>나지 않지만, 런타임시 에러가 발생한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar(); <span class="comment">//new가 있어야 새로운 객체를 만듬 자식 객체를 생성한 것이다.</span></span><br><span class="line">        Foo foo = (Foo)bar; <span class="comment">// 부모 클래스 타입으로 자식 객체를 받음.</span></span><br><span class="line">        <span class="comment">// 여전히 힙영역에는 자식객체가 있는 것이다.</span></span><br><span class="line"></span><br><span class="line">        foo.methodA(); <span class="comment">// Foo객체로받아서 문법적으로 a만 사용 가능, b는 불가능</span></span><br><span class="line">        <span class="comment">//foo.methodB();//이 경우 자식 클래스 메소드는 사용이 불가능 문법적으로 불가능함. 문법적으로 제한을 한 것이다.</span></span><br><span class="line"></span><br><span class="line">        Foo foo1 = <span class="keyword">new</span> Foo();</span><br><span class="line">        <span class="comment">//Bar bar1 = (Bar)foo1; // 자식 클래스 타입으로 부모 객체를 받음 이거 자체가 오류(문법 오류는 아님)</span></span><br><span class="line">        <span class="comment">// 문법 오류는 아니지만, 런타임 오류가 발생</span></span><br><span class="line">        <span class="comment">// 자식클래스 자료형으로 객체를 보려 하지만, 부모 객체 부분만 있기 때문에</span></span><br><span class="line">        <span class="comment">// 런타임에서 오류가 발생시킴.</span></span><br><span class="line">        <span class="comment">//bar1.methodA(); //문법오류x 성립하지 않음</span></span><br><span class="line">       <span class="comment">// bar1.methodB(); //문법오류x 성립하지 않음</span></span><br><span class="line"></span><br><span class="line">        Bar bar1 = (Bar)foo; <span class="comment">//원래자식객체를 자식객체로 캐스팅함 자식클래스 타입으로 자식 객체를 받음</span></span><br><span class="line">        <span class="comment">// 힙 영역에는 계속 자식 객체가 있었던 것. 부모객체 자료형으로 있는것을 자료객체로 캐스팅할 때</span></span><br><span class="line">        <span class="comment">// foo변수에 자식객체가 담겨져있는지 부모객체가 담겨져있는지 문법적으로 알수없음</span></span><br><span class="line">        bar1.methodA();</span><br><span class="line">        bar1.methodB();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>자식클래스로 부모 클래스를 참조하려 하면 java.lan.ClassCastException 오류 발생</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        Bar bar;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bar = (Bar)foo; // error</span></span><br><span class="line">        <span class="keyword">if</span> (foo <span class="keyword">instanceof</span> Bar) &#123; <span class="comment">// returns false</span></span><br><span class="line">            bar = (Bar)foo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="형변환과-오버라이딩-메소드-호출"><a href="#형변환과-오버라이딩-메소드-호출" class="headerlink" title="형변환과 오버라이딩 메소드 호출"></a>형변환과 오버라이딩 메소드 호출</h3></li>
-<li><p>멤버 변수의 재정의는<code> 선언된 객체의 타입</code>을 따른다. (문법적으로 본다) 클래수 변수도 마찬가지 변수는 별도의 메모리에 저장됨.</p>
-</li>
-<li><p>메소드 오버라이딩은 <code>메모리상의 객체 타입</code>을 따른다. (실제 객체로 본다)</p>
-</li>
-<li><p>(가상 메소드 호출, Virtual Method Call)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;super class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>); <span class="comment">//(가상 메소드 호출, virtual method call) 실제로 콜이 이루어지지 않지만 만들어줌 실제로 호출되지않ㅇ므</span></span><br><span class="line">        <span class="comment">// 없으면 안됨 문법을 맞춰주기 위한 것 뿐 구현된 것 자체는 중요하지 않음..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;sub class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;sub&quot;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;sub method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar; <span class="comment">// new Bar();</span></span><br><span class="line"></span><br><span class="line">        System.out.println(bar.x); <span class="comment">//sub</span></span><br><span class="line">        bar.methodA(); <span class="comment">//sub</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.x); <span class="comment">//super</span></span><br><span class="line">        foo.methodA(); <span class="comment">//sub virtural method call</span></span><br><span class="line"></span><br><span class="line">        System.out.println(Foo.y);</span><br><span class="line">        System.out.println(Bar.y);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        System.out.println(foo.y); //super</span></span><br><span class="line"><span class="comment">//        System.out.println(bar.y); //sub</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>공변 변환 타입(Covariant return type)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">//오버라이딩이지만, 리턴 타입이 달라질 수 있다. 여기서는 예외적으로 반환값이 달라진다. 공변 반환 타입</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">        <span class="comment">//return (Foo)this; 이거와 같다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckfcj227u001cs0u2bkh9b5qs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/InheritancdeEx1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" class="article-date">
-  <time datetime="2020-09-10T02:28:27.868Z" itemprop="datePublished">2020-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/Java/PreCourseEx/InheritancdeEx1/">PreCourse-InheritanceEx1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="상속을-사용한-고객관리-연습문제"><a href="#상속을-사용한-고객관리-연습문제" class="headerlink" title="상속을 사용한 고객관리 연습문제"></a>상속을 사용한 고객관리 연습문제</h2><ul>
-<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
-</li>
-<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
-</li>
-<li><p>자식클래스인 VIPCustomer, GoldCustomer클래스를 만든다.</p>
-</li>
-<li><p>Customer클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
-<ul>
-<li><p>제품 구매시 10% 할인</p>
-</li>
-<li><p>보넛 포인트 5% 적립</p>
-</li>
-<li><p>담당 상담원 배정</p>
-<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>Customer 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">int</span> bonusPoint; <span class="comment">// 보너스 포인트</span></span><br><span class="line">    <span class="keyword">double</span> bonusRatio; <span class="comment">//보너스 포인트 적립 비율</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer()&#123; <span class="comment">//생성자를 기본 초기값으로 설정해주듯이 사용하면 될 것 같다.</span></span><br><span class="line">        customerGrade = <span class="string">&quot;Silver&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>; <span class="comment">//1%로 적립</span></span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;customer 생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade = <span class="string">&quot;Silver&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>; <span class="comment">//1%로 적립</span></span><br><span class="line">        System.out.println(<span class="string">&quot;customer 파라미터 생성자 호출&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showCustomerInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며, 적립된 보너스 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;점 입니다.&quot;</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123; <span class="comment">//지불할 가격 반환.</span></span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerGrade() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerGrade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerGrade(String customerGrade) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerGrade = customerGrade;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>VIP Customer 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> agentID;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer()&#123;</span><br><span class="line"></span><br><span class="line">        customerGrade=<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;vipcustomer 생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade=<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;vipcustomer 파라미터생성자 호출&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span>  <span class="comment">//에노테이션 꼭 써야하는건 아니다. 역할은 컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> price -(<span class="keyword">int</span>)(price * salesRatio); <span class="comment">//salesRatio가 double형이기 때문에 다운 캐스팅을 해줌.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Customer customerLee = <span class="keyword">new</span> Customer();</span><br><span class="line">        customerLee.setCustomerName(<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">        customerLee.setCustomerID(<span class="number">10010</span>);</span><br><span class="line">        customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(customerLee.showCustomerInfo());</span><br><span class="line"></span><br><span class="line">        VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.setCustomerName(<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.setCustomerID(<span class="number">10020</span>);</span><br><span class="line">        customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">        System.out.println(customerKim.showCustomerInfo());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Overriding Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverridingTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Customer customerLee = <span class="keyword">new</span> Customer(<span class="number">10010</span>,<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">        customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">        customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> priceLee = customerLee.calcPrice(<span class="number">10000</span>);</span><br><span class="line">        <span class="keyword">int</span> priceKim = customerKim.calcPrice(<span class="number">10000</span>);</span><br><span class="line">        System.out.println(customerLee.showCustomerInfo() +<span class="string">&quot;지불금액은 &quot;</span>+priceLee);</span><br><span class="line"></span><br><span class="line">        System.out.println(customerKim.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+priceKim);</span><br><span class="line"></span><br><span class="line">        Customer customerNo = <span class="keyword">new</span> VIPCustomer(<span class="number">10030</span>,<span class="string">&quot;나몰라&quot;</span>);</span><br><span class="line">        customerNo.bonusPoint=<span class="number">10000</span>;</span><br><span class="line">        System.out.println(customerNo.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+customerNo.calcPrice(<span class="number">10000</span>));</span><br><span class="line">        <span class="comment">// 지불금액이 예상하기로 10000이 나와야하지만 결과는 9000이나옴 이유는 vipcustomer의 calcPrice()메소드가 호출되었기 때문에 이것을 가상메소드호출이라 한다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckfcj2289001ss0u2ackc4ysc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Inheritance" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" class="article-date">
-  <time datetime="2020-09-10T02:01:37.799Z" itemprop="datePublished">2020-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/Java/JavaAdvanced/Java-Inheritance/">Java_Inheritance</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="상속-Inheritence"><a href="#상속-Inheritence" class="headerlink" title="상속(Inheritence)"></a>상속(Inheritence)</h1><ul>
-<li>상속과 다형성을 이해를 잘하면 유지보수하기 쉽고 확장성있는 시스템을 설계할 수 있다.<br>객체지향의 큰 특징 중 하나이다.</li>
-</ul>
-<h2 id="상속이란"><a href="#상속이란" class="headerlink" title="상속이란"></a>상속이란</h2><ul>
-<li>어떤 클래스의 모든 멤버 변수 및 메소드를 계승하여, 새로운 클래스를 생성하는 것</li>
-<li>부모 클래스로부터 상속을 받은 자식 클래스는 부모의 것을 다 가지고 자기의 것을 추가로 더 가지고 만들어진다.</li>
-<li>상속 관계를 흔히 ‘IS-A’관계라고 한다.</li>
-</ul>
-<p><img src="../../../image/%EC%83%81%EC%86%8D.jpg" alt="상속"></p>
-<ul>
-<li>상속대상은 조상클래스, 부모클래스, 상위클래스, 슈퍼클래스 라고 한다.</li>
-<li>상속결과는 자손클래스, 자식클래스, 하위클래스, 서브클래스 라고 한다.</li>
-</ul>
-<h3 id="상속을-사용하는-경우"><a href="#상속을-사용하는-경우" class="headerlink" title="상속을 사용하는 경우"></a>상속을 사용하는 경우</h3><ul>
-<li><p>상속은 좀 더 일반적인 클래스가 있고 이것보다 좀 더 기능이 구체적인 클래스를 설계 한다.<br>유사한 클래스를 만드는데 기존의 클래스를 가져다가 좀 더 확장된 클래스를 만들 때 상속을 사용 한다.</p>
-<p><img src="../../../image/%EC%83%81%EC%86%8D3.jpg" alt="상속2"></p>
-</li>
-</ul>
-<h3 id="상속에서-접근-제한"><a href="#상속에서-접근-제한" class="headerlink" title="상속에서 접근 제한"></a>상속에서 접근 제한</h3><p><img src="../../../image/%EC%A0%91%EA%B7%BC%EC%A0%9C%ED%95%9C%EC%9E%90.jpg" alt="접근제한자"></p>
-<ul>
-<li>protected 예약어<ul>
-<li>클래스에서 멤버변수나 메소드를 private 예약어로 지정해 놨을 때 외부 클래스에서 접근을 하지 못한다.<br>그래서 상속 관계에서도 접근을 못하게 되는데 protected 예약어를 사용하면 상위클래스에 protected로 선언된 변수나 메소드를<br>다른 외부 클래스에서는 사용할 수 없게 하고 하위클래스에서 사용이 가능하다. </li>
-</ul>
-</li>
-</ul>
-<h3 id="상속에서-클래스-생성-과정과-형번환"><a href="#상속에서-클래스-생성-과정과-형번환" class="headerlink" title="상속에서 클래스 생성 과정과 형번환"></a>상속에서 클래스 생성 과정과 형번환</h3><ul>
-<li><p>Customer 상위클래스, VIPCustomer 하위클래스  </p>
-<p><img src="../../../image/%EC%83%81%EC%86%8D%EB%A9%94%EB%AA%A8%EB%A6%AC.jpg" alt="상속메모리"></p>
-</li>
-<li><p>하위클래스가 생성되는 과정</p>
-<ul>
-<li>하위 클래스가 생성 될 때 상위 클래스가 먼저 생성 된다.</li>
-<li>상위 클래스의 생성자가 호출되고 하위 클래스의 생성자가 호출 된다.</li>
-<li>하위 클래스의 생성자에서는 무조건 상위 클래스의 생성자가 먼저 호출되어야 한다.</li>
-<li>하위 클래스에서 상위 클래스의 생성자를 호출하는 코드가 없는 경우<br>컴파일러는 상위 클래스 기본 생성자를 호출하기 위한 super()를 추가한다.</li>
-<li>super()로 호출되는 생성자는 상위 클래스의 기본 생성자이다.</li>
-<li>만약 상위 클래스의 기본 생성자가 없는 경우(매개변수가 있는 생성자만 존재하는 경우)<br> 하위 클래스는 명시적으로 상위 클래스의 생성자를 호출해야 한다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="상위-클래스의-묵시적-형-변환-업-캐스팅"><a href="#상위-클래스의-묵시적-형-변환-업-캐스팅" class="headerlink" title="상위 클래스의 묵시적 형 변환(업 캐스팅)"></a>상위 클래스의 묵시적 형 변환(업 캐스팅)</h3><ul>
-<li>상위 클래스 형으로 변수를 선언하고 하위 클래스 인스턴스를 생성 할 수 있다.<br>하위 클래스는 상위 클래스의 타입을 내포하고 있으므로 상위 클래스로 묵시적 형 변환이 가능하다.<br>상속 관계에서 모든 하위 클래스는 상위 클래스로 묵시적 형 변환이 된다.<br>그 반대는 성립하지 않는다.</li>
-</ul>
-<p><img src="../../../image/%EC%83%81%EC%86%8D%ED%98%95%EB%B3%80%ED%99%98.jpg" alt="형변환"></p>
-<ul>
-<li>VIPCustomer() 생성자의 호출로 인스턴스는 모두 생성 되었지만,<br>타입이 Customer이므로 접근 할 수 있는 변수나 메소드는 Customer의 변수와 메소드이다.</li>
-</ul>
-<h3 id="하위-클래스로-명시적-형-변환-다운-캐스팅"><a href="#하위-클래스로-명시적-형-변환-다운-캐스팅" class="headerlink" title="하위 클래스로 명시적 형 변환(다운 캐스팅)"></a>하위 클래스로 명시적 형 변환(다운 캐스팅)</h3><ul>
-<li>묵시적으로 상위 클래스로 형 변환된 인스턴스가 원래 자료형(하위 클래스)으로 반환되어야 할 때<br>다운 캐스팅이라고 한다.</li>
-<li>하위 클래스로의 형 변환은 명시적으로 되어야 한다.</li>
-<li>Customer vc = new VIPCustomer() // 묵시적</li>
-<li>VIPCustomer vCustomer = (VIPCustomer)vc; //명시적</li>
-</ul>
-<h2 id="클래스의-관계"><a href="#클래스의-관계" class="headerlink" title="클래스의 관계"></a>클래스의 관계</h2><h3 id="클래스의-상속"><a href="#클래스의-상속" class="headerlink" title="클래스의 상속"></a>클래스의 상속</h3><ul>
-<li>부모 클래스<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;일하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;잠자기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>자식 클래스<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// person을 상속하는 자식 클래스 extends 키워드를 이용하여 상속</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String mainLang;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span>  <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;돈 받은 만큼 코딩하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String major;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;밤새 코딩하기&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="클래스의-포함"><a href="#클래스의-포함" class="headerlink" title="클래스의 포함"></a>클래스의 포함</h2></li>
-<li>관계 클래스를 조합해서 클래스를 만든다.</li>
-<li>상속하고 유사하지만, 한 클래스가 다른 클래스의 객체를 포함하는 관계</li>
-<li>내부에 포함하고 ‘HAS-A’ 관계로 표현된다.</li>
-<li>특별히 자바에선 ‘HAS-A’ 관계가 포함된 경우는 많이 없다.</li>
-<li>클래스 컴포지션 (Composition)이라 부른다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 메인머신 &#x27;HAS-A&#x27; String 이미 스트링을 컴포지션하고 있었다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainMachine</span></span>&#123;</span><br><span class="line">    String model;</span><br><span class="line">    <span class="keyword">boolean</span> isBroken = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainMachine</span><span class="params">(String model)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.model = model;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// developer &#x27;HAS-A; MainMachine 개발자클래스가 메인머신의 객체 하나를 보유한다.</span></span><br><span class="line"><span class="comment">// 보유하고 있어서 메인머신의 속성을 건드릴 수 있다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span>&#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    MainMachine mainMachine;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Developer(String name,MainMachine machine)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>. mainMachine = machine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> writeCode()&#123;</span><br><span class="line">        <span class="keyword">if</span>(mainMachine.isBroken) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;코딩할 수 없습니다.&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(mainMachine.model+ <span class="string">&quot;으로 코딩하기&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(Math.random() &gt; <span class="number">0.9</span>)&#123;</span><br><span class="line">            breakMachine();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> breakMachine()&#123;</span><br><span class="line">        mainMachine.isBroken = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainMachine mac = <span class="keyword">new</span> MainMachine(<span class="string">&quot;MacBook Pro&quot;</span>);</span><br><span class="line"></span><br><span class="line">    Developer dev = <span class="keyword">new</span> Developer(<span class="string">&quot;나개발&quot;</span>,mac); <span class="comment">// 메인머신을</span></span><br><span class="line"><span class="comment">//  dev.mainMachine.model 가능</span></span><br><span class="line"><span class="comment">//  dev.model 불가능.</span></span><br><span class="line"><span class="comment">//  일치하냐 보유하냐의 차이 (상속과 컴포지션의 차이)      </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">       dev.writeCode();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="메소드-재정의"><a href="#메소드-재정의" class="headerlink" title="메소드 재정의"></a>메소드 재정의</h2><h3 id="메소드-재정의-Method-Overriding-란"><a href="#메소드-재정의-Method-Overriding-란" class="headerlink" title="메소드 재정의(Method Overriding)란?"></a>메소드 재정의(Method Overriding)란?</h3><ul>
-<li>Override -&gt; 덮어씌운다, 해킹해서 뭔가 달라지게 한다.</li>
-<li>기존의 있던걸 덮어씌워서 다른걸로 변형시키는 것</li>
-<li>다형성 (polymorphism)의 근간이 됩니다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;아무 코드나 일단 적어 보았다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// 이렇게 적어주는 것이 관례 필수는 아님(문법 오류는 아님)   @ - 에노테이션</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;능숙하게 코드를 작성해 보았다.&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;답은 틀렸다.&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;하지만 무언가 또 배웠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Developer</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">// 다양하게 오버라이드 될 수 있음.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeCode</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;코드 작성이 하기 싫어서 하지 않았다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="@ 애노테이션(Annotation)"></a>@ 애노테이션(Annotation)</h3></li>
-<li>재정의된 메소드라는 의미로 선언부가 기존의 메소드와 다른 경우 에러가 발생한다.(같게 해줘야 함)</li>
-<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다<ul>
-<li>(컴파일 오류를 막아주고, 컴파일러에게 정보를 전달해줌.)</li>
-</ul>
-</li>
-<li>주로 사용되는 자바에서 제공되는 애노테이션</li>
-</ul>
-<p><img src="../../../image/%EC%95%A0%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98.jpg" alt="애노테이션"></p>
-<h3 id="형변환과-오버라이딩-메소드-호출"><a href="#형변환과-오버라이딩-메소드-호출" class="headerlink" title="형변환과 오버라이딩 메소드 호출"></a>형변환과 오버라이딩 메소드 호출</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Customer vc = <span class="keyword">new</span> VIPCustomer();</span><br><span class="line">vc.calcPrice(<span class="number">10000</span>);</span><br></pre></td></tr></table></figure>
-<p>위 코드에서 <code>calcPrice()</code> 메소드는 어느 메소드에서 호출 될까?<br>자바에서 항상 인스턴스의 메소드가 호출이 된다. (메모리의 자료형을 따라서 메소드가 호출이된다.)<br>그 이유는 <code>Virtual method Call</code>이 이루어지기 때문이다.</p>
-<h4 id="가상-메소드-Virtual-method"><a href="#가상-메소드-Virtual-method" class="headerlink" title="가상 메소드(Virtual method)"></a>가상 메소드(Virtual method)</h4><ul>
-<li>메소드의 이름과 메소드 주소를 가진 메소드 테이블에서 호출될 메소드의 주소를 참조한다.</li>
-</ul>
-<p><img src="../../../image/%EA%B0%80%EC%83%81%EB%A9%94%EC%86%8C%EB%93%9C.jpg" alt="가상메소드"></p>
-<ul>
-<li>재정의된 메소드 호출 과정</li>
-</ul>
-<p><img src="../../../image/%EC%9E%AC%EC%A0%95%EC%9D%98%EB%90%9C%EB%A9%94%EC%86%8C%EB%93%9C%ED%98%B8%EC%B6%9C.jpg" alt="재정의된메소드호출"></p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Customer customerLee = <span class="keyword">new</span> Customer(<span class="number">10010</span>,<span class="string">&quot;이순신&quot;</span>);</span><br><span class="line">customerLee.bonusPoint=<span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">VIPCustomer customerKim = <span class="keyword">new</span> VIPCustomer(<span class="number">10020</span>,<span class="string">&quot;김유신&quot;</span>);</span><br><span class="line">customerKim.bonusPoint = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> priceLee = customerLee.calcPrice(<span class="number">10000</span>);</span><br><span class="line"><span class="keyword">int</span> priceKim = customerKim.calcPrice(<span class="number">10000</span>);</span><br><span class="line">System.out.println(customerLee.showCustomerInfo() +<span class="string">&quot;지불금액은 &quot;</span>+priceLee);</span><br><span class="line"><span class="comment">//이순신님의 등급은 Silver이며, 적립된 보너스 포인트는 1100점 입니다. 지불금액은 10000</span></span><br><span class="line"></span><br><span class="line">System.out.println(customerKim.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+priceKim);</span><br><span class="line"><span class="comment">//김유신님의 등급은 VIP이며, 적립된 보너스 포인트는 10500점 입니다. 지불금액은 9000</span></span><br><span class="line"></span><br><span class="line">Customer customerNo = <span class="keyword">new</span> VIPCustomer(<span class="number">10030</span>,<span class="string">&quot;나몰라&quot;</span>);</span><br><span class="line">customerNo.bonusPoint=<span class="number">10000</span>;</span><br><span class="line">System.out.println(customerNo.showCustomerInfo()+<span class="string">&quot;지불금액은 &quot;</span>+customerNo.calcPrice(<span class="number">10000</span>));</span><br><span class="line"><span class="comment">// 나몰라님의 등급은 VIP이며, 적립된 보너스 포인트는 10000점 입니다. 지불금액은 9000</span></span><br><span class="line"><span class="comment">// 지불금액이 예상하기로 10000이 나와야하지만 결과는 9000이나옴 이유는 vipcustomer의 calcPrice()메소드가 호출되었기 때문에 이것을 가상메소드호출이라 한다.</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="super-키워드"><a href="#super-키워드" class="headerlink" title="super 키워드"></a>super 키워드</h3><ul>
-<li>this 가 자신의 객체를 참조하듯, super 는 부모 객체를 참조한다.</li>
-<li>다만 super.super 라는 식으로 부모의 부모는 참조할 수 없다. 바로 윗 부모만 가능하다.</li>
-<li>자식 객체를 생성을 하면, 부모 객체를 먼저 생성하고, 그 다음에 자식 객체를 생성하게 된다.</li>
-<li>자식 객체를 생성할 때마다 부모 객체를 따로따로 만들어서 가지고 있다.</li>
-<li>호출할 때 this와 마찬가지로 첫줄에 써야한다.</li>
-<li>멤버 변수명이 부모와 겹치면 재정의 하지만, 부모가 사라지는 것은 아니다.</li>
-<li>부모클래스에 기본 생성자를 사용하는 경우에는 호출 안해줘도 된다. 파라미터 생성자일 때만<br>호출해주면 된다.</li>
-<li>부모클래스 생성자와 다르게 파라미터 변수명을 해줘야 한다.</li>
-<li>자식클래스 생성자를 만들 때 부모 클래스 생성자도 같이 호출해줘야한다.</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    String x = <span class="string">&quot;Foo&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Foo</span><span class="params">(String x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    String x = <span class="string">&quot;Bar&quot;</span>; <span class="comment">//멤버 변수명이 부모와 겹치면 재정의 하지만 부모가 사라지는 것은 아님.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//부모클래스에 기본 생성자를 사용하는 경우에는 호출 안해주어도 된다.</span></span><br><span class="line">    <span class="comment">//부모클래스에 파라미터 생성자가 있으면 호출해 줘야 한다. super 사용.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Bar</span><span class="params">(String x, String x1)</span> </span>&#123; <span class="comment">//부모클래스 생성자와 다르게 파라미터 변수명을 다르게 해줘야 한다. x,x1</span></span><br><span class="line">        <span class="keyword">super</span>(x); <span class="comment">//this와 마찬가지로 첫줄에 써야한다. 부모클래스 생성자 호출.</span></span><br><span class="line">        <span class="comment">//부모 객체를 먼저 생성하고, 그 다음에 자식 객체를 생성.</span></span><br><span class="line">        <span class="keyword">this</span>.x = x1; <span class="comment">//자식클래스 생성자를 만들때 부모클래스 생성자도 같이 호출해줘야한다.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//로컬변수명과 멤버변수명은 같을 수 있다.</span></span><br><span class="line"><span class="comment">//        String x = &quot;method&quot;; 로컬변수가 없어지면 멤버변수를 참조, 멤버변수도 없어지면 super클래스의 변수사용.</span></span><br><span class="line">        System.out.println(x);<span class="comment">//로컬변수 -&gt; 멤버변수 -&gt; 부모의 멤버변수 순으로 접근</span></span><br><span class="line">        System.out.println(<span class="keyword">this</span>.x); <span class="comment">// 자기 자신의 객체에 접근가능 멤버변수 - &gt; 부모의 멤버변수</span></span><br><span class="line">        System.out.println(<span class="keyword">super</span>.x); <span class="comment">//부모 객체에 접근 가능    부모의 멤버변수</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckfcj227n0015s0u2apxnf62z" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckfi8uj8u001yg4u2e5qa2tg2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1034,23 +987,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
           </li>
         
           <li>
             <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
       </ul>

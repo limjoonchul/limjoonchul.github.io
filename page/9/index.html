@@ -64,6 +64,396 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-TIL-20200813" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/15/TIL-20200813/" class="article-date">
+  <time datetime="2020-08-15T09:27:32.583Z" itemprop="datePublished">2020-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/TIL-20200813/">Study20200813</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="제네릭-Generic"><a href="#제네릭-Generic" class="headerlink" title="제네릭(Generic)"></a>제네릭(Generic)</h1><h2 id="제네릭이란"><a href="#제네릭이란" class="headerlink" title="제네릭이란"></a>제네릭이란</h2><ul>
+<li>대상 객체의 타입을 입력받아서 사용하는 형식</li>
+<li>미리 사용할 수 있는 타입을 명시해서 컴파일 타임에 체크 가능.<ul>
+<li>일부 타입을 제한할 수 있는 기능이 있음.</li>
+<li>입력을 <code>object</code> 로 할 수 있으나, 런타임에 <code>instanceof</code> 로 객체를 체크해야 함.</li>
+</ul>
+</li>
+<li>원하는 객체가 들어왔는지 계속확인해야함.</li>
+<li>제네릭을 사용할 경우 이러한 과정 없이 간결하게 코드 작성을 할 수 있다.</li>
+<li>프리미티브 타입 불가능.</li>
+</ul>
+<h2 id="제네릭-클래스"><a href="#제네릭-클래스" class="headerlink" title="제네릭 클래스"></a>제네릭 클래스</h2><h3 id="제네릭-타입"><a href="#제네릭-타입" class="headerlink" title="제네릭 타입"></a>제네릭 타입</h3><ul>
+<li><p>클래스와 인터페이스에 제네릭이 적용된 타입</p>
+</li>
+<li><p>클래스를 선언할 때에 타입이 알려지지 않으며, 타입 파라미터를 사용.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//일반 클래스</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 제네릭 클래스</span></span><br><span class="line"><span class="comment">// 클래스를 선언할 때에는 설정되지 않은 타입이 있으며, 이것을 타입 파라미터로 표현한다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericFoo</span>&lt;<span class="title">T</span>&gt; </span>&#123; <span class="comment">// T: 타입 파라미터</span></span><br><span class="line">    String name;</span><br><span class="line">    T memberVar; <span class="comment">// T를 자료형으로 사용.</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GenericFoo</span><span class="params">(String name, T memberVar)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//생성자 생성 어떤타입의 자료형이 들어오는지 모르는데 구현 가능.</span></span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.memberVar = memberVar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//제네릭 인터페이스</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">GenericInterface</span>&lt;<span class="title">T</span>&gt;</span>&#123; <span class="comment">//인터페이스도 제네릭이 가능</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">k</span>,<span class="title">w</span>&gt;</span>&#123; <span class="comment">// 여러개의 타입 파라미터로 쓸 수 있다.</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>제네릭 타입은 실제로 사용될 때 타입 파라미터에 자료형을 입력받는다.</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GenericFoo&lt;String&gt; foo = <span class="keyword">new</span> GenericFoo&lt;String&gt;(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;var&quot;</span>); <span class="comment">//**생성할 때 자료형을 정해주게 되어 있음.**</span></span><br><span class="line">         <span class="comment">// &lt;&gt;안에 스트링으로 넣어줬기 때문에 T도 스트링으로 된다.</span></span><br><span class="line"> </span><br><span class="line">GenericFoo&lt;String&gt; foo1 = <span class="keyword">new</span> GenericFoo&lt;&gt;(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;var&quot;</span>);<span class="comment">//뒤에 &lt;&gt;생략가능</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="주의-해야할-문법들"><a href="#주의-해야할-문법들" class="headerlink" title="주의 해야할 문법들"></a>주의 해야할 문법들</h3><ul>
+<li>static은 객체가 생성전에 자료형이 결정되어야 하는데, </li>
+<li>class  GenericBar<T>의 타입 파라미터와 static 변수, 메소드는 같은 타입 파라미터를 갖고 있기 때문에 안됨!</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">GenericBar</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="comment">// 제네릭은 객체를 생성할때 자료형을 입력받기때문에. 스태틱은 객체생성전에 자료형이 결정되어야 하기때문에 / 클래스에 속하기 때문에 t를사용하면 자료형 알 수 없음.</span></span><br><span class="line">  <span class="comment">// static은 클래스에 속하기 때문에 애초에 t가 쓸수 없음 문법적 문제</span></span><br><span class="line">  <span class="keyword">static</span> T classVar; <span class="comment">// 안된다.. 클래스의 스테틱변수는 객체와 관계없이 클래스에 속해있기 때문에 스태틱 변수가 생겨야하는 생서시점에는 t 자료형이 없기 때문에</span></span><br><span class="line">  <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(T <span class="keyword">var</span>)</span></span>&#123;&#125; <span class="comment">//이것도 마찬가지로 불가능.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>문법적으로 문제가 없을 것 같으나, 안정성 문제로 금지. 암기해야 하는 됨!</li>
+<li><code>instanceof</code>의 피연산자로 사용할 수 없다.</li>
+<li><code>new</code> 키워드를 사용하여 객체 생성을 할 수 없다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    T memberVar = <span class="keyword">new</span> T(); t는 <span class="keyword">new</span> 키워드를 쓸 수 없음. -  안정성 문제 때문에 불가능하다. 티라는 자료형이 결정되지 않기때문에 생성자가 어떻게 정의될지 모르기 때문에 불가능 자바에서 막혀있음.</span><br><span class="line">    <span class="comment">// 타입파라미터의 객체를 생성하는 것은 불가능 하다.</span></span><br><span class="line">      &#123;</span><br><span class="line">          Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">          <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> T)&#123; <span class="comment">// 불가능 어떤 객체가있을대 t에속하는지 확인하기 불가능 안정성 문제 때문에 그냥 막혀있음.</span></span><br><span class="line">    </span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="제네릭-타입의-상속"><a href="#제네릭-타입의-상속" class="headerlink" title="제네릭 타입의 상속"></a>제네릭 타입의 상속</h3><ul>
+<li>부모 클래스 또는 인터페이스에 선언한 타입 파라미터는 반드시 자식에서도 선언해야 된다.</li>
+<li>자식 클래스에서 추가적인 타입 파라미터 선언할 수 있다.</li>
+<li>부모 클래스와 인터페이스의 타입 파라미터가 같을 경우 상속받는 클래스에서 다르게 넣어주면 된다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IGFoo</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">GIGFoo</span>&lt;<span class="title">K</span>,<span class="title">T</span>,<span class="title">D</span>&gt; <span class="keyword">extends</span> <span class="title">GFoo</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IGFoo</span>&lt;<span class="title">D</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="파라미터-타입의-제한"><a href="#파라미터-타입의-제한" class="headerlink" title="파라미터 타입의 제한"></a>파라미터 타입의 제한</h3><ul>
+<li>extends를 이용하여 파라미터 타입을 제한할 수 있다.<ul>
+<li>인터페이스의 경우에도 extends 키워드를 사용한다.</li>
+<li>클래스와 인터페이스를 동시에 제약하려면 &amp;로 연결한다.</li>
+</ul>
+</li>
+<li>제한한 자료형의 자식 클래스는 모두 사용할 수 있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//타입 제한을 하지 않으면 extends object와 동일하다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericNoTypeLimit</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Object</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//extends를 이용해서 부모클래스를 제한 할 수 있음// 추상클래스를 상속하면서 인터페이스를 추가로 구현할 수 있음  추상클래스+인터페이스를 구현해야한다</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericTypeLimitation</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Number</span> &amp; <span class="title">Cloneable</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="제네릭-메소드"><a href="#제네릭-메소드" class="headerlink" title="제네릭 메소드"></a>제네릭 메소드</h2><h3 id="메소드에-선언된-제네릭"><a href="#메소드에-선언된-제네릭" class="headerlink" title="메소드에 선언된 제네릭"></a>메소드에 선언된 제네릭</h3><ul>
+<li>메소드의 리턴 타입 앞에 타이 파라미터 변수를 선언하여 사용</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">method</span><span class="params">(T x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>메소드에 선언된 제네릭은 정적 메서드에도 사용 가능.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GenericMethod</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(T t)</span> </span>&#123; <span class="comment">// Error</span></span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;P&gt; <span class="function">P <span class="title">method</span> <span class="params">(P p)</span> </span>&#123; <span class="comment">// Possible</span></span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>와일드 카드<ul>
+<li>와일드카드 ?는 메소드의  입력 타입에 제네릭이 쓰일 경우, 제네릭의 타입 변수를 제한할 수 있다.</li>
+<li>&lt;?&gt; =&gt; &lt;? extends Object&gt;와 동일</li>
+<li>&lt;? extends T&gt; =&gt; 와일드카드의 상한을 제한</li>
+<li>&lt;? super T&gt; =&gt; 와일드카드의 하한을 제한</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 와일드카드</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildFoo</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildBar</span> <span class="keyword">extends</span> <span class="title">WildFoo</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildGeneric</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WildCard</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//&lt;&gt;명시할 수도 있고 명시하지 않을 수 있고 ?를 사용할 수 있음.</span></span><br><span class="line">  <span class="comment">//extends 조상이하의 것들은 다사용할 수 있음.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">(WildGeneric&lt;?&gt; x)</span></span>&#123;&#125; <span class="comment">//입력파라미터로 제네릭을 사용한다면 제네릭의 타입변수는 ?를사용해서 미리 정하지 않을 수 있다.여기선 아무거나 들어올 수 있다.</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1_Eq</span><span class="params">(WildGeneric&lt;? extends Object&gt; x)</span></span>&#123;&#125; <span class="comment">//object가 상한이고 -&gt; 모든 클래스를 사용할 수 있음.(모든 클래스는 object를 상위클래스로 갖고있기 때문에)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">(WildGeneric&lt;? extends WildFoo&gt; x)</span></span>&#123;&#125; <span class="comment">// 가장 조상이 어디까지인지 제한을 하는 것 / 여기선 wildfoo, wildbar 사용가능</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">(WildGeneric&lt;? <span class="keyword">super</span> WildBar&gt; x)</span></span>&#123;&#125; <span class="comment">//object, wildfoo, wildbar 사용가능. 여기서 whildbar 이상의 것들 하한선이 whildbar</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generics</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        GenericFoo&lt;String&gt; foo = <span class="keyword">new</span> GenericFoo&lt;String&gt;(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;var&quot;</span>); <span class="comment">//**생성할 때 자료형을 정해주게 되어 있음.**</span></span><br><span class="line">        <span class="comment">// &lt;&gt;안에 스트링으로 넣어줬기 때문에 T도 스트링으로 된다.</span></span><br><span class="line"></span><br><span class="line">        GenericFoo&lt;String&gt; foo1 = <span class="keyword">new</span> GenericFoo&lt;&gt;(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;var&quot;</span>);  <span class="comment">//뒤에 &lt;&gt;생략가능</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        GenericFoo&lt;int&gt; 프리미티브 타입 불가능.</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.name);</span><br><span class="line">        System.out.println(foo.memberVar);</span><br><span class="line"></span><br><span class="line">        GenericFoo&lt;Integer&gt; foo2 = <span class="keyword">new</span> GenericFoo&lt;&gt;(<span class="string">&quot;name1&quot;</span>,<span class="number">10</span>);</span><br><span class="line">        System.out.println(foo2.name);</span><br><span class="line">        System.out.println(foo2.memberVar);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 동적 바인딩이란 메소드가 생길때 자료형이랑 정의되어있어서 기계가동작하게 만들어지는게 정상적인데 자료형이 정해져있지않아서 들어오는거에따라 동작이 달라짐 실제로 런타임이 되지않으면</span></span><br><span class="line">        <span class="comment">//컴파일타임이 알 수 없음.</span></span><br><span class="line">        <span class="comment">// 동적 바인딩 -&gt; 컴파일타임에는 동작이 완전히 정의가 되지 않음.</span></span><br><span class="line">        <span class="comment">// 런타임에 결정이 된다.</span></span><br><span class="line">        GenericMethod.staticMethod(<span class="keyword">new</span> String(<span class="string">&quot;&quot;</span>));</span><br><span class="line">        GenericMethod.staticMethod(<span class="string">&quot;abcd&quot;</span>);</span><br><span class="line">        GenericMethod.staticMethod(<span class="number">12342</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Wrapper-클래스-Wrapper-Class"><a href="#Wrapper-클래스-Wrapper-Class" class="headerlink" title="Wrapper 클래스(Wrapper Class)"></a>Wrapper 클래스(Wrapper Class)</h1><h2 id="Wrapper-Class란"><a href="#Wrapper-Class란" class="headerlink" title="Wrapper Class란"></a>Wrapper Class란</h2><ul>
+<li>기본형 타입을 객체로 쓰기 위해 있은 클래스</li>
+<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 제공 하는 클래스</li>
+</ul>
+<h2 id="Wrapper-Class의-종류"><a href="#Wrapper-Class의-종류" class="headerlink" title="Wrapper Class의 종류"></a>Wrapper Class의 종류</h2><table>
+<thead>
+<tr>
+<th align="center">기본형</th>
+<th align="center">WrapperClass</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">byte</td>
+<td align="center">Byte</td>
+</tr>
+<tr>
+<td align="center">char</td>
+<td align="center">Character</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">Short</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">flaot</td>
+<td align="center">Float</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">Double</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">Boolean</td>
+</tr>
+</tbody></table>
+<h2 id="Wrapper-객체-생성"><a href="#Wrapper-객체-생성" class="headerlink" title="Wrapper 객체 생성"></a>Wrapper 객체 생성</h2><ul>
+<li>생성자를 이용한 객체 생성</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line">Character character = <span class="keyword">new</span> Character(<span class="string">&#x27;v&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>valueOf를 이용한 객체 생성</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line">Character character1 = Character.valueOf(<span class="string">&#x27;v&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Autoboxing-amp-Unboxing"><a href="#Autoboxing-amp-Unboxing" class="headerlink" title="Autoboxing &amp; Unboxing"></a>Autoboxing &amp; Unboxing</h2><ul>
+<li>객체로 사용될 때 오토박싱, 다시 Primitive Type이 되는건 언박싱.</li>
+<li>Autoboxing<ul>
+<li>Java1.5부터 추가된 기능으로, 객체로 다루어야 할 때 자동으로 Wrapper 클래스로 변경하는 기능</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T bypass (T x)&#123;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Integer integer2 = <span class="number">4</span>;</span><br><span class="line">System.out.println(add(<span class="number">4</span>,<span class="number">2</span>));</span><br><span class="line">bypass(<span class="number">5</span>); <span class="comment">// 원래는 프리미티브 타입을t에 넣을 수 없는데 autoboxing이 이뤄져서 가능.</span></span><br><span class="line"><span class="comment">// T: wrapper class인 integer로 결정됨</span></span><br><span class="line"><span class="comment">// 5 -&gt; new Integer(5) autoboxing 1.5버전 이후로 가능해짐.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Unboxing<ul>
+<li>Wrapper 객체를 기본형으로 자동으로 변경하는 기능</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m = <span class="keyword">new</span> Integer(<span class="number">10</span>); </span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">Integer wrapped = i;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">20</span> + wrapped;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wrapper-타입의-값-비교"><a href="#Wrapper-타입의-값-비교" class="headerlink" title="Wrapper 타입의 값 비교"></a>Wrapper 타입의 값 비교</h2><ul>
+<li>Wrapper 타입은 객체이므로, ==를 이용하여 값을 비교할 수 없다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer intOne = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">Integer intTwo = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(intOne == intTwo); <span class="comment">// false</span></span><br><span class="line">System.out.println(intOne.equals(intTwo)) <span class="comment">// true</span></span><br><span class="line">System.out.println(intOne == <span class="number">100</span>) <span class="comment">// true (Unboxing)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="문자열의-기본-자료형-반환"><a href="#문자열의-기본-자료형-반환" class="headerlink" title="문자열의 기본 자료형 반환"></a>문자열의 기본 자료형 반환</h2><ul>
+<li>Parsing 정적 메소드를 이용한 반환</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">long</span> y = Long.parseLong(<span class="string">&quot;512345124&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Wrapper 객체로의 반환</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer intObj = Integer.valueOf(<span class="string">&quot;1000&quot;</span>);</span><br><span class="line">Integer intObjTwo = <span class="keyword">new</span> Integer(<span class="string">&quot;1234&quot;</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200813/" data-id="ckfi8uj640004g4u2fhhk7p9z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TIL-20200811" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/15/TIL-20200811/" class="article-date">
+  <time datetime="2020-08-15T09:20:57.977Z" itemprop="datePublished">2020-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/TIL-20200811/">Study20200811</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="인터페이스-Interface"><a href="#인터페이스-Interface" class="headerlink" title="인터페이스(Interface)"></a>인터페이스(Interface)</h1><h2 id="인터페이스란"><a href="#인터페이스란" class="headerlink" title="인터페이스란"></a>인터페이스란</h2><ul>
+<li>클래스를 사용하는 방식, 접점만을 선언하는 클래스와 유사한 틀</li>
+<li>아무런 구현이 되어 있지 않으며, 모든 메소드가 추상 메소드</li>
+<li>이름 짓는 방법<ol>
+<li>interface IFOO &lt;- class Foo 상속을하는 자식에서 부모방향으로 / 앞에 i로씀</li>
+<li>interface Printable(형용사형태로 많이 씀) &lt;- Bar  사용가능한 형용사형태로 씀</li>
+</ol>
+</li>
+</ul>
+<h2 id="인터페이스의-특징"><a href="#인터페이스의-특징" class="headerlink" title="인터페이스의 특징"></a>인터페이스의 특징</h2><ul>
+<li><p><code>class</code>가 아니고 <code>interface</code> 키워드를 사용한다.</p>
+<ul>
+<li><code>public</code> 또는 <code>default</code> 접근 제어자만 사용 가능.</li>
+</ul>
+</li>
+<li><p>멤버 변수는 항상 <code>public static final</code> 이다. (생략 가능하다.)</p>
+</li>
+<li><p>멤버 메소드는 항상 <code>public abstract</code> 이며, 생략가능</p>
+</li>
+<li><p>private abstract는 의미가 없다.</p>
+</li>
+<li><p>(자바에서는) 클래스는 하나만 상속할 수 있으나, 인터페이스는 여러개 가능</p>
+</li>
+<li><p>인터페이스의 상속은 implements 키워드 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MEMBER_VAR = <span class="number">10</span>; <span class="comment">//변하지 않는 상수는 대문자_ 형식으로 사용하기 때문에 여기도 사용한다.</span></span><br><span class="line">    <span class="keyword">int</span> MEMBER_VAR2 = <span class="number">20</span> ; <span class="comment">//이렇게 사용해도ㅗ됨 PUBLIC STATIC FINAL;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(<span class="keyword">int</span> param)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodB</span><span class="params">(<span class="keyword">int</span> param)</span></span>; <span class="comment">//public abstract</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">implements</span> <span class="title">IFoo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">(<span class="keyword">int</span> param)</span> </span>&#123;</span><br><span class="line">        System.out.println(param);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">(<span class="keyword">int</span> param)</span> </span>&#123;</span><br><span class="line">        System.out.println(param);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="인터페이스간의-상속"><a href="#인터페이스간의-상속" class="headerlink" title="인터페이스간의 상속"></a>인터페이스간의 상속</h2><ul>
+<li>추상클래스도 추상클래스로 상속 가능했는데. 인터페이스도 인터페이스로 상속 가능 이 경우 extends 사용</li>
+<li>인터페이스에서 인터페이스로 상속하면 구현하는 것이아니라서 extends 사용</li>
+<li>클래스 &lt;- 클래스 상속과 달리 다중 상속 가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">Walkable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span>  <span class="title">Runable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Jumpable</span> <span class="keyword">extends</span>  <span class="title">Walkable</span>, <span class="title">Runable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//  워크 런이 다 포함되어있음</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Jumper</span> <span class="keyword">implements</span> <span class="title">Jumpable</span></span>&#123;</span><br><span class="line"><span class="comment">// 3개다 구현해야함  -?</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">walk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;걷다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;달리다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jump</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;뛰다&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="JDK-1-8-이후의-인터페이스"><a href="#JDK-1-8-이후의-인터페이스" class="headerlink" title="JDK 1.8 이후의 인터페이스"></a>JDK 1.8 이후의 인터페이스</h2><ul>
+<li><p>인터페이스에는 default 메소드를 구현할 수 있음.</p>
+</li>
+<li><p>default 메소드는 항상 public이다. 인터페이스는 원래 메소드를 구현할 수 없는데 이걸 깨지는게 default 다 abstract로 구현</p>
+</li>
+<li><p>인터페이스 철학과 맞지 않으나, 기존에 사용하던 인터페이스가 개선되어, 모든 자식 메소드에 동일하게</p>
+</li>
+<li><p>구현되어야 하는 메소드가 생긴 경우에 쉽게 기능을 추가하기 위해 만들어짐.</p>
+</li>
+<li><p>많은 클래스들이 상속하는 경우 인터페이스에서 상속하는 경우 선택적으로 오버라이드해서 사용할 수 있음</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo2</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span></span>&#123; <span class="comment">//디폴트 메소드</span></span><br><span class="line">        System.out.println(<span class="string">&quot;default method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FooTwo</span> <span class="keyword">implements</span> <span class="title">IFoo2</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;abstract method implemented&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override // overriding not necessary 반드시 오버라이딩 해야 하는 것은 아님.</span></span><br><span class="line"><span class="comment">//    public void defaultMethod() &#123;</span></span><br><span class="line"><span class="comment">//        System.out.println(&quot;overriden default method&quot;);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//처음부터 디폴트메소드를 구현하고 시작하는 것은 철학적으로 맞지않음 원래 abstract 메소드만 있음</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SuperFoo</span></span>&#123; <span class="comment">//인터페이스가 있는데 부족한 부분이있어서 메소드를 생성하서 사용하고 있었다</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">defaultMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;default method in super class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo3</span> <span class="keyword">extends</span> <span class="title">SuperFoo</span> <span class="keyword">implements</span> <span class="title">IFoo2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;abstract metho implemented&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>인터페이스의 static 메소드 : 클래스 메소드와 동일하게 사용 가능</li>
+<li>인터페이스 이름으로 호출 가능</li>
+<li>클래스 구현체의 이름으로도 호출 가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;static method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IFoo.staticMethod(); <span class="comment">// static method</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="열거형-Enumeration"><a href="#열거형-Enumeration" class="headerlink" title="열거형(Enumeration)"></a>열거형(Enumeration)</h1><p>2020-08-11 3-2차</p>
+<h2 id="열거형이란"><a href="#열거형이란" class="headerlink" title="열거형이란"></a>열거형이란</h2><ul>
+<li>enum 키워드로 표현<ul>
+<li>‘이넘’ 이라고 부름</li>
+<li>내부적인 구현은 <code>enum</code> -&gt; <code>java.lang.Enum</code> 클래스를 상속 하는 것</li>
+<li>enum은 다른 클래스를 상속하지 못함 이미 상속하는 클래스(java.lang.Enum) 가 있기 때문에</li>
+</ul>
+</li>
+</ul>
+<h2 id="열거형의-특징"><a href="#열거형의-특징" class="headerlink" title="열거형의 특징"></a>열거형의 특징</h2><ul>
+<li>접근 제한자는 <code>public</code>과 <code>default</code>만 사용 가능.</li>
+<li>열거형은 다른 클래스를 상속하지 못하지만, 인터페이스 구현은 가능</li>
+<li>클래스 변수와 마찬가지로 바로 사용이 가능하다.</li>
+<li>열거형 타입에는 열거형 상수와 null 값 할당 가능.</li>
+</ul>
+<h2 id="열거형의-구현"><a href="#열거형의-구현" class="headerlink" title="열거형의 구현"></a>열거형의 구현</h2><ul>
+<li><p>일반적인 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 클래스의 일종 자료형으로 쓰일 수 있음.</span></span><br><span class="line">  <span class="keyword">enum</span> Job&#123;<span class="comment">//실제 값은 0인데 자바에서는 숫자 개념으로 사용하지 말라는 것이 권고이다. 각 상수는 0부터 숫자를 가지지만, 심볼로만 사용하고 숫자는 사용하지 않음.</span></span><br><span class="line">      STUDENT, MARKETING, DEVELOPER, CEO, CHIEF_EXECUTIONAL_OFFICER <span class="comment">//열거형 상수 대문자 단어 구문은 _ 로 표현</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Job job = Job.CHIEF_EXECUTIONAL_OFFICER; <span class="comment">// 클래스 변수와 유사하게 사용</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(job == Job.CHIEF_EXECUTIONAL_OFFICER)&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;사장님 안녕하세요?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">char</span> c = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">        <span class="keyword">switch</span> (c)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;A&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;B&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;C&#x27;</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (job)&#123; <span class="comment">// switch ~ case 문에는 열거형 자료형을 생략 열거형 상수만 사용</span></span><br><span class="line">            <span class="keyword">case</span> STUDENT:</span><br><span class="line">                System.out.println(<span class="string">&quot;you will be a great one&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> MARKETING:</span><br><span class="line">                System.out.println(<span class="string">&quot;you sells&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> DEVELOPER:</span><br><span class="line">                System.out.println(<span class="string">&quot;you make things&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> CHIEF_EXECUTIONAL_OFFICER:</span><br><span class="line">                System.out.println(<span class="string">&quot;you choose&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                System.out.println(<span class="string">&quot;who are you?&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>클래스 내부에서 열거형 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   <span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">       <span class="keyword">enum</span> Symbol&#123;</span><br><span class="line">           ONE,TWO,THREE;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">          System.out.println(Foo.Symbol.ONE); <span class="comment">//이넘이 그대로 출력됨 결과값 : ONE; 출력을하면 자동으로 toString()으로 변환되서 스트링으로 출력됨.</span></span><br><span class="line">          <span class="comment">// 숫자로서 사용되는게 굉장히 제한됨. 최대한 막혀 있음</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>열거형에 메소드 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">enum</span> Symbol&#123;</span><br><span class="line">     ONE,TWO,THREE,FOUR;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> Symbol <span class="title">nextSymbol</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(<span class="keyword">this</span>.equals(ONE))&#123; <span class="comment">// 클래스 멤버변수 과 마찬가지로 바로 사용 가능</span></span><br><span class="line">             <span class="comment">//각자가 객체로 사용됨</span></span><br><span class="line">             <span class="keyword">return</span> TWO;</span><br><span class="line">         &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(TWO))&#123;</span><br><span class="line">             <span class="keyword">return</span> THREE;</span><br><span class="line">         &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">this</span>.equals(THREE))&#123;</span><br><span class="line">             <span class="keyword">return</span> FOUR;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">return</span> ONE;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         Symbol sym = Symbol.ONE; <span class="comment">//애는 객체</span></span><br><span class="line">         Symbol nextSym = sym.nextSymbol(); <span class="comment">//객체는 메소드를 실행할 수 있어서 사용가능 열거형 상수는 객체이다 .그래서 메소드를 실행할 수 있다.</span></span><br><span class="line">         System.out.println(nextSym); <span class="comment">//TWO</span></span><br><span class="line">         nextSym = nextSym.nextSymbol();</span><br><span class="line">         System.out.println(nextSym);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>열거형에 생성자를 이용한 enum 초기화<ul>
+<li>열거형의 생성자는 항상 <code>private</code>이며 생략 가능<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">enum</span> Family&#123;</span><br><span class="line">     FATHER(<span class="string">&quot;아버지&quot;</span>), MATHER(<span class="string">&quot;어머니&quot;</span>), SON(<span class="string">&quot;아들&quot;</span>), DAUGHTER(<span class="string">&quot;딸&quot;</span>); <span class="comment">//열거형 상수(객체)</span></span><br><span class="line">     <span class="comment">// 여기서 객체가 생성되는 것임. 처음한번만 생성되는 거임</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">     <span class="keyword">private</span> String koreanWord; <span class="comment">//멤버변수(객체에 속하는 변수)</span></span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">public</span> String <span class="title">getKoreanWord</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKoreanWord</span><span class="params">(String koreanWord)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//private는 생략 가능 public 안됨 강제 private  / 안에서 생성되기 때문에</span></span><br><span class="line">     <span class="function"><span class="keyword">private</span> <span class="title">Family</span><span class="params">(String koreanWord)</span></span>&#123; <span class="comment">//객체의 생성자는 string을 입력받게 되어있는데 각각 만들때 각 객체에 값을 넣어줘야한다. FATHER(&quot;아버지&quot;)</span></span><br><span class="line">         <span class="keyword">this</span>.koreanWord = koreanWord;</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Enumeration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         Family fam = Family.SON;</span><br><span class="line">        System.out.println(fam.getKoreanWord());</span><br><span class="line">        fam.setKoreanWord(<span class="string">&quot;버린 자식&quot;</span>);</span><br><span class="line">        System.out.println(fam.getKoreanWord());</span><br><span class="line">        System.out.println(Family.SON.getKoreanWord()); <span class="comment">//처음한번만 생성되는 거임</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200811/" data-id="ckfi8uj620003g4u23auv8i9j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TIL-20200810" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/15/TIL-20200810/" class="article-date">
+  <time datetime="2020-08-15T08:43:40.918Z" itemprop="datePublished">2020-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/TIL-20200810/">Study20200810</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="다형성-Polymorphism"><a href="#다형성-Polymorphism" class="headerlink" title="다형성(Polymorphism)"></a>다형성(Polymorphism)</h1><h2 id="다형성의-다양한-특징"><a href="#다형성의-다양한-특징" class="headerlink" title="다형성의 다양한 특징"></a>다형성의 다양한 특징</h2><ul>
+<li><p>오버라이딩에 의한 다형성</p>
+</li>
+<li><p>오버라이딩에 의햔 다형성(상속에 의한 다형성)</p>
+</li>
+<li><p>부모 클래스 타입으로 자식 클래스 객체를 참조하는 특징</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line"></span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>부모 클래스로 자식 클래스를 참조한 경우, 자식 클래스의 메소드는 사용할 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line"></span><br><span class="line">        foo.methodA(); <span class="comment">// works</span></span><br><span class="line">        <span class="comment">// foo.methodB(); // error</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>자식클래스로 부모 클래스를 참조하려 하면 java.lan.ClassCastException 오류 발생</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        Bar bar;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// bar = (Bar)foo; // error</span></span><br><span class="line">        <span class="keyword">if</span> (foo <span class="keyword">instanceof</span> Bar) &#123; <span class="comment">// returns false</span></span><br><span class="line">            bar = (Bar)foo;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>멤버 변수의 재정의는 선언된 객체의 타입을 따른다. (문법적으로 본다) 클래수 변수도 마찬가지 변수는 별도의 메모리에 저장됨.</p>
+</li>
+<li><p>메소드 오버라이딩은 메모리상의 객체 타입을 따른다. (실제 객체로 본다)</p>
+</li>
+<li><p>(가상 메소드 호출, virtual method call)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;super class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;Super&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Super method&quot;</span>); <span class="comment">//(가상 메소드 호출, virtual method call) 실제로 콜이 이루어지지 않지만 만들어줌 실제로 호출되지않ㅇ므</span></span><br><span class="line">        <span class="comment">// 없으면 안됨 문법을 맞춰주기 위한 것 뿐 구현된 것 자체는 중요하지 않음..</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> String y = <span class="string">&quot;sub class&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> String x = <span class="string">&quot;sub&quot;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;sub method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poly02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Bar bar = <span class="keyword">new</span> Bar();</span><br><span class="line">        Foo foo = (Foo)bar;</span><br><span class="line"></span><br><span class="line">        System.out.println(bar.x); <span class="comment">//sub</span></span><br><span class="line">        bar.methodA(); <span class="comment">//sub</span></span><br><span class="line"></span><br><span class="line">        System.out.println(foo.x); <span class="comment">//super</span></span><br><span class="line">        foo.methodA(); <span class="comment">//sub Virtual method call</span></span><br><span class="line"></span><br><span class="line">        System.out.println(Foo.y);</span><br><span class="line">        System.out.println(Bar.y);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(foo.y); //super</span></span><br><span class="line">        <span class="comment">//System.out.println(bar.y); //sub</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>공변 변환 타입(Covariant return type)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Foo <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bar</span> <span class="keyword">extends</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bar <span class="title">getInstance</span><span class="params">()</span></span>&#123; <span class="comment">//오버라이딩이지만, 리턴 타입이 달라질 수 있다. 여기서는 예외적으로 반환값이 달라진다. 공변 반환 타입</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>; <span class="comment">//return (Foo)this; 이거와 같다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="추상-클래스-Abstract-Class"><a href="#추상-클래스-Abstract-Class" class="headerlink" title="추상 클래스(Abstract Class)"></a>추상 클래스(Abstract Class)</h1><h2 id="추상-클래스란"><a href="#추상-클래스란" class="headerlink" title="추상 클래스란"></a>추상 클래스란</h2><ul>
+<li>일부 메소드가 구현되지 않고, 선언만 되어있는 클래스<ul>
+<li>자식 클래스에서 이것을 반드시 구현하게끔 강제하는 것</li>
+<li>필요한 모든 클래스가 구현될 수 있도록 하여 안정성을 높이는 효과를 가져옴.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">                                       <span class="comment">//세미콜론을 잊지 말아야 합니다. 시험*</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>; <span class="comment">// 선언만 하고 구현하지 않음. Virtual method call이여서 부모메소드는 비어있음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;implemented abstractMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// AbstractFoo afoo = new AbstractFoo() //추상 클래스는 객체 생성이 불가합니다. 구현이안되있으니 인스턴스화가 안된다.</span></span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        foo.abstractMethod();</span><br><span class="line"></span><br><span class="line">        AbstractFoo afoo = (AbstractFoo)foo;</span><br><span class="line">        afoo.abstractMethod(); <span class="comment">// virtual method call</span></span><br><span class="line">        <span class="comment">//추상클래스는 객체 생성은 불가하지만, 구현된 자식클래스의 객체는 받을 수 있다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/08/15/TIL-20200810/" data-id="ckfi8uj5z0002g4u232xscyq4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Git-summary" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/08/Git-summary/" class="article-date">
@@ -136,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/08/Git-summary/" data-id="ckfcj225y0001s0u2474n2ijj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/08/Git-summary/" data-id="ckfi8uj5a0000g4u2991r8ti5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +572,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckfcj225m0000s0u2h4sx02rd" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/07/My-new-hexo-post/" data-id="ckfi8uj5t0001g4u29w2a0dkn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckfcj226q000is0u28cxb1i7k" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/08/07/hello-world/" data-id="ckfi8uj6u000jg4u2hep24sr5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,23 +667,23 @@
       <ul>
         
           <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
           </li>
         
           <li>
             <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/">Subject_Day05_DomainReverse</a>
           </li>
         
       </ul>
