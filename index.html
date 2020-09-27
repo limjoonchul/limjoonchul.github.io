@@ -359,13 +359,13 @@
 <li>reduce() 메소드 : 사용자 정의 집계 메소드<ul>
 <li>Optional<T> reduce(BinaryOperator<T> accumulator) : accumulator를 수행하고 Optional<T> 타입 반환</li>
 <li>T reduce(T identity, BinaryOperator<T> accumulator) : identity를 초기값으로 하여, accumulator를 이용해 집계 연산</li>
-<li><U> U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator<U> combiner) : combiner를 이용해 병렬 스트림 결합</li>
+<li><code>&lt;U&gt; U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator&lt;U&gt; combiner)</code> : combiner를 이용해 병렬 스트림 결합</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>java.util.Optional<T><ul>
+<li><code>java.util.Optional&lt;T&gt;</code><ul>
 <li>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</li>
 <li>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성<ul>
 <li><code>public static &lt;T&gt; Optional&lt;T&gt; of(T value)</code> : value가 null인 경우 NullPointerException을 발생시키는 Wrapping 메소드</li>
@@ -391,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfl3ej3n001vj4u2fvagaw9y" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfl3lyri001mw0u2htwlc894" class="article-share-link">Share</a>
       
       
     </footer>
@@ -785,7 +785,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfl3ej41002ej4u21q6f6uj0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfl3lys3002fw0u21kq97m7u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -840,7 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfl3ej3z002bj4u2bozeebnj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfl3lyrw0029w0u26zhe7rhy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -895,7 +895,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfl3ej3z002cj4u26nwe286r" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfl3lyrv0027w0u254psdtbt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -938,7 +938,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfl3ej3y002aj4u26wr0bhl3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfl3lyrv0028w0u2e63g00nk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -997,7 +997,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfl3ej3y0029j4u2d4lfc3dq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfl3lyrx002bw0u2edlz400k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1043,7 +1043,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfl3ej3x0028j4u293q9d5o6" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfl3lyry002cw0u2fo3abqik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1092,7 +1092,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfl3ej3x0027j4u20w9q2rhb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfl3lyrx002aw0u28ald30x7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1175,7 +1175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfl3ej2t000uj4u2h4mddgng" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfl3lyr0000uw0u234tbfdhi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1227,7 +1227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfl3ej3s0023j4u2fbxfc4s6" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfl3lyrt0024w0u2a0ya9227" class="article-share-link">Share</a>
       
       
     </footer>

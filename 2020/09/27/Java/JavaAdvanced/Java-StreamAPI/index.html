@@ -15,7 +15,7 @@
 <meta property="og:description" content="스트림 API(Stream API)스트림 API Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수형 프로그래밍 도구스트림의 특징 스트림은 한번밖에 사용 못한다. 내부적으로 몇번째 동작을 하고 있는지 체크하는 것이 들어가있다. 그래서 사용할 때마다 다시 정의해주고 사용해야 한다.   간결한 코">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-27T12:41:16.159Z">
-<meta property="article:modified_time" content="2020-09-27T12:41:45.862Z">
+<meta property="article:modified_time" content="2020-09-27T12:46:42.108Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -361,13 +361,13 @@
 <li>reduce() 메소드 : 사용자 정의 집계 메소드<ul>
 <li>Optional<T> reduce(BinaryOperator<T> accumulator) : accumulator를 수행하고 Optional<T> 타입 반환</li>
 <li>T reduce(T identity, BinaryOperator<T> accumulator) : identity를 초기값으로 하여, accumulator를 이용해 집계 연산</li>
-<li><U> U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator<U> combiner) : combiner를 이용해 병렬 스트림 결합</li>
+<li><code>&lt;U&gt; U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator&lt;U&gt; combiner)</code> : combiner를 이용해 병렬 스트림 결합</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>java.util.Optional<T><ul>
+<li><code>java.util.Optional&lt;T&gt;</code><ul>
 <li>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</li>
 <li>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성<ul>
 <li><code>public static &lt;T&gt; Optional&lt;T&gt; of(T value)</code> : value가 null인 경우 NullPointerException을 발생시키는 Wrapping 메소드</li>
@@ -393,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfl3ej3n001vj4u2fvagaw9y" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfl3lyri001mw0u2htwlc894" class="article-share-link">Share</a>
       
       
     </footer>
