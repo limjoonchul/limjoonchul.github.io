@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_StreamAPI | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="스트림 API(Stream API)스트림 API Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수형 프로그래밍 도구스트림의 특징 스트림은 한번밖에 사용 못한다. 내부적으로 몇번째 동작을 하고 있는지 체크하는 것이 들어가있다. 그래서 사용할 때마다 다시 정의해주고 사용해야 한다.   간결한 코">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_StreamAPI">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="스트림 API(Stream API)스트림 API Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수형 프로그래밍 도구스트림의 특징 스트림은 한번밖에 사용 못한다. 내부적으로 몇번째 동작을 하고 있는지 체크하는 것이 들어가있다. 그래서 사용할 때마다 다시 정의해주고 사용해야 한다.   간결한 코">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-27T12:41:16.159Z">
+<meta property="article:modified_time" content="2020-09-27T12:41:45.862Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/Java-StreamAPI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" class="article-date">
+  <time datetime="2020-09-27T12:41:16.159Z" itemprop="datePublished">2020-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_StreamAPI
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="스트림-API-Stream-API"><a href="#스트림-API-Stream-API" class="headerlink" title="스트림 API(Stream API)"></a>스트림 API(Stream API)</h1><h2 id="스트림-API"><a href="#스트림-API" class="headerlink" title="스트림 API"></a>스트림 API</h2><ul>
+<li>Java 8에서 추가된 Java.util.stream 패키지</li>
+<li>컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수형 프로그래밍 도구<h3 id="스트림의-특징"><a href="#스트림의-특징" class="headerlink" title="스트림의 특징"></a>스트림의 특징</h3></li>
+<li>스트림은 한번밖에 사용 못한다. 내부적으로 몇번째 동작을 하고 있는지 체크하는 것이 들어가있다.<ul>
+<li>그래서 사용할 때마다 다시 정의해주고 사용해야 한다.</li>
+</ul>
+</li>
+<li>간결한 코드로 작성할 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 기존의 Java 7방식의 작성 방법</span></span><br><span class="line">List&lt;String&gt; list = Arrays.asList(<span class="string">&quot;fast&quot;</span>,<span class="string">&quot;campus&quot;</span>,<span class="string">&quot;rocks&quot;</span>);</span><br><span class="line">List&lt;String&gt; newList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (String <span class="attr">s :</span> list)&#123;</span><br><span class="line">    newList.add(s.toUpperCase());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (String <span class="attr">s :</span> newList)&#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java 8 - Stream API -&gt; 훨씬 더 간결한 코드로 작성할 수 있다.</span></span><br><span class="line">List&lt;String&gt; list1 = Arrays.asList(<span class="string">&quot;fast&quot;</span>,<span class="string">&quot;campus&quot;</span>,<span class="string">&quot;rocks&quot;</span>);</span><br><span class="line">Stream&lt;String&gt; stream = list1.stream(); <span class="comment">//스트림으로 변환해준다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 스트링에서 스트링으로 매핑해준다.</span></span><br><span class="line"><span class="comment">//uppercase를 string에 매핑 각각의 요소에 이런것들을 적용해라</span></span><br><span class="line">stream.map(<span class="attr">String:</span>:toUpperCase).forEach(System.<span class="attr">out:</span>:println); <span class="comment">// foreach는 Consumer를 받는다,각각의 요소를 하나씩 출력한다.</span></span><br><span class="line"><span class="comment">// 긴코드는 그냥 작성할 수 있는데 간결한 방식은 많은 고민이 필요하다</span></span><br></pre></td></tr></table></figure></li>
+<li>데이터 소스에 대한 공통된 접근 방식 제공.<ul>
+<li>Stream으로 변경해주고 나면, List, Set, Map 모두 동일한(표준화된) 방식으로 데이터를 접근 가능.</li>
+<li>컬렉션 프레임워크는 각각을 다른 방식으로 데이터를 처리 해줘야 한다.</li>
+<li>특히 Stream::sorted() 메소드는 공통된 정렬 방식을 제공한다.</li>
+</ul>
+</li>
+<li>중간 처리와 최종 처리를 지원한다.<ul>
+<li>Mapping, Filtering, Sorting 등 중간 처리 지원(여러 개 사용이 가능하다.)</li>
+<li>Iteration, Count, Average, Summation, Reduce 등 최종 처리 지원(마지막에 하나 사용 가능하다.)</li>
+</ul>
+</li>
+<li>데이터 소스와 처리 결과를 분리<ul>
+<li>원본 데이터를 유지하여 처리에 의한 부작용을 방지한다.</li>
+<li>처리 결과를 새로운 컬렉션으로 저장이 가능하다.<h2 id="스트림-API를-이용한-자료-처리"><a href="#스트림-API를-이용한-자료-처리" class="headerlink" title="스트림 API를 이용한 자료 처리"></a>스트림 API를 이용한 자료 처리</h2><h3 id="스트림-API의-종류"><a href="#스트림-API의-종류" class="headerlink" title="스트림 API의 종류"></a>스트림 API의 종류</h3></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>처리 대상</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>일반적인 객체를 처리</td>
+</tr>
+<tr>
+<td><code>IntStream</code></td>
+<td>기본 자료형 <code>int</code>를 처리</td>
+</tr>
+<tr>
+<td><code>LongStream</code></td>
+<td>기본 자료형 <code>long</code>을 처리</td>
+</tr>
+<tr>
+<td><code>DoubleStream</code></td>
+<td>기본 자료형 <code>double</code>을 처리</td>
+</tr>
+</tbody></table>
+<h3 id="스트림-객체-생성-메소드"><a href="#스트림-객체-생성-메소드" class="headerlink" title="스트림 객체 생성 메소드"></a>스트림 객체 생성 메소드</h3><ul>
+<li>데이터 소스로부터 스트림 생성</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>데이터 소스</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Collection</td>
+<td>default Stream<E> stream()</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>default Stream<E> parallelStream()</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static <T> Stream<T> stream(T[] array)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static <T> Stream<T> of(T … values)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static IntStream stream(int[] array)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static IntStream of(int … values)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static LongStream stream(long[] array)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static LongStream of(long … values)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static DoubleStream stream(double[] array)</td>
+</tr>
+<tr>
+<td>Arrays</td>
+<td>public static DoubleStream of(double … values)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>정수 범위와 java.util.Random으로부터 생성</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int형 범위</td>
+<td>public static IntStream range(int startInclusive, int endExclusive)</td>
+</tr>
+<tr>
+<td>int형 범위</td>
+<td>public static IntStream rangeClosed(int startInclusive, int endInclusive)</td>
+</tr>
+<tr>
+<td>long형 범위</td>
+<td>public static LongStream range(long startInclusive, long endExclusive)</td>
+</tr>
+<tr>
+<td>long형 범위</td>
+<td>public static LongStream rangeClosed(long startInclusive, long endInclusive)</td>
+</tr>
+<tr>
+<td>Random p형 값</td>
+<td>public PStream ps()</td>
+</tr>
+<tr>
+<td>Random p형 값</td>
+<td>public PStream ps(long streamSize)</td>
+</tr>
+<tr>
+<td>Random p형 값</td>
+<td>public PStream ps(long streamSize, p origin, p bound)</td>
+</tr>
+</tbody></table>
+<h4 id="스트림-생성-방식-예제"><a href="#스트림-생성-방식-예제" class="headerlink" title="스트림 생성 방식 예제"></a>스트림 생성 방식 예제</h4><ul>
+<li><p>컬렉션의 인스턴스 메소드 stream()</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stream1 = list1.stream();</span><br></pre></td></tr></table></figure></li>
+<li><p>Arrays 클래스의 클래스 메소드 stream() 을 이용</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 함수형 인터페이스랑 비슷함 P Type</span></span><br><span class="line"><span class="comment">// LongStream, DoubleStream 도 있다.</span></span><br><span class="line"><span class="keyword">int</span>[] ints = &#123;<span class="number">4</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">19</span>, <span class="number">2</span>, <span class="number">58</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">5</span>&#125;;</span><br><span class="line">IntStream intStream = Arrays.stream(ints);</span><br><span class="line">intStream.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>위의 두 개의 다른점</p>
+<ul>
+<li><code>Stream&lt;Integer&gt;</code>로 할 경우, <code>Primitive Type</code>이들어올 때 오토박싱으로 변경되고 다시 출력할 때 언방식이 되는데 이럴 때 오버헤드가 발생한다.</li>
+<li><code>IntStream</code>을 사용 할경우, 오버헤드 필요 없이, <code>WrapperClass</code>없이 사용 가능하다. 그래서 효율적이다.</li>
+</ul>
+</li>
+<li><p>Stream 클래스의 클래스 메소드 <code>of()</code>를 이용해서 <code>Collection</code>을 걸치지 않고도 스트림을 생성 가능</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DoubleStream doubleStream = DoubleStream.of(<span class="number">0.4</span>, <span class="number">0.6</span>, <span class="number">0.2</span>, <span class="number">1.2</span>, <span class="number">0.94</span>);</span><br><span class="line">doubleStream.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+<li><p>range()를 이용한 스트림 -&gt; for i문 (for(int i=0…))을 대체하는 스트림</p>
+</li>
+<li><p>rangeClosed() : 0~10까지 10을 포함한다.</p>
+</li>
+<li><p>순서대로 값을 출력한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IntStream intStream1 = IntStream.range(<span class="number">0</span>,<span class="number">10</span>); <span class="comment">// 0~9까지 10은포함되지 않는다.</span></span><br><span class="line">intStream1.forEach(System.<span class="attr">out:</span>:println);</span><br><span class="line"></span><br><span class="line">IntStream intStream2 = IntStream.rangeClosed(<span class="number">0</span>,<span class="number">10</span>); <span class="comment">// 0~10까지 10포함된다.</span></span><br><span class="line">intStream2.forEach(System.<span class="attr">out:</span>:println);</span><br><span class="line"><span class="comment">// LongStream도 range, rangeClosed 가 있다.</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Random 객체를 이용한 스트림이 있다. Java.util 패키지 안에 있다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Random random = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="comment">// LongStream longStream =  random.longs();</span></span><br><span class="line"><span class="comment">// longStream.forEach(System.out::println); // 개수 제한 없이 무한히 출력</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 개수 제한 가능</span></span><br><span class="line">LongStream longStream1 =  random.longs(<span class="number">100</span>);</span><br><span class="line">longStream1.forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 개수를 정해질 수있다 100개</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 개수제한 + 범위 제한 가능 젤 많이 사용함</span></span><br><span class="line">LongStream longStream2 =  random.longs(<span class="number">100</span>,<span class="number">0</span>,<span class="number">1000</span>);</span><br><span class="line">longStream2.forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 개수를 정해질 수있다 0~1000까지 100개를 출력</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="중간-처리-메소드"><a href="#중간-처리-메소드" class="headerlink" title="중간 처리 메소드"></a>중간 처리 메소드</h3><ul>
+<li>중간 처리 메소드 이후에 최종 처리 메소드를 붙여서 사용하는 것 같다.<table>
+<thead>
+<tr>
+<th>동작</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>필터링</td>
+<td>dinstict(), filter()</td>
+</tr>
+<tr>
+<td>자르기</td>
+<td>skip(), limit()</td>
+</tr>
+<tr>
+<td>정렬</td>
+<td>sorted()</td>
+</tr>
+<tr>
+<td>매핑</td>
+<td>flatMap(), flatMapToP(), map(), mapToP(), asDoubleStream(), asLongStream()</td>
+</tr>
+<tr>
+<td>조회</td>
+<td>peek()</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h4 id="필터링"><a href="#필터링" class="headerlink" title="필터링"></a>필터링</h4><h5 id="필터링은-스트림의-일부-요소를-제거하는-역할을-한다"><a href="#필터링은-스트림의-일부-요소를-제거하는-역할을-한다" class="headerlink" title="필터링은 스트림의 일부 요소를 제거하는 역할을 한다."></a>필터링은 스트림의 일부 요소를 제거하는 역할을 한다.</h5><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stringStream = Stream.of(<span class="string">&quot;Java&quot;</span>,<span class="string">&quot;Is&quot;</span>,<span class="string">&quot;Fun&quot;</span>,<span class="string">&quot;Isn&#x27;t&quot;</span>,<span class="string">&quot;It&quot;</span>,<span class="string">&quot;?&quot;</span>,<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">stringStream.forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 기본형 중복이 포함되서 출력됨.</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>distinct() : 스트림에 같은 요소가 있을 경우 하나만 남기고 삭제하는 메소드<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stringStream.distinct().forEach(System.<span class="attr">out:</span>:println);</span><br><span class="line"><span class="comment">// stringStream.distinct() 여기까지 중간처리메소드, foreach는 최종처리 메소드</span></span><br><span class="line">```        </span><br><span class="line">* filter() : Predicate 계열을 입력을 받아, <span class="literal">true</span>인 요소만 남긴다.</span><br><span class="line">```groovy</span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;Java&quot;</span>,<span class="string">&quot;Is&quot;</span>,<span class="string">&quot;Fun&quot;</span>,<span class="string">&quot;Isn&#x27;t&quot;</span>,<span class="string">&quot;It&quot;</span>,<span class="string">&quot;?&quot;</span>);</span><br><span class="line">stringStream.filter(s-&gt;s.length()&gt;=<span class="number">3</span>).forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="자르기"><a href="#자르기" class="headerlink" title="자르기"></a>자르기</h4><h5 id="자르기는-스트림의-일부-요소를-한번에-생략한다"><a href="#자르기는-스트림의-일부-요소를-한번에-생략한다" class="headerlink" title="자르기는 스트림의 일부 요소를 한번에 생략한다."></a>자르기는 스트림의 일부 요소를 한번에 생략한다.</h5><ul>
+<li>skip(long n) : 스트림의 처음부터 n개의 생략하는 메소드 n개 자른다.</li>
+<li>limit(long maxsize) : 스트림의 최대 요소 개수를 maxsize를 제한한다, maxsize의 요소보다 뒤에 있는 값들은 짤린다.</li>
+</ul>
+<h4 id="정렬"><a href="#정렬" class="headerlink" title="정렬"></a>정렬</h4><h5 id="스트림-요소의-compareTo-또는-입력받은-Comparator를-이용해-정렬한다"><a href="#스트림-요소의-compareTo-또는-입력받은-Comparator를-이용해-정렬한다" class="headerlink" title="스트림 요소의 compareTo() 또는 입력받은 Comparator를 이용해 정렬한다."></a>스트림 요소의 <code>compareTo()</code> 또는 입력받은 <code>Comparator</code>를 이용해 정렬한다.</h5><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Comparable 객체를 정렬한 스트림 반환</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line">stringStream.sorted().forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 사전순으로 정렬됨</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Comparator 인터페이스를 람다식으로 구현하여 정렬한다.</span></span><br><span class="line"><span class="comment">// Comparator를 이용하여 정렬된 스트림 반환</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line">stringStream.sorted((o1, o2) -&gt; o1.length() - o2.length()).forEach(System.<span class="attr">out:</span>:println); </span><br><span class="line"><span class="comment">//compreator를 람다식으로 작성해줄 수 있다, 길이가 짧은 것부터 나온다.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="매핑"><a href="#매핑" class="headerlink" title="매핑"></a>매핑</h4><h5 id="Funtion-인터페이스를-이용해-요소의-값을-변환한다"><a href="#Funtion-인터페이스를-이용해-요소의-값을-변환한다" class="headerlink" title="Funtion 인터페이스를 이용해 요소의 값을 변환한다."></a>Funtion 인터페이스를 이용해 요소의 값을 변환한다.</h5><ul>
+<li>map 계열 - 입력 1 : 1 출력<ul>
+<li><code>&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper)</code> : 기존 스트림의 T 타입 요소를 R 타입으로 변환하여 새로운 스트림 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Funtion 계열의 인터페이스를 사용하여 스트림의 각 요소를 매핑</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line"><span class="comment">// Funthion 계열로 string -&gt; integer 로 변환하는 매핑 Funthoin(&lt;String,Intger)와 같은 형식을 람다식에 넣어준 것이다.</span></span><br><span class="line">Stream&lt;Integer&gt; stream2 = stringStream.map(s-&gt;s.length()) ;<span class="comment">//입력은 string 출력은 원하는대로 할수 잇다</span></span><br><span class="line">stream2.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+<li><code>PStream mapToP(ToPFunction&lt;? super T&gt; mapper)</code> : R이 기본형 타입으로 제한된 map()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PStream (기본형 타입의 스트림)은 Operator 계열로 처리(자료형 반환x)</span></span><br><span class="line"><span class="comment">// 입출력 값이 똑같기 때문에</span></span><br><span class="line">IntStream intStream3 = IntStream.of(<span class="number">5</span>,<span class="number">2</span>,<span class="number">30</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">-34</span>);</span><br><span class="line">IntStream intStream4 = intStream3.map(value -&gt; value * <span class="number">10</span>); <span class="comment">// 형 변환이 되지 않고 입력이 출력이 된다.</span></span><br><span class="line">intStream4.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>flatMap 계열 - 입력 1 : n 출력(스트림 형태로 출력한다.)<ul>
+<li><code>&lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T, ? extends Stream&lt;? extends R&gt;&gt; mapper)</code> : 스트림의 T 타입 요소가 n개의 R 타입 요소로 매핑된 새로운 스트림을 반환</li>
+<li><code>PStream flatMapToP(Function&lt;? super T, ? extends PStream&gt; mapper)</code> : R이 기본형 타입으로 제한된 flatMap()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// s.split(&quot;&quot;) : &quot;java&quot; -&gt; &#123;&quot;j&quot;,&quot;a&quot;,&quot;v&quot;,&quot;a&quot;&#125;</span></span><br><span class="line">List&lt;String&gt; list2 = Arrays.asList(<span class="string">&quot;java&quot;</span>,<span class="string">&quot;backend&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;course&quot;</span>);</span><br><span class="line">list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).forEach(System.<span class="attr">out:</span>:println); <span class="comment">//foreach를 사용하면 스트림이 끝나게 된다.</span></span><br></pre></td></tr></table></figure>
+<h4 id="조회"><a href="#조회" class="headerlink" title="조회"></a>조회</h4><h5 id="스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다"><a href="#스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다" class="headerlink" title="스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다."></a>스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다.</h5></li>
+</ul>
+</li>
+<li>Stream<T> peek(Consumer&lt;? super T&gt; action)<ul>
+<li>peek() -&gt; Consumer 계열의 람다식 입력을 받아 입력 요소를 소비</li>
+<li>peek()는 입력받아 스트림과 동일한 스트림을 다시 출력<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">     <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).peek(s-&gt; System.out.println(<span class="string">&quot;flatMap():&quot;</span>+s))</span><br><span class="line">           .distinct().peek(s-&gt; System.out.println(<span class="string">&quot;distinct():&quot;</span>+s))</span><br><span class="line">           .count()); <span class="comment">// 함수형 프로그래밍은 선언형이어서 어떻게 해라라고 말해야한다.</span></span><br><span class="line"><span class="comment">// flatmap은 모든 요소를 다 나타내고 distinct는 중복된것을 없애고 하나만 출력됨.</span></span><br></pre></td></tr></table></figure>
+<h3 id="최종-처리-메소드"><a href="#최종-처리-메소드" class="headerlink" title="최종 처리 메소드"></a>최종 처리 메소드</h3></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>동작</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>매칭</td>
+<td>allMatch(), anyMatch(), noneMatch()</td>
+</tr>
+<tr>
+<td>수집</td>
+<td>collect()</td>
+</tr>
+<tr>
+<td>루핑</td>
+<td>forEach()</td>
+</tr>
+<tr>
+<td>집계</td>
+<td>count(), max(), min(), average(), sum(), reduce()</td>
+</tr>
+<tr>
+<td>조사</td>
+<td>findFirst(), findAny()</td>
+</tr>
+</tbody></table>
+<h4 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h4><h5 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h5><ul>
+<li>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</li>
+<li>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</li>
+<li>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.allMatch(s -&gt; s.equals(<span class="string">&quot;abc&quot;</span>))); <span class="comment">//false</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.anyMatch(s -&gt; s.equals(<span class="string">&quot;cde&quot;</span>))); <span class="comment">//true</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.noneMatch(s -&gt; s.equals(<span class="string">&quot;abcde&quot;</span>)));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="집계-통계"><a href="#집계-통계" class="headerlink" title="집계 (통계)"></a>집계 (통계)</h4><ul>
+<li>기본 집계 메소드<ul>
+<li>기본형 스트림의 통계 : count(), sum(), average(), min(), max()</li>
+<li>T 타입 스트림의 통계 : count(), min(), max() (min, max의 경우 Comparator 필요)</li>
+</ul>
+</li>
+<li>reduce() 메소드 : 사용자 정의 집계 메소드<ul>
+<li>Optional<T> reduce(BinaryOperator<T> accumulator) : accumulator를 수행하고 Optional<T> 타입 반환</li>
+<li>T reduce(T identity, BinaryOperator<T> accumulator) : identity를 초기값으로 하여, accumulator를 이용해 집계 연산</li>
+<li><U> U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator<U> combiner) : combiner를 이용해 병렬 스트림 결합</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>java.util.Optional<T><ul>
+<li>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</li>
+<li>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성<ul>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; of(T value)</code> : value가 null인 경우 NullPointerException을 발생시키는 Wrapping 메소드</li>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</code> : value가 null인 경우 empty()의 결과를 리턴하는 Wrapping 메소드</li>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; empty()</code> : 값이 비어있는 Optional 객체를 리턴</li>
+</ul>
+</li>
+<li>Optional 객체를 처리하는 메소드<ul>
+<li><code>public T get()</code> : Optional의 값을 리턴하며, null일 경우 NullPointerException 발생</li>
+<li><code>public void ifPresent(Consumer&lt;? super T&gt; consumer)</code> : Optional 값이 null이 아닐 경우 consumer를 이용해 소비한다.</li>
+<li><code>public T orElse(T other)</code> : Optional의 값이 null일 경우 other를 반환한다.</li>
+<li><code>public T orElseGet(Supplier&lt;? extends T&gt; other)</code> : Optional의 값이 null일 경우 Supplier를 통해 공급받은 값을 반환한다.</li>
+<li><code>public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code> : Optional의 값이 null일 경우 exceptionSupplier에서 공급받은 예외를 throw<h4 id="반복"><a href="#반복" class="headerlink" title="반복"></a>반복</h4><h5 id="forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비"><a href="#forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비" class="headerlink" title="forEach() 메소드로 스트림 요소를 순차적으로 Consumer를 이용해 소비"></a>forEach() 메소드로 스트림 요소를 순차적으로 Consumer<T>를 이용해 소비</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비<h4 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h4><h5 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h5></li>
+<li><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</li>
+<li><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfl3ej3n001vj4u2fvagaw9y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_LambdaExpression</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/">Java_LambdaExpression</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
+          </li>
+        
+          <li>
+            <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

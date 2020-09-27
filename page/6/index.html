@@ -64,6 +64,160 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaAdvanced/Java-Variable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/08/Java/JavaAdvanced/Java-Variable/" class="article-date">
+  <time datetime="2020-09-08T03:05:57.754Z" itemprop="datePublished">2020-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/08/Java/JavaAdvanced/Java-Variable/">Java_Variable</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="변수-Variable-필드-속성-멤버-변수"><a href="#변수-Variable-필드-속성-멤버-변수" class="headerlink" title="변수 (Variable,필드, 속성, 멤버 변수)"></a>변수 (Variable,필드, 속성, 멤버 변수)</h1><ul>
+<li>변수의 자료형은 기본 자료형, 참조 자료형으로 나눠진다.<ul>
+<li>변수에 대한 생성은 생성자에서 주로하는데 사용하기 전에만 하면 된다.<br>생성하기 전 상태에서 값을 넣으면 NullPointException이 발생할 수 밖에 없다.<br>메모리가 없는데 값을 넣으면 에러가 날 수 밖에 없다.</li>
+</ul>
+</li>
+</ul>
+<p>선언된 위치에 따라 구분되는 변수는 생성 및 소멸 시기, 저장되는 메모리 공간과 사용 방법까지 서로 다르다.</p>
+<table>
+<thead>
+<tr>
+<th>변수</th>
+<th>생성 시기</th>
+<th>소멸 시기</th>
+<th>저장 메모리</th>
+<th>사용 방법</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>클래스 변수</td>
+<td>클래스가 메모리에 올라갈 때(클래스가 사용이 될 때)</td>
+<td>프로그램이 종료될 때</td>
+<td>메소드 영역</td>
+<td>클래스 이름, 변수 이름</td>
+</tr>
+<tr>
+<td>인스턴스 변수</td>
+<td>인스턴스가 생성될 때</td>
+<td>인스턴스가 소멸할 때</td>
+<td>힙 영역</td>
+<td>인스턴스 이름, 변수 이름</td>
+</tr>
+<tr>
+<td>지역 변수</td>
+<td>블록 내에서 변수의 선언문이 실행될 때</td>
+<td>블록을 벗어날 때</td>
+<td>스택 영역</td>
+<td>변수 이름</td>
+</tr>
+</tbody></table>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Variables</span>&#123;</span></span><br><span class="line">   <span class="keyword">int</span> instanceVar; <span class="comment">// 인스턴스 멤버 변수</span></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> classVar; <span class="comment">// 클래스 멤버 변수</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> method(<span class="keyword">int</span> parameterVar)&#123; <span class="comment">//파라미터 변수</span></span><br><span class="line">         <span class="keyword">int</span> localVar = <span class="number">0</span>; <span class="comment">//로컬 변수</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="클래스-멤버-변수-static-variable-class-variable"><a href="#클래스-멤버-변수-static-variable-class-variable" class="headerlink" title="클래스 멤버 변수(static variable, class variable)"></a>클래스 멤버 변수(static variable, class variable)</h2><ul>
+<li>처음 프로그래밍에 로드될 때 클래스 영역에 생긴다, 메모리에 할당된다.</li>
+<li>static을 이용하여 정의하는 변수, 클래스에서 바로 접근이 가능한 변수를 의미한다.</li>
+<li>인스턴스(객체)들이 공통으로 사용하는 변수, 외부에서 접근하지 못하게 접근제어자를 private을 사용하는 것이 좋다.</li>
+<li>초기화를 해주지 않았을 경우, 자동으로 자료형의 기본값으로 초기화가 된다.(static int num; 이라 했을 때 static int num = 0;과 같음)   </li>
+<li>객체명으로도 접근이 가능하지만 권장하지 않는다.</li>
+</ul>
+<p><img src="../../../image/static%20%EB%B3%80%EC%88%98.png" alt="static변수"></p>
+<ul>
+<li><p>모든 인스턴스에 공통적으로 사용되는 클래스 변수가 된다, 클래스가 메모리에 로드될 때 생성된다.</p>
+</li>
+<li><p>처음 프로그램이 로드될 때 데이터 영역(static 영역, 클래스 영역)에 생성이 된다.</p>
+</li>
+<li><p>인스턴스의 생성과 상관 없이 사용할 수 있으므로 클래스 이름으로 참조한다.(ex- 클래스명.static변수명,Student.name = “홍길동”)</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> classVar; </span><br><span class="line">     </span><br><span class="line">System.out.println(<span class="string">&quot;클래스 변수&quot;</span>);</span><br><span class="line">System.out.println(Variable.classVar); <span class="comment">// 0으로 초기화가 된다. </span></span><br></pre></td></tr></table></figure>
+<h2 id="인스턴스-멤버-변수"><a href="#인스턴스-멤버-변수" class="headerlink" title="인스턴스 멤버 변수"></a>인스턴스 멤버 변수</h2></li>
+<li><p>객체를 생성해서 사용하는 변수로 클래스명으로 접근이 불가능하다.   </p>
+</li>
+<li><p>초기화를 해주지 않았을 경우, 자동으로 자료형의 기본값으로 초기화가 된다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> instanceVar; <span class="comment">// 인스턴스 멤버 변수, 필드, 속성</span></span><br><span class="line">System.out.println(<span class="string">&quot;인스턴스 멤버 변수&quot;</span>);</span><br><span class="line">Variable var = <span class="keyword">new</span> Variable();</span><br><span class="line"><span class="comment">// 인스턴스를 만들어야 실체가 있기 때문에</span></span><br><span class="line">System.out.println(var.instanceVar);  </span><br><span class="line"><span class="comment">//0으로 초기화가 됨.외워야됨.</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>각 자료형의 초기화값</p>
+<table>
+<thead>
+<tr>
+<th>변수의 타입</th>
+<th>초기값</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>byte,short,int</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>0.0f</td>
+</tr>
+<tr>
+<td>double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>false</td>
+</tr>
+<tr>
+<td>배열,인스턴스 등</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<h3 id="클래스-변수와-인스턴스-변수"><a href="#클래스-변수와-인스턴스-변수" class="headerlink" title="클래스 변수와 인스턴스 변수"></a>클래스 변수와 인스턴스 변수</h3></li>
+</ul>
+<p><img src="../../../image/static%EB%B3%80%EC%88%98%EC%99%80%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%B3%80%EC%88%98.png" alt="static변수와인스턴스변수"></p>
+<ul>
+<li>각각의 객체들은 데이터 영역에 위치한 동일한 메모리를 참조한다.</li>
+</ul>
+<h2 id="로컬-변수"><a href="#로컬-변수" class="headerlink" title="로컬 변수"></a>로컬 변수</h2><ul>
+<li>메소드 또는 중괄호 블록 내부에서 생성되는 변수</li>
+<li>스택 영역에 생성되며, 초기화가 자동으로 이루어지지 않는다.</li>
+<li>생명 주기(Life cycle)은 생성된 중괄호 블록이 종료될 때 까지이다.</li>
+</ul>
+<h2 id="파라미터-변수"><a href="#파라미터-변수" class="headerlink" title="파라미터 변수"></a>파라미터 변수</h2><ul>
+<li>메소드에서 값을 호출할 때 넣어 주는 변수. 메소드 내부에서만 사용 가능.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> method(<span class="keyword">int</span> paramVar)&#123; <span class="comment">//로컬 파라미터 변수</span></span><br><span class="line">System.out.println(paramVar);</span><br><span class="line"><span class="keyword">int</span> localVar; <span class="comment">//로컬 변수</span></span><br><span class="line">System.out.println(localVar); <span class="comment">//error 로컬변수는 초기화가 자동으로 안됨. </span></span><br><span class="line">localVar = <span class="number">10</span>;</span><br><span class="line">System.out.println(localVar); <span class="comment">//이렇게 값을 대입해서 사용해야 한다.</span></span><br><span class="line">&#123;</span><br><span class="line">  localVar = <span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> localVar2 = <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(localVar); <span class="comment">//블록 내에서 수정한 것도 반영됨.     </span></span><br><span class="line">localVar2 = <span class="number">40</span>; <span class="comment">// 접근 불가. 생명주기가 끝났다. Life-Cycle이 끝났다.</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckfl3ej3o001xj4u283060zkd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/PreCourseEx/ClassEx2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/08/Java/PreCourseEx/ClassEx2/" class="article-date">
@@ -122,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckfl3avyr001segu29xo002r1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckfl3ej320015j4u2gskb3a3j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckfl3avya0012egu205uk26mo" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckfl3ej3c001hj4u2gpogeumm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckfl3avyj001gegu2bsqlfi90" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckfl3ej3o001wj4u2degvbgpl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckfl3avyf0019egu2gyeod7zb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckfl3ej3i001pj4u2g6ay2ngs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckfl3avyi001eegu2g852bv6v" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckfl3ej3n001uj4u2am3p60uy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,7 +630,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckfl3avy8000zegu2fma979ry" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckfl3ej3a001gj4u2hpbsh0iw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -533,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckfl3avys001uegu2gol1d8su" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckfl3ej300013j4u2e2xu1onl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -641,7 +795,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckfl3avye0017egu28em1dbru" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckfl3ej3h001oj4u236x9bpv4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -770,167 +924,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckfl3avyf0018egu277os5szk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-ClassAndObject" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" class="article-date">
-  <time datetime="2020-09-07T01:45:29.337Z" itemprop="datePublished">2020-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/">Java_ClassAndObject</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="클래스-Classes-와-객체-Object"><a href="#클래스-Classes-와-객체-Object" class="headerlink" title="클래스(Classes)와 객체(Object)"></a>클래스(Classes)와 객체(Object)</h1><h2 id="클래스-와-객체-개념"><a href="#클래스-와-객체-개념" class="headerlink" title="클래스 와 객체 개념"></a>클래스 와 객체 개념</h2><h3 id="클래스"><a href="#클래스" class="headerlink" title="클래스"></a>클래스</h3><ul>
-<li><p>객체를 만들어내기 위한 설계 혹은 틀 또는 객체를 정의해 놓은 것, 코드로 구현한 것을 말한다.</p>
-</li>
-<li><p>문자열(String)도 클래스 형태로 클래스는 한 번 만든 문자열은 변하지 않는데(Immutable), 클래스는 변할 수 있다.(mutable)</p>
-</li>
-<li><p>클래스 이름은 PascalCase로 적는다.</p>
-</li>
-<li><p>변수(attribute, filed, 멤버변수) 와 메소드(method,함수)로 구성된다.</p>
-</li>
-<li><p>클래스의 로딩되는 시점 </p>
-<ol>
-<li>객체가 생성이 될 때 - 클래스가 먼저 클래스 영역에 생성이 되고 그 정보를 가지고 객체가 생성이 되는 것이다.<br>초기화 블록을 사용해서 확인해보면 확실히 이해가 간다.</li>
-<li>import 할 때 - 클래스가 로딩이 되서 클래스 영역에 생성이 된다.</li>
-<li>정적 변수를 사용할 때 - 클래스명.정적 변수 형태로 사용이 가능하기 때문에 클래스의 정보가 먼저 있어야 한다. <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>&#123;</span> </span><br><span class="line">    <span class="keyword">int</span> speed = <span class="number">0</span>; <span class="comment">// 속성, 멤버 변수</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> move()&#123; <span class="comment">//  메소드 (method), 멤버 함수</span></span><br><span class="line">        speed = <span class="number">10</span>; <span class="comment">//행위를 구현, 속성을 변경</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="객체"><a href="#객체" class="headerlink" title="객체"></a>객체</h3><ul>
-<li>클래스가 구체화하여 값으로 생성된 것(실체화 된 것) 클래스의 인스턴스라고도 부른다.</li>
-<li>하나의 클래스로 여러 개의 객체들을 생성할 수 있다. 같은 타입의 <code>독립적인</code> 객체가 된다.</li>
-<li>new 키워드로 생성된 객체는 힙 영역에 생성이 된다.</li>
-<li>new 키워드로 생성된 객체는 객체의 주소를 리턴하도록 되어있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Car carOne = <span class="keyword">new</span> Car(); <span class="comment">// new 키워드로 클래스에서 객체 생성</span></span><br><span class="line">System.out.println(carOne.speed); <span class="comment">// 객체명.으로 속성 접근 가능</span></span><br><span class="line">carOne.move(); <span class="comment">// 메소드 호출(method call) 이라고 부름.</span></span><br><span class="line">System.out.println(carOne.speed);</span><br><span class="line"></span><br><span class="line">Car carTwo = <span class="keyword">new</span> Car();</span><br><span class="line">System.out.println(carTwo.speed); <span class="comment">// speed=0 독립적인 객체를 의미.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//STRING은 Immutable이기 때문에 값이 변하지 않지만,</span></span><br><span class="line"><span class="comment">//클래스는 대부분 muttable이기 때문에 객체 참조에 대한 문제가 발생한다. 중요**</span></span><br><span class="line"></span><br><span class="line">Car carThree = carOne; <span class="comment">// 참조형 객체이기 때문에 new일때만 새로운 객체를 생성하고 ,이렇게하면 같은 객체를 가리킨다.</span></span><br><span class="line">System.out.println(carThree.speed);</span><br><span class="line">carThree.speed = <span class="number">5</span>;</span><br><span class="line">System.out.println(carThree.speed);<span class="comment">// 5</span></span><br><span class="line">System.out.println(carOne.speed); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="클래스의-구성요소"><a href="#클래스의-구성요소" class="headerlink" title="클래스의 구성요소"></a>클래스의 구성요소</h2><h3 id="필드-속성-멤버-변수"><a href="#필드-속성-멤버-변수" class="headerlink" title="필드(속성, 멤버 변수)"></a>필드(속성, 멤버 변수)</h3><ul>
-<li>필드는 객체의 고유 데이터, 부품 객체, 상태 정보를 저장하는 곳이다.</li>
-<li>필드는 생성자와 메소드 전체에서 사용되며 객체가 소멸되지 않는 한 객체와 함께 존재한다.</li>
-</ul>
-<h3 id="메소드"><a href="#메소드" class="headerlink" title="메소드"></a>메소드</h3><ul>
-<li>메소드는 객체의 동작을 담당한다. 메소드를 호출하면 중괄호 내의 코드들이 일괄적으로 실행된다.</li>
-<li>메소드는 객체 간의 데이터 전달의 수단으로 사용되며, 외부로부터 매개 값을 받을 수도 있고, 실행 후 어떤 값을 리턴할 수도 있다.</li>
-</ul>
-<h3 id="생성자"><a href="#생성자" class="headerlink" title="생성자"></a>생성자</h3><ul>
-<li>객체 생성시에 초기화를 담당하는 역할을 하고, 필드를 초기화하거나 메소드를 호출해서 객체를 사용할 준비를 한다.</li>
-<li>생성자는 메소드와 비슷하게 생겼지만, 클래스 이름으로 되어 있고 리턴 타입이 없다.</li>
-</ul>
-<h2 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="애노테이션(Annotation)"></a>애노테이션(Annotation)</h2><ul>
-<li>재정의된 메소드라는 의미로 선언부가 기존의 메소드와 다른 경우 에러가 발생한다.(같게 해줘야 함)</li>
-<li>애노테이션은 컴파일러에게 특정한 정보를 제공해주는 역할을 한다.</li>
-<li>컴파일 오류를 막아 주고, 컴파일러에게 정보를 전달해 준다.</li>
-<li>주로 사용되는 자바에서 제공되는 애노테이션</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>애노테이션</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@Override</td>
-<td>재정의된 메소드라는 정보 제공</td>
-</tr>
-<tr>
-<td>@FuctionalInterface</td>
-<td>함수형 인터페이스라는 정보 제공</td>
-</tr>
-<tr>
-<td>@Deprecated</td>
-<td>이후 버전에서 사용되지 않을 수 있는 변수, 메서드에 사용됨</td>
-</tr>
-<tr>
-<td>@SupperessWarnings</td>
-<td>특정 경고가 나타나지 않도록 함 ex) @SupperessWarnings(“deprecations”)는 @Depreacted가 나타나지 않도록 함.</td>
-</tr>
-</tbody></table>
-<h2 id="Getter와-Setter"><a href="#Getter와-Setter" class="headerlink" title="Getter와 Setter"></a>Getter와 Setter</h2><ul>
-<li>클래스의 멤버 변수를 간접적으로 다룰 수 있게 하는 메소드</li>
-<li>멤버 변수의 캡슐화를 구현하기 위해 사용. -&gt; 정보은닉 / 보호</li>
-<li>멤버 변수의 값을 제한해야 할 때 유용.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//멤버변수를 만들어야 생성가능.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getX</span><span class="params">()</span> </span>&#123; <span class="comment">//경우에 따라 구현되지 않을 수 있다. 출력하지 않으면 사용 안하는 것.</span></span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 들어오는 값에 대해 조건을 걸 수 있다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setX</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &gt; <span class="number">0</span> &amp;&amp; x &lt;= <span class="number">1000</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.x = x;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;x should be 1 &lt; x &lt;= 1000!&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;however, you put in x = &quot;</span>+x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getY</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setY</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainTest</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Main m = <span class="keyword">new</span> Main();</span><br><span class="line">        m.x=<span class="number">10</span>; <span class="comment">//x에 private를 넣으면 직접 값을 변경할 수 없음.</span></span><br><span class="line">        System.out.println(m.x);</span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">20</span>);</span><br><span class="line">        System.out.println(m.getX()); <span class="comment">//권장된 처리 방식.</span></span><br><span class="line"></span><br><span class="line">        m.x = <span class="number">20</span>; <span class="comment">// 권장하지 않는 멤버 변수 처리 방식</span></span><br><span class="line"></span><br><span class="line">        m.setX(<span class="number">11111</span>);</span><br><span class="line">        System.out.println(m.getX());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="초기화-블록-Initializer"><a href="#초기화-블록-Initializer" class="headerlink" title="초기화 블록(Initializer)"></a>초기화 블록(Initializer)</h2><ul>
-<li><p>클래스 또는 인스턴스를 생성할 때 단 한번 실행되는 코드 블록</p>
-<pre><code class="groovy">  public class Main &#123;
-    static int classVar;
-    static  int instanceCount;
-    int instanceVar;
-
-    // static initializer
-    static &#123; //객체가 생성되지 않은 상태 객체에서 접근 불가
-        System.out.println(&quot;static block1&quot;);
-        classVar = 20;
-    &#125;
-    //object initialzer 객체를 만들어서 접근.
-    &#123;
-        System.out.println(&quot;block1&quot;);
-        instanceVar = 30;
-        classVar = 50; // 추천되지 않는다. 객체를 생성하는데 클래스에 대해 변하는것은 권장하지 않음.
-        instanceCount++; // 이러한 패턴은 사용된다.
-    &#125;
-    //여러개 사용 가능. 스태틱은 스태틱끼리 출력되고, 값은 나중에 선언된 값이 삽입됨.
-    static &#123;
-        System.out.println(&quot;static block2&quot;);
-        classVar = 5;
-    &#125;
-    &#123;
-        System.out.println(&quot;block2&quot;);
-        instanceVar = 5;
-    &#125;
-  &#125;
-
-  class MainTest&#123;
-    public static void main(String[] args) &#123;
-        System.out.println(Main.classVar);
-        Main m = new Main();
-        System.out.println(Main.instanceCount);
-
-        System.out.println(m.instanceVar);
-        System.out.println(Main.classVar);
-
-        Main m2 = new Main();
-        System.out.println(Main.instanceCount);
-        Main m3 = new Main();
-        System.out.println(Main.instanceCount);
-
-&#125;
-&#125;  </code></pre>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckfl3avy7000xegu2171qetzp" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckfl3ej3g001nj4u24sqv1h9r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -976,6 +970,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/">Java_LambdaExpression</a>
           </li>
         
@@ -989,10 +987,6 @@
         
           <li>
             <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
           </li>
         
       </ul>

@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/Subject/Homework04/MaxSum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework04/MaxSum/" class="article-date">
+  <time datetime="2020-09-20T04:32:31.802Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/Java/Subject/Homework04/MaxSum/">Subject_Day04_MaxSum</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day4"><a href="#과제-Day4" class="headerlink" title="과제 Day4"></a>과제 Day4</h1><h2 id="배열의-연속합-최대-구하기"><a href="#배열의-연속합-최대-구하기" class="headerlink" title="배열의 연속합 최대 구하기"></a>배열의 연속합 최대 구하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li>정수 배열에서 연속된 값의 합의 최대값을 구하시오. </li>
+<li>ex1) {1, 45, -2, 5, -6} =&gt; 1 + 45 + (-2) + 5 = 49</li>
+<li>ex2) {-4, 5, 12, -7, 52, -5, 7} =&gt; 5 + 12 + (-7) + 52 + (-5) + 7 = 64</li>
+<li>인자<ul>
+<li>integers: 정수 배열<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MaxSum</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> [] integers = &#123;<span class="number">-4</span>, <span class="number">5</span>, <span class="number">12</span>, <span class="number">-7</span>, <span class="number">52</span>, <span class="number">-5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> maxSum =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> currentSum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;integers.length; i++)&#123;</span><br><span class="line">            currentSum += integers[i];</span><br><span class="line">            <span class="keyword">if</span>(currentSum &gt; integers[i])&#123;</span><br><span class="line">                currentSum = currentSum;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                currentSum = integers[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(maxSum &gt; currentSum)&#123;</span><br><span class="line">                maxSum = maxSum;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                maxSum = currentSum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(maxSum);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">elem :</span> integers)&#123;</span><br><span class="line">            currentSum += elem;</span><br><span class="line">            currentSum = currentSum &gt; elem ? currentSum : elem;</span><br><span class="line">            maxSum = maxSum &gt; currentSum ? maxSum : currentSum;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(maxSum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MaxSum/" data-id="ckfl3ej3t0025j4u22myddmur" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/Subject/Homework04/MatMul" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/20/Java/Subject/Homework04/MatMul/" class="article-date">
@@ -100,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckfl3avyy0025egu20l89h3zm" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckfl3ej3u0026j4u24trhfc1p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckfl3avyx0023egu27wrb3hjx" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckfl3ej3t0024j4u2hzzq4th7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckfl3avyw0022egu2ebrif6f0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckfl3ej3r0022j4u284ui7bpd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -251,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckfl3avyu001yegu2ghzs2cev" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckfl3ej3q0020j4u2canv97tm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfl3avyv001zegu2en360zbd" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfl3ej3q001zj4u2c6omca2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfl3avyv0020egu27asw36yk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfl3ej3r0021j4u23j1q17l6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -453,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfl3avxw000legu292wndlka" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfl3ej2k000mj4u20z5p9gkt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -651,7 +697,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckfl3avyc0014egu21tfza3se" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckfl3ej3d001jj4u2ece4gzzb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -852,95 +898,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckfl3avz5002eegu26z4o5apm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaBasic/Java-InputOutput" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/15/Java/JavaBasic/Java-InputOutput/" class="article-date">
-  <time datetime="2020-09-15T10:59:31.797Z" itemprop="datePublished">2020-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/Java/JavaBasic/Java-InputOutput/">JavaBasic_InputOutput</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="자료의-입출력-Inputs-and-Outputs"><a href="#자료의-입출력-Inputs-and-Outputs" class="headerlink" title="자료의 입출력(Inputs and Outputs)"></a>자료의 입출력(Inputs and Outputs)</h1><h2 id="출력-메소드"><a href="#출력-메소드" class="headerlink" title="출력 메소드"></a>출력 메소드</h2><ul>
-<li>포맷 문자열을 이용한 문자열/기본형 출력</li>
-<li>객체를 직접 출력 -&gt; toString() 재정의를 통해 어떻게 출력할 것 인지를 구현할 수 있다.</li>
-</ul>
-<h3 id="printStream의-메소드"><a href="#printStream의-메소드" class="headerlink" title="printStream의 메소드"></a>printStream의 메소드</h3><ul>
-<li><p>print(): </p>
-<ul>
-<li>public void print(Object obj)</li>
-<li>obj를 스트림으로 출력한다.</li>
-</ul>
-</li>
-<li><p>println():</p>
-<ul>
-<li>public void println(Object x)</li>
-<li>x를 스트림으로 출력하고 줄바꿈한다.</li>
-</ul>
-</li>
-<li><p>printf() :</p>
-<ul>
-<li><p>public PrintStream printf(String format, Object … args)</p>
-</li>
-<li><p>Format 맞추어 args를 출력한다.</p>
-</li>
-<li><p>정수 포맷팅</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">&quot;%5d.\n&quot;</span>, <span class="number">10</span>); <span class="comment">//5d 5자리 확보 ...10</span></span><br><span class="line">System.out.printf(<span class="string">&quot;%3d\n&quot;</span>,<span class="number">104294</span>); <span class="comment">//자릿수가 더크면 그대로 출력이된다. 3칸은 최소한 확보하는 것</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>실수 포맷팅    </p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">&quot;%5d\n&quot;</span>, <span class="number">10</span>); <span class="comment">//5d 5자리 확보 ...10</span></span><br><span class="line">System.out.printf(<span class="string">&quot;%3d\n&quot;</span>,<span class="number">104294</span>); <span class="comment">//자릿수가 더크면 그대로 출력이된다. 3칸은 최소한 확보하는 것</span></span><br></pre></td></tr></table></figure>
-<h2 id="입력-메소드"><a href="#입력-메소드" class="headerlink" title="입력 메소드"></a>입력 메소드</h2></li>
-</ul>
-</li>
-<li><p>Scanner 클래스를 이용하여 입력 받을 수 있다.</p>
-</li>
-<li><p>System.in은 키보드 입력을 받는 것이다 .PC에서 사용하기 때문에 표준입력을 이것을 사용하는 것이다.</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Scanner scanner = <span class="keyword">new</span> Scanner(System.<span class="keyword">in</span>);</span><br></pre></td></tr></table></figure></li>
-<li><p>Scanner 클래스의 주요 메소드</p>
-<ul>
-<li>next(): 공백을 기준으로 한 단어씩 입력 받는다.</li>
-<li>nextLine(): 한 줄 전체를 입력 받는다. (enter로 구별)</li>
-<li>nextInt(): (공백을 기준으로) int 값을 입력 받는다.</li>
-<li>nextDouble : double 값을 입력 받는다.</li>
-<li>close() : 입력 스트림을 종료한다.<ul>
-<li>close() 를 사용하지 않으면 메모리 낭비가 될 수 있다,<br>gc가 제대로 동작이 되지 않았을 때 사용을 신경써 주는게 좋다.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintFormat</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.<span class="keyword">in</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> id = sc.nextInt();</span><br><span class="line">        sc.nextLine();</span><br><span class="line">        String s1 = sc.nextLine();</span><br><span class="line">        String s2 = sc.nextLine();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;출력 포맷&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;*----------*--------*------------*&quot;</span>);</span><br><span class="line">        System.out.printf(<span class="string">&quot;| ID%06d |%-5s | %-10s |\n&quot;</span>,id,s1,s2);</span><br><span class="line">        System.out.println(<span class="string">&quot;*----------*--------*------------*&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>값을 여러개 입력받을 때, nextInt()는 공백을 기준으로 값을 입력받기 때문에, 만약 10이라는 값을 입력하고 enter를 누르면<br>10이라는 값은 출력이 되는데, enter도 하나의 값이여서 값이 남아있게 된다. 그래서 sc.nextLine()으로 enter 값을 입력받게 해게 해서<br>없애준 다음에 다음 값들을 변수에 담아 주도록 해야 한다.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-InputOutput/" data-id="ckfl3avyk001iegu25yhr70sb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckfl3ej41002fj4u2e1bvbr76" class="article-share-link">Share</a>
       
       
     </footer>
@@ -986,6 +944,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/">Java_LambdaExpression</a>
           </li>
         
@@ -999,10 +961,6 @@
         
           <li>
             <a href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
           </li>
         
       </ul>
