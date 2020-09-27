@@ -64,6 +64,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/PreCourseEx/ClassEx2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/08/Java/PreCourseEx/ClassEx2/" class="article-date">
+  <time datetime="2020-09-08T02:37:06.819Z" itemprop="datePublished">2020-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/08/Java/PreCourseEx/ClassEx2/">PreCourse-HidingEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h1><h2 id="정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기"><a href="#정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기" class="headerlink" title="정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기"></a>정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기</h2><ul>
+<li>다음과 같은 MyDate 클래스가 있습니다.</li>
+<li>day,month, year,isValid 변수는 private으로 선언합니다.</li>
+<li>각 변수의 getter, setter를 public으로 구현합니다.</li>
+<li>MyDate(int day, int month, int year) 생성자를 만듭니다.</li>
+<li>public String isValid() 메소드를 만들어 날짜가 유효한지 확인합니다.</li>
+<li>MyDate Test 클래스에서 생성한 MyDate가 날짜가 유효한지 확인합니다.</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isValid = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> MyDate(<span class="keyword">int</span> day, <span class="keyword">int</span> month, <span class="keyword">int</span> year)&#123;</span><br><span class="line">        setYear(year);</span><br><span class="line">        setMonth(month);</span><br><span class="line">        setDay(day);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay() &#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setDay(<span class="keyword">int</span> day) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (month)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">case</span> <span class="number">5</span>: <span class="keyword">case</span> <span class="number">7</span>: <span class="keyword">case</span> <span class="number">8</span>: <span class="keyword">case</span> <span class="number">10</span>: <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt; <span class="number">0</span> || day &gt;<span class="number">31</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">case</span> <span class="number">6</span>: <span class="keyword">case</span> <span class="number">9</span>: <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">30</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> (( ( year % <span class="number">4</span> ==<span class="number">0</span> &amp;&amp;  year % <span class="number">100</span> !=<span class="number">0</span> ) || year % <span class="number">400</span> ==<span class="number">0</span>))&#123;  <span class="comment">//윤년인 경우</span></span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">29</span>) &#123;</span><br><span class="line">                        isValid = <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">28</span>)&#123;</span><br><span class="line">                        isValid= <span class="literal">false</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="symbol">default:</span></span><br><span class="line">                isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>( month &lt;<span class="number">1</span> || month &gt;<span class="number">12</span>)&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.month =month;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="keyword">if</span>(year &gt; Calendar.getInstance().get(Calendar.YEAR))&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String isValid()&#123;</span><br><span class="line">        <span class="keyword">if</span>(isValid) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효한 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효 하지 않은 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate myDate = <span class="keyword">new</span> MyDate(<span class="number">10</span>,<span class="number">7</span>,<span class="number">2019</span>);</span><br><span class="line">        System.out.println( myDate.isValid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h1><h2 id="객체-간-협력-출근길-커피-사기"><a href="#객체-간-협력-출근길-커피-사기" class="headerlink" title="객체 간 협력 - 출근길 커피 사기"></a>객체 간 협력 - 출근길 커피 사기</h2><ul>
+<li>아침 출근길에 김 졸려씨는 4000원을 내고 별다방에서 아메리카노를 사 마셨습니다.</li>
+<li>이 피곤씨는 콩다방에서 4,500원을 내고 라떼를 사 마셨습니다,</li>
+<li>메소드와 클래스를 추가해서 자유롭게 구현을 해보세요.</li>
+</ul>
+<h2 id="문제-구현-1"><a href="#문제-구현-1" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li><p>사람 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> &#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line">    String buyCoffeeName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Man(String name, <span class="keyword">int</span> money)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.money = money;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyStarCoffee(String coffeName,StarCoffee starCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeName;</span><br><span class="line">        starCoffee.sells(Menu.STAR_AMERICANO,<span class="string">&quot;americano&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.STAR_AMERICANO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyBeanCoffee(String coffeeName,BeanCoffee beanCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeeName;</span><br><span class="line">        beanCoffee.sells(Menu.BEAN_LATTE,<span class="string">&quot;latte&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.BEAN_LATTE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;님이 산 컴피는 &quot;</span>+buyCoffeeName+<span class="string">&quot;이고, 잔액은 &quot;</span>+money+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>별다방 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showStarCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;StarCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>콩다방 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBeanCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BeanCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>메뉴 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Menu</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_AMERICANO = <span class="number">4000</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_LATTE = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_AMERICANO = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_LATTE = <span class="number">4700</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoffeeTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Man manLee = <span class="keyword">new</span> Man(<span class="string">&quot;이피곤&quot;</span>,<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        BeanCoffee beanCoffee = <span class="keyword">new</span> BeanCoffee();</span><br><span class="line">        StarCoffee starCoffee = <span class="keyword">new</span> StarCoffee();</span><br><span class="line"></span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;아메리카노&quot;</span>,starCoffee);</span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;latte&quot;</span>,starCoffee);</span><br><span class="line">        manLee.showInfo();</span><br><span class="line"></span><br><span class="line">        beanCoffee.showBeanCoffeeInfo();</span><br><span class="line">        starCoffee.showStarCoffeeInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckfl3avyr001segu29xo002r1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Cooperation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" class="article-date">
@@ -114,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckfi8uj7r0012g4u239rnfy5q" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckfl3avya0012egu205uk26mo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckfi8uj87001fg4u2em9t7eps" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckfl3avyj001gegu2bsqlfi90" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckfi8uj7x0017g4u26r3ef0sq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckfl3avyf0019egu2gyeod7zb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -334,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckfi8uj89001hg4u21w8h6syd" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckfl3avyi001eegu2g852bv6v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -408,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckfi8uj7o0010g4u2ep3m5lq9" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckfl3avy8000zegu2fma979ry" class="article-share-link">Share</a>
       
       
     </footer>
@@ -465,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckfi8uj8k001qg4u2g8plbka2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckfl3avys001uegu2gol1d8su" class="article-share-link">Share</a>
       
       
     </footer>
@@ -573,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckfi8uj7z0018g4u26qa19vk1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckfl3avye0017egu28em1dbru" class="article-share-link">Share</a>
       
       
     </footer>
@@ -702,7 +770,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckfi8uj800019g4u2cvacfmmv" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckfl3avyf0018egu277os5szk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -862,114 +930,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckfi8uj7l000yg4u29leah364" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-OOP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/07/Java/JavaAdvanced/Java-OOP/" class="article-date">
-  <time datetime="2020-09-07T01:22:29.926Z" itemprop="datePublished">2020-09-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/07/Java/JavaAdvanced/Java-OOP/">Java_OOP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="객체지향-프로그래밍-Object-Oriented-Programming-OOP"><a href="#객체지향-프로그래밍-Object-Oriented-Programming-OOP" class="headerlink" title="객체지향 프로그래밍(Object Oriented Programming, OOP)"></a>객체지향 프로그래밍(Object Oriented Programming, OOP)</h1><h2 id="객체지향-프로그래밍이란"><a href="#객체지향-프로그래밍이란" class="headerlink" title="객체지향 프로그래밍이란?"></a>객체지향 프로그래밍이란?</h2><p>컴퓨터 프로그래밍 패러다임 중 하나로, 프로그램을 명령어의 목록으로 보는 시각에서 벗어나, 독립된 단위인 객체의 모임으로 파악하는 것이다.<br>각각의 객체는 메세지를 주고받고, 데이터를 처리한다.<br>프로그래밍에서 필요한 데이터를 추상화시켜 상태와 행위를 가진 객체를 만들고,<br>그 객체들 간의 유기적인 상호작용을 통해 로직을 구성하는 프로그래밍 방법(객체 간의 협력을 구현)</p>
-<p><img src="../../../image/%EA%B0%9D%EC%B2%B4%EA%B7%B8%EB%A6%BC.png" alt="객체간의 협력"></p>
-<h3 id="객체지향-프로그래밍의-장점"><a href="#객체지향-프로그래밍의-장점" class="headerlink" title="객체지향 프로그래밍의 장점"></a>객체지향 프로그래밍의 장점</h3><ul>
-<li>코드의 재사용성이 용이하다.</li>
-<li>유지보수가 쉽다.</li>
-<li>대규모 프로젝트에 적합하다.</li>
-</ul>
-<h3 id="객체지향-프로그래밍의-단점"><a href="#객체지향-프로그래밍의-단점" class="headerlink" title="객체지향 프로그래밍의 단점"></a>객체지향 프로그래밍의 단점</h3><ul>
-<li>처리속도가 상대적으로 느리다.</li>
-<li>객체가 많으면 용량이 커질 수 있다.</li>
-<li>설계시 많은 시간과 노력이 필요하다.</li>
-</ul>
-<h2 id="객체지향의-기본-구성-요소"><a href="#객체지향의-기본-구성-요소" class="headerlink" title="객체지향의 기본 구성 요소"></a>객체지향의 기본 구성 요소</h2><ul>
-<li><p>클래스(Class)</p>
-<ul>
-<li>같은 종류의 집단에 속하는 속성과 행위를 정의한 것</li>
-<li>클래스는 다른 클래스 또는 외부 요소와 독립적으로 디자인해야 함</li>
-</ul>
-</li>
-<li><p>객체(Object)</p>
-<ul>
-<li>클래스의 인스턴스로, 실제로 메모리상에 할당된 것</li>
-<li>자신 고유의 속성을 가지며, 클래스에 정의된 행위를 수행</li>
-<li>ex) 사람, 자동차, 주문, 생산, 관리</li>
-</ul>
-</li>
-<li><p>메소드(Method)</p>
-<ul>
-<li>클래스로부터 생성된 객체를 사용하는 방법</li>
-<li>메소드는 속성(변수)을 변화시키는 데에 사용한다.<ul>
-<li>정적 메소드는 정적 변수들을 변화시키고, 인스턴스 메소드는 객체의 속성을 변화시킨다.</li>
-</ul>
-</li>
-<li>꼭 속성을 변화시키는 것은 아니고, 주요 기능이 속성을 변화시키는 것이다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="객체지향의-특징"><a href="#객체지향의-특징" class="headerlink" title="객체지향의 특징"></a>객체지향의 특징</h2><ol>
-<li>추상화(Abstraction)<ul>
-<li>객체지향에서 추상화란 객체에서 공통된 속성과 행위를 추출하는 것을 의미한다.</li>
-<li>예를 들어, 자동차의 종류 중에 소나타, 아반떼, 그랜져, 제네시스 등이 있을 때<br>이것들을 자동차라는 클래스를 만들어 세부적인 기능들은 다 다르지만, 공통적인 속성과 행위에 대한 개념을 정의한 것이다.</li>
-<li>객체를 클래스로 추상적인 개념으로 만드는 것 추상화, 클래스를 객체로 만드는 것이 인스턴스화라고 한다.</li>
-</ul>
-</li>
-<li>캡슐화(Encapsulation)<ul>
-<li>캡슐화는 연관 있는 변수와 메소드를 묶어주는 작업을 말한다.</li>
-<li>접근 제어자(private)를 통해 외부로부터 접근을 제한하여 객체 내에서만 접근이 가능하도록 하며, 이를 정보은닉이라고 한다.</li>
-<li>외부 클래스에서의 직접적인 접근으로 발생하는 변경이나 오류를 막음으로써 보안성이 높아진다.</li>
-</ul>
-</li>
-<li>상속(Inheritance)<ul>
-<li>현실에서 부모의 재산이나 특징들을 자식이 이어받는 상속의 개념을 프로그래밍적으로 적용한 개념으로,<br>부모 클래스의 속성과 기능을 이어받아 자식 클래스에서 사용할 수 있는 것을 말한다.</li>
-<li>코드의 중복성을 줄여주는 역할을 한다.</li>
-</ul>
-</li>
-<li>다형성(Polymorphism)<ul>
-<li>한 타입의 참조 자료로 여러 타입의 객체를 참조할 수 있도록 하는 것으로, 동일한 변수, 함수명 등이 다양한 형태로 정의되는 것을 말한다.</li>
-<li>오버 로딩(Overloading)과 오버 라이딩(Overriding)이라는 형태로 다양하게 기능들을 정의할 수 있다.</li>
-<li>오버로딩 : 같은 이름의 메소드 여러 개를 가지면서 매개 변수의 자료형과 개수를 다르게 구현한 것이다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Anmimal</span>&#123;</span></span><br><span class="line">   String name;</span><br><span class="line">   <span class="keyword">int</span> age;</span><br><span class="line">   <span class="keyword">public</span> Animal()&#123;</span><br><span class="line">        name = <span class="string">&quot;홍길동&quot;</span>;</span><br><span class="line">        age = <span class="number">14</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> Animal(String name, <span class="keyword">int</span> age)&#123;</span><br><span class="line">         <span class="built_in">this</span>.name = name;</span><br><span class="line">         <span class="built_in">this</span>.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>오버라이딩 : 부모 클래스가 가지고 있는 메소드를 하위 클래스가 재정의해서 사용하는 것을 말한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Anmimal</span>&#123;</span></span><br><span class="line">   <span class="keyword">void</span> move()&#123;</span><br><span class="line">     System.out.println(<span class="string">&quot;동물이 이동합니다&quot;</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Anmimal</span>&#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> move()&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;고양이가 이동합니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-OOP/" data-id="ckfi8uj82001bg4u2bij5a0vi" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckfl3avy7000xegu2171qetzp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1015,6 +976,10 @@
       <ul>
         
           <li>
+            <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/">Java_LambdaExpression</a>
+          </li>
+        
+          <li>
             <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
           </li>
         
@@ -1028,10 +993,6 @@
         
           <li>
             <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
           </li>
         
       </ul>
