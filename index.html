@@ -477,7 +477,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 </li>
 <li><p>하나씩 처리가 된다 각 요소 가 모든 연산이 쭉되고 다음 요소가 모든 연산이 실행이 됨</p>
 </li>
-<li><p>그 중간에 peek(),foreach()의 결과가 출력이 된다 이것이 우리가 생각하는 기본적인 스트림</p>
+<li><p>그 중간에 peek(),peek(),foreach()의 결과가 출력이 된다 이것이 우리가 생각하는 기본적인 스트림</p>
 </li>
 <li><p>병렬 스트림은</p>
 </li>
@@ -487,7 +487,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 </li>
 <li><p>한줄 한줄 계산하는게 동시에 계산해도 된다 각각을 순수함수로 되어있어야 하니깐</p>
 <ul>
-<li>여기서 한줄이란 세로로 한줄이 시작되고 그옆에 세로가 시작되는건데 병렬처리면 스레드의 개수에 따라<br>이 세로줄의 실행이 개수가 한번에 실행된다는 의미이다 4개스레드이면 4개의 세로줄이 동시에 실행됨.</li>
+<li>여기서 한줄이란 세로로 한줄이 시작되고 그옆에 세로가 시작되는건데 병렬처리면 스레드의 개수에 따라<br>이 세로줄의 실행이 스레드 개수에 따라서 한번에 실행된다는 의미이다 4개스레드이면 4개의 세로줄이 동시에 실행됨.</li>
 <li>한줄 계산되는 동안 다른 한줄이 같이 계산되고 몇개가 같이 연산이 진행되는진 모르지만 스레드의 개수에 따라 한줄이 같이 진행됨</li>
 </ul>
 </li>
@@ -507,7 +507,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfntbcrs002f9ku23zor7fvi" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfntukbh002flku21huhf0dw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -901,7 +901,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfntbcrs002e9ku21tm2fbff" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfntukbg002elku2a8ap6xto" class="article-share-link">Share</a>
       
       
     </footer>
@@ -956,7 +956,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfntbcrp002a9ku2eycgdhti" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfntukb50028lku245ld0swt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1011,7 +1011,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfntbcrq002b9ku2b6v27o47" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfntukb8002blku2gsopcw2c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1054,7 +1054,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfntbcrp00299ku2114u7pnq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfntukb7002alku25nmhd3ld" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1113,7 +1113,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfntbcro00289ku2elh2fn0i" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfntukb60029lku2aqjsht8y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1159,7 +1159,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfntbcrn00279ku293zmdqzb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfntukb40027lku2d47s2yus" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1208,7 +1208,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfntbcrm00259ku2hqmm6heq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfntukb30026lku2b6tv1giu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1291,7 +1291,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfntbcqj000u9ku276bwesc3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfntuk9j000ulku217ax4yw0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1343,7 +1343,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfntbcrn00269ku2htsx7vlq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfntukat0023lku21q66fk8c" class="article-share-link">Share</a>
       
       
     </footer>

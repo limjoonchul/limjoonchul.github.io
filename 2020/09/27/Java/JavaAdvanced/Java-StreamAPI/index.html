@@ -15,7 +15,7 @@
 <meta property="og:description" content="스트림 API(Stream API)스트림 API Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수형 프로그래밍 도구 스트림 API는 데이터를 추상화하여 다루므로, 다양한 방식으로 저장된 데이터를 읽고 쓰기 위한 공통된 방법을 제공한다. 따라서 스트림 API를 이용하면 배열이나 컬렉션뿐만 아니">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-27T12:41:16.159Z">
-<meta property="article:modified_time" content="2020-09-29T10:15:44.522Z">
+<meta property="article:modified_time" content="2020-09-29T10:37:08.278Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -479,7 +479,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 </li>
 <li><p>하나씩 처리가 된다 각 요소 가 모든 연산이 쭉되고 다음 요소가 모든 연산이 실행이 됨</p>
 </li>
-<li><p>그 중간에 peek(),foreach()의 결과가 출력이 된다 이것이 우리가 생각하는 기본적인 스트림</p>
+<li><p>그 중간에 peek(),peek(),foreach()의 결과가 출력이 된다 이것이 우리가 생각하는 기본적인 스트림</p>
 </li>
 <li><p>병렬 스트림은</p>
 </li>
@@ -489,7 +489,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 </li>
 <li><p>한줄 한줄 계산하는게 동시에 계산해도 된다 각각을 순수함수로 되어있어야 하니깐</p>
 <ul>
-<li>여기서 한줄이란 세로로 한줄이 시작되고 그옆에 세로가 시작되는건데 병렬처리면 스레드의 개수에 따라<br>이 세로줄의 실행이 개수가 한번에 실행된다는 의미이다 4개스레드이면 4개의 세로줄이 동시에 실행됨.</li>
+<li>여기서 한줄이란 세로로 한줄이 시작되고 그옆에 세로가 시작되는건데 병렬처리면 스레드의 개수에 따라<br>이 세로줄의 실행이 스레드 개수에 따라서 한번에 실행된다는 의미이다 4개스레드이면 4개의 세로줄이 동시에 실행됨.</li>
 <li>한줄 계산되는 동안 다른 한줄이 같이 계산되고 몇개가 같이 연산이 진행되는진 모르지만 스레드의 개수에 따라 한줄이 같이 진행됨</li>
 </ul>
 </li>
@@ -509,7 +509,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfntbcrs002f9ku23zor7fvi" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfntukbh002flku21huhf0dw" class="article-share-link">Share</a>
       
       
     </footer>
