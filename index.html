@@ -381,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckfqo1s0r0017ncu2czthch60" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckfs5797e0017cgu29cx0bo0t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -834,7 +834,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfqo1s1m002fncu23p83692h" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfs5798j002fcgu260wnh6ux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -871,7 +871,39 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <li>객체지향 프로그래밍과 다르게, 비즈니스 로직만을 빠르게 구현하는 특징.</li>
 <li>객체지향 언어인 Java에서 메소드를 함수처럼 사용하는 형식.</li>
 </ul>
-<h2 id="람다식의-예"><a href="#람다식의-예" class="headerlink" title="람다식의 예"></a>람다식의 예</h2><h3 id="배열의-정렬"><a href="#배열의-정렬" class="headerlink" title="배열의 정렬"></a>배열의 정렬</h3><ul>
+<h3 id="함수적-프로그래밍"><a href="#함수적-프로그래밍" class="headerlink" title="함수적 프로그래밍"></a>함수적 프로그래밍</h3><ul>
+<li>y = f(x) 형태의 함수로 구성된 프로그래밍 기법 x에 어떤 값을 주면 y가 얻어지는 함수형 기법<ul>
+<li>데이터를 매개값으로 전달하고 결과를 받는 코드들로 구성</li>
+<li>객체 지향 프로그래밍 보다는 효율적인 경우<ul>
+<li>대용량 데이터의 처리시에 유리<br>객체를  생성후 처리하는 것보다, 데이터를 바로 처리하는 것이 속도에 유리</li>
+<li>이벤트 지향 프로그래밍(이벤트가 발생하면 핸들러 함수 실행)에 적합<br>반복적인 이벤트 처리는 핸들러 객체보다는 핸들러 함수가 적합</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>현대적 프로그래밍 기법<ul>
+<li>객체 지향 프로그래밍 <code>+</code> 함수적 프로그래밍</li>
+</ul>
+</li>
+</ul>
+<h3 id="자바에서-람다식을-수용한-이유"><a href="#자바에서-람다식을-수용한-이유" class="headerlink" title="자바에서 람다식을 수용한 이유"></a>자바에서 람다식을 수용한 이유</h3><ul>
+<li>코드가 매우 간결해진다,</li>
+<li>컬렉션 요소(대용량 데이터)를 필터링 또는 매핑해서 쉽게 집계할 수 있다.</li>
+</ul>
+<h3 id="자바는-람다식을-함수적-인터페이스의-익명-구현-객체로-취급한다"><a href="#자바는-람다식을-함수적-인터페이스의-익명-구현-객체로-취급한다" class="headerlink" title="자바는 람다식을 함수적 인터페이스의 익명 구현 객체로 취급한다."></a>자바는 람다식을 함수적 인터페이스의 익명 구현 객체로 취급한다.</h3><ul>
+<li>람다식은 매개변수를 가진 코드블록이다. -&gt; 익명 구현 객체</li>
+<li>어떤 인터페이스를 구현할지는 대입되는 인터페이스에 달려있다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Runnable runnable  = <span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 위의 코드처럼 있다 가정할 때, 익명 구현 객체는 아래 부분에 해당한다.</span></span><br><span class="line"><span class="comment">//  이것과 똑같은 효과를 내게 하는것이 람다식이다.</span></span><br><span class="line"><span class="keyword">new</span> Runnable()&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;...&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="함수적-인터페이스"><a href="#함수적-인터페이스" class="headerlink" title="함수적 인터페이스"></a>함수적 인터페이스</h4><ul>
+<li><p>하나의 추상 메소드로 선언된 인터페이스만 타켓 타입이 될 수 있다</p>
+</li>
+<li><p>@FuntionalInterface 어노테이션</p>
+<ul>
+<li>하나의 추상 메소드만을 가지는지 컴파일러가 체크하도록 한다.</li>
+<li>두 개 이상의 추상 메소드가 선언되어 있으면 컴파일 오류가 발생한다.<h2 id="람다식의-예"><a href="#람다식의-예" class="headerlink" title="람다식의 예"></a>람다식의 예</h2><h3 id="배열의-정렬"><a href="#배열의-정렬" class="headerlink" title="배열의 정렬"></a>배열의 정렬</h3></li>
+</ul>
+</li>
 <li><p>기본 정렬 방식을 이용한 정렬</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String [] strings = &#123;<span class="string">&quot;fast&quot;</span>,<span class="string">&quot;campus&quot;</span>,<span class="string">&quot;java&quot;</span>,<span class="string">&quot;backend&quot;</span>,<span class="string">&quot;choigo&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;people&quot;</span>&#125;;</span><br><span class="line">System.out.println(Arrays.toString(strings));</span><br><span class="line">Arrays.sort(strings);<span class="comment">// 정렬할 수 있다. 사전순으로 Arrays로 정렬하는거 하나 새로 배움</span></span><br><span class="line">System.out.println(Arrays.toString(strings));</span><br></pre></td></tr></table></figure>
 </li>
@@ -913,8 +945,13 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <li>이유는 익명 내부 클래스로 구현을 하면 익명 내부 클래스의 객체가 생성이 되서 this가 그 객체를 가리키지만,<br>람다식은 다르게 객체가 만들어지지 않아 Main의 객체가 만들어진다. </li>
 </ul>
 </li>
-<li>이 부분만 다르고 완전히 똑같다고 생각하면 된다.  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">    String method();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> funtionalMethod(IFoo foo)&#123;</span><br><span class="line">        System.out.println(foo.method());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">        <span class="comment">// 그외에는 둘이 완전히 똑같다고 생각하면된다 this만 다르다고 생각하면 된다.</span></span><br><span class="line">        funtionalMethod(()-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;this&quot;</span>+ <span class="built_in">this</span>); <span class="comment">// 이 this가 왜 main의 객체?</span></span><br><span class="line">            <span class="comment">// 익명클래스와 다르게 람다식은 익명클래스와 달리 클래스가 만들어지지 않는다.</span></span><br><span class="line">            <span class="comment">// 함수형 인터페이스로 동작을 한다.</span></span><br><span class="line">            System.out.println(<span class="string">&quot;OuterClass.this&quot;</span>+Main.<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Lambad expression used.&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">       <span class="comment">// 위 아래 출력 값이 다르다. this의 출력값이 다르다</span></span><br><span class="line">        funtionalMethod(<span class="keyword">new</span> IFoo() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> String method() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;this&quot;</span>+ <span class="built_in">this</span>); <span class="comment">// 익명 클래스의 객체가 this가 된다.</span></span><br><span class="line">                <span class="comment">// 익명클래스를사용할 때 실제로 익명클래스가 만들어지고 사용이되서 넣어진다는게 증명이된다.</span></span><br><span class="line">                System.out.println(<span class="string">&quot;OuterClass.this&quot;</span>+Main.<span class="built_in">this</span>); <span class="comment">//외부 클래스인 Main 객체의 this</span></span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Anonymous local inner class used.&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">new</span> Main().methodA();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>이 부분만 다르고 완전히 똑같다고 생각하면 된다.  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IFoo</span>&#123;</span></span><br><span class="line">    String method();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> funtionalMethod(IFoo foo)&#123;</span><br><span class="line">        System.out.println(foo.method());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> methodA()&#123;</span><br><span class="line">        <span class="comment">// 그외에는 둘이 완전히 똑같다고 생각하면된다 this만 다르다고 생각하면 된다.</span></span><br><span class="line">        funtionalMethod(()-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;this&quot;</span>+ <span class="built_in">this</span>); <span class="comment">// 이 this가 왜 Main의 객체?</span></span><br><span class="line">            <span class="comment">// 익명클래스와 다르게 람다식은 익명클래스와 달리 클래스가 만들어지지 않는다.</span></span><br><span class="line">            <span class="comment">// 함수형 인터페이스로 동작을 한다.</span></span><br><span class="line">            System.out.println(<span class="string">&quot;OuterClass.this&quot;</span>+Main.<span class="built_in">this</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;Lambad expression used.&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">       <span class="comment">// 위 아래 출력 값이 다르다. this의 출력값이 다르다</span></span><br><span class="line">        funtionalMethod(<span class="keyword">new</span> IFoo() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> String method() &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;this&quot;</span>+ <span class="built_in">this</span>); <span class="comment">// 익명 클래스의 객체가 this가 된다.</span></span><br><span class="line">                <span class="comment">// 익명클래스를사용할 때 실제로 익명클래스가 만들어지고 사용이되서 넣어진다는게 증명이된다.</span></span><br><span class="line">                System.out.println(<span class="string">&quot;OuterClass.this&quot;</span>+Main.<span class="built_in">this</span>); <span class="comment">//외부 클래스인 Main 객체의 this</span></span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;Anonymous local inner class used.&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">new</span> Main().methodA();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="표준-함수형-인터페이스"><a href="#표준-함수형-인터페이스" class="headerlink" title="표준 함수형 인터페이스"></a>표준 함수형 인터페이스</h2></li>
+<li>자바 8부터 표준 API로 제공되는 함수형 인터페이스<ul>
+<li>java.util.function 패키지에 포함되어 있다.</li>
+<li>매개타입으로 사용되어 람다식을 매개값으로 대입할 수 있도록 해준다.</li>
+</ul>
+</li>
 <li>자주 사용되는 함수형 인터페이스를 정의해 둔 API</li>
 <li>Consumer, Supplier, Function, Operation, Predicate 계열이 있다.</li>
 </ul>
@@ -1010,10 +1047,14 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <td>void accept(T t, double value)</td>
 </tr>
 </tbody></table>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Consumer&lt;String&gt; consumer = (s)-&gt; System.out.println(s);</span><br><span class="line">        consumer.accept(<span class="string">&quot;A String.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        BiConsumer&lt;String, String&gt; biConsumer = (t,u) -&gt; System.out.println(t+<span class="string">&quot;,&quot;</span>+u);</span><br><span class="line">        biConsumer.accept(<span class="string">&quot;Hello&quot;</span>,<span class="string">&quot;world&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 오토박싱/ 언방식 사용하면 비효율적이다.</span></span><br><span class="line">        Consumer&lt;Integer&gt; integerConsumer = (x) -&gt; System.out.println(x);</span><br><span class="line">        integerConsumer.accept(<span class="number">10</span>); <span class="comment">// 값이 들어갈 땐 오토박싱 출력할 때 언박싱</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 효율적으로 하기 위해서 IntConsumer 제네릭이 아니다 기본형 타입</span></span><br><span class="line">        <span class="comment">// 기본형 입력을 하려고 할 경우, PConsumber (p: primitive type)을 사용 가능.</span></span><br><span class="line">        <span class="comment">// 주의! 오버로딩이 아니고 별도의 인터페이스이다. 최적화를 위해서 불편하더라도 별도로 만들어 놓은 것이다.</span></span><br><span class="line">        IntConsumer intConsumer = (x) -&gt; System.out.println(x);</span><br><span class="line">        intConsumer.accept(<span class="number">5</span>); <span class="comment">// 객체가 아니라 값을 입력을 받는 것이다. 기본자료형이니깐</span></span><br><span class="line">        <span class="comment">//LongConsumer, DoubleConsumer</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// t는 &lt;&gt;안에 값 x는 objIntconsumber의 int의 자료형이 들어간다.</span></span><br><span class="line">        ObjIntConsumer&lt;String&gt; objIntConsumer = (t,x) -&gt; System.out.println(t + <span class="string">&quot;: &quot;</span>+ x);</span><br><span class="line">        objIntConsumer.accept(<span class="string">&quot;x&quot;</span>,<span class="number">1024</span>);</span><br><span class="line">        <span class="comment">// ObjLongConsumer,ObjDoubleConsumer</span></span><br><span class="line">        <span class="comment">// 총 4가지 타입이 있다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Consumer&lt;String&gt; consumer = (s)-&gt; System.out.println(s);</span><br><span class="line">        <span class="comment">// &lt;String&gt;이므로 매개값 s는 String</span></span><br><span class="line">        consumer.accept(<span class="string">&quot;A String.&quot;</span>);</span><br><span class="line"></span><br><span class="line">        BiConsumer&lt;String, String&gt; biConsumer = (t,u) -&gt; System.out.println(t+<span class="string">&quot;,&quot;</span>+u);</span><br><span class="line">        <span class="comment">// &lt;String,String&gt; 이므로 매개값 t와 u는 모두 String 타입</span></span><br><span class="line">        biConsumer.accept(<span class="string">&quot;Hello&quot;</span>,<span class="string">&quot;world&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 오토박싱/ 언방식 사용하면 비효율적이다.</span></span><br><span class="line">        Consumer&lt;Integer&gt; integerConsumer = (x) -&gt; System.out.println(x);</span><br><span class="line">        integerConsumer.accept(<span class="number">10</span>); <span class="comment">// 값이 들어갈 땐 오토박싱 출력할 때 언박싱</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 효율적으로 하기 위해서 IntConsumer 제네릭이 아니다 기본형 타입</span></span><br><span class="line">        <span class="comment">// 기본형 입력을 하려고 할 경우, PConsumber (p: primitive type)을 사용 가능.</span></span><br><span class="line">        <span class="comment">// 주의! 오버로딩이 아니고 별도의 인터페이스이다. 최적화를 위해서 불편하더라도 별도로 만들어 놓은 것이다.</span></span><br><span class="line">        IntConsumer intConsumer = (x) -&gt; System.out.println(x);</span><br><span class="line">        intConsumer.accept(<span class="number">5</span>); <span class="comment">// 객체가 아니라 값을 입력을 받는 것이다. 기본자료형이니깐</span></span><br><span class="line">        <span class="comment">//LongConsumer, DoubleConsumer</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// t는 &lt;&gt;안에 값 x는 objIntconsumber의 int의 자료형이 들어간다.</span></span><br><span class="line">        ObjIntConsumer&lt;String&gt; objIntConsumer = (t,x) -&gt; System.out.println(t + <span class="string">&quot;: &quot;</span>+ x);</span><br><span class="line">        objIntConsumer.accept(<span class="string">&quot;x&quot;</span>,<span class="number">1024</span>);</span><br><span class="line">        <span class="comment">// ObjLongConsumer,ObjDoubleConsumer</span></span><br><span class="line">        <span class="comment">// 총 4가지 타입이 있다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Supplier-계열"><a href="#Supplier-계열" class="headerlink" title="Supplier 계열"></a>Supplier 계열</h4><ul>
 <li>아무런 입력을 받지 않고, 값을 하나 반환하는 함수형 인터페이스이다.</li>
 <li>자료를 ‘공급’하는 공급자 역학을 한다.</li>
+<li>외부로 데이터를 리턴해주는 역할을 한다.<ul>
+<li>getXXX() 메소드 사용</li>
+</ul>
+</li>
 </ul>
 <table>
 <thead>
@@ -1048,6 +1089,10 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <h4 id="Funtion-계열"><a href="#Funtion-계열" class="headerlink" title="Funtion 계열"></a>Funtion 계열</h4><ul>
 <li>Mapping : 입력 -&gt;  출력을 연결하는 함수형 인터페이스</li>
 <li>입력 타입과 출력 타입은 다를 수 있다.(다를 수 있다라는건 같을 수도 있다는 말도 된다.)</li>
+<li>매개값을 리턴값으로 매핑(타입변환)하는 역할을 한다.<ul>
+<li>applyXXXX() 메소드 사용.</li>
+</ul>
+</li>
 </ul>
 <table>
 <thead>
@@ -1082,13 +1127,28 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 </tr>
 </tbody></table>
 <ul>
-<li>P, Q 는 기본 자료형(Primitive Type) : Int, Long, Double</li>
-<li>p, q 는 기본 자료형(Primitive Type) : int, long, double</li>
+<li><p>P, Q 는 기본 자료형(Primitive Type) : Int, Long, Double</p>
+</li>
+<li><p>p, q 는 기본 자료형(Primitive Type) : int, long, double</p>
+</li>
+<li><p>Funtion&lt;Student, String&gt; funtion = t-&gt; {return t.getName()};</p>
+<ul>
+<li>&lt;Student,String&gt;이므로 매개값 t는 Student 타입이고 리턴 값은String 타입이다.</li>
+<li>Student 객체를 String으로 매핑한 예제</li>
+</ul>
+</li>
+<li><p>ToIntFuntion<Student> funtion = t -&gt; {return t.getScore();}</p>
+<ul>
+<li><Student> 이므로 매개값 t는 Student 타입이고 리턴값은 int 타입 고정</li>
+<li>Student 객체를 int로 매핑한 예제 </li>
+</ul>
+</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Function&lt;String,Integer&gt; func = (s) -&gt; s.length();</span><br><span class="line">        <span class="comment">// s 는 String타입, s.length() 는 Integer</span></span><br><span class="line">        System.out.println(func.apply(<span class="string">&quot;Strings&quot;</span>)); <span class="comment">//이것은 apply로 출력한다</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Bi가 붙으면 &#x27;입력&#x27;을 2개 받을 수 있다는 의미이다.</span></span><br><span class="line">        BiFunction&lt;String,String,Integer&gt; biFunction = (s,u) -&gt; s.length() + u.length();</span><br><span class="line">        System.out.println(biFunction.apply(<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>)); <span class="comment">//6</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// IntFunction&lt;R&gt;은 리턴 자료형</span></span><br><span class="line">        <span class="comment">// P type Funtion은 입력을 P타입으로 받는다.</span></span><br><span class="line">        IntFunction&lt;String&gt; intFunction = (value) -&gt; String.valueOf(value);<span class="comment">// &quot;&quot; + value도 가능.</span></span><br><span class="line">        System.out.println(intFunction.apply(<span class="number">512</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//ToP Type Function은 출력을 P타입으로 한다.</span></span><br><span class="line">        ToIntFunction&lt;String&gt; funcFour = (s) -&gt; s.length(); <span class="comment">// 4:21</span></span><br><span class="line">        System.out.println(funcFour.applyAsInt(<span class="string">&quot;abcde&quot;</span>));</span><br><span class="line">        <span class="comment">// 출력이 P타입인 경우에는 AsP가 들어간다.!!!</span></span><br><span class="line">        <span class="comment">//ToIntBiFunction&lt;String,String&gt;// int 출력을 하는 Bi 함수</span></span><br><span class="line">        <span class="comment">// P: Int, Long, Double</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// int 에서 double로 바꾸는 함수 PToQFunction : P -&gt; Q로 매핑하는 함수</span></span><br><span class="line">        IntToDoubleFunction funcfive;</span><br><span class="line">        <span class="comment">// IntToIntFunction은 없다. 동일한 것에 대해서는 다른게 있다 4:23</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Operator-계열"><a href="#Operator-계열" class="headerlink" title="Operator 계열"></a>Operator 계열</h4><ul>
 <li>입력받은 타입과 동일한 타입의 출력을 하는 함수형 인터페이스</li>
 <li>Funtion 계열과 달리 입출력 타입이 다를 수 없다.</li>
+<li>applyXXX() 메소드를 가지고 있고 매개값을 리턴값으로 매핑하는 역할보다는<br>매개값을 이용해서 연산을 수행한 후 동일한 타입으로 리턴값을 제공하는 역할을 한다.</li>
 </ul>
 <table>
 <thead>
@@ -1135,6 +1195,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <h4 id="Predicate-계열"><a href="#Predicate-계열" class="headerlink" title="Predicate 계열"></a>Predicate 계열</h4><ul>
 <li>논리 판단을 해주는 함수형 인터페이스</li>
 <li>입력을 받아서 boolean 타입 출력을 반환한다.</li>
+<li>매개변수와 boolean 리턴값이 있는 testXXX() 메소드를 가지고 있다.</li>
 </ul>
 <table>
 <thead>
@@ -1170,13 +1231,23 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 <li><p>두 개 이상의 함수형 인터페이스를 연결하기 위해서 사용한다.</p>
 <ul>
 <li><p><code>A.andThen(B)</code> : A를 먼저 실행하고 B를 실행, Consumer, Function, Operator 계열의 default method로 구현</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;String&gt; c0 = s -&gt; System.out.println(<span class="string">&quot;c0 :&quot;</span> + s);</span><br><span class="line">Consumer&lt;String&gt; c1 = s -&gt; System.out.println(<span class="string">&quot;c1 :&quot;</span> + s);</span><br><span class="line">Consumer&lt;String&gt; c2 = c0.andThen(c1);</span><br><span class="line">c2.accept(<span class="string">&quot;String&quot;</span>); <span class="comment">//동일한 스트링을 출력한다.</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>A.compose(B)</code> : B를 먼저 실행하고 A를 실행, Function, Operator 계열의 default method로 구현</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function 계열은 입력-&gt;출력 ==&gt; 입력-&gt; 출력 타입이 연쇄 되어야 한다.</span></span><br><span class="line">Function&lt;String, Integer&gt; func1 = s -&gt; s.length();</span><br><span class="line">Function&lt;Integer, Long&gt; func2 = value -&gt; (<span class="keyword">long</span>)value;</span><br><span class="line"><span class="comment">// func1의 입력이 String, 출력이 Integer이니깐, andThen()의 입력은 Integer여야 한다.</span></span><br><span class="line">Function&lt;String,Long&gt; func3 = func1.andThen(func2);</span><br><span class="line">System.out.println(func3.apply(<span class="string">&quot;four&quot;</span>));</span><br><span class="line"></span><br><span class="line">Function&lt;String, Long&gt; func4 = func2.compose(func1);</span><br><span class="line">System.out.println(func4.apply(<span class="string">&quot;four&quot;</span>));</span><br></pre></td></tr></table></figure>
-<h4 id="and-or-negeate-isEqual"><a href="#and-or-negeate-isEqual" class="headerlink" title="and(), or(), negeate(), isEqual()"></a>and(), or(), negeate(), isEqual()</h4></li>
+<li><p>Consumer의 순차적 연결</p>
+<ul>
+<li>Consumer 종류의 함수적 인터페이스는 처리 결과를 리턴하지 않기 때문에<br>andThen()과 compose() 디폴트 메소드는 함수적인터페이스의 호출 순서만 정한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;String&gt; c0 = s -&gt; System.out.println(<span class="string">&quot;c0 :&quot;</span> + s);</span><br><span class="line">Consumer&lt;String&gt; c1 = s -&gt; System.out.println(<span class="string">&quot;c1 :&quot;</span> + s);</span><br><span class="line">Consumer&lt;String&gt; c2 = c0.andThen(c1);</span><br><span class="line">c2.accept(<span class="string">&quot;String&quot;</span>); <span class="comment">//동일한 스트링을 출력한다.</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
+<li><p><code>A.compose(B)</code> : B를 먼저 실행하고 A를 실행, Function, Operator 계열의 default method로 구현</p>
+</li>
+<li><p>Function의 순차적 연결</p>
+<ul>
+<li>Function과 Operator 종류의 함수적 인터페이스는 먼저 실행한 함수적 인터페이스의<br>결과를 다음 함수적 인터페이스의 매객밧으로 넘겨주고, 최종처리결과를 리턴한다.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function 계열은 입력-&gt;출력 ==&gt; 입력-&gt; 출력 타입이 연쇄 되어야 한다.</span></span><br><span class="line">Function&lt;String, Integer&gt; func1 = s -&gt; s.length();</span><br><span class="line">Function&lt;Integer, Long&gt; func2 = value -&gt; (<span class="keyword">long</span>)value;</span><br><span class="line"><span class="comment">// func1의 입력이 String, 출력이 Integer이니깐, andThen()의 입력은 Integer여야 한다.</span></span><br><span class="line">Function&lt;String,Long&gt; func3 = func1.andThen(func2);</span><br><span class="line">System.out.println(func3.apply(<span class="string">&quot;four&quot;</span>));</span><br><span class="line"></span><br><span class="line">Function&lt;String, Long&gt; func4 = func2.compose(func1);</span><br><span class="line">System.out.println(func4.apply(<span class="string">&quot;four&quot;</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="and-or-negeate-isEqual"><a href="#and-or-negeate-isEqual" class="headerlink" title="and(), or(), negeate(), isEqual()"></a>and(), or(), negeate(), isEqual()</h4></li>
 <li><p>Predicate 계열의 기본 메소드</p>
 <ul>
 <li>and(), or(), negate()</li>
@@ -1228,7 +1299,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfqo1s1m002encu24fuadtfu" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckfs5798i002ecgu2h24wa12a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1283,7 +1354,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfqo1s1k002bncu25lps00za" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckfs5798c002acgu2hxkqdhkl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1338,7 +1409,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfqo1s1j0028ncu29ecm6aam" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckfs5798g002bcgu21rm41ckf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1381,7 +1452,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfqo1s1j0029ncu2ara5a8zd" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckfs579880025cgu20r17ef1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1440,7 +1511,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfqo1s1k002ancu21kmsc36g" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckfs5798b0028cgu2e9hv4f4c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1486,7 +1557,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfqo1s1i0026ncu2276if12t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckfs5798a0027cgu2170x0ujd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1535,7 +1606,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfqo1s1b0025ncu26w17c2rh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckfs5798c0029cgu232lg3mxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1618,7 +1689,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfqo1s0h000tncu2262w73bb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfs57970000tcgu259lo04b5" class="article-share-link">Share</a>
       
       
     </footer>
