@@ -16,7 +16,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://limjoonchul.github.io/2020/09/29/image/equals.jpg">
 <meta property="article:published_time" content="2020-09-29T10:43:02.136Z">
-<meta property="article:modified_time" content="2020-09-29T10:43:17.992Z">
+<meta property="article:modified_time" content="2020-10-05T12:45:09.824Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/29/image/equals.jpg">
@@ -132,7 +132,10 @@
 <td>throws CloneNotSupportedException 객체를 복사하여 새로운 객체로 반환한다.</td>
 </tr>
 </tbody></table>
-<h4 id="toString-메소드"><a href="#toString-메소드" class="headerlink" title="toString() 메소드"></a>toString() 메소드</h4><ul>
+<ul>
+<li><p>Object는 객체의 주소값을 이용해서 해시코드를 만들어 반환하기 때문에 서로 다른 두 객체는 같은 해쉬코드를 가질 수 없지만,<br>String은 문자열의 내용이 같으면 같은 해시코드를 반환하도록 hasCode()가 오버라이딩 되어있다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">Object obj1 = obj;</span><br><span class="line">Object obj2 = <span class="keyword">new</span> Object();</span><br><span class="line">System.out.println(obj.getClass()); <span class="comment">// Class 클래스 객체를 반환하게 된다.</span></span><br><span class="line">System.out.println(<span class="string">&quot;obj&quot;</span>+obj.hashCode());</span><br><span class="line">System.out.println(<span class="string">&quot;obj1&quot;</span>+obj1.hashCode());</span><br><span class="line">System.out.println(<span class="string">&quot;obj2 &quot;</span>+obj2.hashCode());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String str1 = <span class="string">&quot;abc&quot;</span>; <span class="comment">// 힙안에 있는 스트링 풀에 들어감</span></span><br><span class="line">String str2 = str1;</span><br><span class="line">String str3 = <span class="string">&quot;abc&quot;</span>; <span class="comment">//이미 들어가있는 스트링풀을 가리킨다. 그래서 동일한 객체가 된다.</span></span><br><span class="line">String str4 = <span class="keyword">new</span> String(<span class="string">&quot;abc&quot;</span>); <span class="comment">// new로 만들경우는 새로운 객체를 명시적으로 생성해줬기 때문에 다르다</span></span><br><span class="line">System.out.println(<span class="string">&quot;str1 &quot;</span>+str1.hashCode()); </span><br><span class="line">System.out.println(<span class="string">&quot;str4 &quot;</span>+str4.hashCode());</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="toString-메소드"><a href="#toString-메소드" class="headerlink" title="toString() 메소드"></a>toString() 메소드</h4></li>
 <li><p>toString()메소드의 원형</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getClass().getName() + <span class="string">&#x27;@&#x27;</span> + Integer.toHexString(hashCode())</span><br></pre></td></tr></table></figure>
 </li>
@@ -201,7 +204,27 @@
 <li>객체의 복사본을 만듦</li>
 <li>기본 틀(prototype)로부터 같은 속성 값을 가진 객체의 복사본을 생성할 수 있음</li>
 <li>객체지향 프로그래밍의 정보은닉에 위배될 가능성이 있으므로 복제할 객체는 cloneable 인터페이스를 명시해야 한다.</li>
-<li>같은 객체를 동일하게 인스턴스 값을 동일하게 해서 만드는 것<h5 id="주의"><a href="#주의" class="headerlink" title="주의"></a>주의</h5></li>
+<li>같은 객체를 동일하게 인스턴스 값을 동일하게 해서 만드는 것</li>
+</ul>
+<h4 id="join-메소드-과-StringJoiner-클래스"><a href="#join-메소드-과-StringJoiner-클래스" class="headerlink" title="join()메소드 과 StringJoiner 클래스"></a>join()메소드 과 StringJoiner 클래스</h4><ul>
+<li><p>join()은 문자열 사이에 구분자를 넣어서 결합한다</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] strArr = &#123;<span class="string">&quot;aaa&quot;</span>,<span class="string">&quot;bbb&quot;</span>,<span class="string">&quot;CCC&quot;</span>&#125;;</span><br><span class="line">String strJoin = String.join(<span class="string">&quot;-&quot;</span>,strArr);</span><br><span class="line">System.out.println(<span class="string">&quot;strJoin &quot;</span>+strJoin);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java.util.StringJoiner 클래스를 사용하여 문자열을 결합한다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">StringJoiner sj = <span class="keyword">new</span> StringJoiner(<span class="string">&quot;,&quot;</span>,<span class="string">&quot;[&quot;</span>,<span class="string">&quot;]&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (String <span class="attr">s :</span> strArr)&#123;</span><br><span class="line">    sj.add(s);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">&quot;String Joiner &quot;</span>+ sj);</span><br></pre></td></tr></table></figure>
+<h4 id="기본형에서-String으로-변환"><a href="#기본형에서-String으로-변환" class="headerlink" title="기본형에서 String으로 변환"></a>기본형에서 String으로 변환</h4></li>
+<li><p>숫자에 빈문자열(“”)을 더하여서 String형으로 변환 시킬 수 있다.</p>
+</li>
+<li><p>valueOf() 메소드를 사용하여 변환 할 수 있다.</p>
+</li>
+<li><p>valueOf()의 반환타입은 int가 아니라 Integer지만 오토박싱에 의해 자동변환</p>
+</li>
+<li><p>valueOf(String s) 는 메소드 내부에 parseInt(String s)를 호출할 뿐이므로,<br>두 메소드는 반환 타입만 다르고 같은 메소드다.</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="number">100</span> + <span class="string">&quot;&quot;</span>; <span class="comment">// 100 &gt; &quot;100&quot;</span></span><br><span class="line">String str2 = String.valueOf(<span class="number">100</span>); <span class="comment">// 100 &gt; &quot;100&quot;</span></span><br><span class="line"><span class="keyword">int</span> i = Integer.parseInt(<span class="string">&quot;100&quot;</span>) <span class="comment">// &quot;100&quot; &gt; 100</span></span><br><span class="line"><span class="keyword">int</span> i2 = Integer.valueOf(<span class="string">&quot;100&quot;</span>) <span class="comment">// &quot;100&quot; &gt; 100</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="주의"><a href="#주의" class="headerlink" title="주의"></a>주의</h5><ul>
 <li>생성자와는 다르다. 생성자는 기본 초기화를 하면서 만드는데 이건 인스턴스의 상태를 그대로 복제하는 것 </li>
 <li>private필드까지 다 복제해올 수 있어서 정보은닉에 위배될 수 있어서 객체 복제를 할 때 cloneable 인터페이스가 명시되어 있어야 한다.</li>
 <li>clone() 메소드를 사용할 때 object 형으로 반환되므로 다운캐스팅을 해줘야한다.</li>
@@ -385,7 +408,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckfs5797e0017cgu29cx0bo0t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckfwj6ob30018x8u2heg9dkc4" class="article-share-link">Share</a>
       
       
     </footer>
