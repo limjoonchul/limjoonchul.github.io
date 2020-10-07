@@ -64,6 +64,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Algorithm/Solution-TwoNumAdd" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/21/Algorithm/Solution-TwoNumAdd/" class="article-date">
+  <time datetime="2020-09-21T12:04:59.053Z" itemprop="datePublished">2020-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/21/Algorithm/Solution-TwoNumAdd/">AlgorithmSolution_TwoNumberAdd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm-두-개-뽑아서-더하기"><a href="#Algorithm-두-개-뽑아서-더하기" class="headerlink" title="Algorithm - 두 개 뽑아서 더하기"></a>Algorithm - <a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/68644">두 개 뽑아서 더하기</a></h1><ul>
+<li>어려운 문제는 아니지만, 그래도 처음으로 문제를 해결했다는 것에 있어서 굉장히 기분이 좋고, 뿌듯하다.</li>
+</ul>
+<h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
+<li>정수 배열 numbers가 주어집니다. </li>
+<li>numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 </li>
+<li>배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.</li>
+</ul>
+<h2 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h2><ul>
+<li>numbers의 길이는 2 이상 100 이하입니다.</li>
+<li>numbers의 모든 수는 0 이상 100 이하입니다.</li>
+</ul>
+<h2 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h2><h3 id="입출력-예-1"><a href="#입출력-예-1" class="headerlink" title="입출력 예 #1"></a>입출력 예 #1</h3><ul>
+<li>2 = 1 + 1 입니다. (1이 numbers에 두 개 있습니다.)</li>
+<li>3 = 2 + 1 입니다.</li>
+<li>4 = 1 + 3 입니다.</li>
+<li>5 = 1 + 4 = 2 + 3 입니다.</li>
+<li>6 = 2 + 4 입니다.</li>
+<li>7 = 3 + 4 입니다.</li>
+<li>따라서 [2,3,4,5,6,7] 을 return 해야 합니다.</li>
+</ul>
+<h3 id="입출력-예-2"><a href="#입출력-예-2" class="headerlink" title="입출력 예 #2"></a>입출력 예 #2</h3><ul>
+<li>2 = 0 + 2 입니다.</li>
+<li>5 = 5 + 0 입니다.</li>
+<li>7 = 0 + 7 = 5 + 2 입니다.</li>
+<li>9 = 2 + 7 입니다.</li>
+<li>12 = 5 + 7 입니다.</li>
+<li>따라서 [2,5,7,9,12] 를 return 해야 합니다.</li>
+</ul>
+<h2 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h2><ul>
+<li>처음에 중복되는 값을 자동으로 없애주기 위해서 HashSet 클래스를 사용했다.</li>
+<li>그런데 테스트 2,3,4,5번이 실패로 떠서 무엇이 문제일까 생각하다 오름차순으로 정렬에 관한 코드를 넣어봐야겠다.</li>
+<li>생각해서 다시 ArrayList를 만들어서 Collections.sort로 정렬하는 코드를 넣었더니 모든 테스트를 통과했다.</li>
+<li>그리고 Comparator 인터페이스를 구현한 클래스를 만들어서 comparaTo 메소드를 재정의 해야하는구나 생각했는데,</li>
+<li>MyCompare클래스 없이도 sort()가 잘 동작이 되었다. 생각해보니 위에 클래스를 만들어 놓고 사용하지 않았으면서 왜 저 코드가 있어야 하지 생각이 들었다.</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이거 없이도 통과됐다!</span></span><br><span class="line"><span class="comment">//class MyCompare implements Comparator&lt;Integer&gt; &#123;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line"><span class="comment">//    public int compare(Integer o1, Integer o2) &#123;</span></span><br><span class="line"><span class="comment">//        return o1.compareTo(o2);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoNumAdd</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] solution(<span class="keyword">int</span>[] numbers) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; answerlist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">     </span><br><span class="line">        <span class="comment">// 모든 더한 값들을 list에 넣어 준다.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;numbers.length; j++)&#123;</span><br><span class="line">                list.add(numbers[i] + numbers[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// 모든 값이 들어가 있는 list의 중복을 없애서 새로운 answerlist에 넣어 준다.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">num :</span> list)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!answerlist.contains(num))&#123;</span><br><span class="line">                answerlist.add(num);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// answerlist을 오름차순으로 정렬</span></span><br><span class="line">        Collections.sort(answerlist);</span><br><span class="line">      </span><br><span class="line">        <span class="comment">// 정렬된 값들을 answer 배열에 넣어준다.</span></span><br><span class="line">        answer = <span class="keyword">new</span> <span class="keyword">int</span>[answerlist.size()];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; answerlist.size(); i++) &#123;</span><br><span class="line">            answer[i] = answerlist.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> [] numbers = &#123;<span class="number">5</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        System.out.println(Arrays.toString(<span class="keyword">new</span> TwoNumAdd().solution(numbers)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>중복을 없애기 위해서 HashSet 클래스를 사용했는데, 테스트 2,3,4,5번이 해결이 안되었다.</li>
+<li>이 방법으로도 구현을 해봤다.</li>
+<li>배운 점 <ul>
+<li>HashSet 클래스를 사용하면 자동 오름차순 정렬이 된다.</li>
+<li>int 형 배열을 return 하는 것인데 메인에서 [0,0,0,0] 이런 형태로 출력해야 할 때<br><code>Arrays.toString()</code> 이걸 사용하면 저런 형태로 출력할 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TwoNumAdd</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] solution(<span class="keyword">int</span>[] numbers) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = &#123;&#125;;</span><br><span class="line">        HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;numbers.length; j++)&#123;</span><br><span class="line">                 hashSet.add(numbers[i] + numbers[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        answer = <span class="keyword">new</span> <span class="keyword">int</span>[hashSet.size()];</span><br><span class="line">        Iterator&lt;Integer&gt; ir = hashSet.iterator();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (ir.hasNext())&#123;</span><br><span class="line">            <span class="keyword">if</span> (i&gt;=answer.length)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            answer[i]=ir.next();</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> [] numbers = &#123;<span class="number">5</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">7</span>&#125;;</span><br><span class="line">        System.out.println(Arrays.toString(<span class="keyword">new</span> TwoNumAdd().solution(numbers)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckfze6ile000t1ku25fljg5ek" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/Subject/Homework05/DomainReverse" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/20/Java/Subject/Homework05/DomainReverse/" class="article-date">
@@ -106,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfwj6obl0023x8u29kgc5ojz" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckfze6io900241ku2ffyed15e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MaxSum/" data-id="ckfwj6obj001yx8u26koc71kz" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MaxSum/" data-id="ckfze6iob00251ku26k1e9gcm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckfwj6obi001xx8u233s16bff" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckfze6io100201ku2144nd55h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -252,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckfwj6obk0020x8u21hl33ot8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckfze6inx001y1ku251do7drw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckfwj6obk0021x8u2hdqzh1o6" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckfze6inz001z1ku229wfbwul" class="article-share-link">Share</a>
       
       
     </footer>
@@ -349,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckfwj6obm0024x8u2evbdhcyk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckfze6io700231ku28k6zht6r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -389,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfwj6obl0022x8u25e2mbove" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckfze6io300211ku230pj70qv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -438,7 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfwj6obm0025x8u25z327dci" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckfze6io500221ku29nt441qo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -551,206 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfwj6oac000nx8u2588zd23r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-Handling_Exception" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" class="article-date">
-  <time datetime="2020-09-16T10:51:43.664Z" itemprop="datePublished">2020-09-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/">Java_Handling_Exception</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="예외-처리-Handling-Exceptions"><a href="#예외-처리-Handling-Exceptions" class="headerlink" title="예외 처리(Handling Exceptions)"></a>예외 처리(Handling Exceptions)</h1><h2 id="오류와-예외"><a href="#오류와-예외" class="headerlink" title="오류와 예외"></a>오류와 예외</h2><ul>
-<li>프로그램이 동작 중에 비정상 종료가 발생하는 상황</li>
-<li>심각도에 따라 오류와 예외로 분류할 수 있음</li>
-</ul>
-<h3 id="오류-Errors"><a href="#오류-Errors" class="headerlink" title="오류(Errors)"></a>오류(Errors)</h3><ul>
-<li>시스템 수준에서 발생하여, 개발자가 조치할 수 없는 수준을 의미한다.</li>
-<li>시스템의 메모리가 부족하거나, 프로그램이 꼬이는 경우, 무한히 메소드 호출이 발생하는 등 프로그램 복구가 불가능한 상황.<ul>
-<li>메모리 부족 현상 - 힙영역 new로 객체를 많이 만들거나, stack을 너무 많이 사용하게 되면 메소드 콜이 너무 많이 누적될 경우<pre><code>      (자기 자신이 무한하게 호출될 수 있어서 ,반복이 많이 발생할 수 있어서 재귀함수를 잘 못 사용하면 메모리 부족이 발생한다.)</code></pre>
-</li>
-<li>스택 영역은 일정 크기만큼 제한이 있고, 힙은 물리적으로 메모리가 크다. 그래서 메모리 부족은 스택 영역에서 주로 발생한다.</li>
-<li>프로그램이 꼬이는 경우 - 메모리 호출이 끝나고 앞에 과정을 찾을 수 없을 수 있다.<br>스택이 터질 경우에 스택 메모리가 손상이 되면서 메소드가 끝나면서 어디 메소드로 돌아가야 하는지 찾기 어려울 수 있다.</li>
-</ul>
-</li>
-<li>프로그램을 진행하기 어려운 상태, 계속했다가 해킹을 할 수 있는 여지가 생긴다. 오류가 발생하면 프로그램을 종료하는게 정상적인 방법이다.<br>소스코드를 보고 버그픽스를 해서 문제를 해결하는 것이 해결 방법이다.</li>
-</ul>
-<h3 id="예외-Exceptions"><a href="#예외-Exceptions" class="headerlink" title="예외(Exceptions)"></a>예외(Exceptions)</h3><ul>
-<li>개발자가 구현한 로직에서 발생한 것으로 개발자가 다른 방식으로 처리가 가능한 것들이다.</li>
-<li>오류에 비해 심각도가 낮으며, 프로그램 정상적인 흐름만 방해하는 경우이다.<ul>
-<li>파일명으로 파일을 읽으려 하는데, 파일을 찾을 수 없을 때,</li>
-<li>네트워크 연결이 유실 (끊겼을 때) 다시 연결 해야할 때 등이다.</li>
-</ul>
-</li>
-<li>문제 상황을 해결하는 로직을 별도로 구성하여 런타임에서 자연스럽게 해결 가능하다.</li>
-</ul>
-<h3 id="예외-처리"><a href="#예외-처리" class="headerlink" title="예외 처리"></a>예외 처리</h3><ul>
-<li>예외가 발생했을 때, 이 상황을 감지하고 해결하기 위한 동작하는 코드</li>
-<li>try ~ catch 구문과 Exception 클래스와 그 자식 클래스를 활용.</li>
-</ul>
-<h4 id="예외처리를-하는-이유"><a href="#예외처리를-하는-이유" class="headerlink" title="예외처리를 하는 이유"></a>예외처리를 하는 이유</h4><ul>
-<li><p>안드로이드나 ios App에 아이디 비밀번호를 써서 로그인할 경우를 가정해서,<br>비밀번호를 입력할 때 비밀번호가 틀려서 튕기는 현상이 발생한다. 또 비밀번호를 써서 로그인 하려고 하는데,<br>또 틀려서 또 튕긴다. 그러다가 로그인을 했는데 컨텐츠서버가 반응이 늦어서 터지게 되서<br>다시 로그인해야하는 이런 상황이 발생할 수 있는데 그래서 예외처리를 해야한다.</p>
-</li>
-<li><p>백엔드에선 서버 Downtime(반응을 할 수 없는 시간을 말함)이 중요하다. 서비스를 서버에 올리면 서비스는 계속 돌아가야 한다.<br>왜냐하면 그래야 외부에서 요청이 들어왔을 때 바로 대답을 해줄 수 있으니깐!<br>서버 재부팅을 할 때 서버 다운타임이 발생한다. 이런 다운타임을 최소화 하는게 중요하다 이런걸 예외처리를 잘하는게 중요한 이유이다.</p>
-</li>
-</ul>
-<h3 id="Throwable-클래스"><a href="#Throwable-클래스" class="headerlink" title="Throwable 클래스"></a>Throwable 클래스</h3><ul>
-<li>Throwable 클래스는 예외 처리의 최상위 클래스이다. Exception 클래스와 Error 클래스는 Throwable 클래스를 상속 받는다.<ul>
-<li>Exception<ul>
-<li>Checked Exceptions : 예외 처리되지 않으면 컴파일이 되지 않는 예외<ul>
-<li>예외 처리가 반드시 되어야 하는 자주 발생하는 예외가 Checked Exception으로 된다.</li>
-</ul>
-</li>
-<li>Unchecked Exceptions : 예외가 처리되지 않아도 컴파일이 되는 예외<ul>
-<li>특별히 문제가 될 것 같다하면 예외를 따로 처리를 해주면 되는 것이다<br>처리 될 수도 있고 안될 수도 있는데 처리 되면 안전한 프로그램이다.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Error : 프로그램이 복구 불가능한 상황</li>
-</ul>
-</li>
-</ul>
-<h3 id="Exception-클래스"><a href="#Exception-클래스" class="headerlink" title="Exception 클래스"></a>Exception 클래스</h3><ul>
-<li><p>Throwable 클래스의 주요 메소드</p>
-<table>
-<thead>
-<tr>
-<th>메소드</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public String getMessage()</td>
-<td>발생한 예외에 대한 메세지를 반환</td>
-</tr>
-<tr>
-<td>public String getLocalizedMessage()</td>
-<td>오버라이드하여 추가 메세지 제공(오버라이드하지 않으면 getMessage()와 동일</td>
-</tr>
-<tr>
-<td>public Throwable getCause()</td>
-<td>예외의 원인이 되는 Throwable 객체 반환</td>
-</tr>
-<tr>
-<td>public void printStackTrace()</td>
-<td>예외가 발생된 메소드가 호출될 때의 Method call stack을 출력</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>printStackTrace()</p>
-<ul>
-<li>프로그램을 실행 하고 예외가 발생 했을 때 무슨 메소드의 몇 번째 줄에 어떤 예외가 발생 했다 라고<br>메세지가 나오고 어떤 메소드 였다면 메소드 내부의 내용을 넣고 어떤 문제가 있다고<br>메소드 콜 스택을 전부다 보여 준다. 스택을 추적을 하는 형식으로 흔적을 다 보여준다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="예외-처리-기법"><a href="#예외-처리-기법" class="headerlink" title="예외 처리 기법"></a>예외 처리 기법</h2><h3 id="try-catch-구문"><a href="#try-catch-구문" class="headerlink" title="try ~ catch 구문"></a>try ~ catch 구문</h3><ul>
-<li><p>try 블럭 : 예외가 발생할 수 있는 코드들을 작성하는 영역이다.</p>
-</li>
-<li><p>catch 블럭 : 예외가 발생할 경우 예외가 어떤 클래스(예외는 클래스이다!)들의 자손인지 확인하고 받을 수 있는지<br>확인하여 받을 수 있으면 받아서 예외처리를 하는 영역이다.</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 예외가 발생할 수 있는 코드 영역</span></span><br><span class="line">    <span class="comment">// 예외 발생 시 예외 객체를 던짐 (throw)</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123; <span class="comment">// 던져진 예외를 받음 (catch)</span></span><br><span class="line">                        <span class="comment">// Exception의 자식 클래스로 지정하여 특정 클래스를 받는다.</span></span><br><span class="line">    <span class="comment">// 예외 상황을 처리하는 코드</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="다중-예외-처리"><a href="#다중-예외-처리" class="headerlink" title="다중 예외 처리"></a>다중 예외 처리</h3><ul>
-<li>여러 개의 catch 구문을 사용하면 다중 예외를 처리할 수 있음.</li>
-<li>if ~ else if 구문처럼, 순차적으로 검사하면서 적용 가능한 예외를 처리</li>
-<li>다형성이 적용되어, 자식 예외를 처리 가능</li>
-<li>Exception 클래스는 모든 예외의 상위 클래스이므로 하위의 예외 클래스들을 먼저 써줘서<br>예외처리 부분을 만들고 마지막에 Exception 클래스를 사용해서 나머지 예외를 처리하도록 구현해야 한다.</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 예외 발생 가능 코드 영역</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (AException e) &#123;</span><br><span class="line">    <span class="comment">// A예외 처리</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (BException e) &#123;</span><br><span class="line">    <span class="comment">// B예외 처리</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (CException e) &#123;</span><br><span class="line">    <span class="comment">// C예외 처리</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    <span class="comment">// 나머지 모든 예외 처리</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="try-catch-finally-구문"><a href="#try-catch-finally-구문" class="headerlink" title="try ~ catch ~finally 구문"></a>try ~ catch ~finally 구문</h3><ul>
-<li>try 구문 실행 중에 어떤 일이 발생해도 반드시 실행되어야 하는 구문은 finally 블록에 작성</li>
-<li>try 구문 내에 return문이 있는 경우에도 finally 블록은 실행됨</li>
-<li>try 구문 내에서 접근한 System 자원을 안전하게 복구하기 위해 사용<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream file = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    file = <span class="keyword">new</span> FileInputStream(fileName);</span><br><span class="line">    file.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;파일처리실패&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (file != <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            file.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;파일인풋스트림 종료 실패&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="finally를-지원하는-이유"><a href="#finally를-지원하는-이유" class="headerlink" title="finally를 지원하는 이유"></a>finally를 지원하는 이유</h4><ul>
-<li><p>try블럭에서 리소스를 할당한 경우라면, fileInputStream은 fileName 파일을 오픈해서 파일을 읽어서 정보를 가져오는 스트림을 생성하는 것이다.<br>스트림은 닫아 주기 전까지 메모리에 남아있다.<br>new로 만든 객체가 생성이 되어서 힙영역에 메모리가 형성되고, gc로 회수되기 전까지 객체는 살아남아있다.</p>
-</li>
-<li><p>이 경우 두가지 문제가 있는데 </p>
-<ul>
-<li>첫째, fileName이라는 파일을 오픈해서 실제로 메모리를 많이 잡아먹을 수 있다.</li>
-<li>둘째, 이 파일의 리소스를 점유해버리는 문제가 생길 수 있다. <ul>
-<li>점유해버린다는 건  프로그램을 계속 실행중인 상태를 말하는 것이다.</li>
-<li>윈도우에서 프로그램을 실행 중일 때 그 파일을 변경하거나 삭제할 수 없는 현상이 발생하는 걸 본 적이 있을 텐데 여기서 그런 문제가 발생할 수 있다.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>try 내에서 파일을 열고 닫고를 다 해버린다는 코드를 작성해 놨지만, try 중간에 에러가 발생하면 닫지 않고 catch로 그냥 넘어갈 수 있다<br>그래서 finally에서 catch로 넘어갔든 안갔든 리소스를 사용하는 객체가 발생하면 그 객체를 검사해서 객체가 리소스를 가지고 있다면 해제를 해준다.</p>
-</li>
-<li><p>이러한 문제 때문에 fianlly를 지원한다.</p>
-</li>
-</ul>
-<h3 id="try-with-resources-구문"><a href="#try-with-resources-구문" class="headerlink" title="try ~ with ~ resources 구문"></a>try ~ with ~ resources 구문</h3><ul>
-<li><p>위의 stream을 열고 닫고 해야하는데 read할 때도 예외처리를 해줬는데 또 close도 예외처리를 해줘야하는 번거로움이 발생한다.<br>이러한 성가신 코드를 쓰지 않기 위해서 추가된 기능</p>
-</li>
-<li><p>Java 1.7에서 추가된 기능</p>
-</li>
-<li><p>AutoClosable 인터페이스를 구현하는 리소스를 자동으로 close 처리</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (FileInputStream file = <span class="keyword">new</span> FileInputStream(fileName)) &#123;</span><br><span class="line">    <span class="comment">// try에 ()하고 뭔가를 써주면 이게 with~ resourses 구문이다.</span></span><br><span class="line">    <span class="comment">// 리소스 할당을 해주는 것이다 </span></span><br><span class="line">    file.read();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;파일처리실패&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="예외-처리-위임"><a href="#예외-처리-위임" class="headerlink" title="예외 처리 위임"></a>예외 처리 위임</h2><h3 id="throws"><a href="#throws" class="headerlink" title="throws"></a>throws</h3></li>
-<li><p>호출한 메소드로 예외 처리를 전달하는 방식. 호출한 메소드는 예외처리를 해줘야 한다.</p>
-</li>
-<li><p>Checked Exception의 경우 throws로 위임 가능하나, 최종적으로 try ~ catch를 만나야 함</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CheckedException</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        Class.forname(<span class="string">&quot;A Class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> methodB() &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            methodA();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>Unchecked Exception의 경우 throws로 위임하지 않아도 자동으로 전달</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UncheckedException</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() &#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">        x = <span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> methodB() &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          methodA();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>메소드를 오버라이드한 경우, 조상 클래스의 메소드보다 조상 예외는 던질 수 없음</p>
-<ul>
-<li>BarThree 클래스는 Foo 클래스를 상속 받고 있는데, BarThree methodA()메소드의 예외는 Foo클래스 methoadA의 예외보다 더 상위예외를 던질 수 없다는 의미이다.</li>
-<li>자식 클래스의 메소드 예외 &lt; 부모 클래스의 메소드 예외<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() <span class="keyword">throws</span> IOException &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarOne</span> <span class="keyword">extends</span> <span class="title">Foo</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() <span class="keyword">throws</span> IOException &#123;&#125; <span class="comment">// possible</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarTwo</span> <span class="keyword">extends</span> <span class="title">Foo</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() <span class="keyword">throws</span> FileNotFoundException &#123;&#125; <span class="comment">// possible</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BarThree</span> <span class="keyword">extends</span> <span class="title">Foo</span>&#123;</span></span><br><span class="line">    <span class="keyword">void</span> methodA() <span class="keyword">throws</span> Exception &#123;&#125; <span class="comment">// *NOT* possible</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h3></li>
-</ul>
-</li>
-<li><p>예외를 발생시키는 키워드</p>
-</li>
-<li><p>new 키워드로 새 Exception 객체를 생성하여 예외 내용을 작성</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> exceptMethod() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">if</span> (Err) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">&quot;Some Error&quot;</span>); <span class="comment">// 예외 발생 및 Message 전달</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>어떤 특정 메소드가 Checked Exception을 발생시킨다면 throws해서 (throws뒤에) Checked Exception을 적어줘야 한다.<br>어떤 상황이 발생했을 때, Exception을 던질 거면  throw를 이용해서 객체를 만들어서 던져줘야한다.<br>Exception은 객체이고 결국 객체를 만들어야한다. new를 이용해서 객체를 만들고 throw 해주면 이 코드가 작성된 메소드에 throws를 했기 때문에<br>메소드를 콜하는 바로 상위 메소드든 그 상위 메소드든 언젠가 메인까지 올라가다보면 Checked Exception이라면<br>try~catch를 만나게 된다. 거기에 catch에 throw해준 예외의 부모 클래스가 있다면 catch를 해서 예외처리를 해줄 것이다.<br>getMessage를 담아서 throw를 해주는 것이다.</p>
-</li>
-</ul>
-<h4 id="throw를-사용하는-상황"><a href="#throw를-사용하는-상황" class="headerlink" title="throw를 사용하는 상황?"></a>throw를 사용하는 상황?</h4><ul>
-<li>throw 는 내가 하고싶을 때 하면된다. 어떤 에러 사항이 있는데 프로그램이 진행이 되다가 throw를 한다는건,<br>이미 구현된 메소드 내부적으로  (빌트인된 쪽에서, 메소드 안에서) Exception이 발생하지 않았는데<br>내가 Exception을 발생시키고 싶으면 throw를 쓸 수 있는 것이다. 내가 판단했을 때 어떤 일이 생기면 Exception이 발생해야하는 상황이다라고 정해줄 수 있다.<br>이럴 때 사용한다.</li>
-</ul>
-<p>*프로그램 작성하는데 비밀번호를 틀린걸 알게 됬는데 이걸 그냥 로직으로 처리할 수 있지만, 비밀번호가 틀린걸 예외로 볼 수 있다.<br> 비밀번호가 틀린상황이 if문 조건에 잡혔을 때 이때 사용자 정의 예외로 해서 throw new  passwordWrongException(“. . .”)를 만들어서 throw해줄 수 있다.<br> 그러면 이 예외가 발생하면 Unchecked Exception이고 <code>try~catch</code>로 처리가 안됬다면 프로그램이 죽을 것이다.<br> 이걸보고 익셉션을 처리해야 하구나 생각한다. 이때 이 메소드를 콜할 때 <code>try~catch</code>를 구현하는 것이다.<br> 패스워드가 틀린경우에 어떻게 해결할 건지 다시 아이디 비밀번호를 입력하게 한다던지의 로직 카운트를 해서<br> 5번틀리면 프로그램을 꺼지게하는 처리를 하는 방식을 catch에 작성하면 된다.</p>
-<h2 id="사용자-정의-예외-Custom-Exceptions"><a href="#사용자-정의-예외-Custom-Exceptions" class="headerlink" title="사용자 정의 예외(Custom Exceptions)"></a>사용자 정의 예외(Custom Exceptions)</h2><ul>
-<li>Exception 또는 RuntimeException 클래스를 상속하여 작성<ul>
-<li>Exception을 상속한 경우 Checked Exception이 되어 반드시 예외를 처리해야 한다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyException</span> <span class="keyword">extends</span> <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">    <span class="keyword">enum</span> ErrorCode &#123;</span><br><span class="line">        ERROR_A, ERROR_B;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ErrorCode errorCode;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyException</span><span class="params">(ErrorCode errorCode, String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(message);</span><br><span class="line">        <span class="keyword">this</span>.errorCode = errorCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getLocalizedMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String message = getMessage();</span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">return</span> localizedMessage;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>throwable 을 상속하는 Exception이 있고, Exception을 상속하는 RuntimeException이 있다. Exception을 상속해서 만드는 예외들은 Checked Exception이다.<br>그래서 Checked Exception을 만들고 싶다면 Exception을 상속하면 되고 Unchecked Exception를 하고 싶으면 RuntimeException을 상속해서 만들면 된다.<br>그러면 Unchecked Exception이 됨. 재밌는건 RuntimeException도 Exception을 상속하고 있다.<br>원리적으로 보면 다 Checked Exception인데 RuntimeException은 Unchecked Exception를 만드는 특수한 Exception이다.</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckfwj6oaz0014x8u24ofaa984" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckfze6iko000l1ku24h2ng2oy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -783,7 +667,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -794,6 +678,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/">Java_Java-lang Package</a>
@@ -809,10 +697,6 @@
         
           <li>
             <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
           </li>
         
       </ul>
