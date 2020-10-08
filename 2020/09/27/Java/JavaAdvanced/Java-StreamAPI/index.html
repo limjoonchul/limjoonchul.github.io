@@ -15,7 +15,7 @@
 <meta property="og:description" content="스트림 API(Stream API) 여기서 말하는 스트림과 나중에 자바 io에서 말하는 스트림은 다른 것이다. 여기서의 스트림은 자료의 연산을 위해서 사용하는 객체를 말한다. 자바 io에서의 스트림은 입출력을 위한 스트림이다.스트림 API   Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-27T12:41:16.159Z">
-<meta property="article:modified_time" content="2020-10-07T00:38:14.965Z">
+<meta property="article:modified_time" content="2020-10-08T10:56:09.989Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -121,13 +121,13 @@
 <li>매개값으로 람다식 또는 메소드 참조를 대입할 수 있다.<br>(함수적 인터페이스 매개타입을 가지기 때문에 람다식,메소드 참조로 매개값을 제공할 수 있음)</li>
 </ul>
 <h4 id="7-내부-반복자를-사용하므로-병렬-처리가-쉽다"><a href="#7-내부-반복자를-사용하므로-병렬-처리가-쉽다" class="headerlink" title="7. 내부 반복자를 사용하므로 병렬 처리가 쉽다."></a>7. 내부 반복자를 사용하므로 병렬 처리가 쉽다.</h4><ul>
-<li><p>외부 반복자 - 개발자가 코드로 직접 컬렉션 요소를 반복해서 요청하고 가져오는 코드패턴<br>(Iterator를 생각하면 될 것 같다. Iterator을 사용해서 반복문을 구현해서 하나씩 값을 출력하게<br>코드를 구현해야 하는 것을 말하는 거서 같다.)</p>
+<li><p>외부 반복자 - 개발자가 코드로 직접 컬렉션 요소를 반복해서 요청하고 가져오는 코드패턴<br>(Iterator를 생각하면 될 것 같다. Iterator을 사용해서 반복문을 구현해서 하나씩 값을 출력하게<br>코드를 구현해야 하는 것을 말하는 것 같다.)</p>
 </li>
 <li><p>내부 반복자 - 컬렉션 내부에서 요소들을 반복시키고 개발자는 요소당 처리해야할 코드만<br> 제공하는 코드 패턴(forEach메소드 처럼 내부가 어떻게 구현되어있는지 모르지만 이것을 사용하면<br>요소들 하나씩 가져오라는 코드가 없지만 알아서 반복해서  반환시켜 처리해준다. 이런 것을 의미하는 것 같다)</p>
 </li>
-<li><p>내부 반복자의 이점 - 개발자는 요소 처리 코드에만 집중, 멀티 코어 cpu를 활용하기 위해<br>요소들을 분배시켜 병렬 처리 작업을  수 있다.</p>
+<li><p>내부 반복자의 이점 - 개발자는 요소 처리 코드에만 집중, 멀티 코어 cpu를 활용하기 위해 요소들을 분배시켜 병렬 처리 작업을 수 있다.</p>
 <ul>
-<li>컬렉션의 요소가 많을 경우에 요소를 나눠서 별도의 스트림으로 만들어서 각각의 코어에서<br>병렬적으로 처리할 수 있다.</li>
+<li>컬렉션의 요소가 많을 경우에 요소를 나눠서 별도의 스트림으로 만들어서 각각의 코어에서 병렬적으로 처리할 수 있다.</li>
 </ul>
 </li>
 </ul>
@@ -318,11 +318,11 @@
 
 <h4 id="매핑"><a href="#매핑" class="headerlink" title="매핑"></a>매핑</h4><h5 id="Function-인터페이스를-이용해-요소의-값을-변환한다"><a href="#Function-인터페이스를-이용해-요소의-값을-변환한다" class="headerlink" title="Function 인터페이스를 이용해 요소의 값을 변환한다."></a>Function 인터페이스를 이용해 요소의 값을 변환한다.</h5><ul>
 <li>map 계열 - 입력 1 : 1 출력<ul>
-<li><code>&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper)</code> : 기존 스트림의 T 타입 요소를 R 타입으로 변환하여 새로운 스트림 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function 계열의 인터페이스를 사용하여 스트림의 각 요소를 매핑</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line"><span class="comment">// Function 계열로 string -&gt; integer 로 변환하는 매핑 Function&lt;String,Intger&gt;와 같은 형식을 람다식에 넣어준 것이다.</span></span><br><span class="line">Stream&lt;Integer&gt; stream2 = stringStream.map(s-&gt;s.length()) ;<span class="comment">//입력은 string 출력은 원하는대로 할수 있다</span></span><br><span class="line">stream2.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+<li><code>&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper)</code> : 기존 스트림의 T 타입 요소를 R 타입으로 변환하여 새로운 스트림 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function 계열의 인터페이스를 사용하여 스트림의 각 요소를 매핑(Operator 계열도 사용)</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line"><span class="comment">// Function 계열로 string -&gt; integer 로 변환하는 매핑 Function&lt;String,Intger&gt;와 같은 형식을 람다식에 넣어준 것이다.</span></span><br><span class="line">Stream&lt;Integer&gt; stream2 = stringStream.map(s-&gt;s.length()) ;<span class="comment">//입력은 string 출력은 원하는대로 할수 있다</span></span><br><span class="line">stream2.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
 <li><code>PStream mapToP(ToPFunction&lt;? super T&gt; mapper)</code> : R(return)이 기본형 타입으로 제한된 map()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PStream (기본형 타입의 스트림)은 Operator 계열로 처리(자료형 반환x)</span></span><br><span class="line"><span class="comment">// 입출력 값이 똑같기 때문에</span></span><br><span class="line">IntStream intStream3 = IntStream.of(<span class="number">5</span>,<span class="number">2</span>,<span class="number">30</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">-34</span>);</span><br><span class="line">IntStream intStream4 = intStream3.map(value -&gt; value * <span class="number">10</span>); <span class="comment">// 형 변환이 되지 않고 입력이 출력이 된다.</span></span><br><span class="line">intStream4.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>flatMap 계열 - 입력 1 : n 출력(스트림 형태로 출력한다.)<ul>
+<li>flatMap 계열 - 입력 1 : n 출력(스트림 형태로 출력한다.)(Function 계열만 사용)<ul>
 <li><code>&lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T, ? extends Stream&lt;? extends R&gt;&gt; mapper)</code> : 스트림의 T 타입 요소가 n개의 R 타입 요소로 매핑된 새로운 스트림을 반환</li>
 <li><code>PStream flatMapToP(Function&lt;? super T, ? extends PStream&gt; mapper)</code> : R이 기본형 타입으로 제한된 flatMap()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// s.split(&quot;&quot;) : &quot;java&quot; -&gt; &#123;&quot;j&quot;,&quot;a&quot;,&quot;v&quot;,&quot;a&quot;&#125;</span></span><br><span class="line">List&lt;String&gt; list2 = Arrays.asList(<span class="string">&quot;java&quot;</span>,<span class="string">&quot;backend&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;course&quot;</span>);</span><br><span class="line">list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).forEach(System.<span class="attr">out:</span>:println); <span class="comment">//foreach를 사용하면 스트림이 끝나게 된다.</span></span><br></pre></td></tr></table></figure>
 <h4 id="조회"><a href="#조회" class="headerlink" title="조회"></a>조회</h4><h5 id="스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다"><a href="#스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다" class="headerlink" title="스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다."></a>스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다.</h5></li>
@@ -363,17 +363,21 @@
 <td>findFirst(), findAny()</td>
 </tr>
 </tbody></table>
-<h4 id="루핑"><a href="#루핑" class="headerlink" title="루핑"></a>루핑</h4><ul>
-<li>forEach() - 요소들을 계속해서 반복해서 가져와라라는 의미이다.<ul>
+<h4 id="루핑"><a href="#루핑" class="headerlink" title="루핑"></a>루핑</h4><h5 id="forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비"><a href="#forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비" class="headerlink" title="forEach() 메소드로 스트림 요소를 순차적으로 Consumer를 이용해 소비"></a>forEach() 메소드로 스트림 요소를 순차적으로 Consumer<T>를 이용해 소비</h5><ul>
+<li><p>forEach() - 요소들을 계속해서 반복해서 가져와라라는 의미이다.</p>
+<ul>
 <li><code>stream.forEach(name -&gt; System.out.println(name))</code>으로 되어있을 때<br>스트림에 가져온 요소를 name에 넣어서 하나씩 출력되게 하는 것이다.</li>
 <li>매개값의 형태는 Consumer 함수형 인터페이스 타입을 갖는다.</li>
 </ul>
 </li>
-</ul>
-<h4 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h4><h5 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h5><ul>
-<li>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</li>
-<li>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</li>
-<li>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</li>
+<li><p><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비  </p>
+<h4 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h4><h5 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h5></li>
+<li><p>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</p>
+</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.allMatch(s -&gt; s.equals(<span class="string">&quot;abc&quot;</span>))); <span class="comment">//false</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.anyMatch(s -&gt; s.equals(<span class="string">&quot;cde&quot;</span>))); <span class="comment">//true</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.noneMatch(s -&gt; s.equals(<span class="string">&quot;abcde&quot;</span>)));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
@@ -405,12 +409,13 @@
 <li><code>public void ifPresent(Consumer&lt;? super T&gt; consumer)</code> : Optional 값이 null이 아닐 경우 consumer를 이용해 소비한다.</li>
 <li><code>public T orElse(T other)</code> : Optional의 값이 null일 경우 other를 반환한다.</li>
 <li><code>public T orElseGet(Supplier&lt;? extends T&gt; other)</code> : Optional의 값이 null일 경우 Supplier를 통해 공급받은 값을 반환한다.</li>
-<li><code>public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code> : Optional의 값이 null일 경우 exceptionSupplier에서 공급받은 예외를 throw<h4 id="반복"><a href="#반복" class="headerlink" title="반복"></a>반복</h4><h5 id="forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비"><a href="#forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비" class="headerlink" title="forEach() 메소드로 스트림 요소를 순차적으로 Consumer를 이용해 소비"></a>forEach() 메소드로 스트림 요소를 순차적으로 Consumer<T>를 이용해 소비</h5></li>
+<li><code>public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code> : Optional의 값이 null일 경우 exceptionSupplier에서 공급받은 예외를 throw</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비<h4 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h4><h5 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h5></li>
+</ul>
+<h4 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h4><h5 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h5><ul>
 <li><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</li>
 <li><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환</li>
 </ul>
@@ -428,11 +433,12 @@
 </li>
 <li><p>collect()메소드</p>
 <ul>
-<li><code>&lt;R,A&gt; R collect(Collector&lt;? super T,A,R) collector)</code> : collector를 이용해 새로운 Collection R에 담아 반환<ul>
+<li><p><code>&lt;R,A&gt; R collect(Collector&lt;? super T,A,R) collector)</code> : collector를 이용해 새로운 Collection R에 담아 반환</p>
+<ul>
 <li>Collectors의 정적 메소드 : toList(), toSet(), toCollection(), toMap(), toConcurrentMap()</li>
 </ul>
 </li>
-<li><code>&lt;R, A&gt; R collect(Supplier&lt;R&gt; supplier, BiConsumer&lt;R, ? super T&gt; accumulator, BiConsumer&lt;R, R&gt; combiner)</code><br>: supplier를 통해 공급된 컨테이너 R에 accumulator를 이용해 T값을 저장. 병렬처리 스트림에 사용될 경우 combiner를 이용해 스레드별 컨테이너 R을 통합</li>
+<li><dl><dt><code>&lt;R, A&gt; R collect(Supplier&lt;R&gt; supplier, BiConsumer&lt;R, ? super T&gt; accumulator, BiConsumer&lt;R, R&gt; combiner)</code></dt><dd>supplier를 통해 공급된 컨테이너 R에 accumulator를 이용해 T값을 저장. 병렬처리 스트림에 사용될 경우 combiner를 이용해 스레드별 컨테이너 R을 통합</dd></dl></li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Is&quot;</span>, <span class="string">&quot;Fun&quot;</span>, <span class="string">&quot;Isn&#x27;t&quot;</span>, <span class="string">&quot;It&quot;</span>, <span class="string">&quot;?&quot;</span>&#125;;</span><br><span class="line">List&lt;String&gt; list = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toList()); <span class="comment">// ArrayList</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(LinkedList::new))</span></span><br><span class="line">System.out.println(list.getClass().getName() + <span class="string">&quot;:&quot;</span> + list);</span><br><span class="line">  </span><br><span class="line">Set&lt;String&gt; set = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toSet()); <span class="comment">// HashSet</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(HashSet::new))</span></span><br><span class="line">System.out.println(set.getClass().getName() + <span class="string">&quot;:&quot;</span> + set);</span><br><span class="line"></span><br><span class="line">Map&lt;String, Integer&gt; map = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toMap(s -&gt; s, <span class="attr">String:</span>:length)); <span class="comment">// HashMap</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(s -&gt; s, String::length, (oldVal, newVal) -&gt; newVal, TreeMap::new))</span></span><br><span class="line">System.out.println(map.getClass().getName() + map);</span><br></pre></td></tr></table></figure></li>
 <li><p>Collectors의 정적 메소드를 이용한 그룹화와 분리</p>
@@ -537,7 +543,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckfze6ipe002g1ku2head78ha" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckg0trlk9002gesu2ajn25vkc" class="article-share-link">Share</a>
       
       
     </footer>
