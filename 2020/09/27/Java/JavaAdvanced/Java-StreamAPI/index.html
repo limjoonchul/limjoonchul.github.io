@@ -15,7 +15,7 @@
 <meta property="og:description" content="스트림 API(Stream API) 여기서 말하는 스트림과 나중에 자바 io에서 말하는 스트림은 다른 것이다. 여기서의 스트림은 자료의 연산을 위해서 사용하는 객체를 말한다. 자바 io에서의 스트림은 입출력을 위한 스트림이다.스트림 API   Java 8에서 추가된 Java.util.stream 패키지 컬렉션의 요소를 람다식으로 처리할 수 있도록 하는 함수">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-27T12:41:16.159Z">
-<meta property="article:modified_time" content="2020-10-08T10:56:09.989Z">
+<meta property="article:modified_time" content="2020-10-09T12:40:49.022Z">
 <meta property="article:author" content="Facamp lim">
 <meta name="twitter:card" content="summary">
   
@@ -123,7 +123,7 @@
 <h4 id="7-내부-반복자를-사용하므로-병렬-처리가-쉽다"><a href="#7-내부-반복자를-사용하므로-병렬-처리가-쉽다" class="headerlink" title="7. 내부 반복자를 사용하므로 병렬 처리가 쉽다."></a>7. 내부 반복자를 사용하므로 병렬 처리가 쉽다.</h4><ul>
 <li><p>외부 반복자 - 개발자가 코드로 직접 컬렉션 요소를 반복해서 요청하고 가져오는 코드패턴<br>(Iterator를 생각하면 될 것 같다. Iterator을 사용해서 반복문을 구현해서 하나씩 값을 출력하게<br>코드를 구현해야 하는 것을 말하는 것 같다.)</p>
 </li>
-<li><p>내부 반복자 - 컬렉션 내부에서 요소들을 반복시키고 개발자는 요소당 처리해야할 코드만<br> 제공하는 코드 패턴(forEach메소드 처럼 내부가 어떻게 구현되어있는지 모르지만 이것을 사용하면<br>요소들 하나씩 가져오라는 코드가 없지만 알아서 반복해서  반환시켜 처리해준다. 이런 것을 의미하는 것 같다)</p>
+<li><p>내부 반복자 - 컬렉션 내부에서 요소들을 반복시키고 개발자는 요소당 처리해야할 코드만 제공하는 코드 패턴<br> (forEach메소드 처럼 내부가 어떻게 구현되어있는지 모르지만 이것을 사용하면 요소들 하나씩 가져오라는 코드가 없지만<br> 알아서 반복해서  반환시켜 처리해준다. 이런 것을 의미하는 것 같다)</p>
 </li>
 <li><p>내부 반복자의 이점 - 개발자는 요소 처리 코드에만 집중, 멀티 코어 cpu를 활용하기 위해 요소들을 분배시켜 병렬 처리 작업을 수 있다.</p>
 <ul>
@@ -364,50 +364,138 @@
 </tr>
 </tbody></table>
 <h4 id="루핑"><a href="#루핑" class="headerlink" title="루핑"></a>루핑</h4><h5 id="forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비"><a href="#forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비" class="headerlink" title="forEach() 메소드로 스트림 요소를 순차적으로 Consumer를 이용해 소비"></a>forEach() 메소드로 스트림 요소를 순차적으로 Consumer<T>를 이용해 소비</h5><ul>
-<li><p>forEach() - 요소들을 계속해서 반복해서 가져와라라는 의미이다.</p>
-<ul>
+<li>forEach() - 요소들을 계속해서 반복해서 가져와라라는 의미이다.<ul>
 <li><code>stream.forEach(name -&gt; System.out.println(name))</code>으로 되어있을 때<br>스트림에 가져온 요소를 name에 넣어서 하나씩 출력되게 하는 것이다.</li>
 <li>매개값의 형태는 Consumer 함수형 인터페이스 타입을 갖는다.</li>
 </ul>
 </li>
-<li><p><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비  </p>
-<h4 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h4><h5 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h5></li>
-<li><p>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</p>
-</li>
-<li><p>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</p>
-</li>
-<li><p>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</p>
-</li>
+<li><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비  </li>
+</ul>
+<h4 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h4><h5 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h5><ul>
+<li>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</li>
+<li>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</li>
+<li>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.allMatch(s -&gt; s.equals(<span class="string">&quot;abc&quot;</span>))); <span class="comment">//false</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.anyMatch(s -&gt; s.equals(<span class="string">&quot;cde&quot;</span>))); <span class="comment">//true</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.noneMatch(s -&gt; s.equals(<span class="string">&quot;abcde&quot;</span>)));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="집계-통계"><a href="#집계-통계" class="headerlink" title="집계 (통계)"></a>집계 (통계)</h4><ul>
-<li>기본 집계 메소드<ul>
+<li><p>최종 처리 기능</p>
+<ul>
+<li>카운팅, 합계, 평균값, 최대값, 최소값 등과 같이 하나의 값으로 산출한다.</li>
+<li>대량의 데이터를 가공해서 축소하는 리덕션이라고 볼 수 있다.</li>
+</ul>
+</li>
+<li><p>기본 집계 메소드</p>
+<ul>
 <li>기본형 스트림의 통계 : count(), sum(), average(), min(), max()</li>
 <li>T 타입 스트림의 통계 : count(), min(), max() (min, max의 경우 Comparator 필요)</li>
 </ul>
 </li>
-<li>reduce() 메소드 : 사용자 정의 집계 메소드<ul>
+<li><p>reduce() 메소드 : 사용자 정의 집계 메소드</p>
+<ul>
+<li>모든 자료형에서 사용할 수 있는 집계 메소드이다!</li>
+<li>개발자가 프로그램화해서 다양한 집계(리덕션) 결과물을 만들 수 있다.</li>
+<li>특정한 값을 집계 할 수 있게 하기 위해서 reduce를 제공한다.</li>
 <li><code>Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator)</code> : accumulator를 수행하고 Optional<T> 타입 반환</li>
 <li><code>T reduce(T identity, BinaryOperator&lt;T&gt; accumulator)</code> : identity를 초기값으로 하여, accumulator를 이용해 집계 연산</li>
 <li><code>&lt;U&gt; U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator&lt;U&gt; combiner)</code> : combiner를 이용해 병렬 스트림 결합</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>인터페이스</th>
+<th>리턴 타입</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Stream</td>
+<td>Optional<T></td>
+<td>reduce(BinaryOperator<T> accumulator</td>
+</tr>
+<tr>
+<td></td>
+<td>T</td>
+<td>reduce(T identitiy, BianryOperator<T> accmulator)</td>
+</tr>
+<tr>
+<td>IntStream</td>
+<td>OptionalInt</td>
+<td>reduce(IntBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>int</td>
+<td>reduce(int indentity, IntBinaryOperator  op)</td>
+</tr>
+<tr>
+<td>LongStream</td>
+<td>OptionalLong</td>
+<td>reduce(LongBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>long</td>
+<td>reduce(long indentity, LongBinaryOperator  op)</td>
+</tr>
+<tr>
+<td>DoubleStream</td>
+<td>OptionalDouble</td>
+<td>reduce(DoubleBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>double</td>
+<td>reduce(double indentitiy, DoubleBinaryOperator  op)</td>
+</tr>
+</tbody></table>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> avg = list.stream()</span><br><span class="line">        .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">        .average()</span><br><span class="line">        .getAsDouble();</span><br><span class="line">System.out.println(avg); <span class="comment">//NotSuchElementException</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">// isPresent()</span></span><br><span class="line">OptionalDouble optionalDouble = list.stream()</span><br><span class="line">        .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">        .averag</span><br><span class="line"><span class="keyword">if</span> (optionalDouble.isPresent())&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;값이 있는 경우 : &quot;</span> + optionalDouble.getAsDouble());</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;방법 1-값이 없는 경우 : &quot;</span> + <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// orElse()</span></span><br><span class="line"><span class="keyword">double</span> avg = list.stream()</span><br><span class="line">        .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">        .average()</span><br><span class="line">        .orElse(<span class="number">0.0</span>;</span><br><span class="line">System.out.println(<span class="string">&quot;방법 2 : &quot;</span> + avg);</span><br><span class="line">  </span><br><span class="line"><span class="comment">// ifPresent()</span></span><br><span class="line">list.add(<span class="number">2</span>);</span><br><span class="line">list.add(<span class="number">4</span>);</span><br><span class="line">list.stream()</span><br><span class="line">        .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">        .average()</span><br><span class="line">        .ifPresent(i-&gt; System.out.println(<span class="string">&quot;방법 3 : &quot;</span>+ i));</span><br><span class="line"><span class="comment">// 값이 없을 경우 false가 되서 종료가 된다. consumer로 했기 때문에 바로 값 출력</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>reduce(BinaryOperator<T> accumulator </p>
+<ul>
+<li>이건 연산의 결과가 없으면 예외가 발생한다. NotSuchElementException 요소가 있어야 동작한다.</li>
+</ul>
+</li>
+<li><p>reduce(T identitiy, BianryOperator<T> accmulator) </p>
+<ul>
+<li>연산의 결과가 없다면, 디폴트로 identity 사용  요소가 없어도 동작한다.</li>
+<li>연산의 결과가 없는 것은 요소가 없는 것이다. 그래서 연산의 결과로 디폴트 값으로 identity를 하는 것이다.</li>
+</ul>
+</li>
+<li><p>매개변수</p>
+<ul>
+<li>XXXBinaryOperator : 두 개의 매개 값을 받아 연산 후 리턴하는 함수적 인터페이스</li>
+<li>identity : 스트림에 요소가 전혀 없을 경우 리턴될 디폴트 값   <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>java.util.Optional&lt;T&gt;</code></p>
 <ul>
-<li><code>java.util.Optional&lt;T&gt;</code><ul>
-<li>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</li>
-<li>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성<ul>
+<li><p>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</p>
+</li>
+<li><p>자바 8부터 추가된 값을 저장하는 값 기반 클래스</p>
+</li>
+<li><p>java.util 패키지의 Optional, OptionalDouble, OptionalInt, OptionLong 클래스를 말한다.</p>
+</li>
+<li><p>집계 메소드의 리턴 타입으로 사용되어 집계 값을 가지고 있다. 이게 핵심이다!!</p>
+</li>
+<li><p>저장된 값을 얻으려면 get(), getAsDouble(), getAsInt(), getAsLong()를 호출한다. </p>
+</li>
+<li><p>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성</p>
+<ul>
 <li><code>public static &lt;T&gt; Optional&lt;T&gt; of(T value)</code> : value가 null인 경우 NullPointerException을 발생시키는 Wrapping 메소드</li>
 <li><code>public static &lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</code> : value가 null인 경우 empty()의 결과를 리턴하는 Wrapping 메소드</li>
 <li><code>public static &lt;T&gt; Optional&lt;T&gt; empty()</code> : 값이 비어있는 Optional 객체를 리턴</li>
 </ul>
 </li>
-<li>Optional 객체를 처리하는 메소드<ul>
+<li><p>Optional 객체를 처리하는 메소드</p>
+<ul>
 <li><code>public T get()</code> : Optional의 값을 리턴하며, null일 경우 NullPointerException 발생</li>
-<li><code>public void ifPresent(Consumer&lt;? super T&gt; consumer)</code> : Optional 값이 null이 아닐 경우 consumer를 이용해 소비한다.</li>
-<li><code>public T orElse(T other)</code> : Optional의 값이 null일 경우 other를 반환한다.</li>
+<li><code>public void ifPresent(Consumer&lt;? super T&gt; consumer)</code> : Optional 값이 null이 아닐 경우 consumer를 이용해 소비한다, 값이 저장되어 있지 않을 경우 디폴트 값(매개변수가 디폴트 값이 된다)<ul>
+<li>consumer로 집계 값을 받아서 처리하는 코드를 람다식으로 작성한다</li>
+</ul>
+</li>
+<li><code>public T orElse(T other)</code> : Optional의 값이 null일 경우 other를 반환한다, 값이 저장되어 있을 경우 Consumer 에서 처리</li>
 <li><code>public T orElseGet(Supplier&lt;? extends T&gt; other)</code> : Optional의 값이 null일 경우 Supplier를 통해 공급받은 값을 반환한다.</li>
 <li><code>public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code> : Optional의 값이 null일 경우 exceptionSupplier에서 공급받은 예외를 throw</li>
 </ul>
@@ -417,28 +505,94 @@
 </ul>
 <h4 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h4><h5 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h5><ul>
 <li><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</li>
-<li><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환</li>
+<li><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환 (병렬 스트림일 때 사용한다.)</li>
 </ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> firstValue = Arrays.stream(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;)</span><br><span class="line">                .filter(n -&gt; n%<span class="number">3</span> ==<span class="number">0</span>)</span><br><span class="line">                .findFirst()</span><br><span class="line">                .getAsInt();</span><br></pre></td></tr></table></figure>
+
 <h4 id="수집"><a href="#수집" class="headerlink" title="수집"></a>수집</h4><h5 id="필요한-요소를-수집하여-새로운-Collection으로-구성하여-반환하는-메소드"><a href="#필요한-요소를-수집하여-새로운-Collection으로-구성하여-반환하는-메소드" class="headerlink" title="필요한 요소를 수집하여 새로운 Collection으로 구성하여 반환하는 메소드"></a>필요한 요소를 수집하여 새로운 Collection으로 구성하여 반환하는 메소드</h5><ul>
-<li><p>Stream API는  JCF-&gt; STREAM -&gt; 처리 -&gt; 결과</p>
+<li>최종 처리 기능으로 요소들을 수집 또는 그룹핑한다.<ul>
+<li>필터링 또는 매핑된 요소들로 최종적으로 얻은요소들로 새로운 컬렉션 생성하는 것.</li>
+<li>요소들을 그룹핑하고, 집계를 할 수 있다. </li>
+</ul>
 </li>
-<li><p>결과가 출력일 수도 있고 값일 수도 있고, 다시 컬렉션으로 만들고 싶을 수 있다.</p>
-</li>
-<li><p>요소가 여러개 있는 프레임워크 혹은 Arrays에서 스트림을 생성한 다음에 스트림에서 중간 처리를 쭉쭉한 다음에 마지막에 출력이나 값을 낼 수 있지만<br>다음 중 3가지중 하나의 조건은 꼭 선택해야 한다.</p>
-<ul>
+<li>Stream API는  JCF-&gt; STREAM -&gt; 처리 -&gt; 결과</li>
+<li>결과가 출력일 수도 있고 값일 수도 있고, 다시 컬렉션으로 만들고 싶을 수 있다.</li>
+<li>요소가 여러개 있는 프레임워크 혹은 Arrays에서 스트림을 생성한 다음에 스트림에서 중간 처리를 쭉쭉한 다음에 마지막에 출력이나 값을 낼 수 있지만<br>다음 중 3가지중 하나의 조건은 꼭 선택해야 한다.<ul>
 <li>조건1. foreach()를 사용하거나</li>
 <li>조건2. 특정한 값을 리턴을 받거나(reduce())</li>
 <li>조건3. count,min,max 스트림을 간추려서 통계를 낼 수 있는 값들을 가져오던지 다시 컬렉션으로 만들어 주던지 해야한다.</li>
 </ul>
 </li>
+</ul>
+<h5 id="보통-수집을-하기-위해서-필터링을-한다"><a href="#보통-수집을-하기-위해서-필터링을-한다" class="headerlink" title="보통 수집을 하기 위해서 필터링을 한다."></a>보통 수집을 하기 위해서 필터링을 한다.</h5><ul>
+<li><p>스트림에서 필요한 요소만 필터링해서 별도의 컬렉션으로 만든다</p>
+</li>
+<li><p>collect라는 메소드 사용 collect(Collector &lt;T,A,R&gt; collector)</p>
+</li>
+<li><p>collect가  요소를 어떤 컬렉션에 수집할 것인지를 결정한다.</p>
+</li>
 <li><p>collect()메소드</p>
 <ul>
 <li><p><code>&lt;R,A&gt; R collect(Collector&lt;? super T,A,R) collector)</code> : collector를 이용해 새로운 Collection R에 담아 반환</p>
 <ul>
-<li>Collectors의 정적 메소드 : toList(), toSet(), toCollection(), toMap(), toConcurrentMap()</li>
+<li>Collectors의 <code>정적 메소드</code> : toList(), toSet(), toCollection(), toMap(), toConcurrentMap()</li>
 </ul>
 </li>
 <li><dl><dt><code>&lt;R, A&gt; R collect(Supplier&lt;R&gt; supplier, BiConsumer&lt;R, ? super T&gt; accumulator, BiConsumer&lt;R, R&gt; combiner)</code></dt><dd>supplier를 통해 공급된 컨테이너 R에 accumulator를 이용해 T값을 저장. 병렬처리 스트림에 사용될 경우 combiner를 이용해 스레드별 컨테이너 R을 통합</dd></dl></li>
+</ul>
+</li>
+<li><p>Collector의 타입 파라미터</p>
+<ul>
+<li>T : 요소                                </li>
+<li>A : 누적기(accumulator) 요소를 컬렉션에 수집하는 역할을한다.</li>
+<li>R : 요소가 저장될 새로운 컬렉션 <ul>
+<li>T 요소를 A 누적기가 R에 저장한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>리턴 타입</th>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Collector&lt;T,?,Collection<T>&gt;</td>
+<td>Collectors.toCollection{Supplier<T>}</td>
+<td>Supplier가 제공한 Collection에 저장</td>
+</tr>
+<tr>
+<td>Collector&lt;T,?,ConcurrentMap&lt;K,U&gt;&gt;</td>
+<td>Collectors.toConcurrentMap(…)</td>
+<td>ConcurrentMap에 저장한다.</td>
+</tr>
+<tr>
+<td>Collector&lt;T,?,List<T>&gt;</td>
+<td>Collectors.toList()</td>
+<td>List에 저장</td>
+</tr>
+<tr>
+<td>Collector&lt;T,?,Map&lt;K,U&gt;&gt;</td>
+<td>Collectors.toMap()</td>
+<td>Map에 저장</td>
+</tr>
+<tr>
+<td>Collecotr&lt;T,?,Set<T>&gt;</td>
+<td>Collectors.toSet()</td>
+<td>Set에 저장</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Collectors.toConcurrentMap(…) - 멀티쓰레드 환경에서 쓰레드의 안전한 concurrentmap을 만들어서 거기에 요소를 수집하는 Collector를 얻는다. </p>
+</li>
+<li><p>A가 ? 인 이유</p>
+<ul>
+<li>List, Set, Map 컬렉션에 누적할 경우 별도의 누적기가 필요 없다. </li>
+<li>컬렉터내부에서 이들 컬렉션에 저장하는 방법을 알고 있기 때문에 별도의 누적기가 필요 없음.</li>
 </ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Is&quot;</span>, <span class="string">&quot;Fun&quot;</span>, <span class="string">&quot;Isn&#x27;t&quot;</span>, <span class="string">&quot;It&quot;</span>, <span class="string">&quot;?&quot;</span>&#125;;</span><br><span class="line">List&lt;String&gt; list = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toList()); <span class="comment">// ArrayList</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(LinkedList::new))</span></span><br><span class="line">System.out.println(list.getClass().getName() + <span class="string">&quot;:&quot;</span> + list);</span><br><span class="line">  </span><br><span class="line">Set&lt;String&gt; set = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toSet()); <span class="comment">// HashSet</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(HashSet::new))</span></span><br><span class="line">System.out.println(set.getClass().getName() + <span class="string">&quot;:&quot;</span> + set);</span><br><span class="line"></span><br><span class="line">Map&lt;String, Integer&gt; map = Arrays.stream(array)</span><br><span class="line">        .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">        .collect(Collectors.toMap(s -&gt; s, <span class="attr">String:</span>:length)); <span class="comment">// HashMap</span></span><br><span class="line">        <span class="comment">// .collect(Collectors.toCollection(s -&gt; s, String::length, (oldVal, newVal) -&gt; newVal, TreeMap::new))</span></span><br><span class="line">System.out.println(map.getClass().getName() + map);</span><br></pre></td></tr></table></figure></li>
 <li><p>Collectors의 정적 메소드를 이용한 그룹화와 분리</p>
@@ -543,7 +697,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckg0trlk9002gesu2ajn25vkc" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckg28y57i002go8u2fgkxaksp" class="article-share-link">Share</a>
       
       
     </footer>
