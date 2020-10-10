@@ -64,6 +64,202 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/PreCourseEx/AbstractClass_TemplateEx2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" class="article-date">
+  <time datetime="2020-09-11T02:22:54.150Z" itemprop="datePublished">2020-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/">PreCourse-Abstract_TemplateEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="템플릿메소들-활용"><a href="#템플릿메소들-활용" class="headerlink" title="템플릿메소들 활용"></a>템플릿메소들 활용</h2><ul>
+<li><p>player가 있고 이 player가 게임을 합니다. 게임에서 player가 가지는 레벨에 따라<br>run(),jump(),turn() 세 가지 기능을 할 수 있습니다.<br>각 레벨에 따라 기능가능 여부가 다음과 같습니다.</p>
+</li>
+<li><p>초급자 레벨: 천천히 달립니다(run() 가능)</p>
+</li>
+<li><p>중급자 레벨: 빠르게 달리고, 점프할 수 있습니다.</p>
+</li>
+<li><p>고급자 레벨: 엄청 빠르게 달리고, 점프할 수 있고 한 바퀴 돌 수 있습니다.</p>
+</li>
+<li><p>플에이어는 go() 명령어를 받으면 이 세가지 기능을 수행합니다.<br>이중 할 수 없는 것은 할 수 없다고 출력합니다.</p>
+</li>
+</ul>
+<p><img src="../../../image/%ED%85%9C%ED%94%8C%EB%A6%BF.jpg" alt="템플릿"></p>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li><p>Player 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> PlayerLevel level;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Player()&#123;</span><br><span class="line">        level = <span class="keyword">new</span> BeginnerLevel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> PlayerLevel getLevel() &#123;</span><br><span class="line">        <span class="keyword">return</span> level;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> upgradeLevel(PlayerLevel playerLevel)&#123;</span><br><span class="line">        level = playerLevel;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> play(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        getLevel().go(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>PlayerLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> run();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> jump();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> turn();</span><br><span class="line">    <span class="keyword">abstract</span> <span class="keyword">void</span> showLevelMessage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> go(<span class="keyword">int</span> num)&#123;</span><br><span class="line">        showLevelMessage();</span><br><span class="line">        run();</span><br><span class="line">        <span class="keyword">while</span> (num&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            jump();</span><br><span class="line">            num--;</span><br><span class="line">        &#125;</span><br><span class="line">        turn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BeginnerLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeginnerLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;천천히 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점프 할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn할 줄 모릅니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********초급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AdvancedLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;점푸 할 수 있습니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;turn 할 줄 모릅니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********중급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SuperLevel 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperLevel</span> <span class="keyword">extends</span> <span class="title">PlayerLevel</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;엄청 빠르게 달립니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> jump() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;아주 높이 jump 합니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> turn() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;한 바퀴 돕니다&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> showLevelMessage() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;*********고급 레벨**********&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainBoardPlay</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Player player = <span class="keyword">new</span> Player();</span><br><span class="line">        player.play(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel alevel = <span class="keyword">new</span> AdvancedLevel();</span><br><span class="line">        player.upgradeLevel(alevel);</span><br><span class="line">        player.play(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        PlayerLevel slevel = <span class="keyword">new</span> SuperLevel();</span><br><span class="line">        player.upgradeLevel(slevel);</span><br><span class="line">        player.play(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckg3e8r4t000uggu2dqgo1ri5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-AbstractClass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" class="article-date">
+  <time datetime="2020-09-11T00:46:19.942Z" itemprop="datePublished">2020-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/">Java_AbstractClass</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="추상-클래스-Abstract-Class"><a href="#추상-클래스-Abstract-Class" class="headerlink" title="추상 클래스(Abstract Class)"></a>추상 클래스(Abstract Class)</h1><h2 id="추상-클래스란"><a href="#추상-클래스란" class="headerlink" title="추상 클래스란"></a>추상 클래스란</h2><ul>
+<li>일부 메소드가 구현되지 않고, 선언만 되어있는 클래스<ul>
+<li>자식 클래스에서 이것을 반드시 구현하게끔 강제하는 것</li>
+<li>필요한 모든 클래스가 구현될 수 있도록 하여 안정성을 높이는 효과를 가져온다.</li>
+</ul>
+</li>
+<li>일반 클래스의 공통적인 부분을 추출해 어느정도 규격(틀)을 잡아 놓는 추상적인 클래스이다.</li>
+<li>일반 클래스는 실제 객체를 생성할 정도의 구체성을 가지는 반면, 추상클래스는 아직 메서드와 내용이 추상적이기 때문에<br>객체를 생성할 수 없다.</li>
+</ul>
+<p><img src="../../../image/%EC%B6%94%EC%83%81%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="추상클래스"></p>
+<h2 id="추상클래스-특징"><a href="#추상클래스-특징" class="headerlink" title="추상클래스 특징"></a>추상클래스 특징</h2><ul>
+<li>메소드와 클래스에 abstract 예약어를 사용한다.</li>
+<li>추상클래스는 new(인스턴스화) 할 수 없다.</li>
+<li>추상메소드가 없어도 abstract 키워드를 사용하면 추상클래스가 된다</li>
+<li>생성자를 가질 수 있고, 일반 메소드도 가질 수 있다. </li>
+<li>생성자를 갖지만, 객체 생성이 불가능하다. 그런데 구현된 자식클래스의 객체는 받을 수 있다.</li>
+<li>추상클래스의 변수를 초기화 할 수 있다.(자동 초기화도 된다.)</li>
+<li>공통적으로 사용할 수 있는 필드와 메서드를 공통적으로 추출해 만들어진 클래스이다.</li>
+<li>구현해야하는 메소드들은 상위 클래스에서 선언을 해놓고,구현의 책임을 하위클래스에 위임한다.</li>
+<li>하나의 추상메소드라도 포함을 하면 추상 클래스가 되야 한다.<ul>
+<li>모든 메소드가 구현되있다고 해도 클래스에 abstract 키워드를 사용하면 추상 클래스가 된다.</li>
+</ul>
+</li>
+<li>자기 자신의 객체를 생성하지 못하는 거 외에는 일반클래스와 비슷하다.</li>
+<li>인터페이스와의 차이점은 멤버 변수를 갖고 있느냐 없느냐의 차이.</li>
+</ul>
+<h3 id="추상클래스-사용하기"><a href="#추상클래스-사용하기" class="headerlink" title="추상클래스 사용하기"></a>추상클래스 사용하기</h3><ul>
+<li><p>추상클래스는 단독으로 사용되는 것이 아니라 상위 클래스로서 사용된다.</p>
+<ul>
+<li>추상 메소드는 하위 클래스가 구현해야하는 메소드이다.</li>
+<li>구현된 메소드는 하위 클래스가 공통으로 사용하는 기능의 메소드<br>하위 클래스에 따라 재정의할 수 있다.</li>
+</ul>
+</li>
+<li><p>추상메소드는 하위클래스에서 강제적으로 구현을 해야하지만,<br>구현된메소드(일반메소드)들은 하위 클래스에 따라 재정의할 수도 있고, 안해도 상관이 없다.</p>
+</li>
+</ul>
+<h2 id="추상클래스의-사용-용도"><a href="#추상클래스의-사용-용도" class="headerlink" title="추상클래스의 사용 용도"></a>추상클래스의 사용 용도</h2><ol>
+<li><p>공통된 필드와 메소드를 통일할 목적으로 사용한다.</p>
+<ul>
+<li>추상클래스에서 미리 필드와 메서드를 정의해 놓는다면, 실체클래스(일반클래스)에서는<br>추상클래스의 필드와 메소드명을 변경할 수 없고 그대로 받아 사용해야 구현해야 한다.<br>따라서 필드와 메소드의 이름을 통일시켜주고 유지보수성을 높일 수 있다.</li>
+</ul>
+</li>
+<li><p>실체클래스 구현시, 시간 절약이 가능하다.</p>
+<ul>
+<li>필드와 메소드를 정의해 놓은 추상클래스가 있다면, 예를 들어 자동차를 구현해야 할 때<br>추상클래스를 기반으로 필요한 부분은 추가해서 클래스를 구현할 수 있다.<br>(없다면 결국 내가 추상클래스를 구현해야 하는 것이 아니냐 하면 이미 회사에 이런 것들을 구현하는<br>아키텍쳐들이 설계를 해놓았을 것이다.)</li>
+</ul>
+</li>
+<li><p>규격에 맞는 실체 클래스 구현</p>
+<ul>
+<li>추상클래스에서 사용해야 할 필드와 메소드들을 정의해 놓으니, 이것을 토대로 코드를 작성할 때,<br>통일성 있는 규격 안에서 실체 클래스를 구현할 수 있기 때문이다.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;method&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">                                       <span class="comment">//세미콜론을 잊지 말아야 합니다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span></span>; <span class="comment">// 선언만 하고 구현하지 않음. Virtual method call이여서 부모메소드는 비어있음.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> <span class="keyword">extends</span> <span class="title">AbstractFoo</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;implemented abstractMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// AbstractFoo afoo = new AbstractFoo() //추상 클래스는 객체 생성이 불가합니다. 구현이 안되있으니 인스턴스화가 안된다.</span></span><br><span class="line">        Foo foo = <span class="keyword">new</span> Foo();</span><br><span class="line">        foo.abstractMethod();</span><br><span class="line"></span><br><span class="line">        AbstractFoo afoo = (AbstractFoo)foo;</span><br><span class="line">        afoo.abstractMethod(); <span class="comment">// virtual method call</span></span><br><span class="line">        <span class="comment">//추상클래스는 객체 생성은 불가하지만, 구현된 자식클래스의 객체는 받을 수 있다.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="템플릿-메서드"><a href="#템플릿-메서드" class="headerlink" title="템플릿 메서드"></a>템플릿 메서드</h1><ul>
+<li>템플릿 : 틀이나 견본을 의미</li>
+<li>템플릿 메소드 : 추상메소드나 구현된 메소드를 활용하여 전체의 흐름(시나리오)를 정의 해 놓은 메소드<br>final로 선언하여 재정의 할 수 없게 한다.</li>
+</ul>
+<h2 id="템플릿-매서드-패턴"><a href="#템플릿-매서드-패턴" class="headerlink" title="템플릿 매서드 패턴"></a>템플릿 매서드 패턴</h2><ul>
+<li>디자인 패턴의 일종으로 프레임워크에서 많이 사용되는 설계패턴이다</li>
+<li>추상클래스로 선언된 상위클래스에서 추상메소드를 이용하여 전체 구현의 흐름을 정의하고<br>구체적인 각 메소드 구현은 하위클래스에 위임함 </li>
+<li>하위클래스가 다른 구현을 했 다고 해서 템플릿 메소드에 정의된 시나리오대로 수행됨.</li>
+</ul>
+<h3 id="템플릿-메소드-예제"><a href="#템플릿-메소드-예제" class="headerlink" title="템플릿 메소드 예제"></a>템플릿 메소드 예제</h3><ul>
+<li><p>Car 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> drive();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> stop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> startCar()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;시동을 켭니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> turnOff()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;시동을 끕니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> washCar()&#123; &#125;</span><br><span class="line">    <span class="comment">//아무 기능이 없어 여기서는 수행을 하지 않고 하위 클래스에서 재정의해서 사용.</span></span><br><span class="line">    <span class="comment">// 모든 하위클래스에서 구현을해야하는 거라면 abstract를 사용하지만</span></span><br><span class="line">    <span class="comment">// 모든 하위클래에서 사용하지 않으면 이렇게 사용한다.</span></span><br><span class="line">    <span class="comment">// 기능의 확장이 가능함</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//템플릿 메소드</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">public</span> <span class="keyword">void</span> run()&#123; <span class="comment">//재정의할 수 없게 final 키워드 사용.</span></span><br><span class="line">        startCar();</span><br><span class="line">        drive();</span><br><span class="line">        stop();</span><br><span class="line">        turnOff();</span><br><span class="line">        washCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>AICar</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AICar</span> <span class="keyword">extends</span> <span class="title">Car</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> drive() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;자율 주행합니다.&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;자동차가 스스로 방향을 바꿉니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> stop() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;스스로 멈춥니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> washCar()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;자동 세차합니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ManualCar</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManualCar</span> <span class="keyword">extends</span> <span class="title">Car</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> drive() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;운전자가 주행합니다..&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;운전자가 방향을 바꿉니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> stop() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;운전자가 멈춥니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CarTest 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Car aiCar = <span class="keyword">new</span> AICar();</span><br><span class="line">        aiCar.run();</span><br><span class="line">        System.out.println(<span class="string">&quot;============&quot;</span>);</span><br><span class="line">        Car manualCarnuCar = <span class="keyword">new</span> ManualCar();</span><br><span class="line">        manualCarnuCar.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="final-예약어"><a href="#final-예약어" class="headerlink" title="final 예약어"></a>final 예약어</h2></li>
+<li><p>fianl 변수는 값이 변경될 수 없는 상수이다.</p>
+</li>
+<li><p>public static final double PI = 3.14;</p>
+</li>
+<li><p>오직 한번만 값을 할당 할 수 있음</p>
+</li>
+<li><p>final 메소드는 하위 클래스에서 재정의(overriding) 할 수 없음.<br>final 클래스는 더 이상 상속되지 않음</p>
+</li>
+<li><p>상속이 됬을 때 문제가 될 수 도 있고 고유한 기능이 있는 경우 상속할 일이 없다 하면 final을 붙이면 된다.<br>public static final 상수 값 정의하여 사용하기</p>
+</li>
+<li><p>프로젝트 구현 시 여러 파일에서 공유해야 하는 상수 값은 하나의 파일에 선언하여 사용하면 편리하다.</p>
+</li>
+</ul>
+<p><img src="../../../image/final1.jpg" alt="final1"></p>
+<p><img src="../../../image/final2.jpg" alt="final2"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckg3e8r5c0014ggu2e3r94g91" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Algorithm/Solution-BestAlbum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/10/Algorithm/Solution-BestAlbum/" class="article-date">
@@ -123,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckg28y54p000lo8u2dlu6fnim" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckg3e8r47000lggu2he2q5thq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckg28y54s000mo8u2and5eqee" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckg3e8r49000mggu2ewww7e0z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -315,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckg28y56r001xo8u2dofdanf9" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckg3e8r5g0016ggu20lqv0uvt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -382,7 +578,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckg28y55y001do8u21tpabtb2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckg3e8r5y001kggu2hla3du4o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -450,7 +646,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckg28y56l001so8u26m2x2lul" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckg3e8r53000zggu2gii1e37f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +785,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckg28y55j0014o8u20f6w6jx5" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckg3e8r5t001fggu2g0bg6hw9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -641,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckg28y56i001po8u2dag63ph4" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckg3e8r4x000wggu2eses7nuj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -735,237 +931,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckg28y557000xo8u24cvh4hrp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaBasic/Java-VariableAndDataType" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" class="article-date">
-  <time datetime="2020-09-09T11:22:17.939Z" itemprop="datePublished">2020-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/">JavaBasic_VariableAndDataType</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="자바-기초-변수와-자료형"><a href="#자바-기초-변수와-자료형" class="headerlink" title="자바 기초 - 변수와 자료형"></a>자바 기초 - 변수와 자료형</h1><h2 id="컴퓨터에서-사용하는-자료형"><a href="#컴퓨터에서-사용하는-자료형" class="headerlink" title="컴퓨터에서 사용하는 자료형"></a>컴퓨터에서 사용하는 자료형</h2><h3 id="이진수"><a href="#이진수" class="headerlink" title="이진수"></a>이진수</h3><ul>
-<li>비트(bit) : 컴퓨터에서 자료를 표현하는 최소 단위 0 또는 1</li>
-<li>바이트(byte) : 8bit를 1byte로 표현한다.</li>
-<li>이진수 : 컴퓨터에서 표현되는 자료의 형태<ul>
-<li>0000 1010(이진수) -&gt; 10(십진수)</li>
-</ul>
-</li>
-<li>8진수 : 이진수를 3비트씩 모아서 표현</li>
-<li>16진수 : 이진수를 4비트씩 모아서 표현<h3 id="컴퓨터에서-음수-표현"><a href="#컴퓨터에서-음수-표현" class="headerlink" title="컴퓨터에서 음수 표현"></a>컴퓨터에서 음수 표현</h3></li>
-<li>2의 보수로 표현, 한 숫자의 양수와 음수를 더하면 0이 되어야 한다.</li>
-</ul>
-<p><img src="../../../image/%EC%9D%8C%EC%88%98%ED%91%9C%ED%98%84.PNG" alt="음수표현"></p>
-<ul>
-<li>2의 보수 만드는 방법(음수 만드는 방법) : 1의 보수를 취하고 나서 1을 더해 준다</li>
-</ul>
-<h2 id="변수"><a href="#변수" class="headerlink" title="변수"></a>변수</h2><h2 id="변수란"><a href="#변수란" class="headerlink" title="변수란"></a>변수란</h2><ul>
-<li>변하는 수를 의미한다. 예를 들어 사람의 나이, 온라인 상품의 개수, 학생의 학년</li>
-<li>변하는 값을 프로그램에서 나타내기 위한 방법이다.</li>
-<li>변하는 값이 할당 될 수 있는 메모리이 공간이다.</li>
-</ul>
-<h3 id="변수-선언하기"><a href="#변수-선언하기" class="headerlink" title="변수 선언하기"></a>변수 선언하기</h3><ul>
-<li>자료형 변수명(ex- int age;)</li>
-<li>변수에 맞는 자료형과 변수 이름으로 선언해야 한다.</li>
-</ul>
-<h3 id="변수와-메모리"><a href="#변수와-메모리" class="headerlink" title="변수와 메모리"></a>변수와 메모리</h3><ul>
-<li>변수를 선언하는 것은 해당 자료형의 크기 만큼의 메모리를 사용하겠다는 것</li>
-<li>메모리의 위치를 변수 이름으로 참조</li>
-</ul>
-<p><img src="../../../image/%EB%B3%80%EC%88%98%EC%99%80%EB%A9%94%EB%AA%A8%EB%A6%AC.PNG" alt="변수와메모리"></p>
-<ul>
-<li>변수를 선언 한다는게 프로그래밍적으로 어떤 의미이냐 하면 int는 4바이트 인데,<br>4바이트 짜리 정수값을 써야 할때 int age; 선언 한다.<br>메모리에 4바이트가 잡히고, 메모리를 사용할 때 변수를 사용하겠다는 의미이다.<br>변수의 사이즈에 맞는 적정한 메모리가 할당이 되고 메모리를 참조할 때 변수의 이름으로 참조한다.</li>
-</ul>
-<h3 id="변수명-선언-규칙"><a href="#변수명-선언-규칙" class="headerlink" title="변수명 선언 규칙"></a>변수명 선언 규칙</h3><ul>
-<li>영문자나 숫자를 사용한다. 단 숫자로 시작할 수 없다.</li>
-<li>특수문자 중에는 <code>_</code> 와 <code>$</code>만 사용 가능하다.</li>
-<li>예약어는 사용할 수 없다.</li>
-<li>변수는 그 쓰임에 맞는 이름으로 명명하는 것이 가독성에 좋다.</li>
-<li>카멜표기법으로 표기한다(첫 단어빼고 단어들의 첫글자를 대문자로 적는다.) - numberOfStudent</li>
-</ul>
-<h2 id="자료형"><a href="#자료형" class="headerlink" title="자료형"></a>자료형</h2><h3 id="기본형-Primitive-type"><a href="#기본형-Primitive-type" class="headerlink" title="기본형(Primitive type)"></a>기본형(Primitive type)</h3><ul>
-<li>자바에서 기본적으로 제공해 주는 자료형</li>
-<li>메모리의 크기가 정해져 있다.</li>
-<li>정수형, 문자형, 실수형, 논리형</li>
-</ul>
-<p><img src="../../../image/%EA%B8%B0%EB%B3%B8%EC%9E%90%EB%A3%8C%ED%98%95.PNG" alt="기본자료형"></p>
-<h4 id="int-자료형"><a href="#int-자료형" class="headerlink" title="int 자료형"></a>int 자료형</h4><ul>
-<li>정수 자료형, 4바이트를 사용한다. 가장 많이 쓰는 정수 자료형이다.</li>
-<li>-2^31 ~ 2^31 -1 까지 표현</li>
-</ul>
-<p><img src="../../../image/%EC%A0%95%EC%88%98%EC%9E%90%EB%A3%8C%ED%98%95.png" alt="정수자료형"></p>
-<ul>
-<li>정수자료형의 범위</li>
-</ul>
-<p><img src="../../../image/%EC%A0%95%EC%88%98%EC%9E%90%EB%A3%8C%ED%98%95%EB%B2%94%EC%9C%84.PNG" alt="정수자료형의범위"></p>
-<h4 id="문자-자료형"><a href="#문자-자료형" class="headerlink" title="문자 자료형"></a>문자 자료형</h4><ul>
-<li>내부적으로는 비트의 조합으로 표현</li>
-<li>인코딩 - 각 문자에 따른 특정한 숫자 값(코드 값)을 부여</li>
-<li>디코딩 - 숫자 값을 원래의 문자로 변환</li>
-</ul>
-<p><img src="../../../image/%EB%94%94%EC%BD%94%EB%94%A9%EC%9D%B8%EC%BD%94%EB%94%A9.png" alt="디코딩인코딩"></p>
-<h4 id="문자-세트"><a href="#문자-세트" class="headerlink" title="문자 세트"></a>문자 세트</h4><ul>
-<li>문자 세트 : 문자를 위한 코드 값(숫자 값) 들을 정해 놓은 세트</li>
-<li>아스키 코드(ASCII) : 1byte로 영문자, 숫자, 특수 문자 등을 표현 한다.</li>
-<li>유니 코드(Unicode) : 한글과 같은 복잡한 언어를 표현하기 위한 표준 인코딩 UTF-8, UTF-16이 대표적이다.</li>
-<li>문자를 정수형 변수에 저장하면? 문자에 해당하는 코드 값이 저장 된다<br>int val = ‘A’ 라 했을 때 65가 저장된다.</li>
-</ul>
-<h4 id="실수와-논리-자료형"><a href="#실수와-논리-자료형" class="headerlink" title="실수와 논리 자료형"></a>실수와 논리 자료형</h4><ul>
-<li><p>실수 </p>
-<ul>
-<li><p>double 자료형이 기본이 되고, float을 사용할 때는 f,F를 뒤에 붙여서 사용한다.</p>
-</li>
-<li><p>실수는 부동 소수점 방식으로 표현</p>
-<ul>
-<li>장점: 아주 많은 범위를 실수로 표현할 수 있다.</li>
-<li>단점: 약간의 오차가 발생할 수 있다.</li>
-</ul>
-</li>
-<li><p>실수를 지수부와 가수부로 표현함</p>
-<p><img src="../../../image/%EC%8B%A4%EC%88%98%ED%98%95%EB%B9%84%ED%8A%B8%ED%91%9C%ED%98%84.png" alt="실수형비트표현"></p>
-</li>
-<li><p>부동 소수점 방식의 오류</p>
-<ul>
-<li>지수와 가수로 표현되는 부동 소수 점은 0을 표현 할 수 없다.</li>
-<li>따라서 부동 소수점 방식에서는 약간의 오차가 발생할 수 있다.</li>
-</ul>
-</li>
-<li><p>0.1을 표현하는 방식 </p>
-<p><img src="../../../image/%EC%86%8C%EC%88%98%EC%A0%90%ED%91%9C%ED%98%84%EB%B0%98%EC%8B%9D.png" alt="소수점표현"></p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>논리형 자료형</p>
-<ul>
-<li>boolean으로 선언, 논리값 true(참), false(거짓)을 표현</li>
-</ul>
-</li>
-<li><p>자료형 없이 변수 사용하기(자바 10이후부터 사용 가능.)</p>
-<ul>
-<li><p>지역 변수 자료형 추론(local vaiable type inference)</p>
-</li>
-<li><p>변수에 대입되는 값을 보고 컴파일러가 추론</p>
-<p><img src="../../../image/%EC%9E%90%EB%A3%8C%ED%98%95%EC%97%86%EC%9D%B4%EB%B3%80%EC%88%98.png" alt="자료형없이변수"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="참조형-Reference-type"><a href="#참조형-Reference-type" class="headerlink" title="참조형(Reference type)"></a>참조형(Reference type)</h3><ul>
-<li>클래스 자료형으로, JDK에서 제공되는 클래스와 프로그래머가 정의하는 클래스</li>
-<li>클래스에 따라 사용하는 크기가 다르다.</li>
-<li>ex) String, Student…등등</li>
-</ul>
-<h3 id="상수와-리터럴"><a href="#상수와-리터럴" class="headerlink" title="상수와 리터럴"></a>상수와 리터럴</h3><ul>
-<li>상수(Constant) : 변하지 않는 수를 의미한다.</li>
-<li>리터럴(literal) : 프로그램에서 사용하는 모든 숫자, 값,논리 값(ex-10,3.14,’A’,true)</li>
-<li>모든 리터럴은 상수 풀(constant pool)에 저장되어 있다.</li>
-<li>상수 풀에 저장될 때 정수는 int, 실수는 double로 저장된다.</li>
-</ul>
-<p><img src="../../../image/%EC%83%81%EC%88%98%EC%99%80%EB%A6%AC%ED%84%B0%EB%9F%B4.png" alt="상수와리터럴"></p>
-<h3 id="형-변환"><a href="#형-변환" class="headerlink" title="형 변환"></a>형 변환</h3><ul>
-<li><p>서로 다른 자료형의 값이 대입되는 경우 형 변환이 일어난다.</p>
-</li>
-<li><p>묵시적 형 변환(implicit type conversion)</p>
-<ul>
-<li>작은 수에서 큰 수로 덜 정밀한 수에서 더 정밀한 수로 대입되는 경우.</li>
-</ul>
-</li>
-<li><p>명시적 형 변환(explicit type conversion)</p>
-<ul>
-<li><p>변환되는 자료형을 명시, 자료의 손실이 발생 할 수 있다.</p>
-<p><img src="../../../image/%ED%98%95%EB%B3%80%ED%99%98.png" alt="형변환"></p>
-</li>
-</ul>
-</li>
-<li><p>10진수 10을 각 진법으로 표현</p>
-<ul>
-<li>2진수: OB1010; 10을 2로 나눠서 자릿수를 표현한다.</li>
-<li>8진수: 012; 2진수를 3자릿수씩 묶어서 2의 승을 곱해서 8진수 하나의 자릿수로 표현 (0<em>2^2 + 0</em>2^1 + 1<em>2^0)  (0</em>2^2 + 1<em>2^1+ 0</em>2^0)</li>
-<li>16진수: 0XA; 2진수를 4자릿수씩 묶어서 2의 승을 곱해서 16진수 하나의 자릿수로 표현 0000 1010 </li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckg28y56g001oo8u2dus28576" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/ClassEx3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/09/Java/PreCourseEx/ClassEx3/" class="article-date">
-  <time datetime="2020-09-09T11:02:16.189Z" itemprop="datePublished">2020-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/09/Java/PreCourseEx/ClassEx3/">PreCourse-Singleton_patternEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="static과-singleton-pattern"><a href="#static과-singleton-pattern" class="headerlink" title="static과 singleton pattern"></a>static과 singleton pattern</h2><ul>
-<li>카드회사가 있습니다. 카드회사는 유일한 객체이고, 이 회사에서 카드를 발급하면<br>항상 고유번호가 자동으로 생성됩니다. </li>
-<li>10001번부터 시작하여 카드가 생성될 때 마다 10002, 10003식으로 증가 됩니다.<br>다음 코드가 수행 되도록 Card 클래스와 CardCompany 클래스를 구현하세요.</li>
-</ul>
-<p><img src="../../../image/cardcompany.png" alt="cardcompany"></p>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>CardCompany 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CardCompany</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CardCompany intance = <span class="keyword">new</span> CardCompany();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> CardCompany()&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CardCompany getIntance()&#123;</span><br><span class="line">        <span class="keyword">if</span>(intance == <span class="literal">null</span>)&#123;</span><br><span class="line">            intance = <span class="keyword">new</span> CardCompany();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> intance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Card creteCard()&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> Card();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Card 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Card</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> cardNumber;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> serialNum = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">    Card()&#123;</span><br><span class="line">        serialNum++;</span><br><span class="line">        cardNumber = serialNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCardNumber() &#123;</span><br><span class="line">        <span class="keyword">return</span> cardNumber;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCardNumber(<span class="keyword">int</span> carNumber) &#123;</span><br><span class="line">        <span class="built_in">this</span>.cardNumber = carNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CardCompanyTest 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CardCompanyTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        CardCompany company = CardCompany.getIntance();</span><br><span class="line"></span><br><span class="line">        Card myCard = company.creteCard();</span><br><span class="line">        Card yourCard = company.creteCard();</span><br><span class="line"></span><br><span class="line">        System.out.println(myCard.getCardNumber());</span><br><span class="line">        System.out.println(yourCard.getCardNumber());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckg28y56p001vo8u234laeu2m" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckg3e8r5e0015ggu29wfa00aq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -979,7 +945,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1011,6 +977,14 @@
       <ul>
         
           <li>
+            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
           </li>
         
@@ -1020,14 +994,6 @@
         
           <li>
             <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/">Java_LambdaExpression</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/25/Java/Subject/Homework10/GenericList/">Subject_Day10_GenericRect</a>
           </li>
         
       </ul>
