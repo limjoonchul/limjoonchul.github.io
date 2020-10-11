@@ -233,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckg3e8r6a001zggu2d1a2g8gh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckg4ta5o9001zk8u22skqh3a7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckg3e8r580012ggu22cibebs0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckg4ta5o1001qk8u2722ndmy5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -745,7 +745,7 @@
 <li>java에 많은 클래스들은 이미 comparable이 구현되어 있다,</li>
 <li>구현된 클래스를 key로 사용하는 경우는 구현할 필요 없음(Integer, String)<br>만약에 그렇지 않고 다른 클래스들이 사용한다하며 key에 대한 인터페이스 비교하는 방법을 구현을 해야 한다!!</li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="comment">// NavigableMap&lt;String, Integer&gt; map2 = new TreeMap&lt;&gt;(); // 트리셋과 비슷함</span></span><br><span class="line"><span class="comment">// 키를 기준으로봤을 때 맴이랑 셋이 걱의 비슷하다.</span></span><br><span class="line"><span class="comment">// 해쉬가 비교대상이 되고 벨류가 붙여서 이루어진다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// put은 기존에 동일 키 값이 있었으면 기존 value를 반환, 없었으면 null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">5</span>)); <span class="comment">// null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;CDEF&quot;</span>,<span class="number">1023</span>)); <span class="comment">// null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">1023</span>)); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">System.out.println(map.get(<span class="string">&quot;CDEF&quot;</span>)); <span class="comment">// 키라는 기준으로 검색을해서 값을 찾아온다 이런걸 쿼리(query,질의)라고 부름</span></span><br><span class="line">System.out.println(map.getOrDefault(<span class="string">&quot;CDEF&quot;</span>,<span class="number">0</span>)); <span class="comment">// 가져올 키가 있으면 기존 값을 가져오고 없으면 defaultValue를 반환</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 이렇게 기존 값이 없을 때 0 등으로 기본 값을 설정하고 싶으면 편리함</span></span><br><span class="line">map.put(<span class="string">&quot;ABCDE&quot;</span>, map.getOrDefault(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 값이 있으면 기존 값 +1 알고리즘 할 때 도움이 많이 된다. 꿀팁!!</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// keySet 사용 키로 구성된 셋을 받아온다</span></span><br><span class="line"><span class="keyword">for</span> (String <span class="attr">key :</span> map.keySet())&#123;</span><br><span class="line">    System.out.println(key+<span class="string">&quot; : &quot;</span>+ map.get(key));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// entrySet 사용 키와 벨류를 같이 받와와서 함 속도가 조금 더 빠름 이게 더 좋은 방법</span></span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String,Integer&gt; <span class="attr">entry :</span> map.entrySet())&#123;</span><br><span class="line">    System.out.println(entry.getKey() + <span class="string">&quot; : &quot;</span> + entry.getValue());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NavigableMap&lt;String, Integer&gt; map2 = <span class="keyword">new</span> TreeMap&lt;&gt;(); <span class="comment">//Comparator를 구현해서 넣어주면 된다 비교할 때</span></span><br><span class="line">map2.put(<span class="string">&quot;a&quot;</span>,<span class="number">10</span>);</span><br><span class="line">map2.put(<span class="string">&quot;g&quot;</span>,<span class="number">12</span>);</span><br><span class="line">map2.put(<span class="string">&quot;z&quot;</span>,<span class="number">14</span>);</span><br><span class="line">map2.put(<span class="string">&quot;z&quot;</span>,<span class="number">114</span>);</span><br><span class="line">map2.put(<span class="string">&quot;c&quot;</span>,<span class="number">165</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(map2.ceilingKey(<span class="string">&quot;b&quot;</span>)); <span class="comment">//b보다 큰것 키 값만 반환</span></span><br><span class="line">System.out.println(map2.ceilingEntry(<span class="string">&quot;b&quot;</span>).getValue());<span class="comment">// 엔트리 전체를 받아와서 value를 찾는다.</span></span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line"><span class="comment">// 메모리상에서도 삭제한다 값을 삭제</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 중복이 허용되지 않아서 값을 뒤에 넣은 값으로 넣어서 출력이됨</span></span><br><span class="line">System.out.println(map2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 번외로 알아두세요</span></span><br><span class="line">Map&lt;String,Integer&gt; map3 = <span class="keyword">new</span> Hashtable&lt;&gt;(); <span class="comment">// Vector처럼 옛날 구현 싱크로나이즈드</span></span><br><span class="line">Properties prop = <span class="keyword">new</span> Properties(); <span class="comment">// 해쉬테이블&lt;String,String&gt; 을 상속하고 있다.</span></span><br><span class="line">System.getProperties(); <span class="comment">// System의 property가 이 형식으로 제공됨.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="comment">// NavigableMap&lt;String, Integer&gt; map2 = new TreeMap&lt;&gt;(); // 트리셋과 비슷함</span></span><br><span class="line"><span class="comment">// 키를 기준으로봤을 때 맵이랑 셋이 거의 비슷하다.</span></span><br><span class="line"><span class="comment">// 해쉬가 비교대상이 되고 벨류가 붙여서 이루어진다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// put은 기존에 동일 키 값이 있었으면 기존 value를 반환, 없었으면 null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">5</span>)); <span class="comment">// null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;CDEF&quot;</span>,<span class="number">1023</span>)); <span class="comment">// null</span></span><br><span class="line">System.out.println(map.put(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">1023</span>)); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line">System.out.println(map.get(<span class="string">&quot;CDEF&quot;</span>)); <span class="comment">// 키라는 기준으로 검색을해서 값을 찾아온다 이런걸 쿼리(query,질의)라고 부름</span></span><br><span class="line">System.out.println(map.getOrDefault(<span class="string">&quot;CDEF&quot;</span>,<span class="number">0</span>)); <span class="comment">// 가져올 키가 있으면 기존 값을 가져오고 없으면 defaultValue를 반환</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 이렇게 기존 값이 없을 때 0 등으로 기본 값을 설정하고 싶으면 편리함</span></span><br><span class="line">map.put(<span class="string">&quot;ABCDE&quot;</span>, map.getOrDefault(<span class="string">&quot;ABCDE&quot;</span>,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"><span class="comment">// 값이 있으면 기존 값 +1 알고리즘 할 때 도움이 많이 된다. 꿀팁!!</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// keySet 사용 키로 구성된 셋을 받아온다</span></span><br><span class="line"><span class="keyword">for</span> (String <span class="attr">key :</span> map.keySet())&#123;</span><br><span class="line">    System.out.println(key+<span class="string">&quot; : &quot;</span>+ map.get(key));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// entrySet 사용 키와 벨류를 같이 받아와서 함 속도가 조금 더 빠름 이게 더 좋은 방법</span></span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String,Integer&gt; <span class="attr">entry :</span> map.entrySet())&#123;</span><br><span class="line">    System.out.println(entry.getKey() + <span class="string">&quot; : &quot;</span> + entry.getValue());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">NavigableMap&lt;String, Integer&gt; map2 = <span class="keyword">new</span> TreeMap&lt;&gt;(); <span class="comment">//Comparator를 구현해서 넣어주면 된다 비교할 때</span></span><br><span class="line">map2.put(<span class="string">&quot;a&quot;</span>,<span class="number">10</span>);</span><br><span class="line">map2.put(<span class="string">&quot;g&quot;</span>,<span class="number">12</span>);</span><br><span class="line">map2.put(<span class="string">&quot;z&quot;</span>,<span class="number">14</span>);</span><br><span class="line">map2.put(<span class="string">&quot;z&quot;</span>,<span class="number">114</span>);</span><br><span class="line">map2.put(<span class="string">&quot;c&quot;</span>,<span class="number">165</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(map2.ceilingKey(<span class="string">&quot;b&quot;</span>)); <span class="comment">//b보다 큰것 키 값만 반환</span></span><br><span class="line">System.out.println(map2.ceilingEntry(<span class="string">&quot;b&quot;</span>).getValue());<span class="comment">// 엔트리 전체를 받아와서 value를 찾는다.</span></span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line">System.out.println(map2.pollFirstEntry().getValue());</span><br><span class="line"><span class="comment">// 메모리상에서도 삭제한다 값을 삭제</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 중복이 허용되지 않아서 값을 뒤에 넣은 값으로 넣어서 출력이됨</span></span><br><span class="line">System.out.println(map2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 번외로 알아두세요</span></span><br><span class="line">Map&lt;String,Integer&gt; map3 = <span class="keyword">new</span> Hashtable&lt;&gt;(); <span class="comment">// Vector처럼 옛날 구현 싱크로나이즈드</span></span><br><span class="line">Properties prop = <span class="keyword">new</span> Properties(); <span class="comment">// 해쉬테이블&lt;String,String&gt; 을 상속하고 있다.</span></span><br><span class="line">System.getProperties(); <span class="comment">// System의 property가 이 형식으로 제공됨.</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -769,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckg3e8r6k002eggu2dxgb52ks" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckg4ta5oo002ek8u27u223la6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -923,7 +923,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckg3e8r64001rggu29rh20dc5" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckg4ta5ns001fk8u26pgles60" class="article-share-link">Share</a>
       
       
     </footer>
@@ -991,7 +991,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckg3e8r540010ggu2dxp12mau" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckg4ta5o0001ok8u25rf3gddq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1051,7 +1051,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckg3e8r5o001bggu2h7tidem5" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Cooperation/" data-id="ckg4ta5nc0011k8u2cuhfb9go" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1123,7 +1123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckg3e8r66001tggu24nwhdg7v" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-This/" data-id="ckg4ta5nv001ik8u2fzefb7fz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1224,7 +1224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckg3e8r60001mggu226sg7cgk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckg4ta5nn001ak8u277i33gzl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1271,7 +1271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckg3e8r61001nggu20l4x82ii" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckg4ta5nr001ek8u29xwq9x93" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1345,7 +1345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckg3e8r5l001aggu29l7d5l1r" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckg4ta5nd0012k8u276cabh5e" class="article-share-link">Share</a>
       
       
     </footer>
