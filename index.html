@@ -177,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeuesag0021bsu2757v8b89" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeukimr001qgcu28wx55jyq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeues9o0017bsu22cyv1lgg" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeukim40011gcu20831g8vr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -675,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeuesa5001pbsu23uhxb388" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeukimo001mgcu24rhxbbh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -770,9 +770,12 @@
 <li>flatMap 계열 - 입력 1 : n 출력(스트림 형태로 출력한다.)(Function 계열만 사용)<ul>
 <li><code>&lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T, ? extends Stream&lt;? extends R&gt;&gt; mapper)</code> : 스트림의 T 타입 요소가 n개의 R 타입 요소로 매핑된 새로운 스트림을 반환</li>
 <li><code>PStream flatMapToP(Function&lt;? super T, ? extends PStream&gt; mapper)</code> : R이 기본형 타입으로 제한된 flatMap()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// s.split(&quot;&quot;) : &quot;java&quot; -&gt; &#123;&quot;j&quot;,&quot;a&quot;,&quot;v&quot;,&quot;a&quot;&#125;</span></span><br><span class="line">List&lt;String&gt; list2 = Arrays.asList(<span class="string">&quot;java&quot;</span>,<span class="string">&quot;backend&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;course&quot;</span>);</span><br><span class="line">list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).forEach(System.<span class="attr">out:</span>:println); <span class="comment">//foreach를 사용하면 스트림이 끝나게 된다.</span></span><br></pre></td></tr></table></figure>
-<h2 id="조회"><a href="#조회" class="headerlink" title="조회"></a>조회</h2><h3 id="스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다"><a href="#스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다" class="headerlink" title="스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다."></a>스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다.</h3></li>
+
+</li>
 </ul>
 </li>
+</ul>
+<h2 id="조회"><a href="#조회" class="headerlink" title="조회"></a>조회</h2><h3 id="스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다"><a href="#스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다" class="headerlink" title="스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다."></a>스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다.</h3><ul>
 <li>Stream<T> peek(Consumer&lt;? super T&gt; action)<ul>
 <li>peek() -&gt; Consumer 계열의 람다식 입력을 받아 입력 요소를 소비</li>
 <li>peek()는 입력받아 스트림과 동일한 스트림을 다시 출력<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">     <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).peek(s-&gt; System.out.println(<span class="string">&quot;flatMap():&quot;</span>+s))</span><br><span class="line">           .distinct().peek(s-&gt; System.out.println(<span class="string">&quot;distinct():&quot;</span>+s))</span><br><span class="line">           .count()); <span class="comment">// 함수형 프로그래밍은 선언형이어서 어떻게 해라라고 말해야한다.</span></span><br><span class="line"><span class="comment">// flatmap은 모든 요소를 다 나타내고 distinct는 중복된것을 없애고 하나만 출력됨.</span></span><br></pre></td></tr></table></figure>
@@ -784,7 +787,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeuesa4001obsu2dvf33a3w" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeukimo001ngcu29jhmfccb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1335,7 +1338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeuesay002hbsu233x6bzea" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeukiou002igcu2103j055t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1687,7 +1690,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeues9x001hbsu27qpkbf8f" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeukimh001egcu2gacc33m7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2433,7 +2436,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeuesb2002kbsu2gpg688a0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeukip1002kgcu2bbp0hbnz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2913,7 +2916,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeuesb0002jbsu2009zbnkg" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeukiow002jgcu2h1wb0mnj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2968,7 +2971,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeuesap002bbsu24jwdd1wk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeukine002fgcu24hbc1i0u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -3023,7 +3026,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeuesas002ebsu2emoye0u3" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeukind002egcu2dana0rvj" class="article-share-link">Share</a>
       
       
     </footer>
