@@ -177,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeukimr001qgcu28wx55jyq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeuqyx70021nku274h9cqqh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeukim40011gcu20831g8vr" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeuqyw0000wnku2cqap514u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,17 +500,20 @@
 <li><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비  </li>
 </ul>
 <h2 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h2><h3 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h3><ul>
-<li>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</li>
-<li>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</li>
-<li>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</li>
-</ul>
+<li><p>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.allMatch(s -&gt; s.equals(<span class="string">&quot;abc&quot;</span>))); <span class="comment">//false</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.anyMatch(s -&gt; s.equals(<span class="string">&quot;cde&quot;</span>))); <span class="comment">//true</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.noneMatch(s -&gt; s.equals(<span class="string">&quot;abcde&quot;</span>)));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h2><h3 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h3><ul>
-<li><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</li>
-<li><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환 (병렬 스트림일 때 사용한다.)</li>
-</ul>
+<h2 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h2><h3 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h3></li>
+<li><p><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</p>
+</li>
+<li><p><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환 (병렬 스트림일 때 사용한다.)</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> firstValue = Arrays.stream(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;)</span><br><span class="line">                .filter(n -&gt; n%<span class="number">3</span> ==<span class="number">0</span>)</span><br><span class="line">                .findFirst()</span><br><span class="line">                .getAsInt();</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <h2 id="집계-통계"><a href="#집계-통계" class="headerlink" title="집계 (통계)"></a>집계 (통계)</h2><ul>
 <li><p>최종 처리 기능</p>
 <ul>
@@ -603,10 +606,10 @@
 <li>XXXBinaryOperator : 두 개의 매개 값을 받아 연산 후 리턴하는 함수적 인터페이스</li>
 <li>identity : 스트림에 요소가 전혀 없을 경우 리턴될 디폴트 값   </li>
 </ul>
-</li>
-</ul>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <h3 id="Optional-클래스"><a href="#Optional-클래스" class="headerlink" title="Optional 클래스"></a>Optional<T> 클래스</h3><ul>
 <li><p>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</p>
 </li>
@@ -675,7 +678,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeukimo001mgcu24rhxbbh0" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeuqywp001inku2g25kce77" class="article-share-link">Share</a>
       
       
     </footer>
@@ -787,7 +790,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeukimo001ngcu29jhmfccb" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeuqywn001gnku23w7182gx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1338,7 +1341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeukiou002igcu2103j055t" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeuqyym002inku2ff1l614u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1690,7 +1693,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeukimh001egcu2gacc33m7" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeuqywe0018nku2fl1n9k8o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2436,7 +2439,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeukip1002kgcu2bbp0hbnz" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeuqyyt002knku27nsxad01" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2916,7 +2919,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeukiow002jgcu2h1wb0mnj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeuqyyn002jnku20c8q6i3d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2971,7 +2974,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeukine002fgcu24hbc1i0u" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeuqyxj002dnku2fjdxcrve" class="article-share-link">Share</a>
       
       
     </footer>
@@ -3026,7 +3029,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeukind002egcu2dana0rvj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeuqyxk002enku22b4w753y" class="article-share-link">Share</a>
       
       
     </footer>
