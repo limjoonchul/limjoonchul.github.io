@@ -64,6 +64,383 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/SW_Enginerring/DesignPatterns" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/" class="article-date">
+  <time datetime="2020-10-18T06:59:16.045Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="디자인-패턴-Design-Patterns"><a href="#디자인-패턴-Design-Patterns" class="headerlink" title="디자인 패턴 (Design Patterns)"></a>디자인 패턴 (Design Patterns)</h1><ul>
+<li>디자인 패턴이 어떤 것인지와 대표적으로 사용하는 패턴에 대한 사용법 정도만 정리했다.</li>
+</ul>
+<h2 id="디자인-패턴이란"><a href="#디자인-패턴이란" class="headerlink" title="디자인 패턴이란"></a>디자인 패턴이란</h2><ul>
+<li>자주 발생하는 문제를 쉽게 해결하기 위해 제시된 재사용 가능한 해결책<ul>
+<li>Don’t reinvent the Wheel (바퀴를 다시 발명하지 마라)</li>
+</ul>
+</li>
+<li>이미 해결된 방식은 해결된 방식대로 해결하고, 새롭게 맞딱드린 문제를 해결하자</li>
+<li>소프트웨어 설계 문제를 쉽게 해결할 수 있도록 패턴화된 설계 방식</li>
+<li>팀원들과의 소통을 위해 디자인 패턴 학습이 필요하다.<ul>
+<li>팀원들이 싱글톤 패턴으로 해결 해주세요 할 때 이 패턴에 대해서 알고 있어야 하겠지?</li>
+</ul>
+</li>
+</ul>
+<h2 id="디자인-패턴의-구조"><a href="#디자인-패턴의-구조" class="headerlink" title="디자인 패턴의 구조"></a>디자인 패턴의 구조</h2><ul>
+<li>문맥(Context)<ul>
+<li>패턴이 적용될 수 있는 문제 상황을 기술</li>
+</ul>
+</li>
+<li>문제(Problem)<ul>
+<li>패턴이 적용되어 해결되어야 하는 여러 설계 이슈를 기술</li>
+</ul>
+</li>
+<li>해결(Solution)<ul>
+<li>문제를 해결하는 설계 구성 요소와 구성 요소 사이의 관계를 기술</li>
+</ul>
+</li>
+</ul>
+<h2 id="디자인-패턴의-종류"><a href="#디자인-패턴의-종류" class="headerlink" title="디자인 패턴의 종류"></a>디자인 패턴의 종류</h2><ul>
+<li>Gang of four 패턴<ul>
+<li>생성 패턴 (Creational patterns)<ul>
+<li>객체의 생성 방식에 관련된 패턴</li>
+<li>Abstract Factory, Factory Method, Singleton …</li>
+</ul>
+</li>
+<li>구조 패턴 (Structural patterns)<ul>
+<li>클래스/객체를 조합한 구조를 가지는 패턴</li>
+<li>Composite, Decorator …</li>
+</ul>
+</li>
+<li>동작 패턴 (Behavioral patterns)<ul>
+<li>클래스/객체 사이의 동작 분배에 관련된 패턴</li>
+<li>Observer, State, Strategy, Template Method, Command …</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>동시성 패턴 (Concurrency patterns)<ul>
+<li>Scheduling, Monitor, Lock …</li>
+</ul>
+</li>
+<li>아키텍처 패턴 (Architecture patterns)<ul>
+<li>Model-View-Controller, Model-View-Presenter, Model-View-ViewModel …</li>
+</ul>
+</li>
+<li>기타 패턴<ul>
+<li>Dependency injection, Lazy loading, Mock object …</li>
+</ul>
+</li>
+</ul>
+<h2 id="대표적인-디자인-패턴"><a href="#대표적인-디자인-패턴" class="headerlink" title="대표적인 디자인 패턴"></a>대표적인 디자인 패턴</h2><h3 id="싱글톤-패턴"><a href="#싱글톤-패턴" class="headerlink" title="싱글톤 패턴"></a>싱글톤 패턴</h3><ul>
+<li>단 하나의 객체만 존재할 수 있는 클래스를 구현하는 패턴<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="팩토리-패턴"><a href="#팩토리-패턴" class="headerlink" title="팩토리 패턴"></a>팩토리 패턴</h3></li>
+<li>구상 클래스 객체를 전담하여 생성하는 클래스를 구현하는 패턴</li>
+<li>팩토리 메소드 패턴 (ref)</li>
+</ul>
+<p><img src="../../../image/%ED%8C%A9%ED%86%A0%EB%A6%AC%ED%8C%A8%ED%84%B4.jpg" alt="팩토리 패턴"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside Rectangle::draw() method.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside Square::draw() method.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside Circle::draw() method.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">Shape <span class="title">getShape</span><span class="params">(String shapeType)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(shapeType == <span class="keyword">null</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;        </span><br><span class="line">    <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;CIRCLE&quot;</span>))&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">      </span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;RECTANGLE&quot;</span>))&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();</span><br><span class="line">      </span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;SQUARE&quot;</span>))&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryPatternDemo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ShapeFactory shapeFactory = <span class="keyword">new</span> ShapeFactory();</span><br><span class="line"></span><br><span class="line">    Shape shape1 = shapeFactory.getShape(<span class="string">&quot;CIRCLE&quot;</span>);</span><br><span class="line">    shape1.draw();</span><br><span class="line"></span><br><span class="line">    Shape shape2 = shapeFactory.getShape(<span class="string">&quot;RECTANGLE&quot;</span>);</span><br><span class="line"></span><br><span class="line">    shape2.draw();</span><br><span class="line"></span><br><span class="line">    Shape shape3 = shapeFactory.getShape(<span class="string">&quot;SQUARE&quot;</span>);</span><br><span class="line"></span><br><span class="line">    shape3.draw();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="추상-팩토리-패턴"><a href="#추상-팩토리-패턴" class="headerlink" title="추상 팩토리 패턴"></a>추상 팩토리 패턴</h3><p><img src="../../../image/%EC%B6%94%EC%83%81%ED%8C%A9%ED%86%A0%EB%A6%AC%ED%8C%A8%ED%84%B4.jpg" alt="추상 팩토리 패턴"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RoundedRectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside RoundedRectangle::draw() method.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RoundedSquare</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside RoundedSquare::draw() method.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Inside Rectangle::draw() method.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">abstract</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span> </span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span></span>&#123;    </span><br><span class="line">      <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;RECTANGLE&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Rectangle();         </span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;SQUARE&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">      &#125;     </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RoundedShapeFactory</span> <span class="keyword">extends</span> <span class="title">AbstractFactory</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Shape <span class="title">getShape</span><span class="params">(String shapeType)</span></span>&#123;    </span><br><span class="line">      <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;RECTANGLE&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RoundedRectangle();         </span><br><span class="line">      &#125;<span class="keyword">else</span> <span class="keyword">if</span>(shapeType.equalsIgnoreCase(<span class="string">&quot;SQUARE&quot;</span>))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RoundedSquare();</span><br><span class="line">      &#125;     </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FactoryProducer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AbstractFactory <span class="title">getFactory</span><span class="params">(<span class="keyword">boolean</span> rounded)</span></span>&#123;   </span><br><span class="line">      <span class="keyword">if</span>(rounded)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RoundedShapeFactory();         </span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ShapeFactory();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractFactoryPatternDemo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      AbstractFactory shapeFactory = FactoryProducer.getFactory(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">      Shape shape1 = shapeFactory.getShape(<span class="string">&quot;RECTANGLE&quot;</span>);</span><br><span class="line">      shape1.draw();</span><br><span class="line">      Shape shape2 = shapeFactory.getShape(<span class="string">&quot;SQUARE&quot;</span>);</span><br><span class="line">      shape2.draw();</span><br><span class="line"></span><br><span class="line">      AbstractFactory shapeFactory1 = FactoryProducer.getFactory(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">      Shape shape3 = shapeFactory1.getShape(<span class="string">&quot;RECTANGLE&quot;</span>);</span><br><span class="line">      shape3.draw();</span><br><span class="line">      Shape shape4 = shapeFactory1.getShape(<span class="string">&quot;SQUARE&quot;</span>);</span><br><span class="line">      shape4.draw();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="데코레이터-패턴"><a href="#데코레이터-패턴" class="headerlink" title="데코레이터 패턴"></a>데코레이터 패턴</h3><ul>
+<li>생성자를 이용해 객체에 일정한 기능을 추가하는 패턴</li>
+</ul>
+<p><img src="../../../image/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0%20%ED%8C%A8%ED%84%B4.jpg" alt="데코레이터 패턴"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Shape: Rectangle&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Shape: Circle&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeDecorator</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Shape decoratedShape;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ShapeDecorator</span><span class="params">(Shape decoratedShape)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.decoratedShape = decoratedShape;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</span><br><span class="line">      decoratedShape.draw();</span><br><span class="line">  &#125;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">RedShapeDecorator</span><span class="params">(Shape decoratedShape)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">super</span>(decoratedShape);        </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      decoratedShape.draw();           </span><br><span class="line">      setRedBorder(decoratedShape);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setRedBorder</span><span class="params">(Shape decoratedShape)</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="string">&quot;Border Color: Red&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DecoratorPatternDemo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      Shape circle = <span class="keyword">new</span> Circle();</span><br><span class="line"></span><br><span class="line">      Shape redCircle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line"></span><br><span class="line">      Shape redRectangle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">      System.out.println(<span class="string">&quot;Circle with normal border&quot;</span>);</span><br><span class="line">      circle.draw();</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">&quot;\nCircle of red border&quot;</span>);</span><br><span class="line">      redCircle.draw();</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">&quot;\nRectangle of red border&quot;</span>);</span><br><span class="line">      redRectangle.draw();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="옵저버-패턴"><a href="#옵저버-패턴" class="headerlink" title="옵저버 패턴"></a>옵저버 패턴</h3><ul>
+<li>Observable 객체의 변화를 Observer에서 알 수 있도록 하는 패턴 </li>
+</ul>
+<p><img src="../../../image/%EC%98%B5%EC%A0%80%EB%B2%84%ED%8C%A8%ED%84%B4.jpg" alt="옵저버패턴"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;Observer&gt;();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> state;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> state;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.state = state;</span><br><span class="line">      notifyAllObservers();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Observer observer)</span></span>&#123;</span><br><span class="line">      observers.add(observer);        </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyAllObservers</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (Observer observer : observers) &#123;</span><br><span class="line">        observer.update();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">  <span class="keyword">protected</span> Subject subject;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryObserver</span> <span class="keyword">extends</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BinaryObserver</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.subject = subject;</span><br><span class="line">      <span class="keyword">this</span>.subject.attach(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println( <span class="string">&quot;Binary String: &quot;</span> + Integer.toBinaryString( subject.getState() ) ); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OctalObserver</span> <span class="keyword">extends</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">OctalObserver</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.subject = subject;</span><br><span class="line">      <span class="keyword">this</span>.subject.attach(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println( <span class="string">&quot;Octal String: &quot;</span> + Integer.toOctalString( subject.getState() ) ); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HexaObserver</span> <span class="keyword">extends</span> <span class="title">Observer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">HexaObserver</span><span class="params">(Subject subject)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.subject = subject;</span><br><span class="line">      <span class="keyword">this</span>.subject.attach(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      System.out.println( <span class="string">&quot;Hex String: &quot;</span> + Integer.toHexString( subject.getState() ).toUpperCase() ); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ObserverPatternDemo</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      Subject subject = <span class="keyword">new</span> Subject();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">new</span> HexaObserver(subject);</span><br><span class="line">      <span class="keyword">new</span> OctalObserver(subject);</span><br><span class="line">      <span class="keyword">new</span> BinaryObserver(subject);</span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">&quot;First state change: 15&quot;</span>);    </span><br><span class="line">      subject.setState(<span class="number">15</span>);</span><br><span class="line">      System.out.println(<span class="string">&quot;Second state change: 10&quot;</span>);    </span><br><span class="line">      subject.setState(<span class="number">10</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeuesag0021bsu2757v8b89" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-Annotations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/" class="article-date">
+  <time datetime="2020-10-18T06:46:06.204Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="애노테이션(Annotation)"></a>애노테이션(Annotation)</h1><h2 id="애노테이션이란"><a href="#애노테이션이란" class="headerlink" title="애노테이션이란"></a>애노테이션이란</h2><ul>
+<li>애노테이션의 사전적인 의미는 주석이다,</li>
+<li>JVM, 컴파일러, 프레임워크 등에게 전달하는 메타데이터로 사용된다.</li>
+<li>프로그램에게 추가적인 정보를 제공하는 메타데이터이다.<ul>
+<li>메타데이터란 데이터를 설명하는 데이터를 의미한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="기본-애노테이션"><a href="#기본-애노테이션" class="headerlink" title="기본 애노테이션"></a>기본 애노테이션</h2><table>
+<thead>
+<tr>
+<th>애노테이션</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Override</td>
+<td>상속하여 오버라이드된 메소드</td>
+<td></td>
+</tr>
+<tr>
+<td>@Deprecated</td>
+<td>앞으로 사라질 예정임을 표기한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>@SuppressWarnings</td>
+<td>컴파일러에게 특정 경고 메세지를 무시하도록 한다.</td>
+<td>ex- @SuppressWarnings(“unused”)</td>
+</tr>
+<tr>
+<td>@FuntionalInterface</td>
+<td>함수형 인터페이스임을 표기(Lambda)</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="에노테이션-용도"><a href="#에노테이션-용도" class="headerlink" title="에노테이션 용도"></a>에노테이션 용도</h3><ul>
+<li><p>컴파일러에게 코드 작성 문법 에러를 체크하도록 정보를 제공한다.</p>
+<ul>
+<li>Ex) @Override - 메소드가 재정의 되었는지 확인할 수 있다.<br>(코드를 작성하고 이 코드가 제대로 작성이 되었는지 컴파일러에게 체크할 수 있도록 정보를 제공한다., 뭔가를 지시하는 용도로 사용)</li>
+</ul>
+</li>
+<li><p>소프트웨어 개발 툴이 빌드나 배치시 코드를 자동으로 생성할 수 있도록 정보를 제공</p>
+<ul>
+<li>프로그램을 개발하고나서 압축을 할 때가 있는 jar, war상태로 압축할 수 잇는데 어떤 파일명<br> 확장명으로 압축을 해라라고 개발툴에게 지시를 할 때 어노테이션을 통해 할수 있다</li>
+<li>Ex) XML 설정 파일을 자동 생성하거나 배포를 위한 JAR 압축 파일을 자동 생성할 수 있다.</li>
+</ul>
+</li>
+<li><p>실행시(런타임시) 특정 기능을 실행하도록 정보를 제공한다.</p>
+<ul>
+<li>객체를 만들었을 때 다른객체와 달리 특별한 역할을 해야할 경우 그객체에게 어노테이션을 기술해주면<br>어노테이션에 기술되어있는 데이터를 보고 특별한 역할을 할 수 있다.</li>
+<li>Ex) 객체가 애플리케이션 내부에서 해야할 역할을 정의할 수 있다(서블릿, 컨트롤러…)</li>
+</ul>
+</li>
+</ul>
+<h2 id="애노테이션-타입-정의와-적용"><a href="#애노테이션-타입-정의와-적용" class="headerlink" title="애노테이션 타입 정의와 적용"></a>애노테이션 타입 정의와 적용</h2><ul>
+<li><p>애노테이션 타입 정의</p>
+<ul>
+<li>소스 파일 생성 : AnnotationName.java</li>
+<li>소스 파일 내용<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션의 작성</p>
+<ul>
+<li>추상 메소드와 유사한 형태로 구현<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE&#125;)</span> <span class="comment">// 메타 애노테이션</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span>                                     <span class="comment">// 메타 애노테이션</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SuppressWarnings &#123;                                   <span class="comment">// 애노테이션 선언</span></span><br><span class="line">    String [] value();                                                 <span class="comment">// 애노테이션 속성</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션 타입 적용</p>
+<ul>
+<li><code>@AnnotationName</code><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> toString()&#123; .. &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션의 사용</p>
+<ul>
+<li>key = value 형태로 애노테이션에 속성의 값 전달<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(value = &#123;&quot;unused&quot;, &quot;rawtypes&quot;&#125;)</span> <span class="comment">// 키 = 값 배열</span></span><br><span class="line"><span class="meta">@SuppressWarnings(value = &quot;unused&quot;)</span>               <span class="comment">// 값이 하나인 경우 배열 생략 가능</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&#123;&quot;unused&quot;, &quot;rawtypes&quot;&#125;)</span>         <span class="comment">// 속성이 value 하나인 경우 키 생략 가능</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@CustomAnnotation(key1 = &quot;value1&quot;, key2 = &#123;&quot;value2&quot;, &quot;value3&quot;&#125;)</span> <span class="comment">// 속성이 여러개인 경우 키를 여러개 사용</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>애노테이션의 엘리먼트 멤버</p>
+<ul>
+<li>어노테이션을 코드에 적용할 때 외부의 값(개발자가 입력한 값)을 입력받을 수 있도록 하는 역할</li>
+<li>엘리먼트 선언<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  타입 elementName() [defalut 값(기본값, 생략가능)]; <span class="comment">// 엘리먼트 선언</span></span><br><span class="line">   ...</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>엘리먼트의 타입은 기본타입과 참조 타입 모두 사용할 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  String elementName1();</span><br><span class="line">  <span class="keyword">int</span> elementName2() <span class="keyword">default</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>어노테이션 적용시 엘리먼트 값을 지정하는 방법<br> @AnnotationName(element=”값”, elementName2 = 3);</p>
+</li>
+</ul>
+<h2 id="기본-엘리먼트-value"><a href="#기본-엘리먼트-value" class="headerlink" title="기본 엘리먼트 value"></a>기본 엘리먼트 value</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  String value()  <span class="comment">// 기본 엘리먼트 선언</span></span><br><span class="line">  <span class="keyword">int</span> elementName()  <span class="keyword">default</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>애노테이션을 적용할 때 엘리먼트명을 생략가능</p>
+<ul>
+<li><code>@AnnotationName(&quot;값&quot;);</code> - 기본 엘리먼트인 value에 값이 들어간다<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">&quot;/main&quot;</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainServlet</span> &#123;</span> ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>두 개 이상의 속성을 기술할 때에는 value =값 형태로 기술해야 한다.</p>
+<ul>
+<li><code>@AnnotationName(value=&quot;값&quot;, elementName=3);</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="애노테이션-적용-대상"><a href="#애노테이션-적용-대상" class="headerlink" title="애노테이션 적용 대상"></a>애노테이션 적용 대상</h2><ul>
+<li>코드 상에서 애노테이션을 적용할 수 있는 대상</li>
+<li>java.lang.annotation.ElementType. 열거 상수로 정의되어 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ElementType 열거 상수</th>
+<th>적용 대상</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TYPE</td>
+<td>클래스, 인터페이스, 열거 타입</td>
+</tr>
+<tr>
+<td>ANNOTATION_TYPE</td>
+<td>어노테이션</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>필드, 열거형 상수</td>
+</tr>
+<tr>
+<td>CONSTRUCTOR</td>
+<td>생성자</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>메소드</td>
+</tr>
+<tr>
+<td>PARAMETER</td>
+<td>메소드의 입력 파라미터</td>
+</tr>
+<tr>
+<td>LOCAL_VARIABLE</td>
+<td>로컬 변수</td>
+</tr>
+<tr>
+<td>PACKAGE</td>
+<td>패키지</td>
+</tr>
+<tr>
+<td>MODULE</td>
+<td>모듈</td>
+</tr>
+</tbody></table>
+<ul>
+<li>애노테이션 적용 대상 지정 방법<ul>
+<li>@Target 애노테이션으로 적용 대상 지정</li>
+<li>@Target의 기본 엘리먼트인 value의 타입은 ElementType 배열<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.FLELD, ElementTypeMETHOD&#125;) <span class="comment">// TYPE,FELED,METHOD에 적용할 수 있다라는 의미이다.</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@AnnotationName</span> <span class="comment">// 클래스에 사용 가능</span></span><br><span class="line"><span class="keyword">public</span> className&#123;</span><br><span class="line">   <span class="meta">@AnnotationName</span> <span class="comment">// 필드에 사용 가능</span></span><br><span class="line">   <span class="keyword">private</span> String fieldName;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@AnnotationName</span> x  <span class="comment">// 생성자에는 사용 불가</span></span><br><span class="line">   <span class="keyword">public</span> className()&#123;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@AnnotationName</span> <span class="comment">// 메소드에는 사용 가능</span></span><br><span class="line">   <span class="keyword">public</span>  <span class="keyword">void</span> methodName()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="어노테이션-유지-정책"><a href="#어노테이션-유지-정책" class="headerlink" title="어노테이션 유지 정책"></a>어노테이션 유지 정책</h2><ul>
+<li><p>어노테이션 적용 코드가 유지되는 시점을 지정하는 것</p>
+</li>
+<li><p>java.lang.annotation.RetentionPolicy 열거 상수로 정의되어 있다.</p>
+<table>
+<thead>
+<tr>
+<th>RetentionPolicy 열거 상수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOURCE</td>
+<td>소스상에서만 어노테이션 정보를 유지한다. 소스코드를 분석할 때만 의미가 있으며, 바이트 코드 파일에는 정보가 남지 않는다. 컴파일러가 컴파일 할 때 어노테이션을 바이트코드에서 뺀다,바이트코드에서는 어노테이션이 유지되지 않는 정책이다 개발자가 소스에서 정보를 얻을 목적으로 유지하는 정책</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>바이트 코드 파일까지 어노테이션 정보를 유지한다. 하지만 리플렉션을 이용해서 어노테이션 정보를 얻을 수는 없다.클래스상에만 존재하고 실제로 실행할 때는 그정보를 읽지못하는 유지 정책.</td>
+</tr>
+<tr>
+<td>RUNTIME</td>
+<td>바이트 코드 파일까지 어노테이션 정보를 유지하면서 리플렉션을 이용해서 런타임에 어노테이션 정보를 얻을 수 있다. 클래스를 이용할 때 어떤 어노테이션이 적용되었나를 보고 클래스의 역할과 실행방법을 정해줄 수 있기 때문에 대부분 RUNTIME 유지정책을 사용한다</td>
+</tr>
+</tbody></table>
+<ul>
+<li>리플렉션(ReFlection) : 런타임에 클래스의 메타 정보를 얻는 기능<ul>
+<li>(클래스의 메타정보)클래스가 가지고 있는 필드, 필드의 종류, 필드의 타입 생성자, 메소드, 어노테이션의 정보 등등을 얻을 수 있다.</li>
+<li>런타임시에 어노테이션 정보를 얻으려면 유지 정책을 RUNTIME으로 설정해야 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>유지 정책 지정 방법</p>
+<ul>
+<li>@Retention 어노테이션으로 유지 정책을 지정</li>
+<li>@Retention의 기본 엘리먼트인 value의 타입은 RetentionPolicy<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.FLELD, ElementTypeMETHOD&#125;)</span> <span class="comment">// TYPE,FELED,METHOD에 적용할 수 있다라는 의미이다.</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span> <span class="comment">// 여기다가 위에 3가지중 하나를 넣어주면 됨. value = RetentionPolicy.RUNTIME과 같다</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="사용자-정의-애노테이션"><a href="#사용자-정의-애노테이션" class="headerlink" title="사용자 정의 애노테이션"></a>사용자 정의 애노테이션</h2><ul>
+<li>멤버 변수를 대상으로 하는, Reflection API에서 쓸 수 있ㄴㄴ 애노테이션</li>
+<li>애노테이션 속성은 String[]인 value와 “기본값” 기본값을 가지는 valueTwo로 이루어짐</li>
+</ul>
+<ul>
+<li><p>사용자 정의 애노테이션 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;FIELD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    String[] value(); <span class="comment">// 애노테이션 속성 (기본 속성 이름은 value) 첫번째 애노테이션 속성은 value로해주는 게 좋다.</span></span><br><span class="line">    <span class="function">String <span class="title">valueTwo</span><span class="params">()</span> <span class="keyword">default</span> &quot;기본값&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>사용자 정의 애노테이션 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnnotationUsage</span></span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation(&quot;game&quot;)</span><span class="comment">// 바로밑에 한줄에 적용이된다. 게임네임에는 게임에 대한정보가들어가있다라는 의미이다.</span></span><br><span class="line">    String gameName = <span class="string">&quot;여러분의 틱택토&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//value가 String[]이므로 value = String[]로 넣어 준다.</span></span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;server&quot;,valueTwo = &quot;localhost&quot;)</span> <span class="comment">// value는 원래 배열이다</span></span><br><span class="line">    String serverIP; <span class="comment">// 내용이 들어가도 상관없다. 여기에쓰던지 valueTwo에쓰던지하는 것</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//value가 String[]이지만, 길이가 1이면 String 만 넣어주어도 됨.</span></span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;server&quot;,valueTwo = &quot;8080&quot;)</span></span><br><span class="line">    String serverPort;</span><br><span class="line">    <span class="meta">@MyAnnotation(&quot;game&quot;)</span></span><br><span class="line">    String gameMode = <span class="string">&quot;AI VS. AI&quot;</span>;</span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;db&quot;,valueTwo = &quot;localhost&quot;)</span></span><br><span class="line">    String database;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Reflection을 이용하여 애노테이션에 할당된 값 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line"></span><br><span class="line">        AnnotationUsage obj = <span class="keyword">new</span> AnnotationUsage();</span><br><span class="line">        Map&lt;String, Object&gt; gameProp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; serverPrp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; dbProp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Field[] fields =AnnotationUsage.class.getDeclaredFields(); // 필드 정보 가져오는 부분 (Reflection API를 사용하여 가져옴)</span><br><span class="line">        <span class="keyword">for</span> (Field filed : fields) &#123;</span><br><span class="line">            MyAnnotation annotation = filed.getDeclaredAnnotation(MyAnnotation.class); // 필드에서 Annotation 정보 가져오는 부분(Reflect API)</span><br><span class="line">            <span class="keyword">if</span>(filed.get(obj) == <span class="keyword">null</span>)&#123; <span class="comment">// 필드 값이 비어있는 경우 valueTwo에서 가져온다.</span></span><br><span class="line">                filed.set(obj, annotation.valueTwo()); <span class="comment">// 값이 없으면 valueTwo를 채워줌</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (annotation.value()[<span class="number">0</span>].equals(<span class="string">&quot;game&quot;</span>))&#123;</span><br><span class="line">                gameProp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125; <span class="keyword">else</span>  <span class="keyword">if</span> (annotation.value()[<span class="number">0</span>].equals(<span class="string">&quot;server&quot;</span>))&#123;</span><br><span class="line">                serverPrp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dbProp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(gameProp);</span><br><span class="line">        System.out.println(serverPrp);</span><br><span class="line">        System.out.println(dbProp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeues9o0017bsu22cyv1lgg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Stream_TerminalOperations" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" class="article-date">
@@ -298,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckg4ta5nt001gk8u2cfjoasuc" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeuesa5001pbsu23uhxb388" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +784,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckg4ta5nu001hk8u249s99k9b" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeuesa4001obsu2dvf33a3w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -573,7 +950,7 @@
 <li><p>버퍼를 사용한 코드</p>
 </li>
 </ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>( InputStream input = System.<span class="keyword">in</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> read = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// byte[] bytes = new byte[2];</span></span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">    <span class="comment">// 일단 read()안에 버퍼 bytes라고 매개값을 주게 되면, 이 버퍼의 길이만큼 배열안에 입력받은 값들이 담겨져</span></span><br><span class="line">    <span class="comment">// 그 값들의 개수를 반환 시킨다.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 512의 크기를 준 것 처럼 한번에 담을 수 없는 큰 크기를 줬을 때 이것 또한 무한 루프에 빠지게 된다.</span></span><br><span class="line">    <span class="comment">// 근데 만약 2 같은 작은 크기를 줬을 때는 2개씩 짤려서 반환시켜서 read에 넣어주다가 마지막에 1개인 값만 남게 되면</span></span><br><span class="line">    <span class="comment">// 반복문이 종료됨 예로 abcd를 입력하고 엔터를치면 ab 두개를 짤라서 read넣으면 2 != 1이니깐 반복문을 한번더 돌고 cd도 2!=1이니깐</span></span><br><span class="line">    <span class="comment">// 한번더 도는데 엔터도 \n라고 값이 있는 것이기 때문에 1개의 값이 되서 종료된다.</span></span><br><span class="line">    <span class="comment">// 그래서 이렇게 작은 버퍼를 주게 되었을 때는 밑에 while문 안에 조건문을 주는 것이 의미가 없게 된다.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// input.read(bytes)를 하게 되면 bytes의 크기만큼의 데이터를 읽어서 길이를 반환해주고, bytes안에 입력된 값들이 저장된다.</span></span><br><span class="line">    <span class="keyword">while</span>((read = input.read(bytes)) != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>((<span class="keyword">char</span>)bytes[<span class="number">0</span>] == <span class="string">&#x27;q&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(bytes));</span><br><span class="line">        System.out.println(read);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>( InputStream input = System.<span class="keyword">in</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> read = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// byte[] bytes = new byte[2];</span></span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">    <span class="comment">// 일단 read()안에 버퍼 bytes라고 매개값을 주게 되면, 이 버퍼의 길이만큼 배열안에 입력받은 값들이 담겨져</span></span><br><span class="line">    <span class="comment">// 그 값들의 개수를 반환 시킨다.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 512의 크기를 준 것 처럼 한번에 담을 수 없는 큰 크기를 줬을 때 이것 또한 무한 루프에 빠지게 된다.</span></span><br><span class="line">    <span class="comment">// 근데 만약 2 같은 작은 크기를 줬을 때는 2개씩 짤려서 반환시켜서 read에 넣어주다가 마지막에 1개인 값만 남게 되면 반복문이 종료됨</span></span><br><span class="line">    <span class="comment">// 예로 abcd를 입력하고 엔터를치면 ab 두개를 짤라서 read넣으면 2 != 1이니깐 반복문을 한번더 돌고 cd도 2!=1이니깐</span></span><br><span class="line">    <span class="comment">// 한번더 도는데 엔터도 \n라고 값이 있는 것이기 때문에 1개의 값이 되서 종료된다.</span></span><br><span class="line">    <span class="comment">// 그래서 이렇게 작은 버퍼를 주게 되었을 때는 밑에 while문 안에 조건문을 주는 것이 의미가 없게 된다.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// input.read(bytes)를 하게 되면 bytes의 크기만큼의 데이터를 읽어서 길이를 반환해주고, bytes안에 입력된 값들이 저장된다.</span></span><br><span class="line">    <span class="keyword">while</span>((read = input.read(bytes)) != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>((<span class="keyword">char</span>)bytes[<span class="number">0</span>] == <span class="string">&#x27;q&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(bytes));</span><br><span class="line">        System.out.println(read);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>( InputStream input = System.<span class="keyword">in</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> read = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">512</span>];</span><br><span class="line">    <span class="comment">// 버퍼를 사용할 때는 입력 받은 글자의 길이를 반환해주는 것이기 때문에</span></span><br><span class="line">    <span class="comment">// 버퍼를 사용할 경우에 어떠한 글자들을 입력해도 계속해서 입력 받을 수 있다.(0과 같지 않을 때라고 조건을 해놨기 때문에)</span></span><br><span class="line">    <span class="keyword">while</span>((read = input.read(bytes)) != <span class="number">0</span>) &#123;  <span class="comment">// 읽은 개수가 0이면 읽을게 없다라는 의미이다</span></span><br><span class="line">        <span class="keyword">if</span>((<span class="keyword">char</span>)bytes[<span class="number">0</span>] == <span class="string">&#x27;q&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Arrays.toString(bytes));</span><br><span class="line">        System.out.println(read);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -733,7 +1110,7 @@
 </tbody></table>
 <h3 id="다양한-입출력-처리"><a href="#다양한-입출력-처리" class="headerlink" title="다양한 입출력 처리"></a>다양한 입출력 처리</h3><ul>
 <li><p>메모리 기반의 입/출력</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> [] memory = <span class="string">&quot;메모리 입출력 테스트 입력&quot;</span>.toCharArray();</span><br><span class="line"><span class="keyword">char</span> [] cbuf = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">4</span>]; <span class="comment">//버퍼는 단순해야 단순하지않으면 오히려 속도가 떨어진다.</span></span><br><span class="line"><span class="keyword">int</span> read = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 리소스를 두개 사용하는 방법 ;을 사용하여 나누면됨</span></span><br><span class="line"><span class="keyword">try</span> (CharArrayReader reader = <span class="keyword">new</span> CharArrayReader(memory);</span><br><span class="line">     CharArrayWriter writer = <span class="keyword">new</span> CharArrayWriter())&#123;</span><br><span class="line">     <span class="keyword">while</span> ((read = reader.read(cbuf)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="comment">//writer.write(cbuf, 0,read); // (buffer, offset, len)</span></span><br><span class="line">          <span class="comment">// read 길이만큼 들어있는데 이때 몇개를 스킵할 수 있다 그때 사용하는게 offset</span></span><br><span class="line">          <span class="comment">// 1를 첫번째거빼고 2번째거 부터 하게된다는 의미이다. 0은 스킵없이 처음부터 한다는 것이고</span></span><br><span class="line">          <span class="comment">// len은 몇개까지 한다는 것  개수를 정해줘야 한다.</span></span><br><span class="line">          writer.write(cbuf); <span class="comment">//개수를 지정해주지 않으면 메모리에 남아있는게 마지막 문자뒤에 전에 문자가 붙어서 출력됨</span></span><br><span class="line">          <span class="comment">// 여기서는 [메,모,리, ,입,출,력, ,테,스,트, ,입, 력, 트, ] 이런식으로 출력이 된다.</span></span><br><span class="line">     &#125;</span><br><span class="line">     System.out.println(Arrays.toString(writer.toCharArray()));</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> [] memory = <span class="string">&quot;메모리 입출력 테스트 입력&quot;</span>.toCharArray();</span><br><span class="line"><span class="keyword">char</span> [] cbuf = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">4</span>]; <span class="comment">//버퍼는 단순해야 단순하지 않으면 오히려 속도가 떨어진다.</span></span><br><span class="line"><span class="keyword">int</span> read = <span class="number">0</span>;</span><br><span class="line"><span class="comment">// 리소스를 두개 사용하는 방법 ;을 사용하여 나누면됨</span></span><br><span class="line"><span class="keyword">try</span> (CharArrayReader reader = <span class="keyword">new</span> CharArrayReader(memory);</span><br><span class="line">     CharArrayWriter writer = <span class="keyword">new</span> CharArrayWriter())&#123;</span><br><span class="line">     <span class="keyword">while</span> ((read = reader.read(cbuf)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          <span class="comment">//writer.write(cbuf, 0,read); // (buffer, offset, len)</span></span><br><span class="line">          <span class="comment">// read 길이만큼 들어있는데 이때 몇개를 스킵할 수 있다 그때 사용하는게 offset</span></span><br><span class="line">          <span class="comment">// 1를 첫번째거빼고 2번째거 부터 하게된다는 의미이다. 0은 스킵없이 처음부터 한다는 것이고</span></span><br><span class="line">          <span class="comment">// len은 몇개까지 한다는 것  개수를 정해줘야 한다.</span></span><br><span class="line">          writer.write(cbuf); <span class="comment">//개수를 지정해주지 않으면 메모리에 남아있는게 마지막 문자뒤에 전에 문자가 붙어서 출력됨</span></span><br><span class="line">          <span class="comment">// 여기서는 [메,모,리, ,입,출,력, ,테,스,트, ,입, 력, 트, ] 이런식으로 출력이 된다.</span></span><br><span class="line">     &#125;</span><br><span class="line">     System.out.println(Arrays.toString(writer.toCharArray()));</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e)&#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>파일 기반의 입출력</p>
 <ul>
@@ -958,7 +1335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckg4ta5oq002hk8u2aa6cff6k" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeuesay002hbsu233x6bzea" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1310,7 +1687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckg4ta5nj0017k8u2eubk1frv" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeues9x001hbsu27qpkbf8f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2056,7 +2433,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckg4ta5pi002ik8u2dq4r7xj5" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeuesb2002kbsu2gpg688a0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2536,7 +2913,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckg4ta5oq002gk8u27esrd79c" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeuesb0002jbsu2009zbnkg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2591,7 +2968,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckg4ta5ok002dk8u2co0y89gl" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeuesap002bbsu24jwdd1wk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2646,109 +3023,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckg4ta5of0027k8u27lzg8rdi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework07/Rect" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/25/Java/Subject/Homework07/Rect/" class="article-date">
-  <time datetime="2020-09-25T12:06:47.869Z" itemprop="datePublished">2020-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day7"><a href="#과제-Day7" class="headerlink" title="과제 Day7"></a>과제 Day7</h1><h2 id="Rect-구현하기"><a href="#Rect-구현하기" class="headerlink" title="Rect 구현하기"></a>Rect 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li>아래 테스트 코드가 정상 동작하도록 클래스들을 완성하시오.</li>
-<li>getArea(): 사각형의 넓이를 반환한다.</li>
-<li>getCenterOfMass(): 사각형의 질량중심을 반환한다.</li>
-<li>GetAllPoints(): 사각형의 네 점을 배열로 반환한다.</li>
-<li>rot90(): Pivot을 기준으로 사각형을 90도 회전시킨다.</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2D</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D(<span class="keyword">float</span> x, <span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f&quot;</span>,x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> Vector2D pos;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">float</span> w, h;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> RectCore(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">this</span>.pos = <span class="keyword">new</span> Vector2D(x, y);</span><br><span class="line">        <span class="built_in">this</span>.w = w;</span><br><span class="line">        <span class="built_in">this</span>.h = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f, %f&quot;</span>,pos.toString(),w,h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rect</span> <span class="keyword">extends</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    Vector2D [] v2 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">    &#123;</span><br><span class="line">        v2[<span class="number">0</span>] = pos;</span><br><span class="line">        v2[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(pos.x,pos.y+h);</span><br><span class="line">        v2[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y+h);</span><br><span class="line">        v2[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rect(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">super</span>(x, y, w, h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getArea() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> area = w * h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D getCenterOfMass() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> a = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.x + (w * <span class="number">0.5</span>));</span><br><span class="line">        <span class="keyword">float</span> b = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.y + (h * <span class="number">0.5</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector2D(a, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D [] getAllPoints() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> v2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> rot90(Vector2D pivot) &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        Vector2D [] v3 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">float</span> x1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x - <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> x2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x + <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> y1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y - <span class="number">0.5</span>*w);</span><br><span class="line">        <span class="keyword">float</span> y2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y + <span class="number">0.5</span>*w);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        v3[<span class="number">0</span>] = <span class="keyword">new</span> Vector2D(x1,y1);</span><br><span class="line">        v3[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(x1,y2);</span><br><span class="line">        v3[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(x2,y2);</span><br><span class="line">        v3[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(x2,y1);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;v2.length; i++)&#123;</span><br><span class="line">            System.out.println(v3[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> v2[<span class="number">0</span>].toString() + <span class="string">&quot; &quot;</span>+ v2[<span class="number">1</span>].toString() + <span class="string">&quot; &quot;</span></span><br><span class="line">                +v2[<span class="number">2</span>].toString() + <span class="string">&quot; &quot;</span> + v2[<span class="number">4</span>].toString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectTest</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Rect rect = <span class="keyword">new</span> Rect(<span class="number">0.5</span>f, <span class="number">0.7</span>f, <span class="number">1.5</span>f, <span class="number">2.3</span>f);</span><br><span class="line">        System.out.println(<span class="string">&quot;Area: &quot;</span> + rect.getArea());</span><br><span class="line">        System.out.println(<span class="string">&quot;CoM: &quot;</span> + rect.getCenterOfMass());</span><br><span class="line">        System.out.println(<span class="string">&quot;All Points: &quot;</span> + Arrays.toString(rect.getAllPoints()));</span><br><span class="line"></span><br><span class="line">        rect.rot90(<span class="keyword">new</span> Vector2D(<span class="number">0.4</span>f, <span class="number">0.2</span>f));</span><br><span class="line">        System.out.println(<span class="string">&quot;Rotated rect: &quot;</span> + rect);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckg4ta5oi002ak8u26jag67rz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework06/Vector3D" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/" class="article-date">
-  <time datetime="2020-09-21T12:45:28.954Z" itemprop="datePublished">2020-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="3차원-벡터-클래스-구현하기"><a href="#3차원-벡터-클래스-구현하기" class="headerlink" title="3차원 벡터 클래스 구현하기"></a>3차원 벡터 클래스 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li><p>속성</p>
-<ul>
-<li>float타입의 x, y, z</li>
-</ul>
-</li>
-<li><p>생성자</p>
-<ul>
-<li>Vector3D(float x, float y, float z)</li>
-</ul>
-</li>
-<li><p>메소드</p>
-<ul>
-<li>x, y, z에 대한 getter 및 setter</li>
-<li>add(): 벡터끼리의 덧셈, 실수와의 덧셈을 반환</li>
-<li>sub(): 벡터끼리의 뺄셈, 실수와의 뺄셈을 반환</li>
-<li>inner(): 두 벡터의 내적을 반환</li>
-<li>mul(): 실수와의 곱을 반환</li>
-<li>mag(): 벡터의 크기를 반환</li>
-<li>print(): 벡터의 내용을 “(%.3f, %.3f, %.3f)\n” 형식으로 콘솔에 출력</li>
-</ul>
-</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vector3D</span> &#123;</span></span><br><span class="line">    <span class="keyword">float</span> x;</span><br><span class="line">    <span class="keyword">float</span> y;</span><br><span class="line">    <span class="keyword">float</span> z;</span><br><span class="line"></span><br><span class="line">    Vector3D(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getX() &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setX(<span class="keyword">float</span> x) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getY() &#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setY(<span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getZ() &#123;</span><br><span class="line">        <span class="keyword">return</span> z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setZ(<span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D add(Vector3D v2) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + v2.x,<span class="built_in">this</span>.y + v2.y,<span class="built_in">this</span>.z + v2.z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Vector3D add(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + f,<span class="built_in">this</span>.y + f,<span class="built_in">this</span>.z + f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(Vector3D v1) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x - v1.x,<span class="built_in">this</span>.y - v1.y,<span class="built_in">this</span>.z - v1.z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D( <span class="built_in">this</span>.x - f,<span class="built_in">this</span>.y - f,<span class="built_in">this</span>.z - f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> inner(Vector3D v2) &#123;</span><br><span class="line">        <span class="keyword">float</span> num = <span class="built_in">this</span>.x * v2.x + <span class="built_in">this</span>.y * v2.y + <span class="built_in">this</span>.z * v2.z;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D mult(<span class="keyword">float</span> v) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x *= v;</span><br><span class="line">        <span class="built_in">this</span>.y *= v;</span><br><span class="line">        <span class="built_in">this</span>.z *= v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mag() &#123;</span><br><span class="line">        <span class="keyword">float</span> f = (<span class="keyword">float</span>) Math.sqrt(Math.pow(<span class="built_in">this</span>.x,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.y,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.z,<span class="number">2</span>));</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> print()&#123;</span><br><span class="line"></span><br><span class="line">        System.out.printf(<span class="string">&quot;%.3f,%.3f,%.3f\n&quot;</span>,x,y,z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector3DTest</span>&#123;</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Vector3D v1 = <span class="keyword">new</span> Vector3D(<span class="number">0.5</span>f, <span class="number">0.2</span>f, <span class="number">0.9</span>f);</span><br><span class="line">        Vector3D v2 = <span class="keyword">new</span> Vector3D(<span class="number">0.8</span>f, <span class="number">0.1</span>f, <span class="number">1.3</span>f);</span><br><span class="line"></span><br><span class="line">        v1.add(v2).print();</span><br><span class="line">        v2.sub(v1).print();</span><br><span class="line">        v1.add(<span class="number">0.2</span>f).print();</span><br><span class="line">        v2.sub(<span class="number">0.05</span>f).print();</span><br><span class="line">        System.out.println(v1.inner(v2));</span><br><span class="line">        v1.mult(<span class="number">1.2</span>f).print();</span><br><span class="line">        System.out.println(v2.mag());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckg4ta5ok002ck8u2dso57dyz" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeuesas002ebsu2emoye0u3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2794,6 +3069,14 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       <ul>
         
           <li>
+            <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
           </li>
         
@@ -2803,14 +3086,6 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
         
           <li>
             <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/">Java_Java-lang Package</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
           </li>
         
       </ul>

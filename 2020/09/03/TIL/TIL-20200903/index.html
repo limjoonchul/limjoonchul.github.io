@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Study20200903 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="this의 역할 자신의 메모리를 가리킴  생성자에서 다른 생성자를 호출 함  생성자 오버로딩에서 한 클래스안에 생성자가 여러개 있을 수 있는데  한생성자에서 다른 생성자를 호출하는 경우가 종종있다.  인스턴스 자신의 주소를 반환할 일이 있으면 this를 반환 하면 된다.  day로부터 setYear라는 메소드를 호출하게 되면 setYear는 BirthDay">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study20200903">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/03/TIL/TIL-20200903/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="this의 역할 자신의 메모리를 가리킴  생성자에서 다른 생성자를 호출 함  생성자 오버로딩에서 한 클래스안에 생성자가 여러개 있을 수 있는데  한생성자에서 다른 생성자를 호출하는 경우가 종종있다.  인스턴스 자신의 주소를 반환할 일이 있으면 this를 반환 하면 된다.  day로부터 setYear라는 메소드를 호출하게 되면 setYear는 BirthDay">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-03T12:50:38.222Z">
+<meta property="article:modified_time" content="2020-09-03T12:57:13.435Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-TIL/TIL-20200903" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/03/TIL/TIL-20200903/" class="article-date">
+  <time datetime="2020-09-03T12:50:38.222Z" itemprop="datePublished">2020-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Study20200903
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this의-역할"><a href="#this의-역할" class="headerlink" title="this의 역할"></a>this의 역할</h1><ul>
+<li><p>자신의 메모리를 가리킴</p>
+</li>
+<li><p>생성자에서 다른 생성자를 호출 함</p>
+</li>
+<li><p>생성자 오버로딩에서 한 클래스안에 생성자가 여러개 있을 수 있는데</p>
+</li>
+<li><p>한생성자에서 다른 생성자를 호출하는 경우가 종종있다.</p>
+</li>
+<li><p>인스턴스 자신의 주소를 반환할 일이 있으면 this를 반환 하면 된다.</p>
+</li>
+<li><p>day로부터 setYear라는 메소드를 호출하게 되면 setYear는 BirthDay에 대한 메소드이니깐</p>
+</li>
+<li><p>setYear의 세그멘테이션이 stack영역에 만들어지고 만약 setYear 안에서 this를 썼다하면 힙영역의 BirthDay에대한</p>
+</li>
+<li><p>메모리를 가리킴 인스턴스 내부에서 객체내부에서 자기 자신이 생성된 메모리주소를 가리킴</p>
+</li>
+<li><p>인스턴스가 여러개생성됬다하면 각각의 this는 다 다름 코드상에서 this하나만 쓰지만 각각은 다 다름</p>
+</li>
+<li><p>여기서 stack 영역에 this가 들어가게되는데 왜 this가 들어가는지 이해가 안갔는데</p>
+</li>
+<li><p>메인에서 this가 date.setYear() 이런식으로 호출이 되어있다면 this는 date변수 대신이라고 생각해도될까?</p>
+</li>
+<li><p>로컬변수에 this는 참조변수로 생성된다. 그런의미로 이해하면될 것 같다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isVaild = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    public MyDate(int year, int month, int day) &#123;</span></span><br><span class="line"><span class="comment">//        this.year = year;</span></span><br><span class="line"><span class="comment">//        this.month = month;</span></span><br><span class="line"><span class="comment">//        this.day = day;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">void</span> setDay(<span class="keyword">int</span> day)&#123;</span><br><span class="line">        <span class="built_in">this</span>.day = day;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay()&#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>(month &lt;<span class="number">1</span> || month &gt; <span class="number">12</span>)&#123;</span><br><span class="line">            isVaild = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.month = month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showDate()&#123;</span><br><span class="line">        <span class="keyword">if</span> (isVaild)&#123;</span><br><span class="line">            System.out.println(<span class="built_in">this</span>.year + <span class="string">&quot;년&quot;</span> + <span class="built_in">this</span>.month + <span class="string">&quot;월&quot;</span> +<span class="built_in">this</span>.day+<span class="string">&quot;일&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;유효하지 않은 범위 입니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate date = <span class="keyword">new</span> MyDate();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        date.setYear(<span class="number">2019</span>);</span><br><span class="line">        date.setMonth(<span class="number">13</span>);</span><br><span class="line">        date.setDay(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        date.showDate();</span><br><span class="line"></span><br><span class="line"><span class="comment">//        MyDate date2 = new MyDate();</span></span><br><span class="line"><span class="comment">//        date2.setYear(2020);</span></span><br><span class="line"><span class="comment">//        date2.setMonth(2);</span></span><br><span class="line"><span class="comment">//        date2.setDay(11);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        date2.showDate();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>생성자는 인스턴스의 값들을 초기화하는 인스턴스 생성을 초기화하는 역할을 한다.</p>
+</li>
+<li><p>this()로 다른 생성자를 호출할 때  호출한 생성자가 무슨일을 할 줄 모르는 상태인데</p>
+</li>
+<li><p>this()호출보다 먼저 값들을 초기화한다고 하면 다른 생성자를 호출할 때 다른 스테이트가 올라가는 것을 허용하지 않는다. 그래서 호출은 가장 첫줄에 써야 함.</p>
+</li>
+</ul>
+<p>##메소드 영역 (Method area)</p>
+<ul>
+<li>프로그램 실행 중 어떤 클래스가 사용되면, JVM은 해당 클래스의 클래스 파일 (.class) 파일을 읽어<br>클래스에 대한 정보를 저장합니다. Class Variable도 함께 저장하는데 그것은 Static Variable과 같습니다. 어디서든 공유해 쓸 수 있는 변수를 의미합니다.</li>
+</ul>
+<h2 id="스택영역"><a href="#스택영역" class="headerlink" title="스택영역"></a>스택영역</h2><ul>
+<li>메서드가 호출되면 스택에 호출된 메서드를 위한 메모리가 할당되고, 이 메모리는 메서드의 연산의<br>중간 결과, 지역 변수, 매개변수 등을 저장하는데 사용한다. 그리고 메소드의 작업을 마치면 메모리 공간을<br>반환 한다.</li>
+</ul>
+<h2 id="힙-영역-heap"><a href="#힙-영역-heap" class="headerlink" title="힙 영역 (heap)"></a>힙 영역 (heap)</h2><ul>
+<li>클래스의 인스턴스와 배열이 저장되는 공간입니다. 프로그램 중 생성된<br>인스턴스는 모두 이곳에 저장됩니다. 인스턴스 변수도 생성됩니다.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL/TIL-20200903/" data-id="ckgeues99000ubsu2970x3sfy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/07/Java/JavaBasic/Java-JavaProgramming/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaBasic_Java Programming
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/02/Algorithm/Solution-NSet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">AlgorithmSolution_NSet</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

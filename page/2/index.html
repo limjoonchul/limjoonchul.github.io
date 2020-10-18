@@ -64,6 +64,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/Subject/Homework07/Rect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/25/Java/Subject/Homework07/Rect/" class="article-date">
+  <time datetime="2020-09-25T12:06:47.869Z" itemprop="datePublished">2020-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/25/Java/Subject/Homework07/Rect/">Subject_Day07_Rect</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day7"><a href="#과제-Day7" class="headerlink" title="과제 Day7"></a>과제 Day7</h1><h2 id="Rect-구현하기"><a href="#Rect-구현하기" class="headerlink" title="Rect 구현하기"></a>Rect 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li>아래 테스트 코드가 정상 동작하도록 클래스들을 완성하시오.</li>
+<li>getArea(): 사각형의 넓이를 반환한다.</li>
+<li>getCenterOfMass(): 사각형의 질량중심을 반환한다.</li>
+<li>GetAllPoints(): 사각형의 네 점을 배열로 반환한다.</li>
+<li>rot90(): Pivot을 기준으로 사각형을 90도 회전시킨다.</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector2D</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D(<span class="keyword">float</span> x, <span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f&quot;</span>,x,y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> Vector2D pos;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">float</span> w, h;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> RectCore(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">this</span>.pos = <span class="keyword">new</span> Vector2D(x, y);</span><br><span class="line">        <span class="built_in">this</span>.w = w;</span><br><span class="line">        <span class="built_in">this</span>.h = h;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot;%f, %f, %f&quot;</span>,pos.toString(),w,h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Rect</span> <span class="keyword">extends</span> <span class="title">RectCore</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    Vector2D [] v2 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">    &#123;</span><br><span class="line">        v2[<span class="number">0</span>] = pos;</span><br><span class="line">        v2[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(pos.x,pos.y+h);</span><br><span class="line">        v2[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y+h);</span><br><span class="line">        v2[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(pos.x+w,pos.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Rect(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> w, <span class="keyword">float</span> h) &#123;</span><br><span class="line">        <span class="built_in">super</span>(x, y, w, h);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getArea() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> area = w * h;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D getCenterOfMass() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">float</span> a = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.x + (w * <span class="number">0.5</span>));</span><br><span class="line">        <span class="keyword">float</span> b = (<span class="keyword">float</span>) (<span class="built_in">this</span>.pos.y + (h * <span class="number">0.5</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector2D(a, b);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector2D [] getAllPoints() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> v2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> rot90(Vector2D pivot) &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        Vector2D [] v3 = <span class="keyword">new</span> Vector2D[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">float</span> x1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x - <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> x2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.x + <span class="number">0.5</span>*h);</span><br><span class="line">        <span class="keyword">float</span> y1 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y - <span class="number">0.5</span>*w);</span><br><span class="line">        <span class="keyword">float</span> y2 = (<span class="keyword">float</span>) ((<span class="keyword">float</span>)pivot.y + <span class="number">0.5</span>*w);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        v3[<span class="number">0</span>] = <span class="keyword">new</span> Vector2D(x1,y1);</span><br><span class="line">        v3[<span class="number">1</span>] = <span class="keyword">new</span> Vector2D(x1,y2);</span><br><span class="line">        v3[<span class="number">2</span>] = <span class="keyword">new</span> Vector2D(x2,y2);</span><br><span class="line">        v3[<span class="number">3</span>] = <span class="keyword">new</span> Vector2D(x2,y1);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;v2.length; i++)&#123;</span><br><span class="line">            System.out.println(v3[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String toString() &#123;</span><br><span class="line">        <span class="comment">// write codes here</span></span><br><span class="line">        <span class="keyword">return</span> v2[<span class="number">0</span>].toString() + <span class="string">&quot; &quot;</span>+ v2[<span class="number">1</span>].toString() + <span class="string">&quot; &quot;</span></span><br><span class="line">                +v2[<span class="number">2</span>].toString() + <span class="string">&quot; &quot;</span> + v2[<span class="number">4</span>].toString();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectTest</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Rect rect = <span class="keyword">new</span> Rect(<span class="number">0.5</span>f, <span class="number">0.7</span>f, <span class="number">1.5</span>f, <span class="number">2.3</span>f);</span><br><span class="line">        System.out.println(<span class="string">&quot;Area: &quot;</span> + rect.getArea());</span><br><span class="line">        System.out.println(<span class="string">&quot;CoM: &quot;</span> + rect.getCenterOfMass());</span><br><span class="line">        System.out.println(<span class="string">&quot;All Points: &quot;</span> + Arrays.toString(rect.getAllPoints()));</span><br><span class="line"></span><br><span class="line">        rect.rot90(<span class="keyword">new</span> Vector2D(<span class="number">0.4</span>f, <span class="number">0.2</span>f));</span><br><span class="line">        System.out.println(<span class="string">&quot;Rotated rect: &quot;</span> + rect);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckgeuesao002absu23we9cb5n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/Subject/Homework06/Vector3D" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/" class="article-date">
+  <time datetime="2020-09-21T12:45:28.954Z" itemprop="datePublished">2020-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="3차원-벡터-클래스-구현하기"><a href="#3차원-벡터-클래스-구현하기" class="headerlink" title="3차원 벡터 클래스 구현하기"></a>3차원 벡터 클래스 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
+<li><p>속성</p>
+<ul>
+<li>float타입의 x, y, z</li>
+</ul>
+</li>
+<li><p>생성자</p>
+<ul>
+<li>Vector3D(float x, float y, float z)</li>
+</ul>
+</li>
+<li><p>메소드</p>
+<ul>
+<li>x, y, z에 대한 getter 및 setter</li>
+<li>add(): 벡터끼리의 덧셈, 실수와의 덧셈을 반환</li>
+<li>sub(): 벡터끼리의 뺄셈, 실수와의 뺄셈을 반환</li>
+<li>inner(): 두 벡터의 내적을 반환</li>
+<li>mul(): 실수와의 곱을 반환</li>
+<li>mag(): 벡터의 크기를 반환</li>
+<li>print(): 벡터의 내용을 “(%.3f, %.3f, %.3f)\n” 형식으로 콘솔에 출력</li>
+</ul>
+</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vector3D</span> &#123;</span></span><br><span class="line">    <span class="keyword">float</span> x;</span><br><span class="line">    <span class="keyword">float</span> y;</span><br><span class="line">    <span class="keyword">float</span> z;</span><br><span class="line"></span><br><span class="line">    Vector3D(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getX() &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setX(<span class="keyword">float</span> x) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getY() &#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setY(<span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getZ() &#123;</span><br><span class="line">        <span class="keyword">return</span> z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setZ(<span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D add(Vector3D v2) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + v2.x,<span class="built_in">this</span>.y + v2.y,<span class="built_in">this</span>.z + v2.z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Vector3D add(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + f,<span class="built_in">this</span>.y + f,<span class="built_in">this</span>.z + f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(Vector3D v1) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x - v1.x,<span class="built_in">this</span>.y - v1.y,<span class="built_in">this</span>.z - v1.z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D( <span class="built_in">this</span>.x - f,<span class="built_in">this</span>.y - f,<span class="built_in">this</span>.z - f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> inner(Vector3D v2) &#123;</span><br><span class="line">        <span class="keyword">float</span> num = <span class="built_in">this</span>.x * v2.x + <span class="built_in">this</span>.y * v2.y + <span class="built_in">this</span>.z * v2.z;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D mult(<span class="keyword">float</span> v) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x *= v;</span><br><span class="line">        <span class="built_in">this</span>.y *= v;</span><br><span class="line">        <span class="built_in">this</span>.z *= v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mag() &#123;</span><br><span class="line">        <span class="keyword">float</span> f = (<span class="keyword">float</span>) Math.sqrt(Math.pow(<span class="built_in">this</span>.x,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.y,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.z,<span class="number">2</span>));</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> print()&#123;</span><br><span class="line"></span><br><span class="line">        System.out.printf(<span class="string">&quot;%.3f,%.3f,%.3f\n&quot;</span>,x,y,z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector3DTest</span>&#123;</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Vector3D v1 = <span class="keyword">new</span> Vector3D(<span class="number">0.5</span>f, <span class="number">0.2</span>f, <span class="number">0.9</span>f);</span><br><span class="line">        Vector3D v2 = <span class="keyword">new</span> Vector3D(<span class="number">0.8</span>f, <span class="number">0.1</span>f, <span class="number">1.3</span>f);</span><br><span class="line"></span><br><span class="line">        v1.add(v2).print();</span><br><span class="line">        v2.sub(v1).print();</span><br><span class="line">        v1.add(<span class="number">0.2</span>f).print();</span><br><span class="line">        v2.sub(<span class="number">0.05</span>f).print();</span><br><span class="line">        System.out.println(v1.inner(v2));</span><br><span class="line">        v1.mult(<span class="number">1.2</span>f).print();</span><br><span class="line">        System.out.println(v2.mag());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckgeuesat002fbsu22u1k1jyv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/Subject/Homework06/SingletonPattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/" class="article-date">
@@ -100,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckg4ta5oj002bk8u29ekthmm8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckgeuesaq002cbsu292d3cduo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckg4ta5oh0029k8u2dymu6qkw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckgeuesar002dbsu2hte8dnai" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckg4ta5n1000tk8u21qc987o2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/21/Algorithm/Solution-TwoNumAdd/" data-id="ckgeues8g000cbsu278dhbqnd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckg4ta5od0025k8u28s8b1lgt" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework05/DomainReverse/" data-id="ckgeuesam0028bsu298cl3c1e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MaxSum/" data-id="ckg4ta5og0028k8u2092z37ba" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MaxSum/" data-id="ckgeuesan0029bsu25a168xp2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckg4ta5of0026k8u25r84bzpc" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework04/MatMul/" data-id="ckgeuesah0023bsu20ohz3vg8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckg4ta5o90020k8u23zozfvie" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Game369/" data-id="ckgeuesah0022bsu2790r9uin" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,94 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckg4ta5oa0021k8u236a93qgl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework02/RingCounter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/20/Java/Subject/Homework02/RingCounter/" class="article-date">
-  <time datetime="2020-09-20T03:19:58.286Z" itemprop="datePublished">2020-09-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/20/Java/Subject/Homework02/RingCounter/">Subject_Day02_RingCounter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day2"><a href="#과제-Day2" class="headerlink" title="과제 Day2"></a>과제 Day2</h1><h2 id="링카운터-출력하기"><a href="#링카운터-출력하기" class="headerlink" title="링카운터 출력하기"></a>링카운터 출력하기</h2><ul>
-<li>크기가 4인 링카운터는 아래와 같이 동작한다.</li>
-<li>0b0001 -&gt; 0b0010 -&gt; 0b0100 -&gt; 0b1000 -&gt; 0b0001 …</li>
-<li>즉, 링카운터는 하나의 비트만 1의 값을 가지며 1의 위치가 N번마다 반복되는 형태로 동작한다.</li>
-<li>링카운터의 크기 numBits와카운트된 횟수 numCount를 이용하여</li>
-<li>현재 링카운터의 값을 10진수로 출력하는 프로그램을 작성하시오.</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><ul>
-<li>두가지 방법으로 구현<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RingCounter</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> numBits = <span class="number">12</span>;</span><br><span class="line">        <span class="keyword">int</span> numCount = <span class="number">19</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 1.</span></span><br><span class="line">        <span class="keyword">int</span> j;</span><br><span class="line">        <span class="keyword">int</span> result;</span><br><span class="line">        String a2=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;numCount; i++)&#123;</span><br><span class="line">            j = i;</span><br><span class="line">            <span class="keyword">if</span>(j &gt;= numBits)&#123;</span><br><span class="line">                j = j%numBits;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.printf(<span class="string">&quot;0b%12s\n&quot;</span>, Integer.toBinaryString(<span class="number">1</span> &lt;&lt; j));</span><br><span class="line">            a2 = Integer.toBinaryString(<span class="number">1</span> &lt;&lt; j);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = Integer.parseInt(a2,<span class="number">2</span>);</span><br><span class="line">        System.out.println(result);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.</span></span><br><span class="line">        <span class="keyword">int</span> r = numCount % numBits;</span><br><span class="line">        <span class="keyword">int</span> shift =  <span class="number">1</span>&lt;&lt; r;</span><br><span class="line">        System.out.println(shift);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckg4ta5oc0023k8u2fetg4bu7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework02/InputOutput" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/20/Java/Subject/Homework02/InputOutput/" class="article-date">
-  <time datetime="2020-09-20T03:17:20.071Z" itemprop="datePublished">2020-09-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/20/Java/Subject/Homework02/InputOutput/">Subject_Day02_InputOutput</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day2"><a href="#과제-Day2" class="headerlink" title="과제 Day2"></a>과제 Day2</h1><h2 id="입력받아-최대값-출력하기"><a href="#입력받아-최대값-출력하기" class="headerlink" title="입력받아 최대값 출력하기"></a>입력받아 최대값 출력하기</h2><ul>
-<li>3개의 정수를 입력받아, 그 중 최대값을 출력하고자 한다.</li>
-<li>이를 수행하는 프로그램을 작성하시오.</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputOutput</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.<span class="keyword">in</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> num1 = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span> num2 = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span> num3 = sc.nextInt();</span><br><span class="line"></span><br><span class="line">        System.out.println((num1 &gt; num2? num1:num2) &gt; num3 ? num1 &gt; num2? num1:num2:num3);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckg4ta5ob0022k8u2f3c7f0w2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckgeuesaj0025bsu2fyum136l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -613,6 +628,14 @@
       <ul>
         
           <li>
+            <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
           </li>
         
@@ -622,14 +645,6 @@
         
           <li>
             <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/">Java_Java-lang Package</a>
-          </li>
-        
-          <li>
-            <a href="/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/">Java_StreamAPI</a>
           </li>
         
       </ul>
