@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/Subject/Homework03/Fibonacci" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/20/Java/Subject/Homework03/Fibonacci/" class="article-date">
+  <time datetime="2020-09-20T03:23:20.350Z" itemprop="datePublished">2020-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/20/Java/Subject/Homework03/Fibonacci/">Subject_Day03_Fibonnaci</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="과제-Day3"><a href="#과제-Day3" class="headerlink" title="과제 Day3"></a>과제 Day3</h1><h2 id="피보나치-수열"><a href="#피보나치-수열" class="headerlink" title="피보나치 수열"></a>피보나치 수열</h2><ul>
+<li>피보나치 수열을 출력하는 프로그램을 작성하시오.</li>
+<li>피보나치 수열의 점화식 : <ul>
+<li>f(n) = f(n-1) + f(n-2)</li>
+<li>f(1) = 0, f(2) = 1 </li>
+</ul>
+</li>
+<li>0, 1, 1, 2, 3, 5, 8, …</li>
+<li>seqLength: 출력하고자 하는 피보나치 수열의 길이</li>
+</ul>
+<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><ul>
+<li>method를 사용한 방법<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> seqLength = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i &lt;= seqLength; i++)&#123;</span><br><span class="line">            BigInteger big = <span class="keyword">new</span> BigInteger(<span class="keyword">new</span> Integer(i).toString());</span><br><span class="line">            System.out.println(fibonacci(big));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> BigInteger fibonacci(BigInteger i) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i.compareTo(BigInteger.ONE.add(BigInteger.TWO)) == <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> fibonacci(i.subtract(BigInteger.ONE)).add(fibonacci(i.subtract(BigInteger.TWO)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>점화식을 바로 이용한 방법<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        <span class="keyword">int</span> seqLength = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;seqLength; i++)&#123;</span><br><span class="line">            c =a + b;</span><br><span class="line">            a = b;</span><br><span class="line">            b = c;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework03/Fibonacci/" data-id="ckgjdyid00024scu2er373hhg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/Subject/Homework02/RingCounter" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/20/Java/Subject/Homework02/RingCounter/" class="article-date">
@@ -101,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckgeuqyxc0026nku20cbjaqm6" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/RingCounter/" data-id="ckgjdyid10028scu27kxq2w1k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckgeuqyxa0024nku2heo936m2" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/InputOutput/" data-id="ckgjdyicz0023scu221umhpfz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckgeuqyxb0025nku20xck46t1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/20/Java/Subject/Homework02/PrintFormat/" data-id="ckgjdyid00025scu24yie2n1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckgeuqyv30004nku2hsdy30ay" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/17/Algorithm/Solution-CraneDrawDoll/" data-id="ckgjdyibq0004scu24efsd4s6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckgeuqyw70013nku2aijegtuf" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-Handling_Exception/" data-id="ckgjdyick001dscu20zdt77rz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -703,7 +753,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckgeuqyyl002hnku20qegbotv" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/16/Java/JavaAdvanced/Java-InnerClass/" data-id="ckgjdyida002iscu2dilv7698" class="article-share-link">Share</a>
       
       
     </footer>
@@ -791,7 +841,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-InputOutput/" data-id="ckgeuqywu001nnku280q709u8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-InputOutput/" data-id="ckgjdyica000xscu2cgmr64cg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -863,7 +913,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-Loops/" data-id="ckgeuqywt001mnku2gvzb1fws" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-Loops/" data-id="ckgjdyicb000zscu27qjs6gvr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -951,70 +1001,7 @@ switch (grade)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckgeuqywr001knku2b0z919u8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-PackageAndImport" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" class="article-date">
-  <time datetime="2020-09-15T10:36:07.767Z" itemprop="datePublished">2020-09-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/">Java_PackageAndImport</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="패키지와-임포트"><a href="#패키지와-임포트" class="headerlink" title="패키지와 임포트"></a>패키지와 임포트</h1><h2 id="패키지-package"><a href="#패키지-package" class="headerlink" title="패키지(package)"></a>패키지(package)</h2><ul>
-<li>Java에서 소스 코드를 관리하는 방식</li>
-<li>물리적으로 디렉토리로 구분된 파일을 .으로 계층적으로 구분</li>
-<li>패키지 이름을 짓는 규칙: package 소속.프로젝트.용도 </li>
-</ul>
-<p>ex) package com.google.dev.utils ex) package com.fastcampus.catcare.service</p>
-<h2 id="임포트-imports"><a href="#임포트-imports" class="headerlink" title="임포트(imports)"></a>임포트(imports)</h2><ul>
-<li>다른 패키지에 선언된 클래스를 사용하기 위한 키워드</li>
-<li>자동으로 임포트되는 경우<ol>
-<li>java. lang. * : import를 하지 않아도 자동으로 되어있다.(Ex-String)</li>
-<li>auto import </li>
-</ol>
-</li>
-<li>패키지에 속한 모든 클래스를 import (하위 패키지는 포함하지 않음)</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.example.project.utils.*;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>패키지에 속한 특정 클래스를 import(권장 방법)</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fastcampus.dogcare.service.WebAPI;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>클래스의 이름이 겹치는 경우, 패키지명을 포함하여 사용(권장 방법)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> List();</span><br><span class="line">        java.awt.List list2 = <span class="keyword">new</span> java.awt.List();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>static 멤버는 static import하여 클래스를 생략하고 사용 가능(권장 x)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.random;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.System.out;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticImport</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        out.println(random());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" data-id="ckgeuqywm001fnku25w2y5spf" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckgjdyica000wscu25wpe1ndd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1060,6 +1047,10 @@ switch (grade)&#123;
       <ul>
         
           <li>
+            <a href="/2020/10/21/Algorithm/Solution-NumberKth/">AlgorithmSolution_K번째 수</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
           </li>
         
@@ -1073,10 +1064,6 @@ switch (grade)&#123;
         
           <li>
             <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
           </li>
         
       </ul>

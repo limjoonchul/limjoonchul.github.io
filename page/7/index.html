@@ -64,6 +64,107 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaAdvanced/Java-Modifier" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/08/Java/JavaAdvanced/Java-Modifier/" class="article-date">
+  <time datetime="2020-09-08T00:56:24.956Z" itemprop="datePublished">2020-09-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/08/Java/JavaAdvanced/Java-Modifier/">Java_Modifier</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="제어자-Modifier"><a href="#제어자-Modifier" class="headerlink" title="제어자(Modifier)"></a>제어자(Modifier)</h1><h2 id="제어자란"><a href="#제어자란" class="headerlink" title="제어자란"></a>제어자란</h2><ul>
+<li><p>클래스, 변수, 메소드에 부가 기능을 부여하는 키워드</p>
+</li>
+<li><p>접근 제어자 (Access modifiers)</p>
+<ul>
+<li>변수, 메소드, 생성자에 대한 접근할 수 있는 범위를 정하는 키워드이다.</li>
+<li>자바 파일명과 같은 public class 클래스명이 꼭 있어야 한다.</li>
+<li>private – 같은 클래스에서만 사용가능, 내부 구현을 위해서만 사용한다.</li>
+<li>default – package라고도 한다 제어자명은 생략하여 쓴다. (제어자명에 package,default를 사용하지 않는다.)<pre><code>       사용범위가 같은 패키지안에서 가능.</code></pre>
+</li>
+<li>protected – private와 비슷하게 사용이 되나, 상속한 경우 구현 시 접근이 필요할 때 사용.<pre><code>      자식이면 다른 패키지여도 접근할 수가 있다, 부모의 부모는 건들 수 없다.</code></pre>
+</li>
+<li>public – 모든 곳에서 사용가능.</li>
+<li>클래스는 public 과 default만 사용 가능하다.</li>
+</ul>
+</li>
+<li><p>그 외 제어자 (Other modifiers)</p>
+<ul>
+<li>특별한 기능을 부여하는 제어자</li>
+<li>static, final, abstract, synchronized<h3 id="접근-제어자"><a href="#접근-제어자" class="headerlink" title="접근 제어자"></a>접근 제어자</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.s04.p05.subp01;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassA</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span>  <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">protected</span>  <span class="keyword">int</span> y;</span><br><span class="line">    <span class="keyword">int</span> z; <span class="comment">// default (=package)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> w;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;&#125; <span class="comment">//</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span></span>&#123;&#125; <span class="comment">//</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodC</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//default (=package)</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">methodD</span><span class="params">()</span></span>&#123;&#125; <span class="comment">//private - 내부 구현을 위해서만 사용.</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodTest</span><span class="params">()</span></span>&#123; <span class="comment">//같은 클래스</span></span><br><span class="line">        System.out.println(x);</span><br><span class="line">        System.out.println(y);</span><br><span class="line">        System.out.println(z);</span><br><span class="line">        System.out.println(w);</span><br><span class="line"></span><br><span class="line">        methodA();</span><br><span class="line">        methodB();</span><br><span class="line">        methodC();</span><br><span class="line">        methodD();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassATest</span></span>&#123; <span class="comment">// 같은 패키지인 경우.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ClassA obj = <span class="keyword">new</span> ClassA();</span><br><span class="line">        System.out.println(obj.x);</span><br><span class="line">        System.out.println(obj.y);</span><br><span class="line">        System.out.println(obj.z);</span><br><span class="line">        <span class="comment">//System.out.println(obj.w); 접근 불가</span></span><br><span class="line"></span><br><span class="line">        obj.methodA();</span><br><span class="line">        obj.methodB();</span><br><span class="line">        obj.methodC();</span><br><span class="line">        <span class="comment">//obj.methodD(); private 검색도 안됨</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>다른 패키지</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.s04.p05.subp02;</span><br><span class="line"><span class="keyword">import</span> com.company.s04.p05.subp01.ClassA;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassAA</span> <span class="keyword">extends</span> <span class="title">ClassA</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(x);</span><br><span class="line">        System.out.println(y); <span class="comment">//protected 자식이면 다른 패키지여도 ok 실제로 많이 씀. 하나의 자식 외에는 못봄. 부모의 부모는 건들 수 없음.(자바특성)</span></span><br><span class="line">        <span class="comment">// protected는 private처럼 쓰지만, 상속한 경우 구현 시 접근이 필요 할 때 사용.</span></span><br><span class="line">       <span class="comment">// System.out.println(z);</span></span><br><span class="line">       <span class="comment">// System.out.println(w); private - 상속해도 못봄</span></span><br><span class="line"></span><br><span class="line">        methodA();<span class="comment">//public</span></span><br><span class="line">        methodB();<span class="comment">//protected</span></span><br><span class="line">        <span class="comment">//methodC();</span></span><br><span class="line">        <span class="comment">//methodD();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// public default만 사용 가능, private은 쓸 수 없음 같은 클래스만 볼 수 있기 때문에 다른 클래스라는 개념이 없기 때문에. protected도 사용 불가.</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassB</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ClassA obj = <span class="keyword">new</span> ClassA();</span><br><span class="line">        System.out.println(obj.x); <span class="comment">//다됨 public</span></span><br><span class="line">       <span class="comment">// System.out.println(obj.y); //protected 다른 패키지인경우 자식만됨.</span></span><br><span class="line">        <span class="comment">//System.out.println(obj.z); //default 다른 패키지이면 안됨.</span></span><br><span class="line">        <span class="comment">//System.out.println(obj.w); 접근 불가</span></span><br><span class="line"></span><br><span class="line">        obj.methodA();</span><br><span class="line">        <span class="comment">//obj.methodB();//protected 다른 패키지인경우 자식만됨.</span></span><br><span class="line">        <span class="comment">//obj.methodC();//default 다른 패키지이면 안됨.</span></span><br><span class="line">        <span class="comment">//obj.methodD(); private 검색도 안됨</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```` </span><br><span class="line">### public으로 open한거랑 private으로 닫아놓고 public method를 제공하는것의 차이</span><br><span class="line">* <span class="number">2</span>가지 차이점이 있다</span><br><span class="line">  <span class="number">1.</span> getter를 할 수 있게하고, setter를 못하게(안하게) 하는 경우가 있다 (ReadOnly만 된다, 값을 넣을 수 없다, ID라던가 값이 변할 수 없는 고유한 값들)</span><br><span class="line">  <span class="number">2.</span> 메소드에서 유효한 데이터를 핸들링 할 수 있다.</span><br><span class="line">     * <span class="keyword">boolean</span> isValid 라는 멤버변수를 선언해주고 이것이 <span class="keyword">true</span>일 때 올바른 날짜가 출력되게 하므로써 제한사항을 줄 수 있다</span><br><span class="line">     * 멤버변수이기 때문에 클래스 전체에서 사용이 가능하므로 (scope,범위가) 메소드에서 값을 변경하게 되면 멤버변수의 값이 변경되기 때문에</span><br><span class="line"> ```groovy</span><br><span class="line">     <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> </span>&#123;</span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line">     </span><br><span class="line">         <span class="keyword">private</span> <span class="keyword">boolean</span> isVaild = <span class="keyword">true</span>;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">setDay</span><span class="params">(<span class="keyword">int</span> day)</span></span>&#123;</span><br><span class="line">             <span class="keyword">this</span>.day = day;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getDay</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="keyword">return</span> day;</span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMonth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> month;</span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMonth</span><span class="params">(<span class="keyword">int</span> month)</span> </span>&#123;</span><br><span class="line">             <span class="keyword">if</span>(month &lt;<span class="number">1</span> || month &gt; <span class="number">12</span>)&#123;</span><br><span class="line">                 isVaild = <span class="keyword">false</span>; <span class="comment">// 값이 유효범위에 해당하는지 체크를 해준다.</span></span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">this</span>.month = month;</span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getYear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">             <span class="keyword">return</span> year;</span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYear</span><span class="params">(<span class="keyword">int</span> year)</span> </span>&#123;</span><br><span class="line">             <span class="keyword">this</span>.year = year;</span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showDate</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="keyword">if</span> (isVaild)&#123;</span><br><span class="line">                 System.out.println(<span class="keyword">this</span>.year + <span class="string">&quot;년&quot;</span> + <span class="keyword">this</span>.month + <span class="string">&quot;월&quot;</span> +<span class="keyword">this</span>.day+<span class="string">&quot;일&quot;</span>);</span><br><span class="line">             &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                 System.out.println(<span class="string">&quot;유효하지 않은 범위 입니다.&quot;</span>);</span><br><span class="line">             &#125;</span><br><span class="line">     </span><br><span class="line">         &#125;</span><br><span class="line">     </span><br><span class="line">     </span><br><span class="line">     &#125;</span><br><span class="line"> ```</span><br><span class="line"></span><br><span class="line">### 그 외의 제어자</span><br><span class="line">  * <span class="keyword">final</span> </span><br><span class="line">  * 더 이상 바꿀 수 없음을 의미 상수.</span><br><span class="line">  * 클래스, 메소드, 변수에 사용 가능</span><br><span class="line">    * 클래스 : 더 이상 상속이 불가능해진다.</span><br><span class="line">    * 메소드 : 자식 클래스에서 오버라이드 할 수 없다.</span><br><span class="line">    * 멤버 변수 : 변수의 값이 초기화 이후에 변하지 않는다.</span><br><span class="line">    * 생성자에서 초기화가 이루어지는 것을 blank <span class="keyword">final</span> 변수라 한다.</span><br><span class="line">   ````groovy</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> x = <span class="number">0</span>; <span class="comment">// final variable</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> y; <span class="comment">// blank finial variable</span></span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.y = y; <span class="comment">// blank final variable initialization</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>static</p>
+<ul>
+<li>클래스 변수, 클래스 메소드 등을 선언하기 위해 사용</li>
+<li><code>클래스의</code> 또는 <code>공통적인</code>의 의미를 가지고 있다.</li>
+<li>static이 붙은 멤버변수와 메소드, 초기화 블록은 인스턴스를 생성하지 않아도 사용할 수 있다.<ul>
+<li>멤버 변수 : 모든 인스턴스에 공통적으로 사용되는 클래스 변수가 된다, 클래스가 메모리에 로드될 때 생성된다.</li>
+<li>메소드 : 인스턴스를 생성하지 않고도 호출이 가능한 static 메소드가 된다, static 메소드 내에서는 인스턴스 멤버들을 직접 사용할 수 없다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>abstract</p>
+<ul>
+<li>추상 클래스, 추상 메소드 앞에 붙여지는 제어자이다.</li>
+<li>‘추상의’ 또는 ‘미완성의’ 의미를 가지고 있다.</li>
+<li>메소드의 선언부만 작성하고 실제 수행 내용은 구현하지 않는 추상메소드를 선언하는데 사용<ul>
+<li>abstract 클래스 : 클래스 내에 추상메서드가 선언되어 있음을 의미한다.(추상메소드가 없어도 된다.)</li>
+<li>abstract 메소드 : 선언부만 작성하고 구현부는 작성하지 않는 메소드 ‘;’으로 끝낸다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>synchronized</p>
+<ul>
+<li>동시성 프로그래밍에 사용.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="접근제어자를-이용한-정보은닉-information-hiding"><a href="#접근제어자를-이용한-정보은닉-information-hiding" class="headerlink" title="접근제어자를 이용한 정보은닉(information hiding)"></a>접근제어자를 이용한 정보은닉(information hiding)</h3><ul>
+<li>외부에서 클래스 내부의 정보에 접근하지 못하도록 한다, private 키워드를 활용</li>
+<li>private 변수를 외부에서 접근하게 하려면 public 메소드 제공한다.<br>클래스 내부 데이터를 잘못 사용하는 오류를 방지할 수 있다.</li>
+</ul>
+<h1 id="싱글톤-패턴-Singletone"><a href="#싱글톤-패턴-Singletone" class="headerlink" title="싱글톤 패턴(Singletone)"></a>싱글톤 패턴(Singletone)</h1><ul>
+<li>객체가 단 하나만 존재할 수 있는 클래스</li>
+<li>private 생성자를 이용한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> SingletoneClass instance = <span class="keyword">new</span> SingletonClass();</span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingletonClass</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonClass <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Modifier/" data-id="ckgjdyicm001iscu22yt156s6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-ReferenceDataType" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" class="article-date">
@@ -101,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckgeuqywl001enku2410z6ws8" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ReferenceDataType/" data-id="ckgjdyicn001lscu2bk07hpmh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckgeuqyw50011nku2frpvhiwq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-Constructor/" data-id="ckgjdyicg0018scu2bhpyckro" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +333,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckgeuqyx0001unku2587na4hk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/PreCourseEx/ClassEx1/" data-id="ckgjdyict001xscu2e6sgfysd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckgeuqywh001anku2avhc7yjh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MemoryStructure/" data-id="ckgjdyicl001gscu21y8m2v1x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -469,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckgeuqywg0019nku22wfwf5sa" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-MethodAndFuntion/" data-id="ckgjdyicl001hscu22aced9xw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -629,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckgeuqyw1000xnku24mqt8lex" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-ClassAndObject/" data-id="ckgjdyice0014scu26t06htx1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -736,7 +837,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-OOP/" data-id="ckgeuqywi001bnku29asoarxd" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaAdvanced/Java-OOP/" data-id="ckgjdyicn001kscu2716v9s87" class="article-share-link">Share</a>
       
       
     </footer>
@@ -820,7 +921,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaBasic/Java-JavaProgramming/" data-id="ckgeuqywv001onku27cawcrd6" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/07/Java/JavaBasic/Java-JavaProgramming/" data-id="ckgjdyicb000yscu2gi57bh27" class="article-share-link">Share</a>
       
       
     </footer>
@@ -899,58 +1000,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL/TIL-20200903/" data-id="ckgeuqyvw000snku24vs54d8v" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Algorithm/Solution-NSet" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/02/Algorithm/Solution-NSet/" class="article-date">
-  <time datetime="2020-09-02T12:39:44.227Z" itemprop="datePublished">2020-09-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/02/Algorithm/Solution-NSet/">AlgorithmSolution_NSet</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="프로그래머스-문제-42895번-N으로표현-문제풀이"><a href="#프로그래머스-문제-42895번-N으로표현-문제풀이" class="headerlink" title="프로그래머스 문제 42895번 N으로표현 문제풀이"></a>프로그래머스 문제 42895번 N으로표현 문제풀이</h1><ul>
-<li>어려운 문제임 DP 문제이다.</li>
-<li>수식을 만들어가면서 하면 힘들어 괄호를 이용해서 해야함, 경우의 수에 괄호가 포함이 되겠금</li>
-<li>우선, n이랑 number 가 같은 경우를 보면 5를가지고 5를 포현할 때 5가 하나 있으면됨?</li>
-<li>55는 두개의 5를 표현해서 붙이면 됨 10은 5+5로 표현 됨.</li>
-<li>55는 55빼고 5+5,5*5,5-5,5/5 4가 가능한데 여기서 5는 5를 한개만 사용하는걸로 볼 수 있음</li>
-<li>(5*5)*5 는 5를 두개 사용한 것 * 5를 한개 사용한 것</li>
-<li>5*5를 25로 표현 해서 사용해도 되는 것이다</li>
-<li>5를 1개로 표현한거, set이 쭉있고 5를 두개로 표현한거 set이 쭉있고 그래서 3개 표현하는 것을 얻을 수 있음.</li>
-<li>숫자를 연달아 쓴 것 들이 먼저 들어간 후 1,2 밑에 set들을 사용함</li>
-<li>s(1)…s(8)까지 계산하다가 number값이 나오면 리턴하면 됨 안나오면 -1을 리턴</li>
-<li>집합의 리스트를 만들어야 한다, 1개쓰는 집합 2개쓰는 집합..등등</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NSet</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(<span class="keyword">int</span> N, <span class="keyword">int</span> number)&#123;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * Set도 인터페이스이다. 실제로 구현하는게</span></span><br><span class="line"><span class="comment">         * set중에 1부터 사용하기 위해서</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * 두개씩 쪼개서 사칙연산을 사용하는 방법을 함</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        List&lt;Set&lt;Integer&gt;&gt; sets = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        sets.add(set);</span><br><span class="line"></span><br><span class="line">        set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        set.add(N); <span class="comment">// s1에 해당함 숫자한번만 반복하는게 들어감 dp의 초기화</span></span><br><span class="line">        sets.add(set); <span class="comment">//n을 한개만쓰는것</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i &lt;=<span class="number">8</span>;i++)&#123;</span><br><span class="line">            set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> num = N;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++)&#123;</span><br><span class="line">                num *=<span class="number">10</span>;</span><br><span class="line">                num += N;</span><br><span class="line">            &#125; <span class="comment">//N을 여러번 반복하는거 n이 3이면 30에다가 33이됨</span></span><br><span class="line"></span><br><span class="line">            set.add(num);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt; i/<span class="number">2</span>+<span class="number">1</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">x:</span> sets.get(j))&#123; <span class="comment">//저장된 순서와 상관없이 가져옴</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">y :</span> sets.get(i-j))&#123;</span><br><span class="line">                        set.add(x+y);</span><br><span class="line">                        set.add(x*y);</span><br><span class="line">                        set.add(x-y);</span><br><span class="line">                        set.add(y-x);</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>(y!=<span class="number">0</span>)&#123;</span><br><span class="line">                            set.add(x/y);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(x!=<span class="number">0</span>)&#123;</span><br><span class="line">                            set.add(y/x);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>(set.contains(number))&#123;</span><br><span class="line">                            <span class="keyword">return</span> i;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                sets.add(set);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>  <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        NSet nSet= <span class="keyword">new</span> NSet();</span><br><span class="line">        System.out.println(nSet.solution(<span class="number">5</span>,<span class="number">12</span>));</span><br><span class="line">        System.out.println(nSet.solution(<span class="number">2</span>,<span class="number">11</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/02/Algorithm/Solution-NSet/" data-id="ckgeuqyva0009nku2e1qj2vvs" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/03/TIL/TIL-20200903/" data-id="ckgjdyic9000vscu2ecp354n3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -996,6 +1046,10 @@
       <ul>
         
           <li>
+            <a href="/2020/10/21/Algorithm/Solution-NumberKth/">AlgorithmSolution_K번째 수</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
           </li>
         
@@ -1009,10 +1063,6 @@
         
           <li>
             <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
           </li>
         
       </ul>

@@ -64,6 +64,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Algorithm/Solution-NumberKth" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/21/Algorithm/Solution-NumberKth/" class="article-date">
+  <time datetime="2020-10-21T12:28:39.658Z" itemprop="datePublished">2020-10-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/21/Algorithm/Solution-NumberKth/">AlgorithmSolution_K번째 수</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm-k번째수"><a href="#Algorithm-k번째수" class="headerlink" title="Algorithm - k번째수"></a>Algorithm - <a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42748">k번째수</a></h1><h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
+<li>배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.</li>
+<li>예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면<ul>
+<li>array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.</li>
+<li>1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.</li>
+<li>2에서 나온 배열의 3번째 숫자는 5입니다.</li>
+</ul>
+</li>
+<li>배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</li>
+</ul>
+<h3 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h3><ul>
+<li>array의 길이는 1 이상 100 이하입니다.</li>
+<li>array의 각 원소는 1 이상 100 이하입니다.</li>
+<li>commands의 길이는 1 이상 50 이하입니다.</li>
+<li>commands의 각 원소는 길이가 3입니다.</li>
+</ul>
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>array</th>
+<th>commands</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[1, 5, 2, 6, 3, 7, 4]</td>
+<td>[[2, 5, 3], [4, 4, 1], [1, 7, 3]]</td>
+<td>[5, 6, 3]</td>
+</tr>
+</tbody></table>
+<h3 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h3><ul>
+<li>[1, 5, 2, 6, 3, 7, 4]를 2번째부터 5번째까지 자른 후 정렬합니다. [2, 3, 5, 6]의 세 번째 숫자는 5입니다.</li>
+<li>[1, 5, 2, 6, 3, 7, 4]를 4번째부터 4번째까지 자른 후 정렬합니다. [6]의 첫 번째 숫자는 6입니다.</li>
+<li>[1, 5, 2, 6, 3, 7, 4]를 1번째부터 7번째까지 자릅니다. [1, 2, 3, 4, 5, 6, 7]의 세 번째 숫자는 3입니다.</li>
+</ul>
+<h2 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.Programmers.Sort;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] solution(<span class="keyword">int</span>[] array, <span class="keyword">int</span>[][] commands) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = &#123;&#125;;</span><br><span class="line">        <span class="keyword">int</span> first = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; commands.length; i++) &#123;</span><br><span class="line">            first = commands[i][<span class="number">0</span>]-<span class="number">1</span>;</span><br><span class="line">            last = commands[i][<span class="number">1</span>];</span><br><span class="line">            num = commands[i][<span class="number">2</span>]-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = first; j&lt;last; j++)&#123;</span><br><span class="line">                list.add(array[j]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            list.sort(Integer::compareTo);</span><br><span class="line">            temp.add(list.get(num));</span><br><span class="line">            list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        answer = <span class="keyword">new</span> <span class="keyword">int</span>[temp.size()];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;temp.size(); i++) &#123;</span><br><span class="line">            answer[i] = temp.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NumberKth</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] array = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">4</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[][] commands = &#123;&#123;<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>&#125;,&#123;<span class="number">4</span>,<span class="number">4</span>,<span class="number">1</span>&#125;,&#123;<span class="number">1</span>,<span class="number">7</span>,<span class="number">3</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(Arrays.toString(<span class="keyword">new</span> Solution().solution(array,commands)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/21/Algorithm/Solution-NumberKth/" data-id="ckgjdyibs0007scu2fprj5bxh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/SW_Enginerring/DesignPatterns" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/" class="article-date">
@@ -177,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgeuqyx70021nku274h9cqqh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/SW_Enginerring/DesignPatterns/" data-id="ckgjdyicy0021scu27myo7i5g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgeuqyw0000wnku2cqap514u" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckgjdyicd0013scu2fhrn7081" class="article-share-link">Share</a>
       
       
     </footer>
@@ -678,7 +749,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgeuqywp001inku2g25kce77" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckgjdyico001mscu2bkunh1vl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -790,7 +861,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgeuqywn001gnku23w7182gx" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckgjdyico001nscu2919h59cj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1341,7 +1412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgeuqyym002inku2ff1l614u" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgjdyidb002jscu2bkkbbuk3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1693,7 +1764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgeuqywe0018nku2fl1n9k8o" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgjdyick001fscu26rtn3nmg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2439,7 +2510,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgeuqyyt002knku27nsxad01" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgjdyidq002lscu209z1h5k5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2919,7 +2990,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgeuqyyn002jnku20c8q6i3d" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgjdyidb002kscu2cfabcfjg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2974,62 +3045,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgeuqyxj002dnku2fjdxcrve" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework09/List" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/25/Java/Subject/Homework09/List/" class="article-date">
-  <time datetime="2020-09-25T12:10:43.092Z" itemprop="datePublished">2020-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/25/Java/Subject/Homework09/List/">Subject_Day09_Rect</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day9"><a href="#과제-Day9" class="headerlink" title="과제 Day9"></a>과제 Day9</h1><h2 id="List-구현하기"><a href="#List-구현하기" class="headerlink" title="List 구현하기"></a>List 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li><p>List 인터페이스를 구현하여 IntArrayList 클래스를 완성하시오.</p>
-</li>
-<li><p>List는 순서가 있는 연속된 값으로, List 인터페이스에 선언되어 있는 메소드의 기능은 아래와 같다.</p>
-<ul>
-<li>append(): List의 마지막에 value를 삽입한다.</li>
-<li>prepend(): List의 시작점에 value를 삽입한다. 기존의 데이터를 한 칸씩 뒤로 옮긴다.</li>
-<li>insert(): index에 value를 삽입한다. 기존 데이터를 한 칸씩 뒤로 옮긴다.</li>
-<li>remove(): index의 value를 삭제한다. 기존 데이터를 한 칸씩 앞으로 당긴다.</li>
-<li>get(): index의 value를 반환한다.</li>
-<li>length(): List의 길이를 출력한다.</li>
-</ul>
-</li>
-<li><p>IntArrayList는 int []를 이용하여 List를 구현한다.</p>
-<ul>
-<li>생성자에서는 capacity를 입력받으며, 배열의 크기가 부족할 때마다 2배씩 증가시킨다.</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">List</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> append(<span class="keyword">int</span> value);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> prepend(<span class="keyword">int</span> value);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> insert(<span class="keyword">int</span> index, <span class="keyword">int</span> value);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> remove(<span class="keyword">int</span> index);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> get(<span class="keyword">int</span> index);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> length();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntArrayList</span> <span class="keyword">implements</span> <span class="title">List</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> capacity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> []array;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> last;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> first;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> is_empty()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.last == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> IntArrayList(<span class="keyword">int</span> capacity)&#123;</span><br><span class="line">        <span class="built_in">this</span>.capacity = capacity;</span><br><span class="line">        <span class="built_in">this</span>.last = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.first = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        array = <span class="keyword">new</span> <span class="keyword">int</span>[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> append(<span class="keyword">int</span> value) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (last == capacity)&#123;</span><br><span class="line">            <span class="keyword">int</span> [] new_array = <span class="keyword">new</span> <span class="keyword">int</span>[capacity * <span class="number">2</span>];</span><br><span class="line">            System.arraycopy(array,<span class="number">0</span>,new_array,<span class="number">0</span>,array.length);</span><br><span class="line">            array = new_array;</span><br><span class="line">            capacity = capacity *<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        array[last++] = value;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> prepend(<span class="keyword">int</span> value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (last == capacity)&#123;</span><br><span class="line">            <span class="keyword">int</span> [] new_array = <span class="keyword">new</span> <span class="keyword">int</span>[capacity * <span class="number">2</span>];</span><br><span class="line">            System.arraycopy(array,<span class="number">0</span>,new_array,<span class="number">0</span>,array.length);</span><br><span class="line">            array = new_array;</span><br><span class="line">            capacity = capacity *<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=last+<span class="number">1</span>; i&gt;first; i--)&#123;</span><br><span class="line">            array[i] = array[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        array[first] = value;</span><br><span class="line">        last++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> insert(<span class="keyword">int</span> index, <span class="keyword">int</span> value) &#123;</span><br><span class="line">        <span class="keyword">if</span> (last == capacity)&#123;</span><br><span class="line">            <span class="keyword">int</span> [] new_array = <span class="keyword">new</span> <span class="keyword">int</span>[capacity * <span class="number">2</span>];</span><br><span class="line">            System.arraycopy(array,<span class="number">0</span>,new_array,<span class="number">0</span>,array.length);</span><br><span class="line">            array = new_array;</span><br><span class="line">            capacity = capacity *<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=last+<span class="number">1</span>; i&gt;index; i--)&#123;</span><br><span class="line">            array[i] = array[i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        array[index] = value;</span><br><span class="line">        last++;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> remove(<span class="keyword">int</span> index) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_empty())&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;배열이 비어있습니다.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=index; i&lt;last; i++)&#123;</span><br><span class="line">            array[i] = array[i+<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        array[last] = <span class="number">0</span>;</span><br><span class="line">        last--;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> get(<span class="keyword">int</span> index) &#123;</span><br><span class="line">        <span class="keyword">return</span> array[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> length() &#123;</span><br><span class="line">        System.out.println(last);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">    <span class="comment">// write your code here</span></span><br><span class="line"></span><br><span class="line">        IntArrayList ial = <span class="keyword">new</span> IntArrayList(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">15</span>; i++)&#123;</span><br><span class="line">            ial.append(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgeuqyxk002enku22b4w753y" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgjdyid5002fscu29jf572jf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -3075,6 +3091,10 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       <ul>
         
           <li>
+            <a href="/2020/10/21/Algorithm/Solution-NumberKth/">AlgorithmSolution_K번째 수</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
           </li>
         
@@ -3088,10 +3108,6 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
         
           <li>
             <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/">(no title)</a>
           </li>
         
       </ul>
