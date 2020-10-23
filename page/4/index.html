@@ -64,6 +64,166 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaBasic/Java-Loops" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/15/Java/JavaBasic/Java-Loops/" class="article-date">
+  <time datetime="2020-09-15T10:54:07.398Z" itemprop="datePublished">2020-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/Java/JavaBasic/Java-Loops/">JavaBasic_Loops</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="반복문-Loops"><a href="#반복문-Loops" class="headerlink" title="반복문(Loops)"></a>반복문(Loops)</h1><h2 id="반복문의-일반적인-구성"><a href="#반복문의-일반적인-구성" class="headerlink" title="반복문의 일반적인 구성"></a>반복문의 일반적인 구성</h2><ul>
+<li>초기화 (Initialization)</li>
+<li>조건식 (Conditional Expression)</li>
+<li>실행문 (Execution Statement)</li>
+<li>증감식 (Increment and Decrement Statement)</li>
+</ul>
+<h2 id="다양한-반복문"><a href="#다양한-반복문" class="headerlink" title="다양한 반복문"></a>다양한 반복문</h2><h3 id="for-문"><a href="#for-문" class="headerlink" title="for 문"></a>for 문</h3><ul>
+<li>실행순서 1.초기화 -&gt; 2.조건식 -&gt; 3.실행문 - 4.증감식 조건을 벗어날 때 까지 2,3,4번 과정을 반복<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(초기화; 조건식; 증감식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="while-문"><a href="#while-문" class="headerlink" title="while 문"></a>while 문</h3><ul>
+<li>while 문의 경우 실행문이 한번도 실행되지 않을 수도 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 초기화</span></span><br><span class="line"><span class="keyword">while</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">  <span class="comment">// 증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="do-while-문"><a href="#do-while-문" class="headerlink" title="do ~ while 문"></a>do ~ while 문</h3><ul>
+<li>do ~ while 문의 경우 실행문은 무조건 한 번 이상 실행된다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//초기화</span></span><br><span class="line">do &#123;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125; <span class="keyword">while</span>(조건식)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="반복문-제어"><a href="#반복문-제어" class="headerlink" title="반복문 제어"></a>반복문 제어</h2><h3 id="break-문"><a href="#break-문" class="headerlink" title="break 문"></a>break 문</h3><ul>
+<li>반복문을 곧바로 종료할 때 사용.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (조건식) &#123;</span><br><span class="line">  <span class="keyword">if</span> (종료조건) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="continue-문"><a href="#continue-문" class="headerlink" title="continue 문"></a>continue 문</h3><ul>
+<li>반복문을 곧바로 다음 반복으로 건너 뛴다.</li>
+<li>while 문의 경우 증감식이 실행되지 않을 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (조건식) &#123;</span><br><span class="line">  <span class="keyword">if</span> (제어조건) &#123;</span><br><span class="line">    <span class="comment">//증감식</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><ul>
+<li>중첩 반복문에서 어떤 반복문을 제어할지 결정<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">outer:</span> <span class="comment">//레이블 가장 가까운걸 건너 뛰는게 아니라 레이블명이 젹혀있는 반복문 쪽으로 감 실행(break도 가능)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">5</span>; j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(i == <span class="number">3</span>)&#123;</span><br><span class="line">         System.out.println(<span class="string">&quot;continue called&quot;</span>);</span><br><span class="line">         <span class="keyword">continue</span>; <span class="comment">//여기서 continue만 사용하면 j는 4번동안 반복됨</span></span><br><span class="line">         <span class="comment">// continue outer; //레이블을 사용하면 i쪽으로가서 제어함.</span></span><br><span class="line">      &#125;</span><br><span class="line">      System.out.printf(<span class="string">&quot;%d * %d = %d\n&quot;</span>, i, j, i*j);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-Loops/" data-id="ckgliu4sy0021bsu289h08arz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaBasic/Java-ConditionalStatement" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" class="article-date">
+  <time datetime="2020-09-15T10:45:06.839Z" itemprop="datePublished">2020-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/">JavaBasic_ConditionalStatements</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="조건문-Conditional-Statements"><a href="#조건문-Conditional-Statements" class="headerlink" title="조건문(Conditional Statements)"></a>조건문(Conditional Statements)</h1><h2 id="조건문의-구성"><a href="#조건문의-구성" class="headerlink" title="조건문의 구성"></a>조건문의 구성</h2><ul>
+<li>조건식 (Conditional Expression), 실행문 (Execution Statement)</li>
+</ul>
+<h2 id="다양한-조건문"><a href="#다양한-조건문" class="headerlink" title="다양한 조건문"></a>다양한 조건문</h2><h3 id="if-계열-조건문"><a href="#if-계열-조건문" class="headerlink" title="if 계열 조건문"></a>if 계열 조건문</h3><ul>
+<li><p><code>if문</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식)</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>if~else 문</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 조건식이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 조건식이 false일때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>if ~ else if ~ else 문</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(조건식<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>(조건식<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="comment">// 조건식1이 false이고, 조건식2가 true일때 실행할 실행문</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 모든 조건식이 false일 때 실행할 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Nested(둥지) if문 = 중첩 if문</code></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">if</span> (score &gt;=<span class="number">90</span> )&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">80</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">70</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span> <span class="keyword">if</span>(score &gt;=<span class="number">60</span>)&#123;</span><br><span class="line">   <span class="keyword">if</span>(isLate)&#123;</span><br><span class="line">     grade = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">   &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">     grade =<span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   grade=<span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="switch-case"><a href="#switch-case" class="headerlink" title="switch ~ case"></a>switch ~ case</h3><ul>
+<li><p>switch ~ case는 좀 다름 조건문은 ‘값’이 들어오게 된다. boolean에 한정돼있지 않습니다.</p>
+</li>
+<li><p>case 범위가 될 수 없고, case도 값이어야 합니다.</p>
+</li>
+<li><p>break가 없으면 다른 케이스로 계속 넘어간다, fall-through가 발생한다.</p>
+</li>
+<li><p>fall-through를 의도하지 않았다면 주석을 달아줘야한다.</p>
+</li>
+<li><p>실제로 enum이 많이 사용된다. switch에는 열거형 객체가 들어가고 case에는 열거형 상수가 해당한다,</p>
+<pre><code class="groovy">grade = &#39;F&#39;;
+switch (grade)&#123;
+   case &#39;A&#39;:
+       System.out.println(&quot;훌륭&quot;);
+       break;
+
+   case &#39;B&#39;:
+        System.out.println(&quot;멋집니다&quot;);
+        break;
+   case &#39;C&#39;:
+        System.out.println(&quot;노력하세요&quot;);
+        break;
+//  case &#39;C&#39;:
+//  case &#39;D&#39;:
+//       System.out.println(&quot;많이 노력하세요&quot;);
+//       break; //이렇게도 사용가능.
+   case &#39;D&#39;:
+        System.out.println(&quot;많이 노력하세요&quot;);
+        break;
+   default: //***무조건 마지막에 실행된다.***
+        System.out.println(&quot;다음엔 잘하세요&quot;);
+&#125;</code></pre>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Java-ConditionalStatement/" data-id="ckgliu4sx001ybsu280ec7ady" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-PackageAndImport" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" class="article-date">
@@ -117,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" data-id="ckgjdyicm001jscu29c6h8iyw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaAdvanced/Java-PackageAndImport/" data-id="ckgliu4sp001hbsu29k2x6loz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/14/Algorithm/Solution-LongNode/" data-id="ckgjdyibs0008scu28lhcg3yf" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Algorithm/Solution-LongNode/" data-id="ckgliu4rs0007bsu2cgy66bug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -253,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/" data-id="ckgjdyicf0016scu2bca0atfm" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-ClassDiagram/" data-id="ckgliu4sg0013bsu22nx5dmu2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-Generic/" data-id="ckgjdyici001bscu20l954wqj" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-Generic/" data-id="ckgliu4sk0018bsu26xpva4yq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-Enumeration/" data-id="ckgjdyici001ascu2aj60eveo" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Java/JavaAdvanced/Java-Enumeration/" data-id="ckgliu4sj0017bsu2afdj89h2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -539,7 +699,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Algorithm/Solution-MaxNumber/" data-id="ckgjdyibt0009scu25c927hz1" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Algorithm/Solution-MaxNumber/" data-id="ckgliu4ru000absu2dd0gbp7a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -616,7 +776,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ClassClass/" data-id="ckgjdyicg0017scu202hua5gr" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-ClassClass/" data-id="ckgliu4sg0012bsu27t2cdc33" class="article-share-link">Share</a>
       
       
     </footer>
@@ -762,152 +922,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckgjdyicc0010scu2gbwkbkkk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/JavaAdvanced/Java-WrapperClass" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" class="article-date">
-  <time datetime="2020-09-13T02:35:49.063Z" itemprop="datePublished">2020-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/">Java_WrapperClass</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Wrapper-클래스-Wrapper-Class"><a href="#Wrapper-클래스-Wrapper-Class" class="headerlink" title="Wrapper 클래스(Wrapper Class)"></a>Wrapper 클래스(Wrapper Class)</h1><h2 id="Wrapper-Class란"><a href="#Wrapper-Class란" class="headerlink" title="Wrapper Class란"></a>Wrapper Class란</h2><ul>
-<li>기본형 타입을 객체로 쓰기 위해 있은 클래스</li>
-<li>기본형 타입이 허용되지 않는 문법에 기본형 타입을 쓰기 위해서 제공 하는 클래스</li>
-</ul>
-<h2 id="Wrapper-Class의-종류"><a href="#Wrapper-Class의-종류" class="headerlink" title="Wrapper Class의 종류"></a>Wrapper Class의 종류</h2><table>
-<thead>
-<tr>
-<th align="center">기본형</th>
-<th align="center">WrapperClass</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">byte</td>
-<td align="center">Byte</td>
-</tr>
-<tr>
-<td align="center">char</td>
-<td align="center">Character</td>
-</tr>
-<tr>
-<td align="center">short</td>
-<td align="center">Short</td>
-</tr>
-<tr>
-<td align="center">int</td>
-<td align="center">Integer</td>
-</tr>
-<tr>
-<td align="center">flaot</td>
-<td align="center">Float</td>
-</tr>
-<tr>
-<td align="center">double</td>
-<td align="center">Double</td>
-</tr>
-<tr>
-<td align="center">boolean</td>
-<td align="center">Boolean</td>
-</tr>
-</tbody></table>
-<h2 id="Wrapper-객체-생성"><a href="#Wrapper-객체-생성" class="headerlink" title="Wrapper 객체 생성"></a>Wrapper 객체 생성</h2><ul>
-<li>생성자를 이용한 객체 생성<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line">Character character = <span class="keyword">new</span> Character(<span class="string">&#x27;v&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>valueOf를 이용한 객체 생성<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer integer1 = Integer.valueOf(<span class="number">10</span>);</span><br><span class="line">Character character1 = Character.valueOf(<span class="string">&#x27;v&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="Autoboxing-amp-Unboxing"><a href="#Autoboxing-amp-Unboxing" class="headerlink" title="Autoboxing &amp; Unboxing"></a>Autoboxing &amp; Unboxing</h2></li>
-<li>기본형을 객체로 사용할 수 있게 하는 것을 - &gt; Autoboxing</li>
-<li>객체를 기본형으로 바꾸는 것을 -&gt; Unboxing</li>
-</ul>
-<h3 id="Autoboxing"><a href="#Autoboxing" class="headerlink" title="Autoboxing"></a>Autoboxing</h3><ul>
-<li>Java1.5부터 추가된 기능으로, 객체로 다루어야 할 때 자동으로 Wrapper 클래스로 변경하는 기능<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T bypass (T x)&#123;</span><br><span class="line">   <span class="keyword">return</span> x;</span><br><span class="line"> &#125;</span><br><span class="line">  </span><br><span class="line"> Integer integer2 = <span class="number">4</span>;</span><br><span class="line"> System.out.println(add(<span class="number">4</span>,<span class="number">2</span>));</span><br><span class="line"> bypass(<span class="number">5</span>); <span class="comment">// 원래는 프리미티브 타입을t에 넣을 수 없는데 autoboxing이 이뤄져서 가능.</span></span><br><span class="line"><span class="comment">// T: wrapper class인 integer로 결정됨</span></span><br><span class="line"><span class="comment">// 5 -&gt; new Integer(5) autoboxing 1.5버전 이후로 가능해짐.</span></span><br></pre></td></tr></table></figure>
-<h3 id="Unboxing"><a href="#Unboxing" class="headerlink" title="Unboxing"></a>Unboxing</h3></li>
-<li>Wrapper 객체를 기본형으로 자동으로 변경하는 기능<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m = <span class="keyword">new</span> Integer(<span class="number">10</span>); </span><br><span class="line">  </span><br><span class="line"><span class="keyword">int</span> i = <span class="number">10</span>;</span><br><span class="line">Integer wrapped = i;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">20</span> + wrapped;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Wrapper-타입의-값-비교"><a href="#Wrapper-타입의-값-비교" class="headerlink" title="Wrapper 타입의 값 비교"></a>Wrapper 타입의 값 비교</h2><ul>
-<li>Wrapper 타입은 객체이므로, ==를 이용하여 값을 비교할 수 없다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer intOne = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line">Integer intTwo = <span class="keyword">new</span> Integer(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(intOne == intTwo); <span class="comment">// false</span></span><br><span class="line">System.out.println(intOne.equals(intTwo)) <span class="comment">// true</span></span><br><span class="line">System.out.println(intOne == <span class="number">100</span>) <span class="comment">// true (Unboxing)</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="문자열의-기본-자료형-반환"><a href="#문자열의-기본-자료형-반환" class="headerlink" title="문자열의 기본 자료형 반환"></a>문자열의 기본 자료형 반환</h2><ul>
-<li>Parsing 정적 메소드를 이용한 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = Integer.parseInt(<span class="string">&quot;100&quot;</span>);</span><br><span class="line"><span class="keyword">long</span> y = Long.parseLong(<span class="string">&quot;512345124&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-<li>Wrapper 객체로의 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer intObj = Integer.valueOf(<span class="string">&quot;1000&quot;</span>);</span><br><span class="line">Integer intObjTwo = <span class="keyword">new</span> Integer(<span class="string">&quot;1234&quot;</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" data-id="ckgjdyicq001qscu22e1zdock" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/ObjectClassEx1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" class="article-date">
-  <time datetime="2020-09-13T02:28:04.600Z" itemprop="datePublished">2020-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/Java/PreCourseEx/ObjectClassEx1/">PreCourse-ObjectClassEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><ul>
-<li>날짜를 구현한 클래스 MyDate가 있습니다.<br>날짜가 같으면 eqauls() 메소드의 결과가 true가 되도록 구현해 보세요.<br>hashCode() 메소드도 구현해 보세요.</li>
-</ul>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>MyDayte 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mydate</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> year;</span><br><span class="line">    <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">int</span> day;</span><br><span class="line">    String str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> Mydate(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)&#123;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">        <span class="built_in">this</span>.month = month;</span><br><span class="line">        <span class="built_in">this</span>.day = day;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> equals(Object obj) &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span>  Mydate)&#123;</span><br><span class="line">            Mydate mydate = (Mydate)obj;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">this</span>.year == mydate.year &amp; <span class="built_in">this</span>.month == mydate.month &amp; <span class="built_in">this</span>.day == mydate.day)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> hashCode() &#123;</span><br><span class="line"><span class="comment">//        str = Integer.toString(year);</span></span><br><span class="line"><span class="comment">//        str += Integer.toString(month);</span></span><br><span class="line"><span class="comment">//        str+=Integer.toString(day);</span></span><br><span class="line"><span class="comment">//        return Integer.parseInt(str);</span></span><br><span class="line">          <span class="comment">// 내가 구현한 방법</span></span><br><span class="line">        <span class="keyword">return</span> day*<span class="number">11</span> +  month*<span class="number">101</span>+ year * <span class="number">1001</span>;</span><br><span class="line">         <span class="comment">// 강사님 방방법</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MydateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Mydate mydate1 = <span class="keyword">new</span> Mydate(<span class="number">2020</span>,<span class="number">7</span>,<span class="number">20</span>);</span><br><span class="line">        Mydate mydate2 = <span class="keyword">new</span> Mydate(<span class="number">2020</span>,<span class="number">7</span>,<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(mydate1.equals(mydate2));</span><br><span class="line">        System.out.println(mydate1.hashCode());</span><br><span class="line">        System.out.println(mydate2.hashCode());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckgjdyicy0022scu27ochhg0p" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckgliu4t00024bsu2ar1c3k7p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -953,6 +968,14 @@
       <ul>
         
           <li>
+            <a href="/2020/10/23/Algorithm/Solution-NotFinishedPlayer/">AlgorithmSolution_완주하지 못한 선수</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/23/Algorithm/Solution-PhoneNumberList/">AlgorithmSolution_전화 번호 목록</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/21/Algorithm/Solution-NumberKth/">AlgorithmSolution_K번째 수</a>
           </li>
         
@@ -962,14 +985,6 @@
         
           <li>
             <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
           </li>
         
       </ul>
