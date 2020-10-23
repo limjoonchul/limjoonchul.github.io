@@ -64,6 +64,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/PreCourseEx/PolymorphismEx1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" class="article-date">
+  <time datetime="2020-09-10T07:37:38.955Z" itemprop="datePublished">2020-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-PolyhorphismEx</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="배열을-활용하여-상속과-다형성-구현하기"><a href="#배열을-활용하여-상속과-다형성-구현하기" class="headerlink" title="배열을 활용하여 상속과 다형성 구현하기"></a>배열을 활용하여 상속과 다형성 구현하기</h2><ul>
+<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
+</li>
+<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
+</li>
+<li><p>Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
+<ul>
+<li><p>제품 구매시 10% 할인</p>
+</li>
+<li><p>보넛 포인트 5% 적립</p>
+</li>
+<li><p>담당 상담원 배정</p>
+<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
+</li>
+</ul>
+</li>
+<li><p>Customer 클래스의 상속을 받는 GoldCustomer클래스를 만든다.</p>
+</li>
+<li><p>VIP고객과 일반고객의 중간 등급의 고객</p>
+<ul>
+<li>제품을 구매시 10%할인을 해주는 것은 같다.</li>
+<li>보너스 포인트는 2% 적립해준다.</li>
+<li>담당 상담원은 없다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
+<li>Customer 클래스<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> bonusPoint;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">double</span> bonusRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade=<span class="string">&quot;SILVER&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li><p>VIPCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> agentID;</span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName,<span class="keyword">int</span> agentID) &#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID, customerName);</span><br><span class="line">        <span class="built_in">this</span>.agentID = agentID;</span><br><span class="line">        customerGrade =<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio=<span class="number">0.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String showInfo() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.showInfo()+<span class="string">&quot;담당 상담사ID는 &quot;</span>+agentID+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GoldCustomer 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoldCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GoldCustomer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade = <span class="string">&quot;GOLD&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.02</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Test 클래스</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Customer&gt; customersList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Customer kim = <span class="keyword">new</span> Customer(<span class="number">1001</span>,<span class="string">&quot;김씨&quot;</span>);</span><br><span class="line">        Customer na = <span class="keyword">new</span> Customer(<span class="number">1002</span>,<span class="string">&quot;나씨&quot;</span>);</span><br><span class="line">        Customer park = <span class="keyword">new</span> GoldCustomer(<span class="number">1003</span>,<span class="string">&quot;박씨&quot;</span>);</span><br><span class="line">        Customer jeong = <span class="keyword">new</span> GoldCustomer(<span class="number">1004</span>,<span class="string">&quot;정씨&quot;</span>);</span><br><span class="line">        Customer lim = <span class="keyword">new</span> VIPCustomer(<span class="number">1008</span>,<span class="string">&quot;임씨&quot;</span>,<span class="number">12345</span>);</span><br><span class="line"></span><br><span class="line">        customersList.add(kim);</span><br><span class="line">        customersList.add(na);</span><br><span class="line">        customersList.add(park);</span><br><span class="line">        customersList.add(jeong);</span><br><span class="line">        customersList.add(lim);</span><br><span class="line">        <span class="keyword">int</span> price=<span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">int</span> pay=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;customersList.size(); i++)&#123;</span><br><span class="line">            System.out.println(customersList.get(i).showInfo());</span><br><span class="line">            pay = customersList.get(i).calcPrice(price);</span><br><span class="line">            System.out.println(<span class="string">&quot;지불한 금액은 &quot;</span>+pay+<span class="string">&quot;이고, 적립된 포인트는 &quot;</span>+customersList.get(i).bonusPoint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckgm2mnc3001xvwu2fv5tagbp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-Polymorphism" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" class="article-date">
@@ -121,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckgliu4so001ebsu24ohn743q" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Polymorphism/" data-id="ckgm2mnbt001hvwu2h9v15ua0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckgliu4sv001ubsu2h7wk6a6x" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/InheritancdeEx1/" data-id="ckgm2mnc1001tvwu26642h1i6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -328,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckgliu4sl001absu26340h17c" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Inheritance/" data-id="ckgm2mnbm0019vwu23htifo0p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckgliu4st001rbsu2er4u9iv7" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/ArrayEx1/" data-id="ckgm2mnbz001qvwu29bck1pck" class="article-share-link">Share</a>
       
       
     </footer>
@@ -474,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckgliu4se000zbsu2bnv861j5" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/JavaAdvanced/Java-Array/" data-id="ckgm2mnbb0010vwu2fldf2zuo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -653,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckgliu4sz0022bsu2bkzn989n" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/JavaBasic/Java-VariableAndDataType/" data-id="ckgm2mnc80024vwu26yvuasck" class="article-share-link">Share</a>
       
       
     </footer>
@@ -704,7 +783,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckgliu4su001tbsu24ikic2xn" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/09/Java/PreCourseEx/ClassEx3/" data-id="ckgm2mnc2001vvwu20cbvge3k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1189,7 +1268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckgliu4tb002jbsu2gal332rw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-CollectionFramework/" data-id="ckgm2mncl002kvwu27ujffkso" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1343,75 +1422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckgliu4ss001obsu2ccdoa4yv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/ClassEx2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/08/Java/PreCourseEx/ClassEx2/" class="article-date">
-  <time datetime="2020-09-08T02:37:06.819Z" itemprop="datePublished">2020-09-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/Java/PreCourseEx/ClassEx2/">PreCourse-HidingEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h1><h2 id="정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기"><a href="#정보은닉-날짜의-유효성을-검증하는-프로그램-구현하기" class="headerlink" title="정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기"></a>정보은닉 - 날짜의 유효성을 검증하는 프로그램 구현하기</h2><ul>
-<li>다음과 같은 MyDate 클래스가 있습니다.</li>
-<li>day,month, year,isValid 변수는 private으로 선언합니다.</li>
-<li>각 변수의 getter, setter를 public으로 구현합니다.</li>
-<li>MyDate(int day, int month, int year) 생성자를 만듭니다.</li>
-<li>public String isValid() 메소드를 만들어 날짜가 유효한지 확인합니다.</li>
-<li>MyDate Test 클래스에서 생성한 MyDate가 날짜가 유효한지 확인합니다.</li>
-</ul>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> day;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> month;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isValid = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> MyDate(<span class="keyword">int</span> day, <span class="keyword">int</span> month, <span class="keyword">int</span> year)&#123;</span><br><span class="line">        setYear(year);</span><br><span class="line">        setMonth(month);</span><br><span class="line">        setDay(day);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getDay() &#123;</span><br><span class="line">        <span class="keyword">return</span> day;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setDay(<span class="keyword">int</span> day) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (month)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">case</span> <span class="number">5</span>: <span class="keyword">case</span> <span class="number">7</span>: <span class="keyword">case</span> <span class="number">8</span>: <span class="keyword">case</span> <span class="number">10</span>: <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt; <span class="number">0</span> || day &gt;<span class="number">31</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">case</span> <span class="number">6</span>: <span class="keyword">case</span> <span class="number">9</span>: <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">                <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">30</span>)&#123;</span><br><span class="line">                    isValid= <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">this</span>.day = day;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">if</span> (( ( year % <span class="number">4</span> ==<span class="number">0</span> &amp;&amp;  year % <span class="number">100</span> !=<span class="number">0</span> ) || year % <span class="number">400</span> ==<span class="number">0</span>))&#123;  <span class="comment">//윤년인 경우</span></span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">29</span>) &#123;</span><br><span class="line">                        isValid = <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (day &lt;<span class="number">0</span> || day &gt;<span class="number">28</span>)&#123;</span><br><span class="line">                        isValid= <span class="literal">false</span>;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="built_in">this</span>.day = day;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="symbol">default:</span></span><br><span class="line">                isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getMonth() &#123;</span><br><span class="line">        <span class="keyword">return</span> month;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setMonth(<span class="keyword">int</span> month) &#123;</span><br><span class="line">        <span class="keyword">if</span>( month &lt;<span class="number">1</span> || month &gt;<span class="number">12</span>)&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.month =month;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getYear() &#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setYear(<span class="keyword">int</span> year) &#123;</span><br><span class="line">        <span class="keyword">if</span>(year &gt; Calendar.getInstance().get(Calendar.YEAR))&#123;</span><br><span class="line">            isValid = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String isValid()&#123;</span><br><span class="line">        <span class="keyword">if</span>(isValid) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효한 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;유효 하지 않은 날짜 입니다.&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        MyDate myDate = <span class="keyword">new</span> MyDate(<span class="number">10</span>,<span class="number">7</span>,<span class="number">2019</span>);</span><br><span class="line">        System.out.println( myDate.isValid());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h1><h2 id="객체-간-협력-출근길-커피-사기"><a href="#객체-간-협력-출근길-커피-사기" class="headerlink" title="객체 간 협력 - 출근길 커피 사기"></a>객체 간 협력 - 출근길 커피 사기</h2><ul>
-<li>아침 출근길에 김 졸려씨는 4000원을 내고 별다방에서 아메리카노를 사 마셨습니다.</li>
-<li>이 피곤씨는 콩다방에서 4,500원을 내고 라떼를 사 마셨습니다,</li>
-<li>메소드와 클래스를 추가해서 자유롭게 구현을 해보세요.</li>
-</ul>
-<h2 id="문제-구현-1"><a href="#문제-구현-1" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li><p>사람 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> &#123;</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="keyword">int</span> money;</span><br><span class="line">    String buyCoffeeName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Man(String name, <span class="keyword">int</span> money)&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.money = money;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyStarCoffee(String coffeName,StarCoffee starCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeName;</span><br><span class="line">        starCoffee.sells(Menu.STAR_AMERICANO,<span class="string">&quot;americano&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.STAR_AMERICANO;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> buyBeanCoffee(String coffeeName,BeanCoffee beanCoffee)&#123;</span><br><span class="line">        buyCoffeeName = coffeeName;</span><br><span class="line">        beanCoffee.sells(Menu.BEAN_LATTE,<span class="string">&quot;latte&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.money -= Menu.BEAN_LATTE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showInfo()&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;님이 산 컴피는 &quot;</span>+buyCoffeeName+<span class="string">&quot;이고, 잔액은 &quot;</span>+money+<span class="string">&quot;입니다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>별다방 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showStarCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;StarCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>콩다방 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanCoffee</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> americano;</span><br><span class="line">    <span class="keyword">int</span> latte;</span><br><span class="line">    <span class="keyword">int</span> income;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> sells(<span class="keyword">int</span> money,String coffeName)&#123;</span><br><span class="line">        income += money;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;americano&quot;</span>))&#123;</span><br><span class="line">            americano++;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(coffeName.equals(<span class="string">&quot;latte&quot;</span>))&#123;</span><br><span class="line">            latte++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> showBeanCoffeeInfo()&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;BeanCoffee 총 판매량 : &quot;</span>+income+<span class="string">&quot; 아메리카노 판매수 : &quot;</span>+americano+<span class="string">&quot; 라떼 판매 수 : &quot;</span>+latte);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>메뉴 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Menu</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_AMERICANO = <span class="number">4000</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> BEAN_LATTE = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_AMERICANO = <span class="number">4300</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> STAR_LATTE = <span class="number">4700</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoffeeTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Man manLee = <span class="keyword">new</span> Man(<span class="string">&quot;이피곤&quot;</span>,<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">        BeanCoffee beanCoffee = <span class="keyword">new</span> BeanCoffee();</span><br><span class="line">        StarCoffee starCoffee = <span class="keyword">new</span> StarCoffee();</span><br><span class="line"></span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;아메리카노&quot;</span>,starCoffee);</span><br><span class="line">        manLee.buyStarCoffee(<span class="string">&quot;latte&quot;</span>,starCoffee);</span><br><span class="line">        manLee.showInfo();</span><br><span class="line"></span><br><span class="line">        beanCoffee.showBeanCoffeeInfo();</span><br><span class="line">        starCoffee.showStarCoffeeInfo();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/PreCourseEx/ClassEx2/" data-id="ckgliu4su001sbsu299zmao3h" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/08/Java/JavaAdvanced/Java-Variable/" data-id="ckgm2mnbx001nvwu20wg8hifj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1457,6 +1468,10 @@
       <ul>
         
           <li>
+            <a href="/2020/10/23/Algorithm/Solution-StockPrice/">AlgorithmSolution_StockPrice(주식가격)</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/23/Algorithm/Solution-NotFinishedPlayer/">AlgorithmSolution_완주하지 못한 선수</a>
           </li>
         
@@ -1470,10 +1485,6 @@
         
           <li>
             <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
           </li>
         
       </ul>

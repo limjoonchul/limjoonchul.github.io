@@ -64,6 +64,152 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaBasic/Java-String" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/13/Java/JavaBasic/Java-String/" class="article-date">
+  <time datetime="2020-09-13T02:45:08.166Z" itemprop="datePublished">2020-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/13/Java/JavaBasic/Java-String/">JavaBasic_Strings</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="문자열-Strings"><a href="#문자열-Strings" class="headerlink" title="문자열(Strings)"></a>문자열(Strings)</h1><h2 id="문자열의-특징"><a href="#문자열의-특징" class="headerlink" title="문자열의 특징"></a>문자열의 특징</h2><ul>
+<li><p>문자열은 내부적으로 <code>클래스</code>로 구성되어 있다.</p>
+</li>
+<li><p>내부에는 문자의 배열로 된 데이터가 있다. char []</p>
+</li>
+<li><p>문자열 편집은 String을 쓰지 않고 Builder나 Buffer 등을 사용한다.</p>
+</li>
+<li><p>한번 만든 문자열은 변하지 않습니다. (Immutable)</p>
+<p><img src="../../../image/String.jpg" alt="문자열"></p>
+</li>
+<li><p>문자열을 연결한다 했을 때, 하나의 문자열에 값을 더하는 것이 아니라 새로운 문자열이 생성되는 것이다.</p>
+</li>
+</ul>
+<h2 id="문자열의-생성"><a href="#문자열의-생성" class="headerlink" title="문자열의 생성"></a>문자열의 생성</h2><ul>
+<li>String str1 = new String(“abc”) : 인스턴스로 생성되는 방식</li>
+<li>String str2 = “abc” : String 상수풀에 있는 문자열을 가리킨다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">&quot;문자열 생성 방법&quot;</span>;</span><br><span class="line">String s2 = <span class="keyword">new</span> String(<span class="string">&quot;문자열 생성 방법2&quot;</span>); <span class="comment">//클래스 생성자 권장하지 않음.</span></span><br><span class="line"></span><br><span class="line">String s3 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s4 = <span class="string">&quot;abcde&quot;</span>; <span class="comment">// 상수풀에 있는 문자열을 공유한다.</span></span><br><span class="line">String s5 = <span class="keyword">new</span> String(<span class="string">&quot;abcde&quot;</span>);</span><br><span class="line"></span><br><span class="line">s3 == <span class="attr">s4 :</span> <span class="comment">//true 메모리 참조값에 대한 것,문자열을 곧바로 생성할 경우 상수 풀에서 찾아 사용(상수 풀이라는 공간에 저장되어있음)</span></span><br><span class="line">s3 == <span class="attr">s5 :</span> <span class="comment">//false 문자열을 클래스로 생성할 경우 새로운 값을 생성하므로 false.</span></span><br><span class="line"></span><br><span class="line">s3.equals(s4) <span class="comment">// true</span></span><br><span class="line">s3.equals(s5) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="문자열-안의-메소드"><a href="#문자열-안의-메소드" class="headerlink" title="문자열 안의 메소드"></a>문자열 안의 메소드</h2></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>사용방법</th>
+<th>메소드 선언</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>length()</td>
+<td>s.length()</td>
+<td>public int length()</td>
+<td>문자열의 길이를 나타냄</td>
+</tr>
+<tr>
+<td>charAt()</td>
+<td>s.charAt(2)</td>
+<td>public char charAt(int index)</td>
+<td>index번째에 위치한 문자 출력</td>
+</tr>
+<tr>
+<td>indexOf()</td>
+<td>s.indexOf(‘a’)</td>
+<td>public int indexOf(char ch)</td>
+<td>ch가 위치한 index 출력. 없을 시 -1</td>
+</tr>
+<tr>
+<td>equals()</td>
+<td>s.equals(“This is a String”)</td>
+<td>public boolean equals(Object anObject)</td>
+<td>anObject와 비교한 결과 출력</td>
+</tr>
+<tr>
+<td>equalsIgnoreCase())</td>
+<td>s.equalsIgnoreCase(“this is a string”))</td>
+<td>public boolean equalsIgnoreCase(String anotherString)</td>
+<td>대소문자 구분없이 anotherString과 비교 결과 출력</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>s.replace(‘i’,’t’)</td>
+<td>public String replace(char odlChar, char newChar)</td>
+<td>oldChar를 찾아 newChar로 변경된 문자열 출력</td>
+</tr>
+<tr>
+<td>substring()</td>
+<td>s.substring(3,9)</td>
+<td>public String substring(int beginIndex, int endIndex)</td>
+<td>문자열을 beginIndex부터 endIndex-1까지 잘라서 출력</td>
+</tr>
+<tr>
+<td>trim()</td>
+<td>s.trim()</td>
+<td>public String trim()</td>
+<td>문자열 좌우 공백을 없앤 결과를 출력</td>
+</tr>
+<tr>
+<td>matches()</td>
+<td>s.matches(String regex)</td>
+<td>public boolean matches(String regex)</td>
+<td>문자열을 정규표현식 regex 확인 결과 출력</td>
+</tr>
+<tr>
+<td>split()</td>
+<td>s.split(String regex)</td>
+<td>public String[] split(String regex)</td>
+<td>문자열을 정규표현식 형태로 나눈 후 배열로 출력</td>
+</tr>
+<tr>
+<td>repeat()</td>
+<td>s.repeat(3)</td>
+<td>public String repeat​(int count)</td>
+<td>count만큼 문자열을 반복해주는 함수</td>
+</tr>
+<tr>
+<td>toCharArray()</td>
+<td>s.toCharArray()</td>
+<td>public char[] toCharArray()</td>
+<td>문자열을 char형 배열로 바꿔주는 메소드</td>
+</tr>
+</tbody></table>
+<h2 id="StrungBuilder와-StringBuffer"><a href="#StrungBuilder와-StringBuffer" class="headerlink" title="StrungBuilder와 StringBuffer"></a>StrungBuilder와 StringBuffer</h2><ul>
+<li><p>가변적인 char형 배열로 멤버변수를 가지고 있는 클래스</p>
+</li>
+<li><p>문자열을 변경하거나 연결하는 경우 사용하면 편리한 클래스</p>
+</li>
+<li><p>StringBuffer는 멀티 쓰레드 프로그래밍에서 동기화(Synchronisation)이 보장된다.<br>단일 쓰레드 프로그래밍에서는 StringBuilder를 사용하는 것이 좋다.</p>
+</li>
+<li><p>StringBuilder,StringBuffer는 String타입이 아니기 때문에  toString() 메소드를 사용하여 String으로 반환해야한다.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaBasic/Java-String/" data-id="ckgm2mnc70023vwu20s9sc3rh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-WrapperClass" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" class="article-date">
@@ -153,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" data-id="ckgliu4ss001nbsu24e5kffwa" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/JavaAdvanced/Java-WrapperClass/" data-id="ckgm2mnbx001ovwu21kau3t5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckgliu4sv001vbsu22ppi3i6j" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/13/Java/PreCourseEx/ObjectClassEx1/" data-id="ckgm2mnc4001yvwu2e33ohm61" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckgliu4sw001wbsu24siffpvo" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/PreCourseEx/InterfaceEx1/" data-id="ckgm2mnc3001wvwu29w9f54ds" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckgliu4sl0019bsu26jmi9zzp" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/12/Java/JavaAdvanced/Java-Interface/" data-id="ckgm2mnbo001bvwu27z1thumu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -458,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckgliu4sr001lbsu24oyl4lcq" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx1/" data-id="ckgm2mnby001pvwu24vhzeey8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,7 +673,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckgliu4st001pbsu21xzy8vaw" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/PreCourseEx/AbstractClass_TemplateEx2/" data-id="ckgm2mnbz001rvwu2gx0tfqh6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -654,7 +800,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckgliu4sd000ybsu29dkm3eyy" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/11/Java/JavaAdvanced/Java-AbstractClass/" data-id="ckgm2mnba000zvwu211za5ty2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -723,7 +869,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckgliu4rp0004bsu242leenfh" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-BestAlbum/" data-id="ckgm2mna70004vwu22ezb9sbu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -836,86 +982,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckgliu4rq0005bsu26v716gb5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/PreCourseEx/PolymorphismEx1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" class="article-date">
-  <time datetime="2020-09-10T07:37:38.955Z" itemprop="datePublished">2020-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/Java/PreCourseEx/PolymorphismEx1/">PreCourse-PolyhorphismEx</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h1><h2 id="배열을-활용하여-상속과-다형성-구현하기"><a href="#배열을-활용하여-상속과-다형성-구현하기" class="headerlink" title="배열을 활용하여 상속과 다형성 구현하기"></a>배열을 활용하여 상속과 다형성 구현하기</h2><ul>
-<li><p>고객의 등급에 따라 할인율, 적립금을 다르게 적용한다.</p>
-</li>
-<li><p>Customer 클래스를 만든다.<br><img src="../../../image/%EC%83%81%EC%86%8Dcustomer%ED%81%B4%EB%9E%98%EC%8A%A4.jpg" alt="customer"></p>
-</li>
-<li><p>Customer 클래스의 상속을 받는 VIPCustomer클래스에는 기능을 추가한다.</p>
-<ul>
-<li><p>제품 구매시 10% 할인</p>
-</li>
-<li><p>보넛 포인트 5% 적립</p>
-</li>
-<li><p>담당 상담원 배정</p>
-<p><img src="../../../image/VIPCustomer.jpg" alt="VIP"></p>
-</li>
-</ul>
-</li>
-<li><p>Customer 클래스의 상속을 받는 GoldCustomer클래스를 만든다.</p>
-</li>
-<li><p>VIP고객과 일반고객의 중간 등급의 고객</p>
-<ul>
-<li>제품을 구매시 10%할인을 해주는 것은 같다.</li>
-<li>보너스 포인트는 2% 적립해준다.</li>
-<li>담당 상담원은 없다.</li>
-</ul>
-</li>
-</ul>
-<h2 id="문제-구현"><a href="#문제-구현" class="headerlink" title="문제 구현"></a>문제 구현</h2><ul>
-<li>Customer 클래스<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> customerID;</span><br><span class="line">    <span class="keyword">protected</span> String customerName;</span><br><span class="line">    <span class="keyword">protected</span> String customerGrade;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> bonusPoint;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">double</span> bonusRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Customer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">        customerGrade=<span class="string">&quot;SILVER&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.01</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> getCustomerID() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerID(<span class="keyword">int</span> customerID) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerID = customerID;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String getCustomerName() &#123;</span><br><span class="line">        <span class="keyword">return</span> customerName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setCustomerName(String customerName) &#123;</span><br><span class="line">        <span class="built_in">this</span>.customerName = customerName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li><p>VIPCustomer 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VIPCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> agentID;</span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VIPCustomer(<span class="keyword">int</span> customerID, String customerName,<span class="keyword">int</span> agentID) &#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID, customerName);</span><br><span class="line">        <span class="built_in">this</span>.agentID = agentID;</span><br><span class="line">        customerGrade =<span class="string">&quot;VIP&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.05</span>;</span><br><span class="line">        salesRatio=<span class="number">0.2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price) &#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String showInfo() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.showInfo()+<span class="string">&quot;담당 상담사ID는 &quot;</span>+agentID+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GoldCustomer 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GoldCustomer</span> <span class="keyword">extends</span> <span class="title">Customer</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> salesRatio;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> GoldCustomer(<span class="keyword">int</span> customerID,String customerName)&#123;</span><br><span class="line">        <span class="built_in">super</span>(customerID,customerName);</span><br><span class="line">        customerGrade = <span class="string">&quot;GOLD&quot;</span>;</span><br><span class="line">        bonusRatio = <span class="number">0.02</span>;</span><br><span class="line">        salesRatio = <span class="number">0.1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> calcPrice(<span class="keyword">int</span> price)&#123;</span><br><span class="line">        bonusPoint += price * bonusRatio;</span><br><span class="line">        <span class="keyword">return</span> price - (<span class="keyword">int</span>)(price * salesRatio);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String showInfo()&#123;</span><br><span class="line">        <span class="keyword">return</span> customerName+<span class="string">&quot;고객님의 등급은 &quot;</span>+customerGrade+<span class="string">&quot;이며 지불할 금액은 &quot;</span>+<span class="number">10000</span>+<span class="string">&quot;이며, 적립된 포인트는 &quot;</span>+bonusPoint+<span class="string">&quot;입니다.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Test 클래스</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerTest</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        ArrayList&lt;Customer&gt; customersList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Customer kim = <span class="keyword">new</span> Customer(<span class="number">1001</span>,<span class="string">&quot;김씨&quot;</span>);</span><br><span class="line">        Customer na = <span class="keyword">new</span> Customer(<span class="number">1002</span>,<span class="string">&quot;나씨&quot;</span>);</span><br><span class="line">        Customer park = <span class="keyword">new</span> GoldCustomer(<span class="number">1003</span>,<span class="string">&quot;박씨&quot;</span>);</span><br><span class="line">        Customer jeong = <span class="keyword">new</span> GoldCustomer(<span class="number">1004</span>,<span class="string">&quot;정씨&quot;</span>);</span><br><span class="line">        Customer lim = <span class="keyword">new</span> VIPCustomer(<span class="number">1008</span>,<span class="string">&quot;임씨&quot;</span>,<span class="number">12345</span>);</span><br><span class="line"></span><br><span class="line">        customersList.add(kim);</span><br><span class="line">        customersList.add(na);</span><br><span class="line">        customersList.add(park);</span><br><span class="line">        customersList.add(jeong);</span><br><span class="line">        customersList.add(lim);</span><br><span class="line">        <span class="keyword">int</span> price=<span class="number">10000</span>;</span><br><span class="line">        <span class="keyword">int</span> pay=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;customersList.size(); i++)&#123;</span><br><span class="line">            System.out.println(customersList.get(i).showInfo());</span><br><span class="line">            pay = customersList.get(i).calcPrice(price);</span><br><span class="line">            System.out.println(<span class="string">&quot;지불한 금액은 &quot;</span>+pay+<span class="string">&quot;이고, 적립된 포인트는 &quot;</span>+customersList.get(i).bonusPoint);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/10/Java/PreCourseEx/PolymorphismEx1/" data-id="ckgliu4sw001xbsu27c4h708s" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/10/Algorithm/Solution-Disguise/" data-id="ckgm2mna80005vwu2df8070d7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -961,6 +1028,10 @@
       <ul>
         
           <li>
+            <a href="/2020/10/23/Algorithm/Solution-StockPrice/">AlgorithmSolution_StockPrice(주식가격)</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/23/Algorithm/Solution-NotFinishedPlayer/">AlgorithmSolution_완주하지 못한 선수</a>
           </li>
         
@@ -974,10 +1045,6 @@
         
           <li>
             <a href="/2020/10/18/Java/SW_Enginerring/DesignPatterns/">SW_Enginerring-DesignPatterns</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
           </li>
         
       </ul>
