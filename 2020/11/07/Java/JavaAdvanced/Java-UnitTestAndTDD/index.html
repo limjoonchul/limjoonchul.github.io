@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_UnitTestAndTDD | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UnitTest유닛 테스트(Unit Test) 단위 테스트라고도 불리며, 최소 단위의 테스트를 말한다. 최소 단위는 메소드 단위를 말하는데 어느 정도의 객체 단위라는 것을 포함하고 있다. 객체 단위를 포함하고 있다는 의미는 메소드는 객체의 속성을 변화시키는 side-effect를 가지고 있기 때문이다.   환경 셋업과 환경 정리를 반드시 같이 해줘야 한다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_UnitTestAndTDD">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/11/07/Java/JavaAdvanced/Java-UnitTestAndTDD/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="UnitTest유닛 테스트(Unit Test) 단위 테스트라고도 불리며, 최소 단위의 테스트를 말한다. 최소 단위는 메소드 단위를 말하는데 어느 정도의 객체 단위라는 것을 포함하고 있다. 객체 단위를 포함하고 있다는 의미는 메소드는 객체의 속성을 변화시키는 side-effect를 가지고 있기 때문이다.   환경 셋업과 환경 정리를 반드시 같이 해줘야 한다.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-07T09:14:12.655Z">
+<meta property="article:modified_time" content="2020-11-07T09:20:10.938Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/Java-UnitTestAndTDD" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/07/Java/JavaAdvanced/Java-UnitTestAndTDD/" class="article-date">
+  <time datetime="2020-11-07T09:14:12.655Z" itemprop="datePublished">2020-11-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_UnitTestAndTDD
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UnitTest"><a href="#UnitTest" class="headerlink" title="UnitTest"></a>UnitTest</h1><h2 id="유닛-테스트-Unit-Test"><a href="#유닛-테스트-Unit-Test" class="headerlink" title="유닛 테스트(Unit Test)"></a>유닛 테스트(Unit Test)</h2><ul>
+<li>단위 테스트라고도 불리며, 최소 단위의 테스트를 말한다.</li>
+<li>최소 단위는 메소드 단위를 말하는데 어느 정도의 객체 단위라는 것을 포함하고 있다.<ul>
+<li>객체 단위를 포함하고 있다는 의미는 메소드는 객체의 속성을 변화시키는 side-effect를 가지고 있기 때문이다.</li>
+</ul>
+</li>
+<li>환경 셋업과 환경 정리를 반드시 같이 해줘야 한다.</li>
+</ul>
+<h3 id="통합-테스트-Integration-Test"><a href="#통합-테스트-Integration-Test" class="headerlink" title="통합 테스트(Integration Test)"></a>통합 테스트(Integration Test)</h3><ul>
+<li>유닛 테스트는 가장 작은 단위로 테스트를 하고 통합 테스트는 시스템 전체적인 테스트를 진행한다.</li>
+<li>전체 시스템의 동작을 확인하는 테스트 <ul>
+<li>내가 작업한 것을 git에 merge해서 전체 시스템이 잘 동작하는지 체크한다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="기존-임시적인-테스트-방식"><a href="#기존-임시적인-테스트-방식" class="headerlink" title="기존 임시적인 테스트 방식"></a>기존 임시적인 테스트 방식</h3><ul>
+<li>임시적인 테스트의 문제점!<ul>
+<li>여러 개의 테스트를 작성하기 어렵고, 여러 개의 테스트를 넣어야 하는데 테스트 내용의 구분이 안간다.</li>
+<li>여러가지 테스트를 할 때 ‘부작용(side-effect)’이 발생하기 쉽다.<ul>
+<li>밑의 Test2 처럼 Test1의 결과에 영향을 받아서 기대했던 값이 아닌 다른 값이 출력되는 등의 부작용이 발생한다.</li>
+</ul>
+</li>
+<li>테스트 결과가 성공적인지 여부를 파악하기 어렵다<ul>
+<li>일일이 예상 값을 두고 눈으로 파악해야 하는데, 실제로 테스트를 할 때는 수천 개가 넘는 테스트를 눈으로 파악하기 어렵다.</li>
+</ul>
+</li>
+<li>Production 코드와 Test 코드가 섞이게 된다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScoreCollection</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Scorable&gt; scoreList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Scorable item)</span></span>&#123;</span><br><span class="line">        scoreList.add(item);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">arithmeticMean</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> total = scoreList.stream().mapToInt(Scorable::getScore).sum();</span><br><span class="line">        <span class="keyword">return</span> total / scoreList.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ScoreCollection collection = <span class="keyword">new</span> ScoreCollection();</span><br><span class="line">        <span class="comment">// Test1. 5와 7의 평균 6</span></span><br><span class="line">        collection.add(() -&gt; <span class="number">5</span>);</span><br><span class="line">        collection.add(() -&gt; <span class="number">7</span>);</span><br><span class="line">        System.out.println(collection.arithmeticMean());</span><br><span class="line">        <span class="comment">// Test2. 10 20 의 평균 15</span></span><br><span class="line">        <span class="comment">// 그런데 Test1의 영향을 받아서 원하는 테스트 출력을 얻지 못했다.</span></span><br><span class="line">        <span class="comment">// Test1과 Test2의 순서가 달라지면, 또 결과가 달라진다.</span></span><br><span class="line">        collection = <span class="keyword">new</span> ScoreCollection(); <span class="comment">// 초기화해서 원하는 값을 얻을 수 있다.</span></span><br><span class="line">        collection.add(() -&gt; <span class="number">10</span>);</span><br><span class="line">        collection.add(() -&gt; <span class="number">20</span>);</span><br><span class="line">        System.out.println(collection.arithmeticMean());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h2><ul>
+<li><p>위의 임시적인 테스트 방법의 문제점을 해결하기 위한 테스트 프레임워크가 있다.</p>
+</li>
+<li><p>인텔리제이, 이클립스에도 다 포함되어 있는 프레임워크로, Production 코드와 Test 코드를 분리하여 테스트 할 수 있다.</p>
+</li>
+<li><p>JUnit 설정방법!</p>
+<ul>
+<li>왼쪽 상단에 file -&gt; Project Structure -&gt; moudles에 간다.</li>
+<li>테스트를 만들 디렉토리 선택하면 그 디렉토리의 하위 디렉토리들이 나오는데 Test할 디렉토리를 선택하고<br>Mark as 부분에 Test를 클릭 해주면 테스트 폴더로 변화한다.</li>
+<li>원래 Production 코드의 화면에서 마우스 우클릭을 해서 Generate -&gt; Test를 누르고 확인을 누르면 테스트 클래스로 자동으로 만들어준다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="JUnit을-사용한-테스트-1번"><a href="#JUnit을-사용한-테스트-1번" class="headerlink" title="JUnit을 사용한 테스트 1번"></a>JUnit을 사용한 테스트 1번</h3><ul>
+<li>Test라는 Annotation을 달아줘서 테스트라는걸 인식하게 하고 assert에 값을 넣어줘서 기대값에 맞는지 테스트한다.</li>
+<li>assert 반드시 이렇다 단언하는 것, 결과가 같다고 해주는 것<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p01;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScoreCollectionTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arithmeticMeanOfFiveAndSevenResultsInSIx</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ScoreCollection collection = <span class="keyword">new</span> ScoreCollection();</span><br><span class="line">        collection.add(() -&gt; <span class="number">5</span>);</span><br><span class="line">        collection.add(() -&gt; <span class="number">7</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = collection.arithmeticMean();</span><br><span class="line">        assertEquals(<span class="number">6</span>,actualResult);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">arithmeticMeanOfTenAndTwentyResultsInFifteen</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ScoreCollection collection = <span class="keyword">new</span> ScoreCollection();</span><br><span class="line">        collection.add(() -&gt; <span class="number">10</span>);</span><br><span class="line">        collection.add(() -&gt; <span class="number">20</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = collection.arithmeticMean();</span><br><span class="line">        assertEquals(<span class="number">15</span>,actualResult);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="POJO"><a href="#POJO" class="headerlink" title="POJO"></a>POJO</h3></li>
+<li>POJO : Plain Old Java Object 자바 클래스를 의미하는 것인데 클래스 파일 하나가 이런 자바만으로 이루어진 파일이 있을 수 있고 스프링이 묻어 있는 애들이 있을 수 있어서 순수 자바만 이용된걸 포조라고 부른다.<ul>
+<li>이렇게 불러야 사람들이 그럴듯해 보여서 자바 클래스를 쓰는 것이다.</li>
+<li>프로그래밍 언어들은 사람들의 인지적인 관점을 적용하려 애쓴다. 그래서 이러한 용어들을 만들어내고 하는 것이다. 어이없지만 생각보다 중요한 것들이다.</li>
+<li>실무에서 사용하는 언어이다 어떤 것인지 알고 있으면 될 것 같다!</li>
+</ul>
+</li>
+</ul>
+<h3 id="JUnit을-사용한-테스트-2번"><a href="#JUnit을-사용한-테스트-2번" class="headerlink" title="JUnit을 사용한 테스트 2번"></a>JUnit을 사용한 테스트 2번</h3><h4 id="AAA-Triple-A"><a href="#AAA-Triple-A" class="headerlink" title="AAA (Triple-A)"></a>AAA (Triple-A)</h4><ul>
+<li>Arrange(준비) - 테스트를 하기 위해서 시스템이 적절한 상태에 있는지 확인,<ul>
+<li>객체 생성, 객체와의 소통, API 호출</li>
+</ul>
+</li>
+<li>Act (실행) - 실제로 테스트 코드를 실행하는 과정</li>
+<li>Assert (단언) - 실행한 코드의 결과를 기대하는 값과 비교</li>
+<li><code>+@</code> After (사후) - 중간 과정에서 자원을 할당한 경우에는 이를 해제 특수한 경우에만 사용.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> balance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Account</span><span class="params">(<span class="keyword">int</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.balance = balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getBalance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBalance</span><span class="params">(<span class="keyword">int</span> balance)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.balance = balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">withdraw</span><span class="params">(<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        balance -= value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deposit</span><span class="params">(<span class="keyword">int</span> value)</span></span>&#123;</span><br><span class="line">        balance += value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMinus</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> balance &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">throwExcept</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>실행 순서<ul>
+<li>before -&gt; test1 -&gt; before -&gt; test2</li>
+<li>beforeClass -&gt; before -&gt; Test1 -&gt;(After) -&gt; before -&gt; test2 -&gt; (After) -&gt; (AfterClass)</li>
+</ul>
+</li>
+<li><code>import static org.hamcrest.CoreMatchers.*</code> - EqualTo 이런 메소드들을 사용할 수 있게 import 해줘야한다.</li>
+<li><code>@Ignore(&quot;This will be tested later&quot;)</code> - 테스트를 무시한 채 다른 테스트를 하는것 테스트를 안할 것을 따로 빼놀 때 사용.</li>
+<li><code>fail()</code> - 익셉션이 발생하지 않아도 통과되서 익셉션이 발생하지 않은 경우에 강제로 fail 시켜버리는 것이다</li>
+<li><code>assertThat(actualResult,equalTo(true));</code><ul>
+<li>기대값과 출력하려고 하는 값에 대한 정보를 표현할 수 있다. (확인할 수 있음)</li>
+<li>단, 실패했을 때 정보를 잘 표현하기 위해서는</li>
+<li>hamcrest의 CoreMatchers에 구현된 Matcher를 쓰는 것이 좋다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p02;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.rules.ExpectedException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.hamcrest.CoreMatchers.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccountTest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Account account;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@BeforeClass</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">classSetUp</span><span class="params">()</span></span>&#123; <span class="comment">//static으로 만들어야한다 맨 처음 한번 실행 오래되고 딱한번만 하면 되는 것들 여기다 작성</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUpBySetBalanceOneHundred</span><span class="params">()</span></span>&#123; <span class="comment">//setUp()메소드라고 부른다.</span></span><br><span class="line">        account = <span class="keyword">new</span> Account(<span class="number">100</span>); <span class="comment">// 1. Arrange</span></span><br><span class="line"><span class="comment">//        각 테스트를 실행할 때마다 매번 다시 실행된다. 초기화가 된다는 의미인듯</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">answerIsMinusWithNegativeBalance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 어렌지와 액트를 구분해줄 필요가 있다 구분하지 않을 때 테스트에 어렌지를 다 구현해줘야하는 문제가 생긴다 그래서 따로 만들어 줄 수있다.</span></span><br><span class="line">        <span class="comment">// setUp() 메소드를 만든다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        Account account = new Account(100); // 1. Arrange</span></span><br><span class="line"></span><br><span class="line">        account.withdraw(<span class="number">150</span>); <span class="comment">// 2. Act</span></span><br><span class="line">        <span class="keyword">boolean</span> actualResult = account.isMinus();</span><br><span class="line">        <span class="comment">// boolean에 대한 assertion은 assertTure, assertFalse를 쓰면 좋다.</span></span><br><span class="line"><span class="comment">//        assertFalse(actualResult);</span></span><br><span class="line">        <span class="comment">// 이건 실패 성공에 대한 것만 나오고 내용이 나오지 않는데 assertThat()은 틀렸을 때 정보를 볼 수 있음</span></span><br><span class="line">        <span class="comment">// assertTure, False가 있다.</span></span><br><span class="line"></span><br><span class="line">        assertThat(actualResult,is(equalTo(<span class="keyword">true</span>))); <span class="comment">// 3. Assert</span></span><br><span class="line">        <span class="comment">// 인지적으로 일기 좋게 actualResult is equalTo false로 문장처럼 읽히게 해준다.</span></span><br><span class="line"></span><br><span class="line">        assertThat(actualResult,not(equalTo(<span class="keyword">false</span>))); <span class="comment">// is &lt;-&gt; not</span></span><br><span class="line">        <span class="comment">// not에 경우엔 not일 때 동작을 하게 된다. 이때 테스트가 통과됨.</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">answerIsNotMinusWithPositiveBalance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        account.withdraw(<span class="number">50</span>);</span><br><span class="line">        <span class="keyword">boolean</span> actualResult = account.isMinus();</span><br><span class="line"></span><br><span class="line">        assertThat(actualResult,is(not(equalTo(<span class="keyword">true</span>))));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 가능하면 모든 메소드르 테스트하되 우선순위를 정해서 하는 것이 좋다.</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkPositiveBalanceAfterWithdrawal</span><span class="params">()</span></span>&#123;</span><br><span class="line">        account.withdraw(<span class="number">80</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = account.getBalance();</span><br><span class="line">        assertThat(actualResult,is(equalTo(<span class="number">20</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="meta">@Ignore(&quot;This will be tested later&quot;)</span> <span class="comment">// 테스트를 무시한 채 다른 테스트를 하는것 테스트를 안할 것을 따로 빼놀 때 사용, 이것을 남겨두고 커밋하지마세요</span></span><br><span class="line">    <span class="comment">// 임시로만 사용해야 한다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkNegativeBalanceAfterWithdrawal</span><span class="params">()</span></span>&#123;</span><br><span class="line">        account.withdraw(<span class="number">130</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = account.getBalance();</span><br><span class="line">        assertThat(actualResult,is(equalTo(<span class="number">20</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ArithmeticException이 발생하는지 assert하는 테스트</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 간단하다는 장점이 있지만, 인지적으로는 별로 좋지 않음 테스트 메소드 내부에 assert가 드러나지 않는다.</span></span><br><span class="line">    <span class="meta">@Test(expected = ArithmeticException.class)</span> <span class="comment">// ArithmeticException을 넣어줘서 ArithmeticException인지 확인</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkExceptionByAnnotation</span><span class="params">()</span></span>&#123;</span><br><span class="line">        account.throwExcept();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 인지적으로 더 개선되나, 코드가 매우 복잡해진다.</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkExceptionByTryCatch</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line"><span class="comment">//            account.throwExcept();</span></span><br><span class="line">            fail(); <span class="comment">// 익셉션이 발생하지 않아도 통과되서 익셉션이 발생하지 않은 경우에 강제로 fail시켜버리는 것이다</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e)&#123;</span><br><span class="line">            assertThat(e.getClass(), equalTo(ArithmeticException.class));</span><br><span class="line"><span class="comment">//            아리스메틱 클래스의 클래스 클래스(클래스의 정보를 가지고 있는)를 가져온다. 그래서 그것이 맞는지 비교.</span></span><br><span class="line"><span class="comment">//            e.getClass() == ArithmeticException.class</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Rule을 이용하면 메소드 코드에 excepted exception이 드러나서 인지적으로 개선 가장 추천함.</span></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ExpectedException thrown = ExpectedException.none();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkExceptionByRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        thrown.expect(ArithmeticException.class); // ArithmeticException을 기대한다고 써놔서 인지적으로 더 잘 이해가능</span><br><span class="line">        <span class="comment">// 이렇게 해줬을 때 프레임워크에 가서 이 익셉션이 프레임워크에 올라가서 메소드가 동작할 때 익셉션이 발생했을 때 캐치해준다.</span></span><br><span class="line">        account.throwExcept();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="좋은-테스트의-조건-FIRST"><a href="#좋은-테스트의-조건-FIRST" class="headerlink" title="좋은 테스트의 조건(FIRST)"></a>좋은 테스트의 조건(FIRST)</h3><h4 id="Fast"><a href="#Fast" class="headerlink" title="Fast"></a>Fast</h4><ul>
+<li>전형적인 자바 시스템의 테스트 케이스는 수천 단위 (유닛테스트 기준)</li>
+<li>평균 200ms가 걸린다 했을 때 (느린 경우를 예로), 5000개를 수행한다 했을 때  16분이 소요된다.<ul>
+<li>우리가 코드를 1번 수행할 때 마다 매번 16분의 테스트를 수행해야 한다.(굉장히 안좋음)</li>
+<li>메소드에 테스트용 우회 코드를 넣거나, stub 객체를 활용</li>
+</ul>
+</li>
+</ul>
+<h4 id="Isolated-고립된"><a href="#Isolated-고립된" class="headerlink" title="Isolated : 고립된"></a>Isolated : 고립된</h4><ul>
+<li>테스트는 순서와 시간에 영향을 받지 않아야 한다.</li>
+<li>고립되지 않은 테스트는 실패했을 때 원인을 찾기 어렵다.(고립되지 않은 경우를 다봐야하므로 어렵다 후폭풍이 엄청난다 외부환경과 격리를 시켜야한다)</li>
+<li>테스트를 하면서 다른 테스트에 영향을 받지 않아야 한다.</li>
+</ul>
+<h4 id="Repeatable-반복-가능한"><a href="#Repeatable-반복-가능한" class="headerlink" title="Repeatable : 반복 가능한"></a>Repeatable : 반복 가능한</h4><ul>
+<li>테스트를 반복하면 결과가 같아야 한다.</li>
+<li>테스트 코드 자체만으로 그 내용을 설명할 수 있어야 한다.<ul>
+<li>외부 환경에 영향을 받지 않아야 한다.</li>
+</ul>
+</li>
+<li>코드 내에서 코드가 작동한 시간, 이런 것에 따라 동작이 달라지는 것에 영향을 받지 않아야 한다.<h4 id="Self-vlidating-스스로-검증-가능한-굉장히-중요함"><a href="#Self-vlidating-스스로-검증-가능한-굉장히-중요함" class="headerlink" title="Self-vlidating : 스스로 검증 가능한(굉장히 중요함)"></a>Self-vlidating : 스스로 검증 가능한(굉장히 중요함)</h4></li>
+<li>테스트는 반드시 기대하는 바를 단언해야 한다.<ul>
+<li>ex) main 메소드에서 이것 저것 프린트해보고 동작시켜보기</li>
+</ul>
+</li>
+<li>테스트는 스스로 검증하며, 테스트를 준비하는 것도 스스로 한다. arranged와 assert를 스스로한다</li>
+<li>Continuous Integration(CI) 도구를 활용하기 위해 이것이 꼭 이루어져야 한다<ul>
+<li>코드가 통합될 때마다 자동으로 모든 테스트를 수행하고, 상태를 점검하는 프레임워크를 CI도구라고 한다.<h4 id="Timely-적시의-제때"><a href="#Timely-적시의-제때" class="headerlink" title="Timely : 적시의, 제때"></a>Timely : 적시의, 제때</h4></li>
+</ul>
+</li>
+<li>변화하는 코드는 테스트 코드를 항상, 꾸준히 작성해야 한다.(변화하는 코드이니깐 테스트를 작성해야 한다.)</li>
+<li>리뷰 시스템을 통해서 , 혹은 CI도구를 이용해서 테스트 코드 작성을 강제하기도 한다.<br> -&gt; peer Pressure 동료에게 드러내야 하기 때문에 압박감을 받음 테스트가 없으면 커밋이 안됨</li>
+<li>큰 결함 없이 기존의 잘 동작하는(변경 예정이 없는) 코드 보다는<br>말썽을 일으키는, 계속해서 변하고 있는 동적인 코드에 대한 테스트를 먼저 작성해야한다.<br>(현실적으로 힘들어서 이렇게 명시를 하는 것이다.)</li>
+</ul>
+<h3 id="JUnit을-사용한-테스트-3번-Stub-이용"><a href="#JUnit을-사용한-테스트-3번-Stub-이용" class="headerlink" title="JUnit을 사용한 테스트 3번 - Stub 이용"></a>JUnit을 사용한 테스트 3번 - Stub 이용</h3><ul>
+<li>Stub : 실제 코드나 아직 준비되지 못한 코드를 미리 정해진 답변으로 가장하는 것<ul>
+<li>dummy 객체가 마치 실제로 동작하는 것처럼 보이도록 만들어 놓은 것<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p04;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Http</span> </span>&#123;</span><br><span class="line">    <span class="function">String <span class="title">get</span><span class="params">(String targetUrl)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p04;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.MalformedURLException;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HttpImpl</span> <span class="keyword">implements</span> <span class="title">Http</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">(String targetUrl)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        URL url = <span class="keyword">new</span> URL(targetUrl);</span><br><span class="line">        HttpURLConnection con = (HttpURLConnection) url.openConnection();</span><br><span class="line">        con.setRequestMethod(<span class="string">&quot;GET&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> responseCode = con.getResponseCode();</span><br><span class="line">        BufferedReader in = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(con.getInputStream()));</span><br><span class="line">        String inputLine;</span><br><span class="line">        StringBuilder response = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((inputLine = in.readLine()) != <span class="keyword">null</span>)&#123;</span><br><span class="line">            response.append(inputLine);</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">        System.out.println(<span class="string">&quot;Response code : &quot;</span> + responseCode);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> response.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>dependency injection<ul>
+<li>테스트 케이스로 인해서 더 테스트하기 좋은 코드로 리팩토링했다. 이부분이 중요함!!!!<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p04;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebParser</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Http http;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// dependency injection di를하기위해 리팩토링을함</span></span><br><span class="line">    <span class="comment">// 테스트 케이스로 인해서 더 테스트하기  좋은 코드로 수정하였다. 이부분이 중요함!!!!</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WebParser</span><span class="params">(Http http)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.http = http;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countImageFromWebPage</span><span class="params">(String url)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        String text = http.get(url); <span class="comment">// DI 적용</span></span><br><span class="line"><span class="comment">//        String text = new HttpImpl.get(url); 원래 코드</span></span><br><span class="line"></span><br><span class="line">        Pattern pattern = Pattern.compile(<span class="string">&quot;(\\w+.(png|jpg|gif))&quot;</span>);</span><br><span class="line">        Matcher matcher = pattern.matcher(text);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (matcher.find())&#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(text);</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p04;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.hamcrest.CoreMatchers.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebParserTest</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 이렇게 테스트하면 문제점</span></span><br><span class="line">    <span class="comment">// 1. Fast에 맞지 않는다 느리다. 구글에 요청을 보내서 받아오는데 http 반응 속도가 느려서 그런 것이다. 인터넷 연결이 순간 안될 수도 있다.</span></span><br><span class="line">    <span class="comment">// 2. 웹페이지 내용이 변할 수 있다. (기대값이 변할 수 있다.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Test</span></span><br><span class="line"><span class="comment">//    public void countImageFromGoogleDotCom() throws IOException &#123;</span></span><br><span class="line"><span class="comment">//        WebParser parser = new WebParser();</span></span><br><span class="line"><span class="comment">//        int actualResult =parser.countImageFromWebPage(&quot;http://google.com&quot;);</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        assertThat(actualResult, equalTo(5));</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> WebParser parser;</span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUpUsingPageWithThreeImages</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// DI를 이용해 Http 객체의 stub을 구현하여 넣어준다. 실제로 웹파서를 이용할 때 HttpImpl을 만들어서 넣어주면 된다.</span></span><br><span class="line">        parser = <span class="keyword">new</span> WebParser((targetUrl) -&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&lt;html&gt;&lt;meta content=a.png&gt; &lt;meta content=b.png&gt; &lt;meta content=c.png&gt; &lt;/html&gt;&quot;</span>; <span class="comment">// 테스트 하고자하는 상황을 더 넣으면 더 의미가 있어짐</span></span><br><span class="line">        &#125;); <span class="comment">// 이미지가 3개 나온다는걸 설정을 해줬다. 테스트가 많아질수록 의미가 있어진다.</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">countImageFromThreeImagePageStub</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> actualResult = parser.countImageFromWebPage(<span class="string">&quot;http://google.com&quot;</span>);</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">3</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="TDD-Test-Driven-Development-테스트-주도-개발"><a href="#TDD-Test-Driven-Development-테스트-주도-개발" class="headerlink" title="TDD(Test-Driven-Development) - 테스트 주도 개발"></a>TDD(Test-Driven-Development) - 테스트 주도 개발</h1><ul>
+<li>‘실패하는’ 테스트 케이스를 먼저 작성하고, 이것을 통과시키는 방식으로 코드를 구현하는 방식</li>
+<li>테스트 케이스 작성 -&gt; 코드 구현 -&gt; (커밋) -&gt; (리팩토링) -&gt; 테스트 케이스 작성 .. 을 빠르게 반복</li>
+<li>1~2분 간격으로 매우 빠른 호흡으로 진행</li>
+<li>매번 커밋을 해줘서 돌아갈 수 있는 때를 확보를 하는 것이다.</li>
+<li>도메인 지식이 없어도 테스트 케이스를 작성할 수 있다는 관점에서 시작.</li>
+<li>도메인 지식이란 : 프로그래밍하고 상관없이 서비스할 분야에 대한 전반적인 지식을 의미한다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p05;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * I-&gt; 1</span></span><br><span class="line"><span class="comment"> * II -&gt; 2</span></span><br><span class="line"><span class="comment"> * III -&gt; 3</span></span><br><span class="line"><span class="comment"> * IV -&gt; 4...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RomanConverter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String roman = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRoman</span><span class="params">(String roman)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.roman = roman;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 들여쓰기가 2번넘게들어가면 리팩토링을 하는게 맞다.</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">transform</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (roman.equals(<span class="string">&quot;&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> ArithmeticException();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (roman.contains(<span class="string">&quot;X&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> beforeV = roman.contains(<span class="string">&quot;V&quot;</span>) ? <span class="keyword">true</span> : <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: roman.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;I&#x27;</span>)&#123;</span><br><span class="line">                count += beforeV ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 4</span></span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;V&#x27;</span>)&#123;</span><br><span class="line">                beforeV = <span class="keyword">false</span>;</span><br><span class="line">                count += <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 6을 했을때 I가 앞에나오는지 뒤에나오는지 구별을해야하는 상황이됬다</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">        <span class="comment">// 여기서는 로직을 생각하지 않음?</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.p05;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Rule;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.rules.ExpectedException;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.hamcrest.CoreMatchers.*;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RomanConverterTest</span> </span>&#123;</span><br><span class="line">    RomanConverter converter;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        converter = <span class="keyword">new</span> RomanConverter();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Rule</span></span><br><span class="line">    <span class="keyword">public</span> ExpectedException thrown = ExpectedException.none();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exceptionWhenRomanNotSet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        thrown.expect(ArithmeticException.class);</span><br><span class="line">        <span class="keyword">int</span> actualResult =  converter.transform();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertI</span><span class="params">()</span></span>&#123;</span><br><span class="line">        converter.setRoman(<span class="string">&quot;I&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = converter.transform();</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">1</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertX</span><span class="params">()</span></span>&#123;</span><br><span class="line">        converter.setRoman(<span class="string">&quot;X&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = converter.transform();</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">10</span>)));</span><br><span class="line"><span class="comment">//        테스트는 매번 다실행하는게 맞다.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertIII</span><span class="params">()</span></span>&#123;</span><br><span class="line">        converter.setRoman(<span class="string">&quot;III&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = converter.transform();</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">3</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertIV</span><span class="params">()</span></span>&#123;</span><br><span class="line">        converter.setRoman(<span class="string">&quot;IV&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = converter.transform();</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">4</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">convertVI</span><span class="params">()</span></span>&#123;</span><br><span class="line">        converter.setRoman(<span class="string">&quot;VI&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> actualResult = converter.transform();</span><br><span class="line">        assertThat(actualResult, is(equalTo(<span class="number">6</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/11/07/Java/JavaAdvanced/Java-UnitTestAndTDD/" data-id="ckh7i0th4002rqwu2dtl44gpc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/07/Algorithm/Solution-ThreeBaseFlip/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AlgorithmSolution_3진법 뒤집기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/31/Java/JavaAdvanced/Java-MultiThread/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/07/Algorithm/Solution-DivideNumberArray/">AlgorithmSolution_나누어 떨어지는 숫자 배열</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Algorithm/Solution-ThreeBaseFlip/">AlgorithmSolution_3진법 뒤집기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Java/JavaAdvanced/Java-UnitTestAndTDD/">Java_UnitTestAndTDD</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/Java/JavaAdvanced/Java-MultiThread/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/31/Java/JavaAdvanced/Java-RegularExpression/">Java_RegularExpression(정규표현식)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

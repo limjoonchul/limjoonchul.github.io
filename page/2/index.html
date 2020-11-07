@@ -64,6 +64,619 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java/JavaAdvanced/Java-Annotations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/" class="article-date">
+  <time datetime="2020-10-18T06:46:06.204Z" itemprop="datePublished">2020-10-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/18/Java/JavaAdvanced/Java-Annotations/">Java_Annotations</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="애노테이션-Annotation"><a href="#애노테이션-Annotation" class="headerlink" title="애노테이션(Annotation)"></a>애노테이션(Annotation)</h1><h2 id="애노테이션이란"><a href="#애노테이션이란" class="headerlink" title="애노테이션이란"></a>애노테이션이란</h2><ul>
+<li>애노테이션의 사전적인 의미는 주석이다,</li>
+<li>JVM, 컴파일러, 프레임워크 등에게 전달하는 메타데이터로 사용된다.</li>
+<li>프로그램에게 추가적인 정보를 제공하는 메타데이터이다.<ul>
+<li>메타데이터란 데이터를 설명하는 데이터를 의미한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="기본-애노테이션"><a href="#기본-애노테이션" class="headerlink" title="기본 애노테이션"></a>기본 애노테이션</h2><table>
+<thead>
+<tr>
+<th>애노테이션</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Override</td>
+<td>상속하여 오버라이드된 메소드</td>
+<td></td>
+</tr>
+<tr>
+<td>@Deprecated</td>
+<td>앞으로 사라질 예정임을 표기한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>@SuppressWarnings</td>
+<td>컴파일러에게 특정 경고 메세지를 무시하도록 한다.</td>
+<td>ex- @SuppressWarnings(“unused”)</td>
+</tr>
+<tr>
+<td>@FuntionalInterface</td>
+<td>함수형 인터페이스임을 표기(Lambda)</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="에노테이션-용도"><a href="#에노테이션-용도" class="headerlink" title="에노테이션 용도"></a>에노테이션 용도</h3><ul>
+<li><p>컴파일러에게 코드 작성 문법 에러를 체크하도록 정보를 제공한다.</p>
+<ul>
+<li>Ex) @Override - 메소드가 재정의 되었는지 확인할 수 있다.<br>(코드를 작성하고 이 코드가 제대로 작성이 되었는지 컴파일러에게 체크할 수 있도록 정보를 제공한다., 뭔가를 지시하는 용도로 사용)</li>
+</ul>
+</li>
+<li><p>소프트웨어 개발 툴이 빌드나 배치시 코드를 자동으로 생성할 수 있도록 정보를 제공</p>
+<ul>
+<li>프로그램을 개발하고나서 압축을 할 때가 있는 jar, war상태로 압축할 수 잇는데 어떤 파일명<br> 확장명으로 압축을 해라라고 개발툴에게 지시를 할 때 어노테이션을 통해 할수 있다</li>
+<li>Ex) XML 설정 파일을 자동 생성하거나 배포를 위한 JAR 압축 파일을 자동 생성할 수 있다.</li>
+</ul>
+</li>
+<li><p>실행시(런타임시) 특정 기능을 실행하도록 정보를 제공한다.</p>
+<ul>
+<li>객체를 만들었을 때 다른객체와 달리 특별한 역할을 해야할 경우 그객체에게 어노테이션을 기술해주면<br>어노테이션에 기술되어있는 데이터를 보고 특별한 역할을 할 수 있다.</li>
+<li>Ex) 객체가 애플리케이션 내부에서 해야할 역할을 정의할 수 있다(서블릿, 컨트롤러…)</li>
+</ul>
+</li>
+</ul>
+<h2 id="애노테이션-타입-정의와-적용"><a href="#애노테이션-타입-정의와-적용" class="headerlink" title="애노테이션 타입 정의와 적용"></a>애노테이션 타입 정의와 적용</h2><ul>
+<li><p>애노테이션 타입 정의</p>
+<ul>
+<li>소스 파일 생성 : AnnotationName.java</li>
+<li>소스 파일 내용<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션의 작성</p>
+<ul>
+<li>추상 메소드와 유사한 형태로 구현<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE&#125;)</span> <span class="comment">// 메타 애노테이션</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.SOURCE)</span>                                     <span class="comment">// 메타 애노테이션</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SuppressWarnings &#123;                                   <span class="comment">// 애노테이션 선언</span></span><br><span class="line">    String [] value();                                                 <span class="comment">// 애노테이션 속성</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션 타입 적용</p>
+<ul>
+<li><code>@AnnotationName</code><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> toString()&#123; .. &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>애노테이션의 사용</p>
+<ul>
+<li>key = value 형태로 애노테이션에 속성의 값 전달<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings(value = &#123;&quot;unused&quot;, &quot;rawtypes&quot;&#125;)</span> <span class="comment">// 키 = 값 배열</span></span><br><span class="line"><span class="meta">@SuppressWarnings(value = &quot;unused&quot;)</span>               <span class="comment">// 값이 하나인 경우 배열 생략 가능</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&#123;&quot;unused&quot;, &quot;rawtypes&quot;&#125;)</span>         <span class="comment">// 속성이 value 하나인 경우 키 생략 가능</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@CustomAnnotation(key1 = &quot;value1&quot;, key2 = &#123;&quot;value2&quot;, &quot;value3&quot;&#125;)</span> <span class="comment">// 속성이 여러개인 경우 키를 여러개 사용</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>애노테이션의 엘리먼트 멤버</p>
+<ul>
+<li>어노테이션을 코드에 적용할 때 외부의 값(개발자가 입력한 값)을 입력받을 수 있도록 하는 역할</li>
+<li>엘리먼트 선언<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  타입 elementName() [defalut 값(기본값, 생략가능)]; <span class="comment">// 엘리먼트 선언</span></span><br><span class="line">   ...</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>엘리먼트의 타입은 기본타입과 참조 타입 모두 사용할 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  String elementName1();</span><br><span class="line">  <span class="keyword">int</span> elementName2() <span class="keyword">default</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>어노테이션 적용시 엘리먼트 값을 지정하는 방법<br> @AnnotationName(element=”값”, elementName2 = 3);</p>
+</li>
+</ul>
+<h2 id="기본-엘리먼트-value"><a href="#기본-엘리먼트-value" class="headerlink" title="기본 엘리먼트 value"></a>기본 엘리먼트 value</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">  String value()  <span class="comment">// 기본 엘리먼트 선언</span></span><br><span class="line">  <span class="keyword">int</span> elementName()  <span class="keyword">default</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>애노테이션을 적용할 때 엘리먼트명을 생략가능</p>
+<ul>
+<li><code>@AnnotationName(&quot;값&quot;);</code> - 기본 엘리먼트인 value에 값이 들어간다<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet</span>(<span class="string">&quot;/main&quot;</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainServlet</span> &#123;</span> ... &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>두 개 이상의 속성을 기술할 때에는 value =값 형태로 기술해야 한다.</p>
+<ul>
+<li><code>@AnnotationName(value=&quot;값&quot;, elementName=3);</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="애노테이션-적용-대상"><a href="#애노테이션-적용-대상" class="headerlink" title="애노테이션 적용 대상"></a>애노테이션 적용 대상</h2><ul>
+<li>코드 상에서 애노테이션을 적용할 수 있는 대상</li>
+<li>java.lang.annotation.ElementType. 열거 상수로 정의되어 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ElementType 열거 상수</th>
+<th>적용 대상</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TYPE</td>
+<td>클래스, 인터페이스, 열거 타입</td>
+</tr>
+<tr>
+<td>ANNOTATION_TYPE</td>
+<td>어노테이션</td>
+</tr>
+<tr>
+<td>FIELD</td>
+<td>필드, 열거형 상수</td>
+</tr>
+<tr>
+<td>CONSTRUCTOR</td>
+<td>생성자</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>메소드</td>
+</tr>
+<tr>
+<td>PARAMETER</td>
+<td>메소드의 입력 파라미터</td>
+</tr>
+<tr>
+<td>LOCAL_VARIABLE</td>
+<td>로컬 변수</td>
+</tr>
+<tr>
+<td>PACKAGE</td>
+<td>패키지</td>
+</tr>
+<tr>
+<td>MODULE</td>
+<td>모듈</td>
+</tr>
+</tbody></table>
+<ul>
+<li>애노테이션 적용 대상 지정 방법<ul>
+<li>@Target 애노테이션으로 적용 대상 지정</li>
+<li>@Target의 기본 엘리먼트인 value의 타입은 ElementType 배열<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE, ElementType.FLELD, ElementTypeMETHOD&#125;) <span class="comment">// TYPE,FELED,METHOD에 적용할 수 있다라는 의미이다.</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@AnnotationName</span> <span class="comment">// 클래스에 사용 가능</span></span><br><span class="line"><span class="keyword">public</span> className&#123;</span><br><span class="line">   <span class="meta">@AnnotationName</span> <span class="comment">// 필드에 사용 가능</span></span><br><span class="line">   <span class="keyword">private</span> String fieldName;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@AnnotationName</span> x  <span class="comment">// 생성자에는 사용 불가</span></span><br><span class="line">   <span class="keyword">public</span> className()&#123;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@AnnotationName</span> <span class="comment">// 메소드에는 사용 가능</span></span><br><span class="line">   <span class="keyword">public</span>  <span class="keyword">void</span> methodName()&#123; &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="어노테이션-유지-정책"><a href="#어노테이션-유지-정책" class="headerlink" title="어노테이션 유지 정책"></a>어노테이션 유지 정책</h2><ul>
+<li><p>어노테이션 적용 코드가 유지되는 시점을 지정하는 것</p>
+</li>
+<li><p>java.lang.annotation.RetentionPolicy 열거 상수로 정의되어 있다.</p>
+<table>
+<thead>
+<tr>
+<th>RetentionPolicy 열거 상수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SOURCE</td>
+<td>소스상에서만 어노테이션 정보를 유지한다. 소스코드를 분석할 때만 의미가 있으며, 바이트 코드 파일에는 정보가 남지 않는다. 컴파일러가 컴파일 할 때 어노테이션을 바이트코드에서 뺀다,바이트코드에서는 어노테이션이 유지되지 않는 정책이다 개발자가 소스에서 정보를 얻을 목적으로 유지하는 정책</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>바이트 코드 파일까지 어노테이션 정보를 유지한다. 하지만 리플렉션을 이용해서 어노테이션 정보를 얻을 수는 없다.클래스상에만 존재하고 실제로 실행할 때는 그정보를 읽지못하는 유지 정책.</td>
+</tr>
+<tr>
+<td>RUNTIME</td>
+<td>바이트 코드 파일까지 어노테이션 정보를 유지하면서 리플렉션을 이용해서 런타임에 어노테이션 정보를 얻을 수 있다. 클래스를 이용할 때 어떤 어노테이션이 적용되었나를 보고 클래스의 역할과 실행방법을 정해줄 수 있기 때문에 대부분 RUNTIME 유지정책을 사용한다</td>
+</tr>
+</tbody></table>
+<ul>
+<li>리플렉션(ReFlection) : 런타임에 클래스의 메타 정보를 얻는 기능<ul>
+<li>(클래스의 메타정보)클래스가 가지고 있는 필드, 필드의 종류, 필드의 타입 생성자, 메소드, 어노테이션의 정보 등등을 얻을 수 있다.</li>
+<li>런타임시에 어노테이션 정보를 얻으려면 유지 정책을 RUNTIME으로 설정해야 한다.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>유지 정책 지정 방법</p>
+<ul>
+<li>@Retention 어노테이션으로 유지 정책을 지정</li>
+<li>@Retention의 기본 엘리먼트인 value의 타입은 RetentionPolicy<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.FLELD, ElementTypeMETHOD&#125;)</span> <span class="comment">// TYPE,FELED,METHOD에 적용할 수 있다라는 의미이다.</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span> <span class="comment">// 여기다가 위에 3가지중 하나를 넣어주면 됨. value = RetentionPolicy.RUNTIME과 같다</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> AnnotationName&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="사용자-정의-애노테이션"><a href="#사용자-정의-애노테이션" class="headerlink" title="사용자 정의 애노테이션"></a>사용자 정의 애노테이션</h2><ul>
+<li>멤버 변수를 대상으로 하는, Reflection API에서 쓸 수 있ㄴㄴ 애노테이션</li>
+<li>애노테이션 속성은 String[]인 value와 “기본값” 기본값을 가지는 valueTwo로 이루어짐</li>
+</ul>
+<ul>
+<li><p>사용자 정의 애노테이션 구현</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;FIELD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@interface</span> MyAnnotation&#123;</span><br><span class="line">    String[] value(); <span class="comment">// 애노테이션 속성 (기본 속성 이름은 value) 첫번째 애노테이션 속성은 value로해주는 게 좋다.</span></span><br><span class="line">    <span class="function">String <span class="title">valueTwo</span><span class="params">()</span> <span class="keyword">default</span> &quot;기본값&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>사용자 정의 애노테이션 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnnotationUsage</span></span>&#123;</span><br><span class="line">    <span class="meta">@MyAnnotation(&quot;game&quot;)</span><span class="comment">// 바로밑에 한줄에 적용이된다. 게임네임에는 게임에 대한정보가들어가있다라는 의미이다.</span></span><br><span class="line">    String gameName = <span class="string">&quot;여러분의 틱택토&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//value가 String[]이므로 value = String[]로 넣어 준다.</span></span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;server&quot;,valueTwo = &quot;localhost&quot;)</span> <span class="comment">// value는 원래 배열이다</span></span><br><span class="line">    String serverIP; <span class="comment">// 내용이 들어가도 상관없다. 여기에쓰던지 valueTwo에쓰던지하는 것</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//value가 String[]이지만, 길이가 1이면 String 만 넣어주어도 됨.</span></span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;server&quot;,valueTwo = &quot;8080&quot;)</span></span><br><span class="line">    String serverPort;</span><br><span class="line">    <span class="meta">@MyAnnotation(&quot;game&quot;)</span></span><br><span class="line">    String gameMode = <span class="string">&quot;AI VS. AI&quot;</span>;</span><br><span class="line">    <span class="meta">@MyAnnotation(value = &quot;db&quot;,valueTwo = &quot;localhost&quot;)</span></span><br><span class="line">    String database;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Reflection을 이용하여 애노테이션에 할당된 값 사용</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</span><br><span class="line"></span><br><span class="line">        AnnotationUsage obj = <span class="keyword">new</span> AnnotationUsage();</span><br><span class="line">        Map&lt;String, Object&gt; gameProp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; serverPrp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        Map&lt;String, Object&gt; dbProp = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        Field[] fields =AnnotationUsage.class.getDeclaredFields(); // 필드 정보 가져오는 부분 (Reflection API를 사용하여 가져옴)</span><br><span class="line">        <span class="keyword">for</span> (Field filed : fields) &#123;</span><br><span class="line">            MyAnnotation annotation = filed.getDeclaredAnnotation(MyAnnotation.class); // 필드에서 Annotation 정보 가져오는 부분(Reflect API)</span><br><span class="line">            <span class="keyword">if</span>(filed.get(obj) == <span class="keyword">null</span>)&#123; <span class="comment">// 필드 값이 비어있는 경우 valueTwo에서 가져온다.</span></span><br><span class="line">                filed.set(obj, annotation.valueTwo()); <span class="comment">// 값이 없으면 valueTwo를 채워줌</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (annotation.value()[<span class="number">0</span>].equals(<span class="string">&quot;game&quot;</span>))&#123;</span><br><span class="line">                gameProp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125; <span class="keyword">else</span>  <span class="keyword">if</span> (annotation.value()[<span class="number">0</span>].equals(<span class="string">&quot;server&quot;</span>))&#123;</span><br><span class="line">                serverPrp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                dbProp.put(filed.getName(),filed.get(obj));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(gameProp);</span><br><span class="line">        System.out.println(serverPrp);</span><br><span class="line">        System.out.println(dbProp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/18/Java/JavaAdvanced/Java-Annotations/" data-id="ckh7i0tf30019qwu241j4999y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-Stream_TerminalOperations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" class="article-date">
+  <time datetime="2020-10-10T07:45:14.651Z" itemprop="datePublished">2020-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/">Java_Stream-최종 처리 메소드(최종 연산자)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="최종-처리-메소드"><a href="#최종-처리-메소드" class="headerlink" title="최종 처리 메소드"></a>최종 처리 메소드</h1><table>
+<thead>
+<tr>
+<th>동작</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>루핑</td>
+<td>forEach()</td>
+</tr>
+<tr>
+<td>매칭</td>
+<td>allMatch(), anyMatch(), noneMatch()</td>
+</tr>
+<tr>
+<td>집계</td>
+<td>count(), max(), min(), average(), sum(), reduce()</td>
+</tr>
+<tr>
+<td>조사</td>
+<td>findFirst(), findAny()</td>
+</tr>
+<tr>
+<td>수집</td>
+<td>collect()</td>
+</tr>
+</tbody></table>
+<h2 id="루핑"><a href="#루핑" class="headerlink" title="루핑"></a>루핑</h2><h3 id="forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비"><a href="#forEach-메소드로-스트림-요소를-순차적으로-Consumer를-이용해-소비" class="headerlink" title="forEach() 메소드로 스트림 요소를 순차적으로 Consumer를 이용해 소비"></a>forEach() 메소드로 스트림 요소를 순차적으로 Consumer<T>를 이용해 소비</h3><ul>
+<li>forEach() - 요소들을 계속해서 반복해서 가져와라라는 의미이다.<ul>
+<li><code>stream.forEach(name -&gt; System.out.println(name))</code>으로 되어있을 때<br>스트림에 가져온 요소를 name에 넣어서 하나씩 출력되게 하는 것이다.</li>
+<li>매개값의 형태는 Consumer 함수형 인터페이스 타입을 갖는다.</li>
+</ul>
+</li>
+<li><code>void forEach(Comsumer&lt;? super T&gt; action)</code> : 스트림의 각 요소를 action으로 소비  </li>
+</ul>
+<h2 id="매칭"><a href="#매칭" class="headerlink" title="매칭"></a>매칭</h2><h3 id="Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드"><a href="#Predicate-계열을-이용해-스트림-요소들이-특정-조건에-만족하는지-조사하는-메소드" class="headerlink" title="Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드"></a>Predicate 계열을 이용해 스트림 요소들이 특정 조건에 만족하는지 조사하는 메소드</h3><ul>
+<li><p>boolean allMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 모든 요소가 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean anyMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하면 true를 반환</p>
+</li>
+<li><p>boolean noneMatch(Predicate&lt;? super T&gt; predicate) : 스트림의 요소 중 하나라도 Predicate를 만족하지 않으면 true를 반환</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.allMatch(s -&gt; s.equals(<span class="string">&quot;abc&quot;</span>))); <span class="comment">//false</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.anyMatch(s -&gt; s.equals(<span class="string">&quot;cde&quot;</span>))); <span class="comment">//true</span></span><br><span class="line">st0 = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;cde&quot;</span>,<span class="string">&quot;efg&quot;</span>);</span><br><span class="line">System.out.println(st0.noneMatch(s -&gt; s.equals(<span class="string">&quot;abcde&quot;</span>)));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="조사"><a href="#조사" class="headerlink" title="조사"></a>조사</h2><h3 id="첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다"><a href="#첫번째-요소-또는-아무-요소를-조사하는-최종-처리-메소드-필터링-등으로-인해-스트림에-요소가-남아있는지-확인할-수-있다" class="headerlink" title="첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다."></a>첫번째 요소 또는 아무 요소를 조사하는 최종 처리 메소드. 필터링 등으로 인해 스트림에 요소가 남아있는지 확인할 수 있다.</h3></li>
+<li><p><code>Optional&lt;T&gt; findFirst()</code> : 스트림의 첫 요소 또는 empty Optional 객체를 반환</p>
+</li>
+<li><p><code>Optional&lt;T&gt; findAny()</code> : 스트림의 아무 요소나 가지는 Optional 객체를 반환 (병렬 스트림일 때 사용한다.)</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> firstValue = Arrays.stream(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;)</span><br><span class="line">                .filter(n -&gt; n%<span class="number">3</span> ==<span class="number">0</span>)</span><br><span class="line">                .findFirst()</span><br><span class="line">                .getAsInt();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="집계-통계"><a href="#집계-통계" class="headerlink" title="집계 (통계)"></a>집계 (통계)</h2><ul>
+<li><p>최종 처리 기능</p>
+<ul>
+<li>카운팅, 합계, 평균값, 최대값, 최소값 등과 같이 하나의 값으로 산출한다.</li>
+<li>대량의 데이터를 가공해서 축소하는 리덕션이라고 볼 수 있다.</li>
+</ul>
+</li>
+<li><p>기본 집계 메소드</p>
+<ul>
+<li>기본형 스트림의 통계 : count(), sum(), average(), min(), max()</li>
+<li>T 타입 스트림의 통계 : count(), min(), max() (min, max의 경우 Comparator 필요)</li>
+</ul>
+</li>
+</ul>
+<h3 id="reduce-메소드-사용자-정의-집계-메소드"><a href="#reduce-메소드-사용자-정의-집계-메소드" class="headerlink" title="reduce() 메소드 : 사용자 정의 집계 메소드"></a>reduce() 메소드 : 사용자 정의 집계 메소드</h3><ul>
+<li>모든 자료형에서 사용할 수 있는 집계 메소드이다!</li>
+<li>개발자가 프로그램화해서 다양한 집계(리덕션) 결과물을 만들 수 있다.</li>
+<li>특정한 값을 집계 할 수 있게 하기 위해서 reduce를 제공한다.</li>
+</ul>
+<h4 id="세가지-인자를-받아서-처리"><a href="#세가지-인자를-받아서-처리" class="headerlink" title="세가지 인자를 받아서 처리"></a>세가지 인자를 받아서 처리</h4><ul>
+<li>accmulator : 각 요소를 처리하는 계산 로직이다. 각 요소가 올 때마다 중간 결과를 생성한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;T&gt; reduce(BinaryOperator&lt;T&gt; accumulator) </span><br><span class="line"><span class="comment">//accumulator를 수행하고 Optional&lt;T&gt; 타입 반환</span></span><br></pre></td></tr></table></figure></li>
+<li>identity : 계산을 위한 초기값이다. stream이 비어서 계산할 값이 없더라도 이 값은 반한된다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T reduce(T identity, BinaryOperator&lt;T&gt; accumulator) </span><br><span class="line"><span class="comment">// identity를 초기값으로 하여, accumulator를 이용해 집계 연산</span></span><br></pre></td></tr></table></figure></li>
+<li>combiner : 병럴 stream에서 나눠 계산한 결과를 하나로 합쳐 반환한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;U&gt; U reduce(U identity, BiFunction&lt;U, ? super T, U&gt; accumulator, BinaryOperator&lt;U&gt; combiner) </span><br><span class="line"><span class="comment">// combiner를 이용해 병렬 스트림 결합</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="메소드-형태-및-사용코드"><a href="#메소드-형태-및-사용코드" class="headerlink" title="메소드 형태 및 사용코드"></a>메소드 형태 및 사용코드</h4><table>
+<thead>
+<tr>
+<th>인터페이스</th>
+<th>리턴 타입</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Stream</td>
+<td>Optional<T></td>
+<td>reduce(BinaryOperator<T> accumulator</td>
+</tr>
+<tr>
+<td></td>
+<td>T</td>
+<td>reduce(T identitiy, BianryOperator<T> accmulator)</td>
+</tr>
+<tr>
+<td>IntStream</td>
+<td>OptionalInt</td>
+<td>reduce(IntBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>int</td>
+<td>reduce(int indentity, IntBinaryOperator  op)</td>
+</tr>
+<tr>
+<td>LongStream</td>
+<td>OptionalLong</td>
+<td>reduce(LongBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>long</td>
+<td>reduce(long indentity, LongBinaryOperator  op)</td>
+</tr>
+<tr>
+<td>DoubleStream</td>
+<td>OptionalDouble</td>
+<td>reduce(DoubleBinaryOperator  op)</td>
+</tr>
+<tr>
+<td></td>
+<td>double</td>
+<td>reduce(double indentitiy, DoubleBinaryOperator  op)</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>reduce(BinaryOperator<T> accumulator)</p>
+<ul>
+<li>이건 연산의 결과가 없으면 예외가 발생한다. NotSuchElementException 요소가 있어야 동작한다.</li>
+</ul>
+</li>
+<li><p>reduce(T identitiy, BianryOperator<T> accmulator) </p>
+<ul>
+<li>연산의 결과가 없다면, 디폴트로 identity 사용  요소가 없어도 동작한다.</li>
+<li>연산의 결과가 없는 것은 요소가 없는 것이다. 그래서 연산의 결과로 디폴트 값으로 identity를 하는 것이다.</li>
+</ul>
+</li>
+<li><p>매개변수</p>
+<ul>
+<li>XXXBinaryOperator : 두 개의 매개 값을 받아 연산 후 리턴하는 함수적 인터페이스</li>
+<li>identity : 스트림에 요소가 전혀 없을 경우 리턴될 디폴트 값   </li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(<span class="number">0</span>,(value1,value2)-&gt;value1+value2)); <span class="comment">//sum()</span></span><br><span class="line"><span class="comment">// 1,2와 더한걸 3이랑 더하고 12 와 3을 더한걸 4 와 더함 .. 누적해서 더하는 것이다.</span></span><br><span class="line"><span class="comment">// identity가 사용이 되는 이유는 처음 identitiy와 1을 더한값과 2를계산하기위해서</span></span><br><span class="line"><span class="comment">// 0 [0,1,2,3,4,5,6,7,8,9] 0+0 =0 -&gt; 0+1-&gt;1 1+2-&gt; 3 과같은 연산 0~9까지 더한 연산</span></span><br><span class="line"><span class="comment">// sum()으로도 나타낼 수 있다 sum,min,max등등 도 reduce로 구현되어 있다</span></span><br><span class="line"></span><br><span class="line">System.out.println(IntStream.range(<span class="number">0</span>,<span class="number">10</span>).reduce(Integer.MAX_VALUE,(value1,value2)-&gt;value1&lt;value2? value1:value2));<span class="comment">// min()</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Optional-클래스"><a href="#Optional-클래스" class="headerlink" title="Optional 클래스"></a>Optional<T> 클래스</h3><ul>
+<li><p>T 타입 객체의 null 여부에 따라 다르게 동작하는 Wrapper 클래스</p>
+</li>
+<li><p>자바 8부터 추가된 값을 저장하는 값 기반 클래스</p>
+</li>
+<li><p>java.util 패키지의 Optional, OptionalDouble, OptionalInt, OptionLong 클래스를 말한다.</p>
+</li>
+<li><p>집계 메소드의 리턴 타입으로 사용되어 집계 값을 가지고 있다. 이게 핵심이다!!</p>
+</li>
+<li><p>저장된 값을 얻으려면 get(), getAsDouble(), getAsInt(), getAsLong()를 호출한다. </p>
+</li>
+<li><p>Optional 클래스의 정적 메소드를 이용해 Optional 객체 생성</p>
+<ul>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; of(T value)</code> : value가 null인 경우 NullPointerException을 발생시키는 Wrapping 메소드</li>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; ofNullable(T value)</code> : value가 null인 경우 empty()의 결과를 리턴하는 Wrapping 메소드</li>
+<li><code>public static &lt;T&gt; Optional&lt;T&gt; empty()</code> : 값이 비어있는 Optional 객체를 리턴</li>
+</ul>
+</li>
+<li><p>Optional 객체를 처리하는 메소드</p>
+<ul>
+<li><code>public T get()</code> : Optional의 값을 리턴하며, null일 경우 NullPointerException 발생</li>
+<li><code>public void ifPresent(Consumer&lt;? super T&gt; consumer)</code> : Optional 값이 null이 아닐 경우 consumer를 이용해 소비한다, 값이 저장되어 있지 않을 경우 디폴트 값(매개변수가 디폴트 값이 된다)<ul>
+<li>consumer로 집계 값을 받아서 처리하는 코드를 람다식으로 작성한다</li>
+</ul>
+</li>
+<li><code>public T orElse(T other)</code> : Optional의 값이 null일 경우 other를 반환한다, 값이 저장되어 있을 경우 Consumer 에서 처리</li>
+<li><code>public T orElseGet(Supplier&lt;? extends T&gt; other)</code> : Optional의 값이 null일 경우 Supplier를 통해 공급받은 값을 반환한다.</li>
+<li><code>public &lt;X extends Throwable&gt; T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) throws X</code> : Optional의 값이 null일 경우 exceptionSupplier에서 공급받은 예외를 throw</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">double</span> avg = list.stream()</span><br><span class="line">            .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">            .average()</span><br><span class="line">            .getAsDouble();</span><br><span class="line">    System.out.println(avg); <span class="comment">//NotSuchElementException</span></span><br><span class="line">   </span><br><span class="line">    <span class="comment">// isPresent()</span></span><br><span class="line">    OptionalDouble optionalDouble = list.stream()</span><br><span class="line">            .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">            .average()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (optionalDouble.isPresent())&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;값이 있는 경우 : &quot;</span> + optionalDouble.getAsDouble());</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;방법 1-값이 없는 경우 : &quot;</span> + <span class="number">0.0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// orElse()</span></span><br><span class="line">    <span class="keyword">double</span> avg = list.stream()</span><br><span class="line">            .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">            .average()</span><br><span class="line">            .orElse(<span class="number">0.0</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;방법 2 : &quot;</span> + avg);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">// ifPresent()</span></span><br><span class="line">    list.add(<span class="number">2</span>);</span><br><span class="line">    list.add(<span class="number">4</span>);</span><br><span class="line">    list.stream()</span><br><span class="line">            .mapToInt(<span class="attr">Integer:</span>:intValue)</span><br><span class="line">            .average()</span><br><span class="line">            .ifPresent(i-&gt; System.out.println(<span class="string">&quot;방법 3 : &quot;</span>+ i));</span><br><span class="line">    <span class="comment">// 값이 없을 경우 false가 되서 종료가 된다. consumer로 했기 때문에 바로 값 출력</span></span><br><span class="line">  ```  </span><br><span class="line"></span><br><span class="line">## 수집</span><br><span class="line">### 필요한 요소를 수집하여 새로운 Collection으로 구성하여 반환하는 메소드</span><br><span class="line">* 최종 처리 기능으로 요소들을 수집 또는 그룹핑한다.</span><br><span class="line">    * 필터링 또는 매핑된 요소들로 최종적으로 얻은요소들로 새로운 컬렉션 생성하는 것.</span><br><span class="line">    * 요소들을 그룹핑하고, 집계를 할 수 있다. </span><br><span class="line">* Stream API는  JCF-&gt; STREAM -&gt; 처리 -&gt; 결과</span><br><span class="line">* 결과가 출력일 수도 있고 값일 수도 있고, 다시 컬렉션으로 만들고 싶을 수 있다.</span><br><span class="line">* 요소가 여러개 있는 프레임워크 혹은 Arrays에서 스트림을 생성한 다음에 스트림에서 중간 처리를 쭉쭉한 다음에 마지막에 출력이나 값을 낼 수 있지만</span><br><span class="line"> 다음 중 <span class="number">3</span>가지중 하나의 조건은 꼭 선택해야 한다.</span><br><span class="line">  * 조건<span class="number">1.</span> foreach()를 사용하거나</span><br><span class="line">  * 조건<span class="number">2.</span> 특정한 값을 리턴을 받거나(reduce())</span><br><span class="line">  * 조건<span class="number">3.</span> count,min,max 스트림을 간추려서 통계를 낼 수 있는 값들을 가져오던지 다시 컬렉션으로 만들어 주던지 해야한다.</span><br><span class="line"></span><br><span class="line">### 보통 수집을 하기 위해서 필터링을 한다.</span><br><span class="line">* 스트림에서 필요한 요소만 필터링해서 별도의 컬렉션으로 만든다</span><br><span class="line">* collect라는 메소드 사용 collect(Collector &lt;T,A,R&gt; collector)</span><br><span class="line">* collect가  요소를 어떤 컬렉션에 수집할 것인지를 결정한다.</span><br><span class="line"></span><br><span class="line">* collect()메소드</span><br><span class="line">  * `&lt;R,A&gt; R collect(Collector&lt;? super T,A,R) collector)` : collector를 이용해 새로운 Collection R에 담아 반환</span><br><span class="line">     * Collectors의 `정적 메소드` : toList(), toSet(), toCollection(), toMap(), toConcurrentMap()</span><br><span class="line">     </span><br><span class="line">  * `&lt;R, A&gt; R collect(Supplier&lt;R&gt; supplier, BiConsumer&lt;R, ? super T&gt; accumulator, BiConsumer&lt;R, R&gt; combiner)` </span><br><span class="line">  : supplier를 통해 공급된 컨테이너 R에 accumulator를 이용해 T값을 저장. 병렬처리 스트림에 사용될 경우 combiner를 이용해 스레드별 컨테이너 R을 통합</span><br><span class="line"></span><br><span class="line">* Collector의 타입 파라미터</span><br><span class="line">   * <span class="attr">T :</span> 요소                                </span><br><span class="line">   * <span class="attr">A :</span> 누적기(accumulator) 요소를 컬렉션에 수집하는 역할을한다.</span><br><span class="line">   * <span class="attr">R :</span> 요소가 저장될 새로운 컬렉션 </span><br><span class="line">     * T 요소를 A 누적기가 R에 저장한다.</span><br><span class="line"></span><br><span class="line">| 리턴 타입 | 메소드 | 설명 |</span><br><span class="line">| ------- | ----- | ---- |</span><br><span class="line">| Collector&lt;T,?,Collection&lt;T&gt;&gt; | Collectors.toCollection&#123;Supplier&lt;T&gt;&#125; | Supplier가 제공한 Collection에 저장 |</span><br><span class="line">| Collector&lt;T,?,ConcurrentMap&lt;K,U&gt;&gt; |Collectors.toConcurrentMap(...) |ConcurrentMap에 저장한다. |</span><br><span class="line">| Collector&lt;T,?,List&lt;T&gt;&gt; |  Collectors.toList() | List에 저장 |</span><br><span class="line">| Collector&lt;T,?,Map&lt;K,U&gt;&gt; | Collectors.toMap() | Map에 저장 |</span><br><span class="line">| Collecotr&lt;T,?,Set&lt;T&gt;&gt; | Collectors.toSet() | Set에 저장 |</span><br><span class="line"></span><br><span class="line">* Collectors.toConcurrentMap(...) - 멀티쓰레드 환경에서 쓰레드의 안전한 concurrentmap을 만들어서 거기에 요소를 수집하는 Collector를 얻는다. </span><br><span class="line">* A가 ? 인 이유</span><br><span class="line">   * List, Set, Map 컬렉션에 누적할 경우 별도의 누적기가 필요 없다. </span><br><span class="line">   * 컬렉터내부에서 이들 컬렉션에 저장하는 방법을 알고 있기 때문에 별도의 누적기가 필요 없음.</span><br><span class="line"></span><br><span class="line">  ```groovy</span><br><span class="line">    String[] array = &#123;<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Is&quot;</span>, <span class="string">&quot;Fun&quot;</span>, <span class="string">&quot;Isn&#x27;t&quot;</span>, <span class="string">&quot;It&quot;</span>, <span class="string">&quot;?&quot;</span>&#125;;</span><br><span class="line">    List&lt;String&gt; list = Arrays.stream(array)</span><br><span class="line">            .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">            .collect(Collectors.toList()); <span class="comment">// ArrayList</span></span><br><span class="line">            <span class="comment">// .collect(Collectors.toCollection(LinkedList::new))</span></span><br><span class="line">    System.out.println(list.getClass().getName() + <span class="string">&quot;:&quot;</span> + list);</span><br><span class="line">      </span><br><span class="line">    Set&lt;String&gt; set = Arrays.stream(array)</span><br><span class="line">            .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">            .collect(Collectors.toSet()); <span class="comment">// HashSet</span></span><br><span class="line">            <span class="comment">// .collect(Collectors.toCollection(HashSet::new))</span></span><br><span class="line">    System.out.println(set.getClass().getName() + <span class="string">&quot;:&quot;</span> + set);</span><br><span class="line">    </span><br><span class="line">    Map&lt;String, Integer&gt; map = Arrays.stream(array)</span><br><span class="line">            .filter(s -&gt; s.length() &gt;= <span class="number">3</span>)</span><br><span class="line">            .collect(Collectors.toMap(s -&gt; s, String::length)); <span class="comment">// HashMap</span></span><br><span class="line">            <span class="comment">// .collect(Collectors.toCollection(s -&gt; s, String::length, (oldVal, newVal) -&gt; newVal, TreeMap::new))</span></span><br><span class="line">    System.out.println(map.getClass().getName() + map);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Collectors의 정적 메소드를 이용한 그룹화와 분리</p>
+</li>
+<li><p>partitioningBy는 어떤 기준으로 무더기로 나누는 것 (2가지 true or false)</p>
+</li>
+<li><p>groupingBy는 어떤 기준으로 여러개 묶어 내는 것  (여러개)</p>
+<ul>
+<li><dl><dt><code>public static &lt;T, K&gt; Collector&lt;T, ?, Map&lt;K, List&lt;T&gt;&gt;&gt; groupingBy(Function&lt;? super T, ? extends K&gt; classifier)</code></dt><dd>classifier를 key값으로, 해당하는 값의 목록을 List인 value로 가지는 Map으로 스트림을 수집하는 Collector를 반환</dd></dl><ul>
+<li><code>public static &lt;T, K, A, D&gt; Collector&lt;T, ?, Map&lt;K, D&gt;&gt; groupingBy(Function&lt;? super T, ? extends K&gt; classifier, Collector&lt;? super T, A, D&gt; downstream)</code> : List 대신 downstream collector로 수집</li>
+<li>groupingBy(R Function<T>) - Map&lt;R, List<T>&gt;입력받은게 function으로 출력됨 R타입에 따라 그룹이 됨 그래서 R이 키가 된다.</li>
+<li>T를 String..length 로 해주면 R은 Integer</li>
+<li>결과 - 1: [………..], 2: [………..], 3: [………..]</li>
+<li>키를 기준으로 그룹화 하는 것이다 다 대 다 형태 n:m이면 m이 조금 작을 것이다</li>
+</ul>
+</li>
+<li><p><code>public static &lt;T&gt; Collector&lt;T, ?, Map&lt;Boolean, List&lt;T&gt;&gt;&gt; partitioningBy(Predicate&lt;? super T&gt; predicate)</code> : predicate 결과를 key로, 해당하는 값의 목록을 List value로 가지는 Map으로 스트림을 수집하는 Collector를 반환</p>
+<ul>
+<li><code>public static &lt;T, A, D&gt; Collector&lt;T, ?, Map&lt;Boolean, D&gt;&gt; partitioningBy(Predicate&lt;? super T&gt; predicate, Collector&lt;? super T, A, D&gt; downstream))</code> : List 대신 downstream collector로 수집</li>
+<li>partitionBy(predciate)- Map&lt;Boolean, List<T>&gt; 왜냐하면 이건 두가지로 나누는 것이기 때문에 predicate 계열을 가지고 참인지 거짓인지 판단을 해야 해서</li>
+<li>결과 - true :[……] , false: [……]  <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Is&quot;</span>, <span class="string">&quot;Fun&quot;</span>, <span class="string">&quot;Isn&#x27;t&quot;</span>, <span class="string">&quot;It&quot;</span>, <span class="string">&quot;?&quot;</span>&#125;;</span><br><span class="line"> </span><br><span class="line"> Map&lt;Character, List&lt;String&gt;&gt; map1 = Arrays.stream(array)</span><br><span class="line">         .collect(Collectors.groupingBy(s -&gt; s.charAt(<span class="number">0</span>)));</span><br><span class="line"> System.out.println(map1);</span><br><span class="line"> </span><br><span class="line"> Map&lt;Boolean, List&lt;String&gt;&gt; map2 = Arrays.stream(array)</span><br><span class="line">         .collect(Collectors.partitioningBy(s -&gt; s.length() &gt;= <span class="number">3</span>));</span><br><span class="line"> System.out.println(map2);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>집계를 위한 Collector</p>
+<ul>
+<li>Downstream collector로 집계를 위한 Collector를 사용할 경우 유용하다.</li>
+<li>counting(), summingP(), averagingP(), maxBy(), minBy(), reducing()</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;<span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Is&quot;</span>, <span class="string">&quot;Fun&quot;</span>, <span class="string">&quot;Isn&#x27;t&quot;</span>, <span class="string">&quot;It&quot;</span>, <span class="string">&quot;?&quot;</span>&#125;;</span><br><span class="line">  </span><br><span class="line">  Map&lt;Character, Long&gt; map = Arrays.stream(array)</span><br><span class="line">          .collect(Collectors.groupingBy(s -&gt; s.charAt(<span class="number">0</span>),</span><br><span class="line">                                         Collectors.counting()));</span><br><span class="line">  System.out.println(map);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_TerminalOperations/" data-id="ckh7i0tfw001tqwu2atmy3oqh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Java/JavaAdvanced/Java-Stream_IntermediateOperations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" class="article-date">
+  <time datetime="2020-10-10T07:25:15.662Z" itemprop="datePublished">2020-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/">Java_Stream-중간 처리 메소드(중간 연산자)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="중간-처리-메소드-중간-연산자"><a href="#중간-처리-메소드-중간-연산자" class="headerlink" title="중간 처리 메소드(중간 연산자)"></a>중간 처리 메소드(중간 연산자)</h1><ul>
+<li>중간 처리 메소드 이후에 최종 처리 메소드를 붙여서 사용한다.</li>
+<li>값을 원하는 형태로 처리하기 위한 연산자이다. 중간 연산자들은 lazy하게 실행되고 결과로 stream을 반환한다.<ul>
+<li>lazy한 처리는 최종처리메소드가 실행되기전까지 연산이 실행되지 않음,결과가 필요하기 전까지 실행되지 않는다, 연산의 시점을 최대한 늦춘다는 의미이다.</li>
+</ul>
+</li>
+<li>그렇기 때문에 중간연산자는 연쇄적으로 연결하여 연산을 처리할 수 있다. (Ex - list.stream().filter(…).map(…))</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>동작</th>
+<th>메소드</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>필터링</td>
+<td>dinstict(), filter()</td>
+</tr>
+<tr>
+<td>자르기</td>
+<td>skip(), limit()</td>
+</tr>
+<tr>
+<td>정렬</td>
+<td>sorted()</td>
+</tr>
+<tr>
+<td>매핑</td>
+<td>flatMap(), flatMapToP(), map(), mapToP(), asDoubleStream(), asLongStream()</td>
+</tr>
+<tr>
+<td>조회</td>
+<td>peek()</td>
+</tr>
+</tbody></table>
+<h2 id="필터링"><a href="#필터링" class="headerlink" title="필터링"></a>필터링</h2><h3 id="필터링은-스트림의-일부-요소를-제거하는-역할을-한다"><a href="#필터링은-스트림의-일부-요소를-제거하는-역할을-한다" class="headerlink" title="필터링은 스트림의 일부 요소를 제거하는 역할을 한다."></a>필터링은 스트림의 일부 요소를 제거하는 역할을 한다.</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt; stringStream = Stream.of(<span class="string">&quot;Java&quot;</span>,<span class="string">&quot;Is&quot;</span>,<span class="string">&quot;Fun&quot;</span>,<span class="string">&quot;Isn&#x27;t&quot;</span>,<span class="string">&quot;It&quot;</span>,<span class="string">&quot;?&quot;</span>,<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">stringStream.forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 기본형 중복이 포함되서 출력됨.</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>distinct() : 스트림에 같은 요소가 있을 경우 하나만 남기고 삭제하는 메소드(중복 제거)<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stringStream.distinct().forEach(System.<span class="attr">out:</span>:println);</span><br><span class="line"><span class="comment">// stringStream.distinct() 여기까지 중간처리메소드, foreach는 최종처리 메소드</span></span><br><span class="line">```        </span><br><span class="line">* filter() : Predicate 계열을 입력을 받아, <span class="literal">true</span>인 요소만 남긴다.</span><br><span class="line">```groovy</span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;Java&quot;</span>,<span class="string">&quot;Is&quot;</span>,<span class="string">&quot;Fun&quot;</span>,<span class="string">&quot;Isn&#x27;t&quot;</span>,<span class="string">&quot;It&quot;</span>,<span class="string">&quot;?&quot;</span>);</span><br><span class="line">stringStream.filter(s-&gt;s.length()&gt;=<span class="number">3</span>).forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="자르기"><a href="#자르기" class="headerlink" title="자르기"></a>자르기</h2><h3 id="자르기는-스트림의-일부-요소를-한번에-생략한다"><a href="#자르기는-스트림의-일부-요소를-한번에-생략한다" class="headerlink" title="자르기는 스트림의 일부 요소를 한번에 생략한다."></a>자르기는 스트림의 일부 요소를 한번에 생략한다.</h3><ul>
+<li><p>skip(long n) : 스트림의 처음부터 n개의 요소를 생략하는 메소드, n개 자른다. n+1부터 끝까지 반환</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br><span class="line">Stream&lt;Integer&gt; stream = list.stream().skip(<span class="number">5</span>).forEach(n-&gt; System.out.println(s));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>limit(long maxsize) : 스트림의 최대 요소 개수를 maxsize를 제한한다, maxsize의 요소보다 뒤에 있는 값들은 짤린다. 0부터 n개까지 반환</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>);</span><br><span class="line">Stream&lt;Integer&gt; stream = list.stream().limit(<span class="number">5</span>).forEach(n-&gt; System.out.println(s));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="정렬"><a href="#정렬" class="headerlink" title="정렬"></a>정렬</h2><h3 id="스트림-요소의-compareTo-또는-입력받은-Comparator를-이용해-정렬한다"><a href="#스트림-요소의-compareTo-또는-입력받은-Comparator를-이용해-정렬한다" class="headerlink" title="스트림 요소의 compareTo() 또는 입력받은 Comparator를 이용해 정렬한다."></a>스트림 요소의 <code>compareTo()</code> 또는 입력받은 <code>Comparator</code>를 이용해 정렬한다.</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Comparable 객체를 정렬한 스트림 반환</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line">stringStream.sorted().forEach(System.<span class="attr">out:</span>:println); <span class="comment">// 사전순으로 정렬됨</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Comparator 인터페이스를 람다식으로 구현하여 정렬한다.</span></span><br><span class="line"><span class="comment">// Comparator를 이용하여 정렬된 스트림 반환</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line">stringStream.sorted((o1, o2) -&gt; o1.length() - o2.length()).forEach(System.<span class="attr">out:</span>:println); </span><br><span class="line"><span class="comment">//compreator를 람다식으로 작성해줄 수 있다, 길이가 짧은 것부터 나온다.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="매핑"><a href="#매핑" class="headerlink" title="매핑"></a>매핑</h2><h3 id="Function-인터페이스를-이용해-요소의-값을-변환한다"><a href="#Function-인터페이스를-이용해-요소의-값을-변환한다" class="headerlink" title="Function 인터페이스를 이용해 요소의 값을 변환한다."></a>Function 인터페이스를 이용해 요소의 값을 변환한다.</h3><ul>
+<li>map 계열 - 입력 1 : 1 출력<ul>
+<li><code>&lt;R&gt; Stream&lt;R&gt; map(Function&lt;? super T, ? extends R&gt; mapper)</code> : 기존 스트림의 T 타입 요소를 R 타입으로 변환하여 새로운 스트림 반환<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function 계열의 인터페이스를 사용하여 스트림의 각 요소를 매핑(Operator 계열도 사용)</span></span><br><span class="line">stringStream = Stream.of(<span class="string">&quot;abc&quot;</span>,<span class="string">&quot;fwf&quot;</span>,<span class="string">&quot;twtie&quot;</span>,<span class="string">&quot;dnmov&quot;</span>,<span class="string">&quot;work&quot;</span>);</span><br><span class="line"><span class="comment">// Function 계열로 string -&gt; integer 로 변환하는 매핑 Function&lt;String,Intger&gt;와 같은 형식을 람다식에 넣어준 것이다.</span></span><br><span class="line">Stream&lt;Integer&gt; stream2 = stringStream.map(s-&gt;s.length()) ;<span class="comment">//입력은 string 출력은 원하는대로 할수 있다</span></span><br><span class="line">stream2.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+<li><code>PStream mapToP(ToPFunction&lt;? super T&gt; mapper)</code> : R(return)이 기본형 타입으로 제한된 map()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PStream (기본형 타입의 스트림)은 Operator 계열로 처리(자료형 반환x)</span></span><br><span class="line"><span class="comment">// 입출력 값이 똑같기 때문에</span></span><br><span class="line">IntStream intStream3 = IntStream.of(<span class="number">5</span>,<span class="number">2</span>,<span class="number">30</span>,<span class="number">8</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">-34</span>);</span><br><span class="line">IntStream intStream4 = intStream3.map(value -&gt; value * <span class="number">10</span>); <span class="comment">// 형 변환이 되지 않고 입력이 출력이 된다.</span></span><br><span class="line">intStream4.forEach(System.<span class="attr">out:</span>:println);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>flatMap 계열 - 입력 1 : n 출력(스트림 형태로 출력한다.)(Function 계열만 사용)<ul>
+<li><code>&lt;R&gt; Stream&lt;R&gt; flatMap(Function&lt;? super T, ? extends Stream&lt;? extends R&gt;&gt; mapper)</code> : 스트림의 T 타입 요소가 n개의 R 타입 요소로 매핑된 새로운 스트림을 반환</li>
+<li><code>PStream flatMapToP(Function&lt;? super T, ? extends PStream&gt; mapper)</code> : R이 기본형 타입으로 제한된 flatMap()<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// s.split(&quot;&quot;) : &quot;java&quot; -&gt; &#123;&quot;j&quot;,&quot;a&quot;,&quot;v&quot;,&quot;a&quot;&#125;</span></span><br><span class="line">List&lt;String&gt; list2 = Arrays.asList(<span class="string">&quot;java&quot;</span>,<span class="string">&quot;backend&quot;</span>,<span class="string">&quot;best&quot;</span>,<span class="string">&quot;course&quot;</span>);</span><br><span class="line">list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).forEach(System.<span class="attr">out:</span>:println); <span class="comment">//foreach를 사용하면 스트림이 끝나게 된다.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="조회"><a href="#조회" class="headerlink" title="조회"></a>조회</h2><h3 id="스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다"><a href="#스트림-처리-과정에-영향을-미치지-않으며-중간-결과를-확인할-수-있으며-입력받은-스트림과-동일한-스트림을-반환한다" class="headerlink" title="스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다."></a>스트림 처리 과정에 영향을 미치지 않으며, 중간 결과를 확인할 수 있으며 입력받은 스트림과 동일한 스트림을 반환한다.</h3><ul>
+<li>Stream<T> peek(Consumer&lt;? super T&gt; action)<ul>
+<li>peek() -&gt; Consumer 계열의 람다식 입력을 받아 입력 요소를 소비</li>
+<li>peek()는 입력받아 스트림과 동일한 스트림을 다시 출력<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(list2.stream().flatMap(s -&gt; &#123;</span><br><span class="line">     <span class="keyword">return</span> Arrays.stream(s.split(<span class="string">&quot;&quot;</span>));</span><br><span class="line">&#125;).peek(s-&gt; System.out.println(<span class="string">&quot;flatMap():&quot;</span>+s))</span><br><span class="line">           .distinct().peek(s-&gt; System.out.println(<span class="string">&quot;distinct():&quot;</span>+s))</span><br><span class="line">           .count()); <span class="comment">// 함수형 프로그래밍은 선언형이어서 어떻게 해라라고 말해야한다.</span></span><br><span class="line"><span class="comment">// flatmap은 모든 요소를 다 나타내고 distinct는 중복된것을 없애고 하나만 출력됨.</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/10/Java/JavaAdvanced/Java-Stream_IntermediateOperations/" data-id="ckh7i0tfx001uqwu27n8ea9a3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Java/JavaAdvanced/Java-JavaInputOutput" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" class="article-date">
@@ -605,7 +1218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckgxjhqea002ncwu29ed1f5rs" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/10/07/Java/JavaAdvanced/Java-JavaInputOutput/" data-id="ckh7i0th1002pqwu20ef74kyh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -957,7 +1570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckgxjhqcs001icwu28grv0uqx" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/29/Java/JavaAdvanced/Java-Java_langPackage/" data-id="ckh7i0tfi001kqwu2ciozbx5a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1703,7 +2316,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckgxjhqfh002qcwu22q5kb737" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-StreamAPI/" data-id="ckh7i0ti9002tqwu2fv5ichpd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2183,7 +2796,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckgxjhqeb002ocwu27w9q65sr" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/27/Java/JavaAdvanced/Java-LambdaExpression/" data-id="ckh7i0th3002qqwu295wl2dn2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2238,7 +2851,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckgxjhqe1002kcwu24qbu3frk" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework10/GenericList/" data-id="ckh7i0tgp002iqwu2eomi9kcf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2293,7 +2906,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckgxjhqdz002jcwu2esqhgbut" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework09/List/" data-id="ckh7i0tgt002mqwu2fi1a9fnb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2336,161 +2949,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckgxjhqdu002fcwu2640hc0wf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework06/Vector3D" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/21/Java/Subject/Homework06/Vector3D/" class="article-date">
-  <time datetime="2020-09-21T12:45:28.954Z" itemprop="datePublished">2020-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/21/Java/Subject/Homework06/Vector3D/">Subject_Day06_Vector3D</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="3차원-벡터-클래스-구현하기"><a href="#3차원-벡터-클래스-구현하기" class="headerlink" title="3차원 벡터 클래스 구현하기"></a>3차원 벡터 클래스 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li><p>속성</p>
-<ul>
-<li>float타입의 x, y, z</li>
-</ul>
-</li>
-<li><p>생성자</p>
-<ul>
-<li>Vector3D(float x, float y, float z)</li>
-</ul>
-</li>
-<li><p>메소드</p>
-<ul>
-<li>x, y, z에 대한 getter 및 setter</li>
-<li>add(): 벡터끼리의 덧셈, 실수와의 덧셈을 반환</li>
-<li>sub(): 벡터끼리의 뺄셈, 실수와의 뺄셈을 반환</li>
-<li>inner(): 두 벡터의 내적을 반환</li>
-<li>mul(): 실수와의 곱을 반환</li>
-<li>mag(): 벡터의 크기를 반환</li>
-<li>print(): 벡터의 내용을 “(%.3f, %.3f, %.3f)\n” 형식으로 콘솔에 출력</li>
-</ul>
-</li>
-</ul>
-<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Vector3D</span> &#123;</span></span><br><span class="line">    <span class="keyword">float</span> x;</span><br><span class="line">    <span class="keyword">float</span> y;</span><br><span class="line">    <span class="keyword">float</span> z;</span><br><span class="line"></span><br><span class="line">    Vector3D(<span class="keyword">float</span> x, <span class="keyword">float</span> y, <span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getX() &#123;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setX(<span class="keyword">float</span> x) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getY() &#123;</span><br><span class="line">        <span class="keyword">return</span> y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setY(<span class="keyword">float</span> y) &#123;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> getZ() &#123;</span><br><span class="line">        <span class="keyword">return</span> z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> setZ(<span class="keyword">float</span> z) &#123;</span><br><span class="line">        <span class="built_in">this</span>.z = z;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D add(Vector3D v2) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + v2.x,<span class="built_in">this</span>.y + v2.y,<span class="built_in">this</span>.z + v2.z);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Vector3D add(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x + f,<span class="built_in">this</span>.y + f,<span class="built_in">this</span>.z + f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(Vector3D v1) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D(<span class="built_in">this</span>.x - v1.x,<span class="built_in">this</span>.y - v1.y,<span class="built_in">this</span>.z - v1.z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D sub(<span class="keyword">float</span> f) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Vector3D( <span class="built_in">this</span>.x - f,<span class="built_in">this</span>.y - f,<span class="built_in">this</span>.z - f);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> inner(Vector3D v2) &#123;</span><br><span class="line">        <span class="keyword">float</span> num = <span class="built_in">this</span>.x * v2.x + <span class="built_in">this</span>.y * v2.y + <span class="built_in">this</span>.z * v2.z;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Vector3D mult(<span class="keyword">float</span> v) &#123;</span><br><span class="line">        <span class="built_in">this</span>.x *= v;</span><br><span class="line">        <span class="built_in">this</span>.y *= v;</span><br><span class="line">        <span class="built_in">this</span>.z *= v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> mag() &#123;</span><br><span class="line">        <span class="keyword">float</span> f = (<span class="keyword">float</span>) Math.sqrt(Math.pow(<span class="built_in">this</span>.x,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.y,<span class="number">2</span>)+Math.pow(<span class="built_in">this</span>.z,<span class="number">2</span>));</span><br><span class="line">        <span class="keyword">return</span> f;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> print()&#123;</span><br><span class="line"></span><br><span class="line">        System.out.printf(<span class="string">&quot;%.3f,%.3f,%.3f\n&quot;</span>,x,y,z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vector3DTest</span>&#123;</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Vector3D v1 = <span class="keyword">new</span> Vector3D(<span class="number">0.5</span>f, <span class="number">0.2</span>f, <span class="number">0.9</span>f);</span><br><span class="line">        Vector3D v2 = <span class="keyword">new</span> Vector3D(<span class="number">0.8</span>f, <span class="number">0.1</span>f, <span class="number">1.3</span>f);</span><br><span class="line"></span><br><span class="line">        v1.add(v2).print();</span><br><span class="line">        v2.sub(v1).print();</span><br><span class="line">        v1.add(<span class="number">0.2</span>f).print();</span><br><span class="line">        v2.sub(<span class="number">0.05</span>f).print();</span><br><span class="line">        System.out.println(v1.inner(v2));</span><br><span class="line">        v1.mult(<span class="number">1.2</span>f).print();</span><br><span class="line">        System.out.println(v2.mag());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/Vector3D/" data-id="ckgxjhqdx002hcwu27mmaatkf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework06/SingletonPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/" class="article-date">
-  <time datetime="2020-09-21T12:42:57.306Z" itemprop="datePublished">2020-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/21/Java/Subject/Homework06/SingletonPattern/">Subject_Day06_SingletonPattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="싱글톤-패턴-구하기"><a href="#싱글톤-패턴-구하기" class="headerlink" title="싱글톤 패턴 구하기"></a>싱글톤 패턴 구하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li>단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오.</li>
-<li>생성자를 외부에서 직접 호출할 수 없다.</li>
-<li>정적 메소드인 getInstance() 메소드를 이용해 객체를 받아온다.</li>
-<li>받아온 객체는 항상 같은 객체를 참조해야 한다.<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3></li>
-<li>소프트웨어 디자인 패턴에서 싱글턴 패턴(Singleton pattern)을 따르는 클래스는,</li>
-<li>생성자가 여러 차례 호출되더라도 실제로 생성되는 객체는 하나이고</li>
-<li>최초 생성 이후에 호출된 생성자는 최초의 생성자가 생성한 객체를 리턴한다.</li>
-<li>이와 같은 디자인 유형을 싱글턴 패턴이라고 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonPattern</span> &#123;</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingletonPattern instance = <span class="keyword">new</span> SingletonPattern();</span><br><span class="line">    <span class="keyword">private</span> SingletonPattern()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingletonPattern getInstance()&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonPatternTest</span>&#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        SingletonPattern instanceOne = SingletonPattern.getInstance();</span><br><span class="line">        SingletonPattern instanceTwo = SingletonPattern.getInstance();</span><br><span class="line"></span><br><span class="line">        System.out.println(instanceOne == instanceTwo); <span class="comment">// should be true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/SingletonPattern/" data-id="ckgxjhqdy002icwu2c8ih1oot" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Java/Subject/Homework06/MyMath" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/09/21/Java/Subject/Homework06/MyMath/" class="article-date">
-  <time datetime="2020-09-21T12:39:00.243Z" itemprop="datePublished">2020-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/21/Java/Subject/Homework06/MyMath/">Subject_Day06_MyMath</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="과제-Day6"><a href="#과제-Day6" class="headerlink" title="과제 Day6"></a>과제 Day6</h1><h2 id="MyMath-클래스-구현하기"><a href="#MyMath-클래스-구현하기" class="headerlink" title="MyMath 클래스 구현하기"></a>MyMath 클래스 구현하기</h2><h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><ul>
-<li>인스턴스를 생성할 수 없는 MyMath 클래스를 구현하시오.</li>
-<li>MyMath 클래스는 다음 정적 변수를 가진다.</li>
-<li>PI = 3.1415927;</li>
-<li>E = 2.718281;</li>
-<li>MyMath 클래스는 다음 정적 메소드를 가진다.</li>
-<li>min - 정수 또는 실수를 여러개 입력받아 최소값을 구한다.</li>
-<li>max - 정수 또는 실수를 여러개 입력받아 최대값을 구한다.</li>
-<li>abs - 정수 또는 실수를 입력받아 절대값을 구한다.</li>
-<li>floor - 실수를 입력받아 내림 연산한 정수를 출력한다.</li>
-<li>ceil - 실수를 입력받아 올림 연산한 정수를 출력한다.<h3 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyMath</span>&#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> PI =<span class="number">3.1415927</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> E = <span class="number">2.718281</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MyMath()&#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> min(<span class="keyword">int</span>...params)&#123;</span><br><span class="line">        <span class="keyword">int</span> min = params[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;params.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(min &gt; params[i])&#123;</span><br><span class="line">            min = params[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">double</span> min(<span class="keyword">double</span>...params)&#123;</span><br><span class="line">        <span class="keyword">double</span> min = params[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">1</span>; i&lt;params.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(min &gt; params[i])&#123;</span><br><span class="line">                min = params[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> max(<span class="keyword">int</span>...params)&#123;</span><br><span class="line">        <span class="keyword">int</span> max = params[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;params.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max &lt; params[i])&#123;</span><br><span class="line">                max = params[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> max(<span class="keyword">double</span>...params)&#123;</span><br><span class="line">        <span class="keyword">double</span> max = params[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;params.length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max &lt; params[i])&#123;</span><br><span class="line">                max = params[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> abs(<span class="keyword">int</span> num1)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num1 &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            num1 = <span class="number">-1</span> * num1;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="keyword">return</span>  num1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> abs(<span class="keyword">double</span> num1)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num1 &lt; <span class="number">0</span>)&#123;</span><br><span class="line">            num1 = -num1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> floor(<span class="keyword">double</span> num)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Math.floor(num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span> ceil(<span class="keyword">double</span> num)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Math.ceil(num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyMathTest</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"><span class="comment">//         System.out.println(MyMath()); // should fail</span></span><br><span class="line">        System.out.println(MyMath.PI);</span><br><span class="line">        System.out.println(MyMath.E);</span><br><span class="line">        System.out.println(MyMath.min(<span class="number">2</span>, <span class="number">3</span>, <span class="number">-4</span>, <span class="number">6</span>));</span><br><span class="line">        System.out.println(MyMath.max(<span class="number">7</span>, <span class="number">0</span>, <span class="number">6</span>, <span class="number">16</span>, <span class="number">-4</span>));</span><br><span class="line">        System.out.println(MyMath.abs(<span class="number">5</span>));</span><br><span class="line">        System.out.println(MyMath.abs(<span class="number">-2.3</span>));</span><br><span class="line">        System.out.println(MyMath.floor(<span class="number">-1.5232</span>));</span><br><span class="line">        System.out.println(MyMath.ceil(<span class="number">4.6452</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://limjoonchul.github.io/2020/09/21/Java/Subject/Homework06/MyMath/" data-id="ckgxjhqdv002gcwu23j2i5nsy" class="article-share-link">Share</a>
+      <a data-url="https://limjoonchul.github.io/2020/09/25/Java/Subject/Homework07/Rect/" data-id="ckh7i0tgs002lqwu24gjx7j38" class="article-share-link">Share</a>
       
       
     </footer>
@@ -2504,7 +2963,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -2523,7 +2982,7 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -2536,23 +2995,23 @@ stream6.map(String::length).peek(s-&gt;System.out.println(&quot;A: &quot;+ s))
       <ul>
         
           <li>
+            <a href="/2020/11/07/Algorithm/Solution-DivideNumberArray/">AlgorithmSolution_나누어 떨어지는 숫자 배열</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Algorithm/Solution-ThreeBaseFlip/">AlgorithmSolution_3진법 뒤집기</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/07/Java/JavaAdvanced/Java-UnitTestAndTDD/">Java_UnitTestAndTDD</a>
+          </li>
+        
+          <li>
             <a href="/2020/10/31/Java/JavaAdvanced/Java-MultiThread/">(no title)</a>
           </li>
         
           <li>
             <a href="/2020/10/31/Java/JavaAdvanced/Java-RegularExpression/">Java_RegularExpression(정규표현식)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/23/Algorithm/Solution-StockPrice/">AlgorithmSolution_StockPrice(주식가격)</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/23/Algorithm/Solution-NotFinishedPlayer/">AlgorithmSolution_완주하지 못한 선수</a>
-          </li>
-        
-          <li>
-            <a href="/2020/10/23/Algorithm/Solution-PhoneNumberList/">AlgorithmSolution_전화 번호 목록</a>
           </li>
         
       </ul>
