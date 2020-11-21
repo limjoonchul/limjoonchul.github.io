@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_RegularExpression(정규표현식) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="정규표현식(Regular Expression)정규표현식이란? 문자열을 다루는 패턴화된 작업을 정의하는 수식 문자열 매칭, 템플릿 일치 여부 확인, 템플릿 매칭 검색(문서가 있을 때 이메일만 뽑는 작업을 할 때 등등) 정규표현식은 느리기 때문에 남용하면 안된다. 많은 동작을 돌리면 안된다. 알고리즘 문제를 정규표현식을 푸는건 적합하지 않음 특정 조건에 맞는">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_RegularExpression(정규표현식)">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/10/31/Java/JavaAdvanced/RegularExpression/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="정규표현식(Regular Expression)정규표현식이란? 문자열을 다루는 패턴화된 작업을 정의하는 수식 문자열 매칭, 템플릿 일치 여부 확인, 템플릿 매칭 검색(문서가 있을 때 이메일만 뽑는 작업을 할 때 등등) 정규표현식은 느리기 때문에 남용하면 안된다. 많은 동작을 돌리면 안된다. 알고리즘 문제를 정규표현식을 푸는건 적합하지 않음 특정 조건에 맞는">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-31T10:16:00.987Z">
+<meta property="article:modified_time" content="2020-10-31T10:16:41.261Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/RegularExpression" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/31/Java/JavaAdvanced/RegularExpression/" class="article-date">
+  <time datetime="2020-10-31T10:16:00.987Z" itemprop="datePublished">2020-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_RegularExpression(정규표현식)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="정규표현식-Regular-Expression"><a href="#정규표현식-Regular-Expression" class="headerlink" title="정규표현식(Regular Expression)"></a>정규표현식(Regular Expression)</h1><h2 id="정규표현식이란"><a href="#정규표현식이란" class="headerlink" title="정규표현식이란?"></a>정규표현식이란?</h2><ul>
+<li>문자열을 다루는 패턴화된 작업을 정의하는 수식</li>
+<li>문자열 매칭, 템플릿 일치 여부 확인, 템플릿 매칭 검색(문서가 있을 때 이메일만 뽑는 작업을 할 때 등등)</li>
+<li>정규표현식은 느리기 때문에 남용하면 안된다. 많은 동작을 돌리면 안된다. 알고리즘 문제를 정규표현식을 푸는건 적합하지 않음</li>
+<li>특정 조건에 맞는 문자열을 검색(search) / 치환(Replace)를 하는 패턴 기반의 식( 패턴: 전화번호 같은 것, 이메일)</li>
+<li>이메일, 전화 번호 등 특정한 형식에 맞게 적혀 있는지 Validation 하는데 사용 가능</li>
+<li>Crawling(자료를 긁어 모으는 것) 등 날 것의 자료를 긁어 모았을 때 정리 하는데 유용</li>
+<li>튜브 댓글이 있으면 형식에 따라 분석을 하고 구분을 할 수 있다.</li>
+</ul>
+<h2 id="정규표현식-표현-방법"><a href="#정규표현식-표현-방법" class="headerlink" title="정규표현식 표현 방법"></a>정규표현식 표현 방법</h2><ul>
+<li><p>정규 표현식의 기본 작성 방식</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;/패턴/[플래그(Opt.)]&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>기본 메타 문자</p>
+<table>
+<thead>
+<tr>
+<th>메타 문자</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>^x</code></td>
+<td>x로 시작</td>
+</tr>
+<tr>
+<td><code>x$</code></td>
+<td>x로 끝</td>
+</tr>
+<tr>
+<td><code>.x</code></td>
+<td>x앞에 하나의 문자가 있다.</td>
+</tr>
+<tr>
+<td><code>x+</code></td>
+<td>x가 1번 이상 반복</td>
+</tr>
+<tr>
+<td><code>x?</code></td>
+<td>x가 있거나 없다.</td>
+</tr>
+<tr>
+<td><code>x*</code></td>
+<td>x가 0번 이상 반복</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>아무 문자 하나를 의미</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>괄호의 활용</p>
+<table>
+<thead>
+<tr>
+<th>regexp</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>(xy)</code></td>
+<td>괄호 안의 내용을 그룹화</td>
+</tr>
+<tr>
+<td><code>x&#123;n&#125;</code></td>
+<td>n번 반복됨</td>
+</tr>
+<tr>
+<td><code>x&#123;n,&#125;</code></td>
+<td>n번 이상 반복됨</td>
+</tr>
+<tr>
+<td><code>x&#123;n, m&#125;</code></td>
+<td>n번 이상, m번 이하 반복됨</td>
+</tr>
+<tr>
+<td><code>[xy]</code></td>
+<td>x 또는 y</td>
+</tr>
+<tr>
+<td><code>[a-z]</code></td>
+<td>알파벳 소문자 (a~z)</td>
+</tr>
+<tr>
+<td><code>[0-9]</code></td>
+<td>숫자</td>
+</tr>
+<tr>
+<td><code>[가-힣]</code></td>
+<td>한글</td>
+</tr>
+<tr>
+<td><code>[^x]</code></td>
+<td>x가 아닌 것</td>
+</tr>
+<tr>
+<td><code>[^0-9]</code></td>
+<td>숫자가 아닌 것</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>\...</code> 축약 문자</p>
+<table>
+<thead>
+<tr>
+<th>regexp</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\^</code>,<code>\.</code>…</td>
+<td><code>\</code> 뒤에 나오는 문자를 문자로 처리</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>단어의 경계를 찾는다.</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>단어의 경계가 아닌 것을 찾는다.</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>숫자를 찾는다.</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>숫자가 아닌 것을 찾는다.</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>공백 문자를 찾는다.</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>공백 문자가 아닌 것을 찾는다.</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>[a-zA-Z0-9_]</td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>[^a-zA-Z0-9_]</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>유용한 정규식 예</p>
+<ul>
+<li>한글 이름 : <code>^[가-힣]&#123;2,5&#125;$</code></li>
+<li>핸드폰 번호: <code>^01(0|1|2|6|9)[-\s]?\d&#123;3,4&#125;[-\s]?\d&#123;4&#125;$</code></li>
+<li>이메일 주소: <code>^[\w\.-]&#123;1,64&#125;@[\w\.-]&#123;1,252&#125;\.\w&#123;2,4&#125;$</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g</code></td>
+<td>문자열 내 모든 패턴을 찾음</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>대소문자를 구분하지 않음</td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td>문자열의 모든 줄에서 찾음</td>
+</tr>
+</tbody></table>
+<h2 id="정규표현식을-사용하는-클래스"><a href="#정규표현식을-사용하는-클래스" class="headerlink" title="정규표현식을 사용하는 클래스"></a>정규표현식을 사용하는 클래스</h2><h3 id="Pattern-클래스"><a href="#Pattern-클래스" class="headerlink" title="Pattern 클래스"></a>Pattern 클래스</h3><table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>static Pattern compile(String regex)    Pattern 객체를 생성</td>
+</tr>
+<tr>
+<td>public</td>
+<td>Matcher matcher(CharSequence input)    입력을 분석하는 Matcher 객체 생성</td>
+</tr>
+<tr>
+<td>public</td>
+<td>static boolean matches(String regex, CharSequence input)    입력이 regexp에 해당하는지 판단</td>
+</tr>
+</tbody></table>
+<h3 id="Matcher-클래스"><a href="#Matcher-클래스" class="headerlink" title="Matcher 클래스"></a>Matcher 클래스</h3><table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>find()</td>
+<td>정규표현식에 부합되는 내용이 문자열에 포함되어 있는지 반환. 이전 검색 위치부터 이어서 검색.</td>
+</tr>
+<tr>
+<td>start()</td>
+<td>패턴에 부합되는 요소의 시작 인덱스 반환</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>패턴에 부합되는 요소가 끝나는 위치 + 1을 반환</td>
+</tr>
+<tr>
+<td>matches()</td>
+<td>문자열 전체가 정규표현식에 일치하는지 반환</td>
+</tr>
+<tr>
+<td>lookingAt()</td>
+<td>비교하려는 문자열이 정규표현식으로 시작하는지 반환. 0번 인덱스부터 검색.</td>
+</tr>
+<tr>
+<td>replaceFirst()</td>
+<td>일치하는 첫 패턴을 문자열로 대체</td>
+</tr>
+<tr>
+<td>replaceAll()</td>
+<td>일치하는 모든 패턴을 문자열로 대체</td>
+</tr>
+<tr>
+<td>reset()</td>
+<td>Matcher의 정보를 리셋하여 0번 인덱스부터 다시 검색</td>
+</tr>
+</tbody></table>
+<h2 id="참고"><a href="#참고" class="headerlink" title="참고"></a>참고</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://regexper.com/">정규표현식을 이미지로 보여주 사이트</a></li>
+<li><a target="_blank" rel="noopener" href="https://regexone.com/lesson/introduction_abcs">정규표현식 연습문제 사이트</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/31/Java/JavaAdvanced/RegularExpression/" data-id="ckhrac5hr00188cu27u0n4ww3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/10/31/Java/JavaAdvanced/MultiThread/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java_Multi-Tread
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/23/Algorithm/Programmers/StockPrice/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Programmers-StockPrice(주식가격)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Spring-Pholymorphism | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="다형성디폴트 생성자가 하는 역할 원래 생성자의 역할은 객체가 생성이 될 때 멤버변수의 값을 의미있는 값으로 초기화 할 때Primitive Type은 그 타입의 디폴트 값으로 초기화가 되고, Reference Type은 null로 초기화가 된다. 생략해도되고, 기본적으로 있다고해서 디폴트 생성자가 아니라 멤버 변수를 디폴트 값으로 초기화 시키기 때문에 디폴트">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-Pholymorphism">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/11/21/Spring/Pholymorphism/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="다형성디폴트 생성자가 하는 역할 원래 생성자의 역할은 객체가 생성이 될 때 멤버변수의 값을 의미있는 값으로 초기화 할 때Primitive Type은 그 타입의 디폴트 값으로 초기화가 되고, Reference Type은 null로 초기화가 된다. 생략해도되고, 기본적으로 있다고해서 디폴트 생성자가 아니라 멤버 변수를 디폴트 값으로 초기화 시키기 때문에 디폴트">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-21T05:59:49.997Z">
+<meta property="article:modified_time" content="2020-11-21T06:01:32.862Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Spring/Pholymorphism" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/21/Spring/Pholymorphism/" class="article-date">
+  <time datetime="2020-11-21T05:59:49.997Z" itemprop="datePublished">2020-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring-Pholymorphism
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="다형성"><a href="#다형성" class="headerlink" title="다형성"></a>다형성</h1><h2 id="디폴트-생성자가-하는-역할"><a href="#디폴트-생성자가-하는-역할" class="headerlink" title="디폴트 생성자가 하는 역할"></a>디폴트 생성자가 하는 역할</h2><ul>
+<li>원래 생성자의 역할은 객체가 생성이 될 때 멤버변수의 값을 의미있는 값으로 초기화 할 때<br>Primitive Type은 그 타입의 디폴트 값으로 초기화가 되고, Reference Type은 null로 초기화가 된다.</li>
+<li>생략해도되고, 기본적으로 있다고해서 디폴트 생성자가 아니라 멤버 변수를 디폴트 값으로 초기화 시키기 때문에 디폴트 생성자라고 부른다.</li>
+</ul>
+<h2 id="다형성을-적용하지-않은-예제"><a href="#다형성을-적용하지-않은-예제" class="headerlink" title="다형성을 적용하지 않은 예제"></a>다형성을 적용하지 않은 예제</h2><ul>
+<li><p>예를 들어, 삼성티비와 엘지티비의 클래스를 따로따로 만든다고 했을 때, 다형성을 적용하지 않은 상태에서<br>개발자에게 맡기게 되면 각각 자신의 생각대로 메소드명도 정하고 마음대로 클래스를 만들게 된다.<br>그래서 통일되지 않은 상태이게 되고 삼성티비와 엘지티비를 강제할 수단이 없기 때문에<br>각각 메소드를 호출 할 때마다 삼성티비와 엘지티비에 구현되어있는 메소드명으로 바꿔서 호출을 해줘야 한다.</p>
+</li>
+<li><p>이러한 예는 유지보수가 어렵고, 객체 지향 프로그래밍이 아닌 절차 지향 프로그래밍이다.</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TvUser</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SamsungTv tv = <span class="keyword">new</span> SamsungTv();</span><br><span class="line">        tv.powerOn();</span><br><span class="line">        tv.volumeUp();</span><br><span class="line">        tv.volumeDown();</span><br><span class="line">        tv.powerOff();</span><br><span class="line">        <span class="comment">// 객체지향스럽지 못함 유지보수가 어려워서</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SamsungTv</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SamsungTv</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;===&gt; Samsung TV 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---전원 켠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOff</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---전원 끈다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeUp</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---소리 올린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeDown</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---소리 내린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LGTv</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LGTv</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;===&gt; LGTv 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---전원 켠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">turnOff</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---전원 끈다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">soundUp</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---소리 올린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">soundDown</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---소리 내린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="다형성을-적용한-얘제"><a href="#다형성을-적용한-얘제" class="headerlink" title="다형성을 적용한 얘제"></a>다형성을 적용한 얘제</h2><ul>
+<li>다형성 = 상속 + 메소드 Overriding + 형변환(절차 지향 언어에서 지원하지 않음) 유지보수가 편함! 원 인터페이스 멀티플 인플리멘테이션</li>
+<li>자식 객체가 부모 타입으로 되는걸 묵시적 형변환</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Tv</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">powerOn</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">powerOff</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">volumeUp</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">volumeDown</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SamsungTv</span> <span class="keyword">implements</span> <span class="title">Tv</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SamsungTv</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;===&gt; Samsung TV 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---전원 켠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOff</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---전원 끈다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeUp</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---소리 올린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeDown</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;SamsungTv---소리 내린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LGTv</span> <span class="keyword">implements</span> <span class="title">Tv</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LGTv</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;===&gt; LGTv 생성&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---전원 켠다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">powerOff</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---전원 끈다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---소리 올린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">volumeDown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;LGTv---소리 내린다.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TvUser</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Tv tv = <span class="keyword">new</span> SamsungTv();</span><br><span class="line">        tv.powerOn();</span><br><span class="line">        tv.volumeUp();</span><br><span class="line">        tv.volumeDown();</span><br><span class="line">        tv.powerOff();</span><br><span class="line">        <span class="comment">// 이건 클라이언트에게 리모콘을 줘서 tv를 작동하라고 하는 것과 같다.</span></span><br><span class="line">        <span class="comment">// tv는 바껴도 리모콘은 안바뀌니깐 하나의 리모콘으로 여러개의 tv를 작동시킬 수 있다 이것이 다형성.</span></span><br><span class="line">        <span class="comment">// TvUser를 안건드리고 tv를 바꿀 수 있을까. --&gt; 디자인 패턴을 적용하면 된다.</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>이렇게 했을 때 객체를 생성해서 호출할 때 생성자만 바꿔주면 그에 맞는 메소드들이 호출되기 때문에<br>따로 메소드명을 일일히 바꿔주지 않아도 된다.</li>
+<li>여기서 더 나아가서 TvUser 클래스를 건드리지 않고도 Tv를 바꿀 수 있는 방법은 뭐가 있을까 했을 때<br>디자인 패턴을 활용하는 것이다.</li>
+</ul>
+<h2 id="디자인-패턴을-활용한-다형성-예"><a href="#디자인-패턴을-활용한-다형성-예" class="headerlink" title="디자인 패턴을 활용한 다형성 예"></a>디자인 패턴을 활용한 다형성 예</h2><ul>
+<li>각 티비 클래스는 비슷한 형태이니 생략하고 추가된 부분과 변경된 코드만 작성했다.</li>
+<li>팩토리 디자인 패턴을 이용한 형태처럼 BeanFactory 클래스를 만들어 값이 입력될 때마다<br>입력 값에 맞는 객체들이 반환되서 TvUser 클래스의 Tv 객체에 대입 되게 만들어졌다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BeanFactory</span> </span>&#123; <span class="comment">// 객체 공장 팩토리 패턴활용</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getBean</span><span class="params">(String id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (id.equals(<span class="string">&quot;lg&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> LGTv();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(id.equals(<span class="string">&quot;samsung&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> SamsungTv();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(id.equals(<span class="string">&quot;google&quot;</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> GoogleTv();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.pholymorphism3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TvUser</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        BeanFactory factory = <span class="keyword">new</span> BeanFactory();</span><br><span class="line">        Tv tv = (Tv) factory.getBean(args[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        tv.powerOn();</span><br><span class="line">        tv.volumeUp();</span><br><span class="line">        tv.volumeDown();</span><br><span class="line">        tv.powerOff();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="프로그램-발전"><a href="#프로그램-발전" class="headerlink" title="프로그램 발전"></a>프로그램 발전</h3><ul>
+<li><p>프로그램 개발 발전은 복사/붙여넣기로 시작이 되었다. 반복되는 코드들을 복사붙여넣기하니깐 너무많아 유지보수가 어려워서 생긴게</p>
+</li>
+<li><p>함수가 생김 함수를 기반으로 절차지향언어 c가 생김 반복적으로 사용하는 코드를 함수로 모듈화 시켜놓으면 그 코드가 필요하면 함수만 호출하면되니깐</p>
+</li>
+<li><p>반복되는 코드를 줄여나가게 되었고. 알고리즘만 재사용하니깐 재사용성이 좋아지면 좋겠다 해서 나온게 클래스이다.</p>
+</li>
+<li><p>클래스는 단순히 함수만 있는게 아니라 함수가 동작할 때 필요한 변수까지 가지고 있어서 재사용성이 점점 좋아지는 쪽으로 발전함.</p>
+</li>
+<li><p>클래스를 통째로 바꿔치기하면서 재사용을 하려면 다형성이라는게 필요하다! 그래서 객체지향언어의 핵심은 다형성이다.</p>
+</li>
+<li><p>다형성을 사용하지 않을꺼면 복잡한 객체지향언어를 사용할 필요가 없다.</p>
+</li>
+<li><p>다형성을 사용했더니 클라이언트가 소스수정이 필요하다 그래서 이 다형성을 한단계 뛰어넘는게 디자인 패턴이다.</p>
+</li>
+<li><p>팩토리 패턴을 사용하면 공장으로부터 원하는 것을 얻어낸다. 클라이언트는 유지 보수과정에서 수정되지 않는다.</p>
+</li>
+<li><p>클라이언트(main)만 봐서는 무슨 tv가 생성되는지 알수 없다. 클라이언트는 이렇게 작성되어야 한다.</p>
+</li>
+<li><p>구글 티비를 만들어서 그냥 프로그램 컨피규레이션에 google을 넣는다고 동작하지않음 빈팩토리에 분기를 만들어서 조건을 걸어줘야 동작이 된다.</p>
+</li>
+<li><p>소스를 수정하면 컴파일 다시 해야 하고 컴파일다시하면 서버에 다시 올려야한다. 소스수정을 최소화시키는 방향으로 생각해야한다.</p>
+</li>
+<li><p>다형성, 디자인 패턴를 써도 해결되지 않은 문제를 해결하는 것이 스프링프레임워크이다. *핵심은 유지보수할 때 자바소스를 안건드리는 것이다. 그래서 컴파일을 다시 할 필요가 없다.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/11/21/Spring/Pholymorphism/" data-id="ckhrac5fa00048cu23daj3k5p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/21/Spring/Servlet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring-Servlet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/21/Spring/JSP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring-JSP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

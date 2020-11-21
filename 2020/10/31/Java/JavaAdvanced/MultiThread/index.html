@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Java_Multi-Tread | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Multi-Thread ProgrammingProcess and Thread Thread : 최소의 프로세스 동작 단위  -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다. 하나의 스레드가 하나의 프로세스에 속한다. Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_Multi-Tread">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/10/31/Java/JavaAdvanced/MultiThread/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Multi-Thread ProgrammingProcess and Thread Thread : 최소의 프로세스 동작 단위  -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다. 하나의 스레드가 하나의 프로세스에 속한다. Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-31T10:17:03.706Z">
+<meta property="article:modified_time" content="2020-11-21T05:45:26.780Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaAdvanced/MultiThread" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/31/Java/JavaAdvanced/MultiThread/" class="article-date">
+  <time datetime="2020-10-31T10:17:03.706Z" itemprop="datePublished">2020-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java_Multi-Tread
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Multi-Thread-Programming"><a href="#Multi-Thread-Programming" class="headerlink" title="Multi-Thread Programming"></a>Multi-Thread Programming</h1><h2 id="Process-and-Thread"><a href="#Process-and-Thread" class="headerlink" title="Process and Thread"></a>Process and Thread</h2><ul>
+<li>Thread : 최소의 프로세스 동작 단위  -&gt; 하나의 프로세스는 여러개의 스레드를 가질 수 있다. 하나의 스레드가 하나의 프로세스에 속한다.</li>
+<li>Process: OS로부터 메모리를 할당받아 동작하는 프로그램의 동작 단위, 프로그램이 실제로 메모리에 상주하면서 동작할 때 프로세스가 된다.<br>프로그램이 클래스이고 프로세스가 객체로 생각할 수 있다.<ul>
+<li>프로그램을 실행할 때, 멀티 프로세스로 동작하는 프로그램도 있다. 프로세스끼리 통신하면서 동작할 수도 있다. -&gt; 리눅스에서 사용한다.</li>
+<li>프로세스끼리 메모리를 공유하는 영역은 없다. 스레드는 같은 프로세스내에있기 때문에 같은 메모리영역을 공유한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="멀티스레드-프로그래밍의-장단점"><a href="#멀티스레드-프로그래밍의-장단점" class="headerlink" title="멀티스레드 프로그래밍의 장단점"></a>멀티스레드 프로그래밍의 장단점</h2><h3 id="장점"><a href="#장점" class="headerlink" title="장점"></a>장점</h3><ul>
+<li>여러 동작을 병렬적으로 처리하여 CPU 사용률 향상 (CPU Utilization)<ul>
+<li>인코딩, 렌더링, 배치작업(모아둔걸 한번에 처리하면 되는 것들 DB정리, 로그 처리) 등의 작업들 / 서비스가 커질 수록 최적화가 중요하다.</li>
+</ul>
+</li>
+<li>시간이 걸리는 동작을 분리하여 프로그램의 응답성 향상<ul>
+<li>GUI, 게임, 앱, 웹 API(다 프레임워크를 사용하기 때문에 내부적으로 관리해줌, 직접 사용할 일은 없음)<h3 id="단점"><a href="#단점" class="headerlink" title="단점"></a>단점</h3></li>
+</ul>
+</li>
+<li>디버깅이 어렵다! 쓰레드가 동시에 동작하기 때문에, 디버거로 확인하기 어려움.<ul>
+<li>디버거를 쓰거나, 디거빙을 하기 위한 코드를 추가하면 동작이 변한다. (나노 세컨드로 작업을 하기때문에 동작의 순서가 바뀌면 크게 바뀔수 있다.)</li>
+</ul>
+</li>
+<li>구현이 어렵다 쓰레드간의 동기화를 하기 위한 구현이 어렵다. 쉽게 동기화하면 느려진다.<ul>
+<li>Context Switching 오버헤드가 있기 때문에 동기화를 잘 못하면 오히려 더 느려진다. (쓰레드가 동작할 수 있는 것이 정해져 있다.)</li>
+<li>OS에서 하드웨어의 CPU에 동작이 제한이 걸려있어서 동작하는 CPU를 바꿔가면서 동작하도록 하기 때문에 Context Switching을 하면 오버헤드가 발생한다.<h2 id="스레드-구현"><a href="#스레드-구현" class="headerlink" title="스레드 구현"></a>스레드 구현</h2></li>
+</ul>
+</li>
+<li>스레드 생성<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 방법 1. 익명 내부 클래스를 이용한 생성</span></span><br><span class="line">Thread threadOne = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello Thread!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 방법 2. 람다식을 이용한 생성</span></span><br><span class="line">Thread threadTwo = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;Hello Again, Thread!&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 방법 3. 스레드를 클래스로 만들어서 생성</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello Again Again, Thread!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Thread threadThree = <span class="keyword">new</span> MyThread();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 방법 4. 구현 후 즉시 실행</span></span><br><span class="line"><span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;IDEA&quot;</span>);</span><br><span class="line">&#125;).start(); <span class="comment">// 객체에 대한 참조를 가지고 있지 않기 때문에 이렇게 하면 JOIN등 활용이 어려움. 씽크가 상관이 없다면 이렇게도 사용가능.</span></span><br></pre></td></tr></table></figure></li>
+<li>스레드 실행<ul>
+<li>쓰레드 객체는 1회용이며, start()로 실행한다.</li>
+<li>신입 개발자들이 무한 루프에서 스레드를 스타트하는 실수를 많이 한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Thread threadOne = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Thread threadTwo = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">threadOne.run(); <span class="comment">// 이렇게도 동작 가능. 이건 멀티스레드랑 상관없이 클래스의 run()를 그냥 콜한 것이라 상관없음.</span></span><br><span class="line">threadOne.start(); <span class="comment">// 가능.</span></span><br><span class="line">threadOne.run(); <span class="comment">// 그냥 메소드콜이니깐 다시 동작해도 잘 된다.</span></span><br><span class="line">threadOne.start(); <span class="comment">// 스레드 객체는 1회용이므로, start()가 재실행될 수 없다.</span></span><br><span class="line"><span class="comment">// 신입개발자들이 무한루프에서 스레드를 스타트하는 실수를 많이 한다.</span></span><br><span class="line"></span><br><span class="line">threadTwo.start();</span><br><span class="line">System.out.println(<span class="string">&quot;Done!&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="스레드의-상태-및-제어"><a href="#스레드의-상태-및-제어" class="headerlink" title="스레드의 상태 및 제어"></a>스레드의 상태 및 제어</h2><ul>
+<li><p>스레드의 상태 </p>
+<ul>
+<li><p>getState() 메소드로 스레드의 상태를 확인할 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th>열거형 상수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NEW</td>
+<td>start() 메소드가 아직 호출되지 않음</td>
+</tr>
+<tr>
+<td>RUNNABLE</td>
+<td>JVM에 의해 실행 가능한 상태</td>
+</tr>
+<tr>
+<td>BLOCKED</td>
+<td>객체가 블락된 상태</td>
+</tr>
+<tr>
+<td>WAITING</td>
+<td>sleep(), wait(), join() 등에 의해 무한히 대기 중인 상태</td>
+</tr>
+<tr>
+<td>TIMED_WAITING</td>
+<td>sleep(), wait(), join() 등에 의해 정해진 시간 동안 대기 중인 상태</td>
+</tr>
+<tr>
+<td>TERMINATE</td>
+<td>run() 메소드가 종료된 상태</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>스레드의 우선순위 제어</p>
+<ul>
+<li>priority 기능이 있으나, 보장되지 않는다.</li>
+<li>이유는 starying(서빙 받지 못하는) 하는 Thread가 없게 하기 위해서 OS가 조절하기 때문.</li>
+<li>우선순위가 높은 것에만 집중하면 우선순위가 높은거에만 동작만하고 다른건 동작 못하게 할 수 있기 때문에 동작을 하지 못하는 스레드를 동작시키게 해주게 OS에서 제한을 둔다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line">        Thread p1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;~&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread p2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 우선순위 - 값이 높을 수록 우선순위가 높다.   </span></span><br><span class="line">        System.out.println(p1.getPriority()); <span class="comment">// default 5</span></span><br><span class="line">        p1.setPriority(Thread.MAX_PRIORITY); <span class="comment">// MAX = 10</span></span><br><span class="line">        p2.setPriority(Thread.MIN_PRIORITY); <span class="comment">// MIN =1</span></span><br><span class="line">        p1.start();</span><br><span class="line">        p2.start();</span><br><span class="line">        <span class="comment">// 한스레드가 일정시간을 점유하고 다른 스레드가 점유하는 식으로 진행된다, 왔다 갔다한다. 예측하기 어려움.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>void setPriority(int newPriority)</td>
+<td>새로운 우선순위로 설정한다.</td>
+</tr>
+<tr>
+<td>int getPriority()</td>
+<td>우선순위를 반환한다.</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><code>sleep()</code>을 이용한 제어<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">          Thread p1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">              <span class="meta">@Override</span></span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">50</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// 일반스레드에서 sleep을 사용할 때는 try/catch를 해줘야한다. </span></span><br><span class="line">                    <span class="comment">// throws를 해줄 수 있지만 나중에 Interrupt 때문에 try/catch를 해주는게 좋다.</span></span><br><span class="line">                  System.out.println(<span class="string">&quot;Hello Thread&quot;</span>);</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;); <span class="comment">// run이라는 단일 메소드를 동작시키는 객체</span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">          Thread p2 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">              System.out.println(<span class="string">&quot;Thread by lambda&quot;</span>);</span><br><span class="line">          &#125;);</span><br><span class="line">  </span><br><span class="line">          p2.start();</span><br><span class="line">  </span><br><span class="line">          Thread.sleep(<span class="number">100</span>); <span class="comment">// 100미리 세컨드 동안 쉬고 동작을 한다. sleep을 이용해서 시간차를 줄 수있는 방법!</span></span><br><span class="line">          <span class="comment">// 사용률을 감소시킴, 그래서 느려진다. 메인에서 하면 메인 쓰레드를 sleep시킨다.</span></span><br><span class="line">  </span><br><span class="line">          System.out.println(<span class="string">&quot;Main thread ended&quot;</span>);</span><br><span class="line">          </span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ``` </span><br><span class="line"></span><br><span class="line">* `join()`을 이용한 스레드 조인</span><br><span class="line">   * 스레드 동작을 동기화하기 위해서 사용한다.</span><br><span class="line">   * 한 스레드의 동작이 끝난 다음에 다른 스레드를 동작시키는 메소드이다.</span><br><span class="line">   ```java</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">            <span class="comment">// 방법 1. 익명 내부 클래스</span></span><br><span class="line">            Thread p1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                   <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">50</span>);</span><br><span class="line">                   &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                   &#125; <span class="comment">// 일반스레드에 쓸때는 try/catch를 해줘야한다 throws를 해줄 수 있지만 트라이캐치를해줘야한다.</span></span><br><span class="line">                    System.out.println(<span class="string">&quot;Hello Thread&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;); <span class="comment">// run이라는 단일 메소드를 동작시키는 객체</span></span><br><span class="line">            </span><br><span class="line">            Thread p2 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Thread by lambda&quot;</span>);</span><br><span class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            p2.start();</span><br><span class="line">            p2.join(); <span class="comment">// 한스레드가 동작을 끝내면 p2동작이 끝나면 그때 조인을해서 p1이 실행이 된다. sleep 없이 join으로 맞출 수 있다. 무언갈 동작하다 막혀있는게 blocking 동작</span></span><br><span class="line">            p2.join(<span class="number">100</span>);  <span class="comment">// p2가 무한루프가 돌고 있을 대 안에 100을주면 100밀리세컨트 뒤에 다음 스레드가 동작될 수 있게 한다. 하지만 p2는 계속 돌고있음.</span></span><br><span class="line">            <span class="comment">// 100ms 기다렸다가 동작을 할수 있게 설정한다.</span></span><br><span class="line">    </span><br><span class="line">            <span class="comment">// p2끝날 때까지 기다렸다가 시작이 된다. 그전까지 대기상태로 들어가 있지 않은 상태다.</span></span><br><span class="line">            p1.start(); <span class="comment">// start를 해줘야 동작한다. 실제로 OS에 스레드 동작을 요청한다. main이 아닌 새로운 스레드를 동작한다.</span></span><br><span class="line">    </span><br><span class="line">            p1.join();</span><br><span class="line">            Thread.sleep(<span class="number">100</span>); <span class="comment">// 100미리 세컨드동안 쉬고 동작을 한다. sleep을 이용해서 시간차를 줄 수있는 방법!</span></span><br><span class="line">            <span class="comment">// 사용률을 감소시킴, 그래서 느려진다. 메인에서 하면 메인쓰레드를 sleep시킨다.</span></span><br><span class="line">    </span><br><span class="line">            System.out.println(<span class="string">&quot;Main thread ended&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>interrupt()</code> 을 이용항 대기 중지<ul>
+<li>방해를 의미하긴 하는데 컴퓨터 사이언스적인 용어로 기존 동작을 방해하고 반응을 강제하는 메소드.</li>
+<li>주로 임베디드에서 많이 사용. 별로 쓸일은 없다. 스레드 동작을 이해하는데 필요하다 잘 못 스립된 동작을 깨워준다.</li>
+<li>의도적으로 쓸 일은 많지 않다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;           </span><br><span class="line">        <span class="comment">// try/catch를 쓰는 이유는 만약 10초동안 쉬고 있는데 다른 동작이 끝나고 쉬고있는 동작을 interrupte로 깨워줄 수 있다.</span></span><br><span class="line">        Thread p1 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;Interrupted&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;p1!!&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread p2 = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">500</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;p2!!&quot;</span>);</span><br><span class="line">            p1.interrupt(); </span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        p1.start();</span><br><span class="line">        p2.start();</span><br><span class="line">          </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>yield()</code>를 이용한 상태 제어<ul>
+<li>다른 스레드로 양보하고 바로 실행 대기 sleep(0)과 유사</li>
+<li>러닝상태에서 빠져나오고 바로 대기 상태로 들어가기 때문에 다른 스레드가 동작을 하지 않게 되면 바로 동작할 수도 있다.</li>
+<li>자주 변하게 되면 오버헤드가 증가하는 것이다.</li>
+</ul>
+</li>
+<li><code>sleep()</code>을 이용하면 오버헤드가 엄청 크다. Running 상태에서 Timed_Waiting 상태로 이동 그 다음에 실행 가능 상태로 넘어간다. <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Thread p1 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;~&quot;</span>);</span><br><span class="line">                Thread.yield(); </span><br><span class="line"></span><br><span class="line"><span class="comment">//                try &#123;</span></span><br><span class="line"><span class="comment">//                    Thread.sleep(1); // 오버헤드가 엄청 큼! Running 상태에서 Timed_Waiting 상태로 이동 그 다음에 실행가능상태로 넘어감</span></span><br><span class="line"><span class="comment">//                &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line"><span class="comment">//                    e.printStackTrace();</span></span><br><span class="line"><span class="comment">//                &#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        Thread p2 = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">                Thread.yield();</span><br><span class="line"></span><br><span class="line"><span class="comment">//                try &#123;</span></span><br><span class="line"><span class="comment">//                    Thread.sleep(1);</span></span><br><span class="line"><span class="comment">//                &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line"><span class="comment">//                    e.printStackTrace();</span></span><br><span class="line"><span class="comment">//                &#125;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        System.out.println(p1.getPriority()); </span><br><span class="line">        p1.setPriority(Thread.MAX_PRIORITY);</span><br><span class="line">        p2.setPriority(Thread.MIN_PRIORITY);</span><br><span class="line">        p1.start();</span><br><span class="line">        p2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>스레드의 종료<ul>
+<li><code>run()</code> 메소드의 종료</li>
+<li><code>stop()</code> 메소드 호출 (deprecated)</li>
+</ul>
+</li>
+</ul>
+<h2 id="데몬-스레드-daemon-thread"><a href="#데몬-스레드-daemon-thread" class="headerlink" title="데몬 스레드(daemon thread)"></a>데몬 스레드(daemon thread)</h2><ul>
+<li><p>다른 스레드가 모두 종료될 경우, 스스로 종료되는 스레드 &lt;- 정의</p>
+</li>
+<li><p>무한 루프로 대기하면서 동작하는 구현이 많음 &lt;- 활용</p>
+<ul>
+<li>일정 시간마다 동작, interrupt등에 의해서 동작, 외부의 요청에 의해서 동작하는 것</li>
+</ul>
+</li>
+<li><p>setDaemon(true)로하면 데몬스레드가 된다.</p>
+</li>
+<li><p>메인 스레드에서 종료되면 스스로 종료되는 데몬 설정</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoSaver</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AutoSaver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setDaemon(<span class="keyword">true</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// save something...</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Auto save done!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> AutoSaver().start();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; i++) &#123;</span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;working&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 메인에서 1초간격으로 동작을 해서 15번이 실행이되면 autosaver는 같이 종료됨</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="데이터-공유와-동기화"><a href="#데이터-공유와-동기화" class="headerlink" title="데이터 공유와 동기화"></a>데이터 공유와 동기화</h2></li>
+<li><p>스레드간 데이터 공유 시 신뢰성에 문제가 발생할 수 있다.</p>
+<h3 id="Intrinsic-lock-고유-락-과-synchronized-키워드"><a href="#Intrinsic-lock-고유-락-과-synchronized-키워드" class="headerlink" title="Intrinsic lock (고유 락)과 synchronized 키워드"></a>Intrinsic lock (고유 락)과 synchronized 키워드</h3></li>
+<li><p>자바의 모든 객체(Object)는 고유 락을 가지고 있다.</p>
+<ul>
+<li>고유 락은 객체의 소유권을 한정하는 내부적인 구현 -&gt; 소유권은 독점적이다. 한번에 하나밖에 가질 수 없다.</li>
+</ul>
+</li>
+<li><p>synchronized를 이용하면 객체의 고유 락의 소유권을 가져올 수 있다.</p>
+<ul>
+<li><p>소유권이 이미 점유된 경우에는 Blocking으로 동작 소유권을 가진 객체가 반환하면, 대기하던 스레드가 받아서 동작한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 멀티스레드 동작에 취약한 구현</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">increaseCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++count; <span class="comment">// 읽고, 수정하고, 쓰는 작업</span></span><br><span class="line">        <span class="comment">// 동작들이 중복이 될 수 있다, 도중에 다른 스레드가 작업을 하게되면</span></span><br><span class="line">        <span class="comment">// 경쟁적으로 동작하다보면, 읽고 수정하고 쓰기 전에 다른 쓰레드가 읽는 경우가 발생</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. Object 객체의 Intrinsic Lock을 이용한 구현 - 굳이 이렇게 할 필요 없음.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">increaseCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (lock)&#123; <span class="comment">// lock이라는 객체를 소유해야 내부 블록을 동작시킬 수 있다. lock은 한번에 한 스레드만 소유할 수 있다.</span></span><br><span class="line">            <span class="keyword">return</span> ++count; <span class="comment">// 읽고, 수정하고, 쓰는 작업</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. this 객체의 Intrinsic Lock을 이용한 구현(모든 객체는 고유 락을 가지고 있기 때문에) 가장 좋은 구현 방법.</span></span><br><span class="line"><span class="comment">// Intrinsic Lock의 범위가 넓어질 수록 성능이 점점 떨어진다.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">increaseCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ++count; <span class="comment">// 읽고, 수정하고, 쓰는 작업</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 메소드에 synchronized 키워드를 사용</span></span><br><span class="line"><span class="comment">// synchronized 키워드가 사용된 메소드를 호출하기 위해서는</span></span><br><span class="line"><span class="comment">// 해당 객체를 소유해야만 호출이 가능, 소유하지 못하면 Blocking 동작을 하고 있으면, nonBlocking 멈춰 있으면 Blocking</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">increaseCount</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ++count; <span class="comment">// 읽고, 수정하고, 쓰는 작업</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Counter c = <span class="keyword">new</span> Counter();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 고유락을 사용하는 것은 한번에 하나만 동작하게 하기위해서 제한을 해두는 것이다</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line"><span class="comment">//                synchronized(c)&#123; // 이렇게 싱크를 하면, 병렬 동작이 전혀 이루어지지 않는다. 하나의 스레드가 100번을 수행하고 다음 스레드가 100번 수행하는 형태로 동작한다.</span></span><br><span class="line">                    <span class="comment">// 가장 안전하지만 가장 효율이 떨어지는 코드가 된다.</span></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">100</span>; j++) &#123;</span><br><span class="line">                        <span class="comment">// c라는 shared object 공유객체 가 있을 때</span></span><br><span class="line">                        <span class="comment">// 멀티스레드로부터 안전한 영역을 생성하는 방법이다.</span></span><br><span class="line">                    <span class="keyword">synchronized</span> (c) &#123; <span class="comment">// 5. c의 고유 락을 획득해야만 동작. &#123;&#125;영역안에서는 다른 스레드가 접근하지 못함</span></span><br><span class="line">                        c.increaseCount();</span><br><span class="line"><span class="comment">//                    &#125;</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        System.out.println(c.getCount());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>두 개의 스레드를 번갈아 동작할 수 있게 하는 방법</p>
+<ul>
+<li>완벽히 번갈아 가면서 동작하게 하는 건 아니지만 최대한 유사하게 동작하게 하는방법이다.</li>
+<li><code>notify()</code> - 대기중인 다른 스레드를 하나 동작상태로 만든다. wait()중인 다른스레드가 들어와도 된다. 하나한테만 알려준다.</li>
+<li><code>notifyAll()</code> - 나머지 전체한테 알려준다.</li>
+<li><code>wait()</code> - synchronized안에서만 호출이 가능하다. Lcok을 반환하고, 대기상태로 들어간다. </li>
+<li><code>notify()</code> 와 <code>wait()</code>의 순서가 중요하다 순서를 바꾸게 되면 한 번 실행하고 대기 상태로 들어가기 때문에 <code>notify()</code>를 기다리는 데드락 상태가 된다.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkObject</span></span>&#123;</span><br><span class="line">    <span class="comment">// A가 먼저 실행된다고 할 때 wait()이되면 lock을 반환하고  B가 실행되고 notify를 날리고 동작한다음에 wait()이되고 lock을 반환하고 A가 실행되는 왔다갔다 이렇게 동작함!</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;methodA() called&quot;</span>);</span><br><span class="line">        <span class="comment">// 처음 스레드가 실행되는건 notify가 효과가 없다.</span></span><br><span class="line">        notify(); </span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            wait(); </span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    위에 것과 같음</span></span><br><span class="line"><span class="comment">//    public  void methodASAME()&#123;</span></span><br><span class="line"><span class="comment">//        synchronized (this)&#123;&#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(&quot;methodA() called&quot;);</span></span><br><span class="line"><span class="comment">//            notify(); </span></span><br><span class="line"><span class="comment">//            try &#123;</span></span><br><span class="line"><span class="comment">//                wait(); </span></span><br><span class="line"><span class="comment">//            &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line"><span class="comment">//                e.printStackTrace();</span></span><br><span class="line"><span class="comment">//            &#125;</span></span><br><span class="line"><span class="comment">//        &#125;&#125;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">methodB</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;methodB() called&quot;</span>);</span><br><span class="line">        notify();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            wait();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> WorkObject workObject;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> isA;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThread</span><span class="params">(WorkObject workObject, <span class="keyword">boolean</span> isA)</span></span>&#123; <span class="comment">// Dependency Injection</span></span><br><span class="line">        <span class="keyword">this</span>.workObject = workObject;</span><br><span class="line">        <span class="keyword">this</span>.isA = isA;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isA)&#123;</span><br><span class="line">                workObject.methodA();</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                workObject.methodB();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        WorkObject sharedObj = <span class="keyword">new</span> WorkObject();</span><br><span class="line">        Thread p1 = <span class="keyword">new</span> MyThread(sharedObj, <span class="keyword">true</span>);</span><br><span class="line">        Thread p2 = <span class="keyword">new</span> MyThread(sharedObj, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        p1.start();</span><br><span class="line">        p2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="세마포-Semaphore"><a href="#세마포-Semaphore" class="headerlink" title="세마포(Semaphore)"></a>세마포(Semaphore)</h2><ul>
+<li>사전적 의미 횟대(깃발)</li>
+<li>n개의 깃발을 놓고, 여러 스레드가 경쟁하도록 하는 sync 기법</li>
+<li>n = 1 이면, BinarySemphore라고 하며, Lock(락은 하나만 존재하니깐)과 유사하게 동작</li>
+<li>자원관리를 할 수 있다. 충분히 무언가 쌓였을 때 동작할 수 있게 구현할 수 있다.</li>
+<li><code>acquire()</code> - 세마포의 허용권을 가져오는 메소드</li>
+<li><code>release()</code> - 세마포의 허용권을 증가시키는 메소드, ()안에 숫자를 써주면 그 숫자만큼 증가한다.</li>
+<li><code>availablePermits()</code> - 허용권이 몇개 있는지 체크할 때 사용하는 메소드</li>
+<li><code>tryAcquire()</code> - 시도를 해서 성공하면 true, 실패하면 false를 반환하고 Blocking하지 않고 바로 다음코드를 진행한다.<ul>
+<li>일정시간 동안 Blocking을 할 수 있게 ()안에 타임 아웃을 지정할 수 있다. (ex-<code>sem.tryAcquire(2000, TimeUnit.MILLISECONDS)</code>)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Semaphore sem = <span class="keyword">new</span> Semaphore(<span class="number">1</span>); <span class="comment">// 세마포 개수를 설정한다.</span></span><br><span class="line"></span><br><span class="line">        sem.release(); </span><br><span class="line">        </span><br><span class="line">        System.out.println(sem.availablePermits());</span><br><span class="line"><span class="comment">//        sem.release(11);</span></span><br><span class="line"><span class="comment">//        try &#123;</span></span><br><span class="line"><span class="comment">////            sem.acquire(12); release가 11개인데 12개를 가져오려고 하면 blocking이 걸림</span></span><br><span class="line"><span class="comment">//            sem.acquire(); // 세마포를 획득하는 과정</span></span><br><span class="line"><span class="comment">//        &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        sem.acquireUninterruptibly(); // acquire와 비슷한데  인터럽트에 반응하지 않음</span></span><br><span class="line"></span><br><span class="line">        System.out.println(sem.tryAcquire()); <span class="comment">// 시도를해서 성공하면 true를 반환함 blocking하지 않는다. 실패하면 false를 반환하고 넘어간다.</span></span><br><span class="line">        <span class="comment">// blocking하지 않는다는 건 기다리지 않고 다음걸 진행한다.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        try &#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(sem.tryAcquire(2000, TimeUnit.MILLISECONDS));</span></span><br><span class="line"><span class="comment">//        &#125; catch (InterruptedException e) &#123;</span></span><br><span class="line"><span class="comment">//            e.printStackTrace();</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="comment">// 일정 시간은 블락킹할 수 있다. 안에 시간을 넣을 수 있다.(타임아웃)</span></span><br><span class="line"></span><br><span class="line">        System.out.println(sem.availablePermits()); <span class="comment">// 가능한 허용권을 체크할 수 있다</span></span><br><span class="line"></span><br><span class="line">        sem.release();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="세마포를-이용한-식사하는-철학자들-문제"><a href="#세마포를-이용한-식사하는-철학자들-문제" class="headerlink" title="세마포를 이용한 식사하는 철학자들 문제"></a>세마포를 이용한 식사하는 철학자들 문제</h3>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.s14.p08;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Semaphore;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Philosopher</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Fork left;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Fork right;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Philosopher</span><span class="params">(<span class="keyword">int</span> id,Fork left, Fork right)</span> </span>&#123;  <span class="comment">// DI</span></span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.left = left;</span><br><span class="line">        <span class="keyword">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                left.acquire();</span><br><span class="line">                System.out.println(id + <span class="string">&quot;: left taken.&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//            right.acquire();</span></span><br><span class="line">                <span class="comment">// 1초동안기다리다가 오른쪽 포크를 못 집으면 왼쪽 포크를 내려놓는다.</span></span><br><span class="line">                <span class="keyword">if</span> (!right.tryAcquire(<span class="number">1000</span>, TimeUnit.MILLISECONDS)) &#123;</span><br><span class="line">                    left.release();</span><br><span class="line">                    Thread.yield(); <span class="comment">// 왼쪽 포크를 내려놓고 컨티뉴되서 다시 반복문이돌아서 다시 집어든다 좀더 양보를해서 다른 스레드가 획득할 기회를 더 준다.</span></span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(id + <span class="string">&quot;: right taken.&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(id + <span class="string">&quot; is eating.&quot;</span>);</span><br><span class="line">                Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            left.release();</span><br><span class="line">            right.release();</span><br><span class="line">            Thread.yield(); <span class="comment">// 먹은 다음에 양보함.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fork</span> <span class="keyword">extends</span> <span class="title">Semaphore</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Fork</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DinigPhillisopher</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Philosopher[] phils = <span class="keyword">new</span> Philosopher[<span class="number">5</span>];</span><br><span class="line">        Fork[] forks = <span class="keyword">new</span> Fork[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            forks[i] = <span class="keyword">new</span> Fork();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        for (int i = 0; i &lt; 5; i++) &#123;</span></span><br><span class="line"><span class="comment">//            phils[i] = new Philosopher(i,forks[i],forks[(i+1) % 5]);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>-<span class="number">1</span>; i++) &#123;</span><br><span class="line">            phils[i] = <span class="keyword">new</span> Philosopher(i,forks[i],forks[(i+<span class="number">1</span>) % <span class="number">5</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        phils[<span class="number">4</span>] = <span class="keyword">new</span> Philosopher(<span class="number">4</span>, forks[<span class="number">0</span>],forks[<span class="number">4</span>]); <span class="comment">// 이건 오른쪽을 먼저 들기 때문에 다른사람들이 먹는 확률이 올라감 근데 먹는사람만 먹는 단점이 생김</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">            phils[i].start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JCF와-멀티스레드"><a href="#JCF와-멀티스레드" class="headerlink" title="JCF와 멀티스레드"></a>JCF와 멀티스레드</h3>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.s14.p09;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Vector;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Collectors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list1 = <span class="keyword">new</span> Vector&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list2 = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list3 = Collections.synchronizedList(list2);</span><br><span class="line">        <span class="comment">// 어레이리스트인데 싱크된다. 이게 훨씬 빠르다.</span></span><br><span class="line">        <span class="comment">// list3 : list2의 싱크된 버전</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">100</span>; j++) &#123;</span><br><span class="line">                    list1.add(<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">100</span>; j++) &#123;</span><br><span class="line"><span class="comment">//                    synchronized (list2) &#123; // 이렇게 해줬을 때 위에 보다 느림??</span></span><br><span class="line">                        list3.add(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//                    &#125;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Thread.sleep(<span class="number">1000</span>); </span><br><span class="line">        <span class="comment">// 멀티스레드여서 이렇게 기다려야 더 정확해진다? 뭐지 생각해봐</span></span><br><span class="line">        <span class="comment">// 3개의 스레드가 동작한다 메인, 스레드 1, 스레드2 메인스레드에서 동작을 하면서 스레드1,2가 동작을 하는데 이 스레드들이 동작이 다끝나지 않은 상태에서</span></span><br><span class="line">        <span class="comment">// 메인스레드가 종료될 수 있으니깐 메인스레드에 sleep을 줘서 시간차를 준다음에 사이즈를 출력하게 하기 위해서이다.</span></span><br><span class="line"></span><br><span class="line">        System.out.println(list1.size());</span><br><span class="line">        System.out.println(list2.size());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="스레드-풀-Thread-pool"><a href="#스레드-풀-Thread-pool" class="headerlink" title="스레드 풀(Thread pool)"></a>스레드 풀(Thread pool)</h2><ul>
+<li>일반 스레드를 직접 만들어 사용할 경우, 작업을 마친 스레드는 종료된다.(1회용 이니깐)<ul>
+<li>멀티 스레들 작업을 계속 할 경우, 스레드를 생성 / 삭제하는 오버헤드가 있다.(속도가 떨어지고, 관리가 어렵다.)</li>
+</ul>
+</li>
+<li>스레드 풀<ul>
+<li>미리 생성해 둔 스레드의 집합을 스레드 풀 이라고 한다.( 뭔가를 사용하기 위해 모아둔 것을 풀이라고 함)</li>
+<li>미리 스레드를 생성해 두고, 작업만 스레드를 할당하여 동작한다.</li>
+<li>배치 작업(모아두고 한번에 처리하는 작업)에 많이 사용.</li>
+</ul>
+</li>
+<li>핵심! 미리 만들어 놓고 상황에 맞춰 동작하게 한다.</li>
+</ul>
+<h3 id="스레드-풀-생성-방법"><a href="#스레드-풀-생성-방법" class="headerlink" title="스레드 풀 생성 방법"></a>스레드 풀 생성 방법</h3><ul>
+<li>Executors <ul>
+<li>실행하는 애들을 만들어 놓는 클래스</li>
+<li>ExecutorService 객체를 생성하며, 다음 메소드를 제공하여 쓰레드 풀을 개수 및 종류를 정할 수 있습니다.<h4 id="1-newCachedThreadPool"><a href="#1-newCachedThreadPool" class="headerlink" title="1. newCachedThreadPool()"></a>1. newCachedThreadPool()</h4></li>
+</ul>
+</li>
+<li>필요할 때, 필요한 만큼 스레드 풀을 생성한다.</li>
+<li>초기 스레드가 0개 하나도 안돌아가고 있어서 오버헤드도 발생하지 않고 어떻게 동작할지 모르는 상태에서 무난하게 사용 가능</li>
+<li>코어 스레드가 0개 - 일하지 않아도 살려두는 스레드</li>
+<li>요청 작업보다 스레드가 부족하면 새 스레드를 생성한다.(작업에 맞춰 스레드를 생성)</li>
+<li>60초 동안  일하지 않은 스레드를 제거한다.</li>
+<li>안정적으로 사용할 때 사용!<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService pool = Executors.newCachedThreadPool();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2-newFixedThreadPool"><a href="#2-newFixedThreadPool" class="headerlink" title="2. newFixedThreadPool();"></a>2. newFixedThreadPool();</h4><ul>
+<li>인자 개수만큼의 고정된 스레드풀을 생성한다.</li>
+<li>최대 스레드 nThreads개</li>
+<li>코어 스레드 nThreads개 입력  값 개수</li>
+<li>요청 작업보다 스레드가 부족하면 새 스레드를 생성</li>
+<li>작업하지 않는 스레드도 제거하지 않고 동작한다.</li>
+<li>한번 증가하면 죽이지 않는다. 풀파워로 쓸 때 사용<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService pool = Executors.newFixedThreadPool(<span class="number">10</span>); <span class="comment">// 입력받음</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-new-ThreadPoolExecutor"><a href="#3-new-ThreadPoolExecutor" class="headerlink" title="3. new ThreadPoolExecutor()"></a>3. new ThreadPoolExecutor()</h4><ul>
+<li>corePoolsize, maximumPoolsize, keepAliveTime, TimeUnit, BlockingQueue를 인자로 받을 수 있다.<ul>
+<li>corePoolsize : 코어 스레드의 개수</li>
+<li>maximumPoolsize : 최대 스레드 개수</li>
+<li>keepAliveTime : 스레드가 일하지 않을 때 제거하기 위한 대기 시간</li>
+<li>TimeUnit : 시간 단위를 지정</li>
+<li>BlockingQueue : 작업 요청이 오면 쌓아뒀다가 스레드 풀에 하나씩 할당해서 동작한다.<ul>
+<li>이게 없으면 작업 요청하면 실제 스레드로 들어가서 동작하기 전까지 메인 스레드가 멈춰 있어야 한다.<br>그래서 큐에 던져놓고 메인스레드는 동작하게 하는 것이다.(존재한다.)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService es = <span class="keyword">new</span> ThreadPoolExecutor(</span><br><span class="line">      <span class="number">10</span>, <span class="comment">// 코어 스레드 개수</span></span><br><span class="line">      <span class="number">100</span>, <span class="comment">// 최대 스레드 개수</span></span><br><span class="line">      <span class="number">120</span>, <span class="comment">// 스레드가 이 시간 동안 일하지 않으면 제거 (대기 시간)</span></span><br><span class="line">      TimeUnit.SECONDS, <span class="comment">// 시간 단위를 지정</span></span><br><span class="line">      <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;() <span class="comment">// 작업을 요청하면 -&gt; 작업을 쌓아둘 큐 -&gt; 스레드 풀로 할당해서 넘어가서 동작한다.</span></span><br><span class="line">      <span class="comment">// 이게 없으면 작업 요청하면 실제 스레드로 들어가서 동작하기 전까지 메인 스레드가 멈춰있어야 한다. 그래서 큐에 던져 놓고</span></span><br><span class="line">      <span class="comment">// 메인스레드는 동작하게 하는 것이다.(존재한다.)</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="스레드-풀-동작-순서"><a href="#스레드-풀-동작-순서" class="headerlink" title="스레드 풀 동작 순서"></a>스레드 풀 동작 순서</h3><h4 id="1-스레드-풀-생성"><a href="#1-스레드-풀-생성" class="headerlink" title="1. 스레드 풀 생성"></a>1. 스레드 풀 생성</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService pool1 = Executors.newCachedThreadPool();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-스레드에-할당할-작업-생성"><a href="#2-스레드에-할당할-작업-생성" class="headerlink" title="2. 스레드에 할당할 작업 생성"></a>2. 스레드에 할당할 작업 생성</h4><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span> <span class="keyword">implements</span> <span class="title">Runnable</span> &#123;</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallableWork</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt;&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String call() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;작업 종료&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-스레드에-작업-요청"><a href="#3-스레드에-작업-요청" class="headerlink" title="3. 스레드에 작업 요청"></a>3. 스레드에 작업 요청</h4><ul>
+<li>sumbit() - 스레드를 실행는 메소드<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;String&gt; future = <span class="literal">null</span>; </span><br><span class="line">future = pool1.submit(<span class="keyword">new</span> CallableWork());</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">    pool1.submit(<span class="keyword">new</span> Work()); <span class="comment">// 리턴이 있음</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-스레드-종료-동기화"><a href="#4-스레드-종료-동기화" class="headerlink" title="4. 스레드 종료(동기화)"></a>4. 스레드 종료(동기화)</h4></li>
+<li>shutdown() - Thread.join()과 비슷하게 작업이 끝나기를 기다려서 종료<ul>
+<li>데몬 스레드가 아닌 이상 (일반 스레드는 )스레드 풀은 자동 종료가 안되기 때문에,직접 스레드 풀을 종료해 주어야 한다.</li>
+</ul>
+</li>
+<li>shutdownNow()는 바로 종료시키는 것</li>
+<li>cancle() -  스레드를 종료시킬 때 사용하는 또 다른 메소드로 여기서는 실행중인 Callable 객체를 강제 종료할 수 있다. (mayInterruptIfRunning)안에 true, false 매개값을 줄 수 있다.<ul>
+<li>true - 해당 스레드에 인터럽트를 보낸다, true를 주면 추가 기능이 생긴다.(false의 기능에서 더 추가된다.) 작업하는 스레드에 인터럽트를 걸어준다.</li>
+<li>false - false를 주고 cancle()을 호출하면 스레드는 아무 동작이 일어나지 않고.(종료하지 않음), get을 할 수 없게 된다.(CanclelationException 발생)</li>
+</ul>
+</li>
+<li>get() - Blocking Method로 CallableWork()의 객체의 작업이 다 끝나고 future로 값이 들어올 때까지 기다리다가 값이 들어오면 작업을 수행한다.<ul>
+<li>기다리기는 상황이 있기 때문에 Interrupt가 들어올 수 있다. 들어오면 InterruptException을 수행한다.</li>
+<li>Blocking Method이니깐 기다리는 상황일 때 계속 기다리기만 하는 상황이 생길 수 있어서 매개값으로 timeout을 설정할 수 있다.<ul>
+<li>Blocking - 다른 작업이 기다릴 때가지 기다리는 것.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>isCancelled() - cancle() 됬는지 확인할 때 사용하는 메소드</li>
+<li>isDonle() - 작업이 잘 끝났는지 확인하는 메소드이다.</li>
+<li>Callable가 어떻게 작업하는지 모르기때문에 외부에서 컨트롤할 수 있게 하기위해 위의 메소드들을 제공한다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">pool1.shutdown(); <span class="comment">// Thread.join()과 비슷하게 작업이 끝나기를 기다려서 종료</span></span><br><span class="line"></span><br><span class="line">Thread.sleep(<span class="number">1000</span>);</span><br><span class="line"><span class="comment">// 다른 스레드와 동기화를 맞추기 위해(여기서는 pool1이 작업을 진행중) 잠시 기다렸다가 밑에 코드가 진행되니깐 작업완료가 마지막에 출력됨!</span></span><br><span class="line"></span><br><span class="line">future.cancel(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    System.out.println(future.get());</span><br><span class="line">    </span><br><span class="line">    future.isCancelled(); <span class="comment">//캔슬 됬는지 확인</span></span><br><span class="line">    future.isDone(); <span class="comment">// 작업이 잘 끝났는지 확인</span></span><br><span class="line">    </span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/10/31/Java/JavaAdvanced/MultiThread/" data-id="ckhrac5kv00328cu23htg625w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/07/Java/JavaAdvanced/UnitTestAndTDD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java_UnitTestAndTDD
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/10/31/Java/JavaAdvanced/RegularExpression/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_RegularExpression(정규표현식)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

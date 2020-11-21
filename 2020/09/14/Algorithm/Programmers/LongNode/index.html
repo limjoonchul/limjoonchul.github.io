@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Programmers-LongNode | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Algorithm - 가장 먼 노드 (Num49189)문제 설명 n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다.1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다.가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다. 노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programmers-LongNode">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/14/Algorithm/Programmers/LongNode/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Algorithm - 가장 먼 노드 (Num49189)문제 설명 n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다.1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다.가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다. 노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://limjoonchul.github.io/2020/09/14/Algorithm/image/%EA%B0%80%EC%9E%A5%EB%A8%BC%EB%85%B8%EB%93%9C.png">
+<meta property="article:published_time" content="2020-09-14T12:52:39.323Z">
+<meta property="article:modified_time" content="2020-11-21T05:45:26.856Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limjoonchul.github.io/2020/09/14/Algorithm/image/%EA%B0%80%EC%9E%A5%EB%A8%BC%EB%85%B8%EB%93%9C.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Algorithm/Programmers/LongNode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/14/Algorithm/Programmers/LongNode/" class="article-date">
+  <time datetime="2020-09-14T12:52:39.323Z" itemprop="datePublished">2020-09-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Programmers-LongNode
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm-가장-먼-노드-Num49189"><a href="#Algorithm-가장-먼-노드-Num49189" class="headerlink" title="Algorithm - 가장 먼 노드 (Num49189)"></a>Algorithm - 가장 먼 노드 (Num49189)</h1><h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
+<li>n개의 노드가 있는 그래프가 있습니다. 각 노드는 1부터 n까지 번호가 적혀있습니다.<br>1번 노드에서 가장 멀리 떨어진 노드의 갯수를 구하려고 합니다.<br>가장 멀리 떨어진 노드란 최단경로로 이동했을 때 간선의 개수가 가장 많은 노드들을 의미합니다.</li>
+<li>노드의 개수 n, 간선에 대한 정보가 담긴 2차원 배열 vertex가 매개변수로 주어질 때,<br>1번 노드로부터 가장 멀리 떨어진 노드가 몇 개인지를 return 하도록 solution 함수를 작성해주세요.</li>
+</ul>
+<h2 id="제한사항"><a href="#제한사항" class="headerlink" title="제한사항"></a>제한사항</h2><ul>
+<li>노드의 개수 n은 2 이상 20,000 이하입니다.</li>
+<li>간선은 양방향이며 총 1개 이상 50,000개 이하의 간선이 있습니다.</li>
+<li>vertex 배열 각 행 [a, b]는 a번 노드와 b번 노드 사이에 간선이 있다는 의미입니다.<h2 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h2><table>
+<thead>
+<tr>
+<th>n</th>
+<th>vertex</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6</td>
+<td>[[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h2></li>
+<li>예제의 그래프를 표현하면 아래 그림과 같고, 1번 노드에서 가장 멀리 떨어진 노드는 4,5,6번 노드입니다.</li>
+</ul>
+<p><img src="../../image/%EA%B0%80%EC%9E%A5%EB%A8%BC%EB%85%B8%EB%93%9C.png" alt="가장먼노드"></p>
+<h2 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.PriorityQueue;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Node</span>&gt; &#123;</span></span><br><span class="line">    <span class="keyword">int</span> index;</span><br><span class="line">    <span class="keyword">int</span> dist;</span><br><span class="line">    <span class="keyword">public</span> Node(<span class="keyword">int</span> index, <span class="keyword">int</span> dist) &#123;</span><br><span class="line">        <span class="built_in">this</span>.index = index;</span><br><span class="line">        <span class="built_in">this</span>.dist = dist;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> compareTo(Node o) &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.compare(dist, o.dist);</span><br><span class="line">        <span class="comment">// 거리가 가까울 수록 우선순위를 갖게 함. 거리가 짧은게 우선순위를 갖게하기위해서</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LongNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> solution(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] edge) &#123;</span><br><span class="line">        <span class="keyword">int</span> [] dists = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">// 거리를 구하기 위해서 배열 생성 노드의 수가 1부터 시작하기 때문에 편리하게 쓰기우해 n+1을 해준 것이다. 0은 무시한다.</span></span><br><span class="line">        Arrays.fill(dists, Integer.MAX_VALUE);</span><br><span class="line">        <span class="comment">// 처음에 거리를 Integer의 가장 큰 값으로 초기화를 해준다.</span></span><br><span class="line">        <span class="comment">// 가장 짧은 거리를 찾을 때마다 노드간의 거리를 업데이트 한다.</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; adj_lists = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1,3 이라할 때 1번 노드와 3번 노드가 이어져 있다는 것이니 (1,3),(3,1)을 나눌 필요가 없다.</span></span><br><span class="line">        <span class="comment">// 그래서 e[0] 일 때와 e[1]일 때 둘 다 list에 값을 넣어준다.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            List&lt;Integer&gt; adj_list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span>[] <span class="attr">e:</span> edge) &#123;</span><br><span class="line">                <span class="keyword">if</span> (e[<span class="number">0</span>] == i) &#123;</span><br><span class="line">                    adj_list.add(e[<span class="number">1</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e[<span class="number">1</span>] == i) &#123;</span><br><span class="line">                    adj_list.add(e[<span class="number">0</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            adj_lists.add(adj_list);</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;Node&gt; heap = <span class="keyword">new</span> PriorityQueue&lt;&gt;();</span><br><span class="line">        <span class="comment">//거리가 짧은애를 먼저 접근하게 되어 있다.</span></span><br><span class="line">        <span class="comment">// 그래야 가장 빠르게 계산을 할 수 있다.</span></span><br><span class="line">        </span><br><span class="line">        dists[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        heap.add(<span class="keyword">new</span> Node(<span class="number">1</span>, dists[<span class="number">1</span>]));</span><br><span class="line">        <span class="keyword">while</span> (!heap.isEmpty()) &#123; <span class="comment">// 짧은 거리를 다 찾기 위한 반복문</span></span><br><span class="line">            Node node = heap.remove();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">indVisit:</span> adj_lists.get(node.index)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.dist + <span class="number">1</span> &lt; dists[indVisit]) &#123;</span><br><span class="line">                    <span class="comment">// node.dist + 1 은 현재 노드에서 다른 노드와의 연결은 무조건 1이 되니깐</span></span><br><span class="line">                    <span class="comment">// 예 노드1과 노드2사이의 거리는 0에 1 을 더해서 1이 된다.</span></span><br><span class="line">                    <span class="comment">// 각 노드에서 이어져있는 노드들과의 거리를 비교하는데 짧은 거리를 구하는 거니깐</span></span><br><span class="line">                    <span class="comment">// 위에 dists배열을 최대값으로 선언해줘서 그것보다 작은 값들이 대입되게 했다.</span></span><br><span class="line">                    </span><br><span class="line">                    dists[indVisit] = node.dist + <span class="number">1</span>;</span><br><span class="line">                    heap.add(<span class="keyword">new</span> Node(indVisit, dists[indVisit]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 가장 거리가 먼 것들의 개수를 세준다.</span></span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> answer = <span class="number">0</span>;</span><br><span class="line">        dists[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> <span class="attr">el:</span> dists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (el == max) &#123;</span><br><span class="line">                <span class="comment">// 가장 거리가 먼 것들이 몇개 인지 세기 위해서</span></span><br><span class="line">                <span class="comment">// dists 배열 요소(거리) 가 max와 같을 때 카운트를 증가시키고</span></span><br><span class="line">                answer++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (el &gt; max) &#123;</span><br><span class="line">                <span class="comment">// 거리가 max보다 클 때 그것이 가장 먼 거리이니깐</span></span><br><span class="line">                <span class="comment">// max 값이 거리 값을 넣어준 다음에 다시 카운트를 1로 초기화시킨다.</span></span><br><span class="line">                <span class="comment">// (다시 가장 먼 거리의 값들이 설정이 됬으니 그 개수를 다시 세어줘야하니깐)</span></span><br><span class="line">                </span><br><span class="line">                max = el;</span><br><span class="line">                answer = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">longNodeTest</span>&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> [][]edge =&#123;&#123;<span class="number">3</span>, <span class="number">6</span>&#125;, &#123;<span class="number">4</span>, <span class="number">3</span>&#125;, &#123;<span class="number">3</span>, <span class="number">2</span>&#125;, &#123;<span class="number">1</span>, <span class="number">3</span>&#125;,</span><br><span class="line">                &#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">2</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">2</span>&#125;&#125;;</span><br><span class="line">        System.out.println(<span class="keyword">new</span> LongNode().solution(<span class="number">6</span>,edge));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/14/Algorithm/Programmers/LongNode/" data-id="ckhrac5iv00268cu2ehfz24pk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/15/Java/JavaAdvanced/PackageAndImport/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java_PackageAndImport
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/14/Java/OOPAdvance/ClassDiagram/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">OOPAdvance_ClassClass</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

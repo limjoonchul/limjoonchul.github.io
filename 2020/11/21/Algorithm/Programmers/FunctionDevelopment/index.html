@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Programmers-기능개발 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Algorithm - 기능개발문제 설명 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다. 또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다. 먼저 배포되어야 하는 순">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programmers-기능개발">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/11/21/Algorithm/Programmers/FunctionDevelopment/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Algorithm - 기능개발문제 설명 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다. 또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다. 먼저 배포되어야 하는 순">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-21T05:55:37.054Z">
+<meta property="article:modified_time" content="2020-11-21T05:57:26.611Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Algorithm/Programmers/FunctionDevelopment" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/21/Algorithm/Programmers/FunctionDevelopment/" class="article-date">
+  <time datetime="2020-11-21T05:55:37.054Z" itemprop="datePublished">2020-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Programmers-기능개발
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Algorithm-기능개발"><a href="#Algorithm-기능개발" class="headerlink" title="Algorithm - 기능개발"></a>Algorithm - <a target="_blank" rel="noopener" href="https://programmers.co.kr/learn/courses/30/lessons/42586">기능개발</a></h1><h2 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h2><ul>
+<li>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.</li>
+<li>또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.</li>
+<li>먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.</li>
+</ul>
+<h3 id="제한-사항"><a href="#제한-사항" class="headerlink" title="제한 사항"></a>제한 사항</h3><ul>
+<li>작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.</li>
+<li>작업 진도는 100 미만의 자연수입니다.</li>
+<li>작업 속도는 100 이하의 자연수입니다.</li>
+<li>배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</li>
+</ul>
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>progresses</th>
+<th>speeds</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[93, 30, 55]</td>
+<td>[1, 30, 5]</td>
+<td>[2, 1]</td>
+</tr>
+<tr>
+<td>[95, 90, 99, 99, 80, 99]</td>
+<td>[1, 1, 1, 1, 1, 1]</td>
+<td>[1, 3, 2]</td>
+</tr>
+</tbody></table>
+<h3 id="입출력-예-설명"><a href="#입출력-예-설명" class="headerlink" title="입출력 예 설명"></a>입출력 예 설명</h3><ul>
+<li><p>입출력 예 #1</p>
+<ul>
+<li>첫 번째 기능은 93% 완료되어 있고 하루에 1%씩 작업이 가능하므로 7일간 작업 후 배포가 가능합니다.</li>
+<li>두 번째 기능은 30%가 완료되어 있고 하루에 30%씩 작업이 가능하므로 3일간 작업 후 배포가 가능합니다. 하지만 이전 첫 번째 기능이 아직 완성된 상태가 아니기 때문에 첫 번째 기능이 배포되는 7일째 배포됩니다.</li>
+<li>세 번째 기능은 55%가 완료되어 있고 하루에 5%씩 작업이 가능하므로 9일간 작업 후 배포가 가능합니다.</li>
+<li>따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.</li>
+</ul>
+</li>
+<li><p>입출력 예 #2</p>
+<ul>
+<li>모든 기능이 하루에 1%씩 작업이 가능하므로, 작업이 끝나기까지 남은 일수는 각각 5일, 10일, 1일, 1일, 20일, 1일입니다. 어떤 기능이 먼저 완성되었더라도 앞에 있는 모든 기능이 완성되지 않으면 배포가 불가능합니다.</li>
+<li>따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="구현-코드"><a href="#구현-코드" class="headerlink" title="구현 코드"></a>구현 코드</h2><ul>
+<li>혼자서 구현을 해보려고 했는데 결국 해결하지 못해서 다른 사람의 코드를 풀이해봤다.</li>
+<li>먼저 앞의 기능이 완료가 되야 뒤에 기능들이 배포가 가능하므로, queue를 만든다.</li>
+<li>그런다음, queue에  각 기능이 100%가 되는 기간을 구하는 식을 작성하여서 기간을 큐에 담아 준다.(이렇게 풀려했는데 이 식을 생각하지 못했다.)</li>
+<li>queue에 처음 요소를 firstFunc이라는 변수에 담아주고, 배포될 수 있는 기능들의 갯수를 세기 위한 count변수를 생성하고,<br>이 count를 담기 위한 ArrayList를 만들어준다.</li>
+<li>queue가 비어있지 않을 때까지 반복문을 돌면서 다음 queue의 요소를 빼서 nextFunc이라는 변수에 담고, 만약 앞의 기능이 뒤의 기능보다 기간이 더 길면,<br>앞의 기능이 배포될 때 뒤의 기능이 같이 배포가 되니깐 count를 1증가시켜준다. </li>
+<li>그런데 앞의 기능이 뒤의 기능보다 크지 않으면 뒤의 기능은 아직 배포될 준비가 안되어 있는 상태이니깐 이전의 배포가 된 기능들의 갯수를<br>result에 담고, count를 1로 다시 초기화 해준다. 뒤의 기능을 앞의 기능에 담아준다. 그래야 뒤의 기능이 처음이 되서 이 기능이 배포될 때 뒤의<br>기능들이 배포되는지 다시 카운트 할 수 있으니깐</li>
+<li>이렇게 반복이 되다가 queue가 비어있으면 while문을 빠져나오고, 마지막 기능의 배포되는 count를 result에 넣어준다.</li>
+<li>마지막으로 반복문을 돌면서 배포되는 기능들의 숫자들을 담아 놨던 result를 answer에 대입해서 반환한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.company.Programmers.stackandqueue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SolutionFunctionDevelopment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] solution(<span class="keyword">int</span>[] progresses, <span class="keyword">int</span>[] speeds) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] answer = &#123;&#125;;</span><br><span class="line">        </span><br><span class="line">        Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; progresses.length; i++) &#123;</span><br><span class="line">            queue.add((<span class="number">100</span>-progresses[i])%speeds[i] == <span class="number">0</span> ? (<span class="number">100</span>-progresses[i])/speeds[i] : (<span class="number">100</span>-progresses[i])/speeds[i]+<span class="number">1</span>);</span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> firstFunc = queue.poll();</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">int</span> nextFunc = queue.poll();</span><br><span class="line">            <span class="keyword">if</span> (firstFunc &gt;= nextFunc)&#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                result.add(count);</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">                firstFunc = nextFunc;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.add(count);</span><br><span class="line">        answer = <span class="keyword">new</span> <span class="keyword">int</span>[result.size()];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; answer.length; j++) &#123;</span><br><span class="line">            answer[j] = result.get(j);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FunctionDevelopment</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] progresses = &#123;<span class="number">93</span>,<span class="number">30</span>,<span class="number">55</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] speeds = &#123;<span class="number">1</span>,<span class="number">30</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line">        System.out.println(Arrays.toString(<span class="keyword">new</span> SolutionFunctionDevelopment().solution(progresses,speeds)));;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/11/21/Algorithm/Programmers/FunctionDevelopment/" data-id="ckhrac5ip00218cu22ji0gcwf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/21/Algorithm/Programmers/ArrangeMyOwnStrings/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Programmers-문자열 내 마음대로 정렬하기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/21/Java/JavaAdvanced/NIO/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Java_NIO</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaBasic-Loops | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="반복문(Loops)반복문의 일반적인 구성 초기화 (Initialization) 조건식 (Conditional Expression) 실행문 (Execution Statement) 증감식 (Increment and Decrement Statement)  다양한 반복문for 문 실행순서 1.초기화 -&gt; 2.조건식 -&gt; 3.실행문 - 4.증감식 조건을">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaBasic-Loops">
+<meta property="og:url" content="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Loops/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="반복문(Loops)반복문의 일반적인 구성 초기화 (Initialization) 조건식 (Conditional Expression) 실행문 (Execution Statement) 증감식 (Increment and Decrement Statement)  다양한 반복문for 문 실행순서 1.초기화 -&gt; 2.조건식 -&gt; 3.실행문 - 4.증감식 조건을">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-15T10:54:07.398Z">
+<meta property="article:modified_time" content="2020-11-21T05:45:27.215Z">
+<meta property="article:author" content="Facamp lim">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://limjoonchul.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Java/JavaBasic/Loops" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/15/Java/JavaBasic/Loops/" class="article-date">
+  <time datetime="2020-09-15T10:54:07.398Z" itemprop="datePublished">2020-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaBasic-Loops
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="반복문-Loops"><a href="#반복문-Loops" class="headerlink" title="반복문(Loops)"></a>반복문(Loops)</h1><h2 id="반복문의-일반적인-구성"><a href="#반복문의-일반적인-구성" class="headerlink" title="반복문의 일반적인 구성"></a>반복문의 일반적인 구성</h2><ul>
+<li>초기화 (Initialization)</li>
+<li>조건식 (Conditional Expression)</li>
+<li>실행문 (Execution Statement)</li>
+<li>증감식 (Increment and Decrement Statement)</li>
+</ul>
+<h2 id="다양한-반복문"><a href="#다양한-반복문" class="headerlink" title="다양한 반복문"></a>다양한 반복문</h2><h3 id="for-문"><a href="#for-문" class="headerlink" title="for 문"></a>for 문</h3><ul>
+<li>실행순서 1.초기화 -&gt; 2.조건식 -&gt; 3.실행문 - 4.증감식 조건을 벗어날 때 까지 2,3,4번 과정을 반복<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(초기화; 조건식; 증감식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="while-문"><a href="#while-문" class="headerlink" title="while 문"></a>while 문</h3><ul>
+<li>while 문의 경우 실행문이 한번도 실행되지 않을 수도 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 초기화</span></span><br><span class="line"><span class="keyword">while</span>(조건식) &#123;</span><br><span class="line">  <span class="comment">// 실행문</span></span><br><span class="line">  <span class="comment">// 증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="do-while-문"><a href="#do-while-문" class="headerlink" title="do ~ while 문"></a>do ~ while 문</h3><ul>
+<li>do ~ while 문의 경우 실행문은 무조건 한 번 이상 실행된다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//초기화</span></span><br><span class="line">do &#123;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125; <span class="keyword">while</span>(조건식)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="반복문-제어"><a href="#반복문-제어" class="headerlink" title="반복문 제어"></a>반복문 제어</h2><h3 id="break-문"><a href="#break-문" class="headerlink" title="break 문"></a>break 문</h3><ul>
+<li>반복문을 곧바로 종료할 때 사용.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (조건식) &#123;</span><br><span class="line">  <span class="keyword">if</span> (종료조건) &#123;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="continue-문"><a href="#continue-문" class="headerlink" title="continue 문"></a>continue 문</h3><ul>
+<li>반복문을 곧바로 다음 반복으로 건너 뛴다.</li>
+<li>while 문의 경우 증감식이 실행되지 않을 수 있다.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (조건식) &#123;</span><br><span class="line">  <span class="keyword">if</span> (제어조건) &#123;</span><br><span class="line">    <span class="comment">//증감식</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//실행문</span></span><br><span class="line">  <span class="comment">//증감식</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><ul>
+<li>중첩 반복문에서 어떤 반복문을 제어할지 결정<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">outer:</span> <span class="comment">//레이블 가장 가까운걸 건너 뛰는게 아니라 레이블명이 젹혀있는 반복문 쪽으로 감 실행(break도 가능)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i =<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;<span class="number">5</span>; j++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(i == <span class="number">3</span>)&#123;</span><br><span class="line">         System.out.println(<span class="string">&quot;continue called&quot;</span>);</span><br><span class="line">         <span class="keyword">continue</span>; <span class="comment">//여기서 continue만 사용하면 j는 4번동안 반복됨</span></span><br><span class="line">         <span class="comment">// continue outer; //레이블을 사용하면 i쪽으로가서 제어함.</span></span><br><span class="line">      &#125;</span><br><span class="line">      System.out.printf(<span class="string">&quot;%d * %d = %d\n&quot;</span>, i, j, i*j);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://limjoonchul.github.io/2020/09/15/Java/JavaBasic/Loops/" data-id="ckhrac5h6000x8cu2dyughc1z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/09/15/Java/JavaBasic/InputOutput/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaBasic-InputOutput
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/15/Java/JavaBasic/ConditionalStatement/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaBasic-ConditionalStatements</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Servlet/">Spring-Servlet</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/Pholymorphism/">Spring-Pholymorphism</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JSP/">Spring-JSP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/JDBC/">Spring-JDBC</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/21/Spring/HTTP/">Spring-HTTP</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Facamp lim<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
